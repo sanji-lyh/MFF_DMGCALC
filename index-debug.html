@@ -136,8 +136,7 @@
 	
 		$('#result_table').DataTable( {
 			"order": [[ 1, "desc" ]],
-			"lengthMenu": [[25, 50, -1], [25, 50, "All"]],
-			columnDefs: [{targets: [ "_all" ], orderSequence: [ "desc", "desc", "asc" ]  }]
+			"lengthMenu": [[25, 50, -1], [25, 50, "All"]]
 		} );
 		
 		// sort them accordingly
@@ -149,61 +148,85 @@
 	
 	function ComputeDmg(ability, job, isBroken, isWeakness, isAOE=false){
 		var dmg = parseInt2(ability.atk);
-	
+		
+		console.log(job);
+		console.log(dmg);
+		
 		//Output Dmg = Card's Attack * Magic * EE * Critical * Broken * Weakness * Ravage * Supreme
 		//Output Dmg = Card's Attack * Attack * EE * Critical * Broken * Weakness * Ravage * Supreme
 		
 		if(ability.type){  // true = magic, false = atk
 			//Mag: (1 + magic_stat/100) * (1 + magic_mod/100) * (1 + stat_mod/100) + additional_magic/100
 			dmg *= (1 + parseInt2(job["Magic"])/100);
+			console.log("1 + " + parseInt2(job["Magic"]) + "/100");
+			console.log(dmg);
 		}
 		else{
 			//Atk: (1 + attack_stat/100) * (1 + attack_mod/100) * (1 + stat_mod/100) + additional_attack/100
 			dmg *= (1 + parseInt2(job["Attack"])/100);
+			console.log("1 + "+ parseInt2(job["Attack"]) + "/100");
+			console.log(dmg);
 		}
 		
 		// EE: 1 + (enhance_element + ee_additional)/100
 		switch(ability.elem){
 			// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark
 			case 1:
-				dmg *= (1 + (parseInt2(job["Fire_EE"]) + parseInt2(job["Ability Chain"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				dmg *= (1 + (parseInt2(job["Fire_EE"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				console.log("1 + ("+parseInt2(job["Fire_EE"])+" + "+ability.ee+" + "+ability.attunedChain+" + "+ability.abilityChain+")/100");
 				break;
 			case 2:
-				dmg *= (1 + (parseInt2(job["Water_EE"]) + parseInt2(job["Ability Chain"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				dmg *= (1 + (parseInt2(job["Water_EE"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				console.log("1 + ("+parseInt2(job["Water_EE"])+" + "+ability.ee+" + "+ability.attunedChain+" + "+ability.abilityChain+")/100");
 				break;
 			case 3:
-				dmg *= (1 + (parseInt2(job["Wind_EE"]) + parseInt2(job["Ability Chain"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				dmg *= (1 + (parseInt2(job["Wind_EE"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				console.log("1 + ("+parseInt2(job["Wind_EE"])+" + "+ability.ee+" + "+ability.attunedChain+" + "+ability.abilityChain+")/100");
 				break;
 			case 4:
-				dmg *= (1 + (parseInt2(job["Earth_EE"]) + parseInt2(job["Ability Chain"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				dmg *= (1 + (parseInt2(job["Earth_EE"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				console.log("1 + ("+parseInt2(job["Earth_EE"])+" + "+ability.ee+" + "+ability.attunedChain+" + "+ability.abilityChain+")/100");
 				break;
 			case 5:
-				dmg *= (1 + (parseInt2(job["Light_EE"]) + parseInt2(job["Ability Chain"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				dmg *= (1 + (parseInt2(job["Light_EE"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				console.log("1 + ("+parseInt2(job["Light_EE"])+" + "+ability.ee+" + "+ability.attunedChain+" + "+ability.abilityChain+")/100");
 				break;
 			case 6:
-				dmg *= (1 + (parseInt2(job["Dark_EE"]) + parseInt2(job["Ability Chain"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				dmg *= (1 + (parseInt2(job["Dark_EE"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				console.log("1 + ("+parseInt2(job["Dark_EE"])+" + "+ability.ee+" + "+ability.attunedChain+" + "+ability.abilityChain+")/100");
 				break;
 		}
+		console.log(dmg);
 		
 		// Critical: 1 + (base_crit + imp_crit + crit_additional)/100
 		dmg *= (1 + (50 + parseInt2(job["Improved Crits"]) + ability.improvedCrit)/100);
+		console.log("1 + (50 + "+parseInt2(job["Improved Crits"])+" + "+ability.improvedCrit+")/100");
+		console.log(dmg);
 		
 		// Broken: 1 + (base_break + painful_break + break_additional)/100
 		if(isBroken){
 			dmg *= (1 + (100 + parseInt2(job["Painful Break"]) + ability.painfulBreak)/100);
+			console.log("1 + (100 + "+parseInt2(job["Painful Break"])+" + "+ability.painfulBreak+")/100");
+			console.log(dmg);
 		}
 		
 		// Weakness: 1 + (base_weak + broken_weak + exp_weak + weak_additional)/100
 		if(isWeakness && isBroken){
 			dmg *= (1 + (30 + 70 + parseInt2(job["Exploit Weakness"]) + ability.weakness)/100);
+			console.log("1 + (30 + 70 + "+parseInt2(job["Exploit Weakness"])+" + "+ability.weakness+")/100");
+			console.log(dmg);
 		}
 		else if(isWeakness){
 			dmg *= (1 + (30 + parseInt2(job["Exploit Weakness"]) + ability.weakness)/100);
+			console.log("1 + (30 + "+parseInt2(job["Exploit Weakness"])+" + "+ability.weakness+")/100");
+			console.log(dmg);
 		}
 				
 		// Ravage: 1 + (ravage + ravage_additional)/100
 		if(isAOE){
 			dmg *= (1 + (parseInt2(job["Ravage"]) + ability.ravage)/100);
+			console.log("1 + ("+parseInt2(job["Ravage"])+" + "+ability.ravage+")/100");
+			console.log(dmg);
 		}
 		
 		return dmg;

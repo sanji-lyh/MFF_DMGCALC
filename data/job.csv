@@ -1,4 +1,4 @@
-Job Name,Class,HP,Attack,Break,Magic,Crit,Spd,Def,OrbSet1_1,OrbSet1_2,OrbSet1_3,Orb Set 2_1,Orb Set 2_2,Orb Set 2_3,Fire_EE,Water_EE,Wind_EE,Earth_EE,Light_EE,Dark_EE,Role,Fire_Resist,Water_Resist,Wind_Resist,Earth_Resist,Light_Resist,Dark_Resist,Exploit Weakness,Painful Break,Improved Crits,Ability Chain,Piercing Break,Flash Break,Scourge,Steelguard,Base Attributes,Chance,Ravage
+Job Name,Class,HP,Attack,Break,Magic,Crit,Spd,Def,OrbSet1_1,OrbSet1_2,OrbSet1_3,Orb Set 2_1,Orb Set 2_2,Orb Set 2_3,Fire_Resist,Water_Resist,Wind_Resist,Earth_Resist,Light_Resist,Dark_Resist,Role,Fire_EE,Water_EE,Wind_EE,Earth_EE,Light_EE,Dark_EE,Exploit Weakness,Painful Break,Improved Crits,Ability Chain,Piercing Break,Flash Break,Scourge,Steelguard,Base Attributes,Chance,Ravage
 Warrior,Warrior,"9,230",675,407,335,2,6,2,F,W,E,,,,45,,,,,,DEF,150,,,,,,,,,,,,,,,10%,
 Warrior [HoF],Warrior,"13,845","1,012",610,502,2,6,7,F,W,E,,,,45,,,,,,DEF,350,,,,,,,,,,,,,,50,10%,
 Knight,Warrior,"10,030",583,338,342,,6,5,F,A,E,,,,20,30,20,20,,,DEF,15,,,75,,,,,,,,,,,,0%,
