@@ -149,6 +149,10 @@
 	
 	function ComputeDmg(ability, job, isBroken, isWeakness, isAOE=false){
 		var dmg = parseInt2(ability.atk);
+		
+		if(!ability.type && !(job["Class"] === "Monk" || job["Class"] === "Sophie")){
+			dmg = 0;
+		}
 	
 		//Output Dmg = Card's Attack * Magic * EE * Critical * Broken * Weakness * Ravage * Supreme
 		//Output Dmg = Card's Attack * Attack * EE * Critical * Broken * Weakness * Ravage * Supreme
