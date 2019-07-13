@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -9,12 +8,13 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.7/angular.min.js"></script>
-	
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>	
 	
+	<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#000000">
     <meta charset="UTF-8">
@@ -58,12 +58,175 @@
 		.result_table th {
 			text-align: center;
 		}
-		
 	</style>
+	<script type="text/javascript">
+	var jobList;
+	var isLoaded = false;
+	
+	function GetJob(){
+		$.getJSON('./data/job.json', function(data) {         
+			jobList = data;
+			isLoaded = true;
+			console.log(jobList);
+		});
+	}
+	
+	function OnInputChange(){
+		var ability = {
+			// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark		
+			elem: parseInt($("input[name='elem_input']:checked").val()),
+			
+			// true = magic, false = atk
+			type: $("input[name='type']").prop("checked"),
+			atk: parseInt($("input[name='atk_power']").val()),
+			improvedCrit: parseInt($("input[name='improved_crit']").val()),
+			weakness: parseInt($("input[name='exploit_weakness']").val()),
+			ee: parseInt($("input[name='ee_power']").val()),
+			attunedChain: parseInt($("input[name='attuned_chain']").val()),
+			abilityChain: parseInt($("input[name='ability_chain']").val()),
+			painfulBreak: parseInt($("input[name='pb_power']").val()),
+			ravage: parseInt($("input[name='ravage_power']").val())
+		};
+		
+		
+		// Todo: validation
+		
+		
+		console.log(ability);
+		
+		if(isLoaded){
+			ProcessRanking(ability);
+		}
+		else {
+			alert("Error in loading job list. Please refresh the page and try again");
+		}
+	}
+	
+	function numberWithCommas(x) {
+		x = x.toFixed(0);
+		var parts = x.toString().split(".");
+		parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		return parts.join(".");
+	}
+	
+	function ProcessRanking(ability){
+		resultList = [];
+	
+		// compute dmg for each job first
+		for(i = 0; i < jobList.length; i++){
+			var resultEntry = {
+				name: jobList[i]["Job Name"],
+				unbrokenWeaknessDmg: ComputeDmg(ability, jobList[i], false, true),
+				unbrokenNeutralDmg: ComputeDmg(ability, jobList[i], false, false),
+				brokenWeaknessDmg: ComputeDmg(ability, jobList[i], true, true),
+				brokenNeutralDmg: ComputeDmg(ability, jobList[i], true, false)
+			};
+			
+			resultList.push(resultEntry);
+		}
+		
+		//console.log(resultList);
+		if ($.fn.DataTable.isDataTable("#result_table")) {
+		  $('#result_table').DataTable().clear().destroy();
+		}
+				
+		for(i=0; i < resultList.length; i++){
+			$("#result_table > tbody:last-child").append("<tr><td>" + resultList[i].name + "</td><td>" + numberWithCommas(resultList[i].unbrokenWeaknessDmg) + "</td><td>" + numberWithCommas(resultList[i].unbrokenNeutralDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenWeaknessDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenNeutralDmg) + "</td>")
+		}
+		
+		
+	
+		$('#result_table').DataTable( {
+			"order": [[ 1, "desc" ]],
+			"lengthMenu": [[25, 50, -1], [25, 50, "All"]]
+		} );
+		
+		// sort them accordingly
+	}
+	
+	function parseInt2(input){
+		return parseInt(input) || 0;
+	}
+	
+	function ComputeDmg(ability, job, isBroken, isWeakness, isAOE=false){
+		var dmg = parseInt2(ability.atk);
+		
+		//Output Dmg = Card's Attack * Magic * EE * Critical * Broken * Weakness * Ravage * Supreme
+		//Output Dmg = Card's Attack * Attack * EE * Critical * Broken * Weakness * Ravage * Supreme
+		
+		if(ability.type){  // true = magic, false = atk
+			//Mag: (1 + magic_stat/100) * (1 + magic_mod/100) * (1 + stat_mod/100) + additional_magic/100
+			dmg *= (1 + parseInt2(job["Magic"])/100);
+		}
+		else{
+			//Atk: (1 + attack_stat/100) * (1 + attack_mod/100) * (1 + stat_mod/100) + additional_attack/100
+			dmg *= (1 + parseInt2(job["Attack"])/100);
+		}
+		
+		// EE: 1 + (enhance_element + ee_additional)/100
+		switch(ability.elem){
+			// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark
+			case 1:
+				dmg *= (1 + (parseInt2(job["Fire_EE"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				break;
+			case 2:
+				dmg *= (1 + (parseInt2(job["Water_EE"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				break;
+			case 3:
+				dmg *= (1 + (parseInt2(job["Wind_EE"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				break;
+			case 4:
+				dmg *= (1 + (parseInt2(job["Earth_EE"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				break;
+			case 5:
+				dmg *= (1 + (parseInt2(job["Light_EE"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				break;
+			case 6:
+				dmg *= (1 + (parseInt2(job["Dark_EE"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				break;
+		}
+		
+		// Critical: 1 + (base_crit + imp_crit + crit_additional)/100
+		dmg *= (1 + (50 + parseInt2(job["Improved Crits"]) + ability.improvedCrit)/100);
+		
+		// Broken: 1 + (base_break + painful_break + break_additional)/100
+		if(isBroken){
+			dmg *= (1 + (100 + parseInt2(job["Painful Break"]) + ability.painfulBreak)/100);
+		}
+		
+		// Weakness: 1 + (base_weak + broken_weak + exp_weak + weak_additional)/100
+		if(isWeakness && isBroken){
+			dmg *= (1 + (30 + 70 + parseInt2(job["Exploit Weakness"]) + ability.weakness)/100);
+		}
+		else if(isWeakness){
+			dmg *= (1 + (30 + parseInt2(job["Exploit Weakness"]) + ability.weakness)/100);
+		}
+				
+		// Ravage: 1 + (ravage + ravage_additional)/100
+		if(isAOE){
+			dmg *= (1 + (parseInt2(job["Ravage"]) + ability.ravage)/100);
+		}
+		
+		return dmg;
+	}
+	
+	$(document).ready(function() {
+		GetJob();
+		
+		$("#input").change(function(){
+			OnInputChange();
+		});
+		
+		$('#result_table').DataTable( {
+			"order": [[ 1, "desc" ]],
+			"lengthMenu": [[25, 50, -1], [25, 50, "All"]]
+		} );
+	});
+	</script>
 </head>
 
 <body>
-	<div class="container ng-scope">
+	<div class="container ">
 		<div class="row header_bar">
             <div class="col-xs-12 col-sm-8">
                 <h4 class="title_heading">Mobius Final Fantasy - Damage Calculator</h4>
@@ -71,9 +234,9 @@
         </div>
 		
 		<br/>
-		<p class="ng-scope">Fill in the inputs below to begin (or select the ability from dropdown to auto-fill)</P>
+		<p class="">Fill in the inputs below to begin (or select the ability from dropdown to auto-fill)</P>
 		
-		<select class="form-control">
+		<select name="ability_template" class="form-control">
 			<option value="empty">Select an ability to auto-fill</option>
 			<option value="duncan">Duncan</option>
 			<option value="duncan">Ragnarok</option>
@@ -81,92 +244,93 @@
 		</select>
 		
 		<br/>
+		<form id="input">
 		<div class="row elem_table">
 			<div class="row">
-				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="1" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="img/elem_fire.png"> Fire</div>
-				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="2" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="img/elem_water.png"> Water</div>
-				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="3" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="img/elem_wind.png"> Wind</div>
-				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="4" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="img/elem_earth.png"> Earth</div>
-				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="5" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="img/elem_light.png"> Light</div>
-				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="6" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="img/elem_dark.png"> Dark</div>
+				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="1" checked>&nbsp;<img src="img/elem_fire.png"> Fire</div>
+				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="2">&nbsp;<img src="img/elem_water.png"> Water</div>
+				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="3">&nbsp;<img src="img/elem_wind.png"> Wind</div>
+				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="4">&nbsp;<img src="img/elem_earth.png"> Earth</div>
+				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="5">&nbsp;<img src="img/elem_light.png"> Light</div>
+				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="6">&nbsp;<img src="img/elem_dark.png"> Dark</div>
 			</div>
 		</div>
 		
 		<br/>
-		<p class="ng-scope">Select whether it's magic-based or attack-based damage:</p>
-		<input type="checkbox" checked data-toggle="toggle" data-on="Magic-based" data-off="Attack-based" data-onstyle="primary" data-offstyle="info" data-width="100%">
+		<p class="">Select whether it's magic-based or attack-based damage:</p>
+		<input name="type" type="checkbox" checked data-toggle="toggle" data-on="Magic-based" data-off="Attack-based" data-onstyle="primary" data-offstyle="info" data-width="100%">
 		
 		<br/>
 		<br/>
 		<div class="row">
 			<div class="col-xs-3 col-sm-2 vcenter">
-				<label class="ng-scope">Attack</label>
+				<label class="">Attack</label>
 			</div>
 			<div class="col-xs-3 col-sm-3 vcenter">
-				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="atk_power" placeholder="1800">
+				<input type="number" class="form-control" name="atk_power" value="1800">
 			</div>
 			<!--<div class="col-xs-3 col-sm-2 vcenter">
-				<label class="ng-scope">Break Power</label>
+				<label class="">Break Power</label>
 			</div>
 			<div class="col-xs-3 col-sm-3 vcenter">
-				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="brk_power" placeholder="1800">
+				<input type="number" class="form-control" name="brk_power" placeholder="1800">
 			</div>
 			-->
 			
 			<div class="col-xs-3 col-sm-2 vcenter">
-				<label class="ng-scope">Improved Crit</label>
+				<label class="">Improved Crit</label>
 			</div>
 			<div class="col-xs-3 col-sm-3 vcenter">
-				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="improved_crit" placeholder="100">
+				<input type="number" class="form-control" name="improved_crit" value="0">
 			</div>
 			<div class="col-xs-3 col-sm-2 vcenter">
-				<label class="ng-scope">Exploit Weakness</label>
+				<label class="">Exploit Weakness</label>
 			</div>
 			<div class="col-xs-3 col-sm-3 vcenter">
-				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="exploit_weakness" placeholder="100">
+				<input type="number" class="form-control" name="exploit_weakness" value="0">
 			</div>
 			<div class="col-xs-3 col-sm-2 vcenter">
-				<label class="ng-scope">Element Enhance</label>
+				<label class="">Element Enhance</label>
 			</div>
 			<div class="col-xs-3 col-sm-3 vcenter">
-				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="ee_power" placeholder="100">
+				<input type="number" class="form-control" name="ee_power" value="0">
 			</div>
 			
 			<div class="col-xs-3 col-sm-2 vcenter">
-				<label class="ng-scope">Attuned Chain</label>
+				<label class="">Attuned Chain</label>
 			</div>
 			<div class="col-xs-3 col-sm-3 vcenter">
-				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="attuned_chain" placeholder="100">
+				<input type="number" class="form-control" name="attuned_chain" value="0">
 			</div>
 			
 			<div class="col-xs-3 col-sm-2 vcenter">
-				<label class="ng-scope">Ability Chain</label>
+				<label class="">Ability Chain</label>
 			</div>
 			<div class="col-xs-3 col-sm-3 vcenter">
-				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="ee_power" placeholder="100">
+				<input type="number" class="form-control" name="ability_chain" value="0">
 			</div>
 			
 			<div class="col-xs-3 col-sm-2 vcenter">
-				<label class="ng-scope">Painful Break</label>
+				<label class="">Painful Break</label>
 			</div>
 			<div class="col-xs-3 col-sm-3 vcenter">
-				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="pb_power" placeholder="100">
+				<input type="number" class="form-control" name="pb_power" value="0">
 			</div>
 			<div class="col-xs-3 col-sm-2 vcenter">
-				<label class="ng-scope">Ravage</label>
+				<label class="">Ravage</label>
 			</div>
 			<div class="col-xs-3 col-sm-3 vcenter">
-				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="ravage_power" placeholder="25">
+				<input type="number" class="form-control" name="ravage_power" value="0">
 			</div>
 		</div>
+		</form>
 		
 		<hr/>
-		<h3 class="ng-scope resultTxt">Result</h3>
+		<h3 class="resultTxt">Result</h3>
 		<div class="col-sm-12">
-			<table class="table table-hover result_table table-bordered">
+			<table class="table table-hover result_table table-bordered" id="result_table">
 				<thead>
 					<tr>
-						<th rowspan="2">Rank</th>
 						<th rowspan="2">Job Name</th>
 						<th colspan="2">Unbroken</th>
 						<th colspan="2">Broken</th>
@@ -179,31 +343,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Test</td>
-						<td>2402</td>
-						<td>2402</td>
-						<td>2402</td>
-						<td>2402</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>Test</td>
-						<td>2402</td>
-						<td>2402</td>
-						<td>2402</td>
-						<td>2402</td>
-					</tr>
 				</tbody>					
 			</table>
 		</div>
 	</div>
 	
-	<script type="text/javascript">
-	$.getJSON('data/job.json', function(data) {         
-		console.log(data)
-	});
-	</script>
+	
+	
 </body>
 </html>
