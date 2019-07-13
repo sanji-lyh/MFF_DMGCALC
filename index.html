@@ -3,19 +3,140 @@
 <html>
 
 <head>
-    <title>MFF Pandemonium Dmg Calculator</title>
+    <title>MFF Dmg Calculator</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.7/angular.min.js"></script>
+	
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>	
+	
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#000000">
     <meta charset="UTF-8">
-    <meta name="description" content="Mobius Final Fantasy Dmg Calculator / メビウスFF">
+    <meta name="description" content="Mobius Final Fantasy Damage Calculator / メビウスFF">
     <meta name="keywords" content="MobiusFF, Final Fantasy, メビウスFF">
     <meta name="author" content="sanjilyh">
+	<style type="text/css">
+		.elem_table img {
+			max-width: 16px;
+		}
+		
+		.elem_table div {
+			padding: 4px 16px;
+		}
+		
+		.header_bar {
+			background: #a94442;
+			color: white;
+			padding: 16px 8px;
+		}
+		
+		.container {
+			max-width: 960px;
+		}
+
+		.vcenter {
+			display: inline-block;
+			vertical-align: middle;
+			float: none;
+			margin-bottom:6px;
+		}
+	</style>
 </head>
 
 <body>
-Test
+	<div class="container ng-scope">
+		<div class="row header_bar">
+            <div class="col-xs-12 col-sm-8">
+                <h4 class="title_heading">Mobius Final Fantasy - Damage Calculator</h4>
+            </div>
+        </div>
+		
+		<br/>
+		<p class="ng-scope">Fill in the inputs below to begin (or select the ability from dropdown to auto-fill)</P>
+		
+		<select class="form-control">
+			<option value="empty">Select an ability to auto-fill</option>
+			<option value="duncan">Duncan</option>
+			<option value="duncan">Ragnarok</option>
+			<option value="duncan">Minwu</option>
+		</select>
+		
+		<br/>
+		<div class="row elem_table">
+			<div class="row">
+				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="1" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="img/elem_fire.png"> Fire</div>
+				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="2" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="img/elem_water.png"> Water</div>
+				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="3" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="img/elem_wind.png"> Wind</div>
+				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="4" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="img/elem_earth.png"> Earth</div>
+				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="5" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="img/elem_light.png"> Light</div>
+				<div class="col-xs-4 col-sm-4 col-sm-4"><input type="radio" name="elem_input" value="6" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="img/elem_dark.png"> Dark</div>
+			</div>
+		</div>
+		
+		<br/>
+		<p class="ng-scope">Select whether it's magic-based or attack-based damage:</p>
+		<input type="checkbox" checked data-toggle="toggle" data-on="Magic-based" data-off="Attack-based" data-onstyle="primary" data-offstyle="info" data-width="100%">
+		
+		<br/>
+		<br/>
+		<div class="row">
+			<div class="col-xs-3 col-sm-2 vcenter">
+				<label class="ng-scope">Attack</label>
+			</div>
+			<div class="col-xs-3 col-sm-3 vcenter">
+				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="atk_power" placeholder="1800">
+			</div>
+			<!--<div class="col-xs-3 col-sm-2 vcenter">
+				<label class="ng-scope">Break Power</label>
+			</div>
+			<div class="col-xs-3 col-sm-3 vcenter">
+				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="brk_power" placeholder="1800">
+			</div>
+			-->
+			
+			<div class="col-xs-3 col-sm-2 vcenter">
+				<label class="ng-scope">Improved Crit</label>
+			</div>
+			<div class="col-xs-3 col-sm-3 vcenter">
+				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="improved_crit" placeholder="100">
+			</div>
+			<div class="col-xs-3 col-sm-2 vcenter">
+				<label class="ng-scope">Exploit Weakness</label>
+			</div>
+			<div class="col-xs-3 col-sm-3 vcenter">
+				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="exploit_weakness" placeholder="100">
+			</div>
+			<div class="col-xs-3 col-sm-2 vcenter">
+				<label class="ng-scope">Attuned Chain / Element Enhance</label>
+			</div>
+			<div class="col-xs-3 col-sm-3 vcenter">
+				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="ee_power" placeholder="100">
+			</div>
+			<div class="col-xs-3 col-sm-2 vcenter">
+				<label class="ng-scope">Painful Break</label>
+			</div>
+			<div class="col-xs-3 col-sm-3 vcenter">
+				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="pb_power" placeholder="100">
+			</div>
+			<div class="col-xs-3 col-sm-2 vcenter">
+				<label class="ng-scope">Ravage</label>
+			</div>
+			<div class="col-xs-3 col-sm-3 vcenter">
+				<input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="ravage_power" placeholder="25">
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+	$.getJSON('data/job.json', {callback: "?"}, function(data) {         
+		alert(data);
+	});
+	</script>
 </body>
 </html>

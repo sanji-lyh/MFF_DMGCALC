@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://whitefang3456.github.io/MFF_PANDECALC/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <title>MFF Pandemonium Calculator (BETA) / メビウスFFパンデ計算機 </title>
+    <link rel="stylesheet" href="./MFF Pandemonium Calculator (BETA) _ メビウスFFパンデ計算機_files/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="./MFF Pandemonium Calculator (BETA) _ メビウスFFパンデ計算機_files/angular.min.js.download"></script>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000000">
+    
+    <meta name="description" content="Mobius Final Fantasy Pandemonium Calculator / メビウスFF計算機">
+    <meta name="keywords" content="MobiusFF, Final Fantasy, メビウスFF, 計算機">
+    <meta name="author" content="wfang3456">
+<style type="text/css">
+.m-icon {
+    max-height: 40px;
+}
+
+.header_bar {
+    background: #8f51ad;
+    color: white;
+    padding: 16px 8px;
+}
+
+.title_heading {
+    font-family: 'Times New Roman';
+    color: #fff;
+}
+
+.container {
+    max-width: 960px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+#translate_box .btn-primary {
+    background-color: #8f51ad;
+    border-color: #fff;
+    transition: 200ms background-color linear;
+}
+
+#translate_box .btn-primary:hover {
+    background-color: #9d8218;
+    border-color: #fff;
+    color: #fff;
+}
+
+.btn_active_en,
+.btn_active_jp {
+    background-color: #9d8218 !important;
+    color: #fff !important;
+}
+
+.info_box {
+    background: #e1e1e1;
+    padding: 16px 24px;
+    border-radius: 16px;
+}
+
+.info_box ul {
+    padding-left: 16px;
+}
+
+.intro_box {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.analysis {
+    color: #9c8131;
+}
+
+.analysis-table thead>tr>th {
+    background: #e1e1e1;
+}
+
+#supreme {
+    background: red;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, orange, #fcfc30, #6fff6f, cyan, #4242f4, #e35de3);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, orange, #fcfc30, #6fff6f, cyan, #4242f4, #e35de3);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, orange, #fcfc30, #6fff6f, cyan, #4242f4, #e35de3);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, orange, #fcfc30, #6fff6f, cyan, #4242f4, #e35de3);
+    /* Standard syntax (must be last) */
+    text-shadow: 1px 1px 3px #fff;
+
+
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.magicite_icon {
+    max-width: 20px;
+}
+
+.hard_tag {
+    padding: 6px 8px;
+    background: blue;
+    color: white;
+    border-radius: 12px;
+    margin-right: 8px;
+}
+
+.normal_tag {
+    padding: 6px 8px;
+    background: red;
+    color: white;
+    border-radius: 12px;
+    margin-right: 8px;
+}
+
+.pande_table div {
+    padding: 8px 16px;
+}
+
+.pande_table img {
+    max-width: 16px;
+}
+.magBonus{
+    color: #5dc75d;
+}
+.featured{
+    color:limegreen;
+}
+.non-featured{
+    color:teal;
+}
+
+table>tbody>tr>td>h4 {
+    margin: 0;
+    font-size: 12pt;
+}
+</style></head>
+
+
+<body ng-app="mtabletCalc" ng-controller="translateCtrl" class="ng-scope">
+    <div class="container ng-scope" ng-controller="CoreCalcCtrl">
+        <div class="row header_bar">
+            <div class="col-xs-12 col-sm-8">
+                <h4 class="title_heading ng-scope" translate="TITLE">MobiusFF Pandemonium Farming Calculator (BETA)</h4>
+            </div>
+            <div class="col-xs-12 col-sm-4 text-right" id="translate_box">
+                <a href="javascript:void(0)" name="translate_en" ng-click="changeLanguage(&#39;en&#39;)" class="btn btn-primary ng-pristine ng-untouched ng-valid ng-scope ng-empty btn_active_en" ng-model="translate_en" ng-class="{&#39;btn_active_en&#39;:language_used ==&#39;en&#39;}" translate="BTN_EN">ENG</a>
+                <a href="javascript:void(0)" name="translate_jp" ng-click="changeLanguage(&#39;jp&#39;)" class="btn btn-primary ng-pristine ng-untouched ng-valid ng-scope ng-empty" ng-model="translate_jp" ng-class="{&#39;btn_active_jp&#39;:language_used ==&#39;jp&#39;}" translate="BTN_JP">日本語</a>
+            </div>
+        </div>
+        <!--   <div class="intro_box">
+            <input type="checkbox" name="show_info_chk" ng-model="show_info">&nbsp;<span translate="INFO_CHECKBOX">For more info, please kindly click the checkbox</span>
+        </div> -->
+        <!-- <div ng-show="show_info" class="info_box">
+            <h4 translate="INFO_TITLE">What this tool does?</h4>
+            <ul>
+                <li translate="INFO_DESCRIPTION_1">This app helps to calculate <i>approximate number of days</i> needed to farm ability/supreme cards from The Rift region, according to resources you possess and inputs.</li>
+                <li translate="INFO_DESCRIPTION_2"><b>5700</b> cores can be obtained by clearing all challenge nodes in The Rift. No tablet is required to access those nodes</li>
+                <li translate="INFO_DESCRIPTION_3"><b>7500 cores</b> will be required to unlock 5-star regular Extreme (極) Sicarius card.</li>
+                <li translate="INFO_DESCRIPTION_4"><b>20,000 cores</b> will be required to unlock 5-star Ultimate/Supreme Extreme <b>X</b> (真・極) Sicarius card</li>
+            </ul>
+            <p translate="INFO_NOTE">Untick the checkbox to hide this</p>
+        </div>
+        <br> -->
+        <!-- P1 -->
+        <!-- P1 -->
+        <br>
+        <p translate="PRE_TEXT" class="ng-scope">Before we begin, please kindly insert the inputs</p><div class="row">
+                <!--           <div class="col-xs-2 col-sm-1 vcenter">
+                <img src="img/dvcore_ico.png" alt="" class="m-icon">
+            </div> -->
+                <div class="col-xs-7 col-sm-8 vcenter">
+                    <label translate="PLAYER_STAMINA_LABEL" class="ng-scope">Player MAX Stamina</label>
+                </div>
+                <div class="col-xs-4 col-sm-2 vcenter">
+                    <input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="pande_player_max_stam" ng-model="pande_player_max_stam" placeholder="90">
+                </div>
+            </div>
+            <br>
+            <!-- P2 -->
+            <div class="row">
+                <!--       <div class="col-xs-2 col-sm-1 vcenter">
+                <img src="img/magicite.png" alt="" class="m-icon">
+            </div> -->
+                <div class="col-xs-7 col-sm-8 vcenter">
+                    <label translate="TARGET_MAGICITE_NUMBER_LABEL" class="ng-scope">Target Magicites to be farmed</label>
+                </div>
+                <div class="col-xs-4 col-sm-2 vcenter">
+                    <input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="pande_target_magicite_number" ng-model="pande_target_magicite_number" placeholder="20000">
+                </div>
+            </div>
+            <br>
+            <div class="row pande_table">
+                <div class="col-xs-12">
+                    <label translate="PANDE_BOSS_LABEL" class="ng-scope">Pandemonium I Bosses (tick if completed token rewards)</label>
+                </div>
+                <div>
+                    <button name="pande_mobs_checkall" ng-click="pande_mobs_checkall()" translate="CHECKALL_BTN" class="ng-scope">Check All</button> 
+                    <button name="pande_mobs_checkReset" ng-click="pande_mobs_checkReset()" translate="UNCHECKALL_BTN" class="ng-scope">Uncheck All</button>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-sm-4">
+                    <input type="checkbox" name="pandemob_1_1" ng-model="pande_bosses.boss11" ng-checked="pande_mobs_checkval" value="1" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="./MFF Pandemonium Calculator (BETA) _ メビウスFFパンデ計算機_files/elem_dark.png">&nbsp;<span translate="PANDEMOB_1_1" class="ng-scope">Big Eye</span>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-sm-4">
+                    <input type="checkbox" name="pandemob_1_2" ng-model="pande_bosses.boss12" ng-checked="pande_mobs_checkval" value="3" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="./MFF Pandemonium Calculator (BETA) _ メビウスFFパンデ計算機_files/elem_earth.png">&nbsp;<span translate="PANDEMOB_1_2" class="ng-scope">Gigaworm</span>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-sm-4">
+                    <input type="checkbox" name="pandemob_1_3" ng-model="pande_bosses.boss13" ng-checked="pande_mobs_checkval" value="3" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="./MFF Pandemonium Calculator (BETA) _ メビウスFFパンデ計算機_files/elem_fire.png">&nbsp;<span translate="PANDEMOB_1_3" class="ng-scope">Fenrir</span>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-sm-4">
+                    <input type="checkbox" name="pandemob_1_4" ng-model="pande_bosses.boss14" ng-checked="pande_mobs_checkval" value="3" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="./MFF Pandemonium Calculator (BETA) _ メビウスFFパンデ計算機_files/elem_light.png">&nbsp;<span translate="PANDEMOB_1_4" class="ng-scope">Coeurl</span>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-sm-4">
+                    <input type="checkbox" name="pandemob_1_5" ng-model="pande_bosses.boss15" ng-checked="pande_mobs_checkval" value="3" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="./MFF Pandemonium Calculator (BETA) _ メビウスFFパンデ計算機_files/elem_water.png">&nbsp;<span translate="PANDEMOB_1_5" class="ng-scope">Neslug</span>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-sm-4">
+                    <input type="checkbox" name="pandemob_1_6" ng-model="pande_bosses.boss16" ng-checked="pande_mobs_checkval" value="3" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="./MFF Pandemonium Calculator (BETA) _ メビウスFFパンデ計算機_files/elem_dark.png">&nbsp;<span translate="PANDEMOB_1_6" class="ng-scope">Ogre</span>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-sm-4">
+                    <input type="checkbox" name="pandemob_1_7" ng-model="pande_bosses.boss17" ng-checked="pande_mobs_checkval" value="3" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="./MFF Pandemonium Calculator (BETA) _ メビウスFFパンデ計算機_files/elem_wind.png">&nbsp;<span translate="PANDEMOB_1_7" class="ng-scope">Basilisk</span>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-sm-4">
+                    <input type="checkbox" name="pandemob_1_9" ng-model="pande_bosses.boss18" ng-checked="pande_mobs_checkval" value="3" class="ng-pristine ng-untouched ng-valid ng-empty">&nbsp;<img src="./MFF Pandemonium Calculator (BETA) _ メビウスFFパンデ計算機_files/elem_water.png">&nbsp;<span translate="PANDEMOB_1_8" class="ng-scope">Drainer/Stalker</span>
+                </div>
+            </div>
+        <p></p>
+        <hr>
+        <h3 class="analysis ng-scope" translate="ANALYSIS_LABEL">Analysis</h3>
+        <!-- FEATURED -->
+        <b translate="FEATURED" class="featured ng-scope">FEATURED BOSS APPEARANCE</b>
+        <div class="row">
+            <div class="col-xs-7 col-sm-9 vcenter">
+                <label translate="TOTAL_MAGICITE_BONUS_HARD" class="ng-scope">Magicite + Bonus per fight (HARD mode)  :</label>
+            </div>
+            <div class="col-xs-4 col-sm-2 vcenter">
+                <h4 name="pande_magicites_bonus_hard" ng-model="pande_magicites_bonus_Hard" placeholder="0" class="ng-pristine ng-untouched ng-valid ng-empty">60 + <span ng-model="magBonus" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">0</span>&nbsp;</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-7 col-sm-9 vcenter">
+                <label translate="TOTAL_MAGICITE_BONUS_NORMAL" class="ng-scope">Magicite + Bonus per fight (NORMAL mode)  :</label>
+            </div>
+            <div class="col-xs-4 col-sm-2 vcenter">
+                <h4 name="pande_magicites_bonus_hard_normal" ng-model="pande_magicites_bonus_hard_normal" placeholder="0" class="ng-pristine ng-untouched ng-valid ng-empty">25 + <span ng-model="magBonus" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">0</span>&nbsp;</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-7 col-sm-9 vcenter">
+                <span class="hard_tag">HARD</span><label translate="NUMBER_ELIXIRS_REGULAR" class="ng-scope">Number of Elixirs Needed  :</label>
+            </div>
+            <div class="col-xs-4 col-sm-2 vcenter">
+                <h4 name="pande_elixirs_regular" placeholder="0"><span ng-model="pande_elixirs_regular" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">112</span>&nbsp;</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-7 col-sm-9 vcenter">
+                <span class="hard_tag">HARD</span><label translate="NUMBER_ELIXIRS_2X" class="ng-scope">Number of Elixirs Needed (2X Stamina)  :</label>
+            </div>
+            <div class="col-xs-4 col-sm-2 vcenter">
+                <h4 name="pande_elixirs_2x" ng-model="pande_elixirs_2x" placeholder="0" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="ng-binding">56</span>&nbsp;</h4>
+            </div>
+        </div>
+        <!-- FEATURED NORMAL -->
+        <div class="row">
+            <div class="col-xs-7 col-sm-9 vcenter">
+                <span class="normal_tag">NORMAL</span> <label translate="NUMBER_ELIXIRS_REGULAR_NORMAL" class="ng-scope">Number of Elixirs Needed  :</label>
+            </div>
+            <div class="col-xs-4 col-sm-2 vcenter">
+                <h4 name="pande_elixirs_regular_normal" placeholder="0"><span ng-model="pande_elixirs_regular_normal" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">267</span>&nbsp;</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-7 col-sm-9 vcenter">
+                <span class="normal_tag">NORMAL</span> <label translate="NUMBER_ELIXIRS_2X_NORMAL" class="ng-scope">Number of Elixirs Needed (2X Stamina)  :</label>
+            </div>
+            <div class="col-xs-4 col-sm-2 vcenter">
+                <h4 name="pande_elixirs_2x_normal" ng-model="pande_elixirs_2x_normal" placeholder="0" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="ng-binding">134</span>&nbsp;</h4>
+            </div>
+        </div>
+        <hr>
+        <!-- NON_FEATURED -->
+         <b translate="NON_FEATURED" class="non-featured ng-scope">NON FEATURED BOSS APPEARANCE</b>
+        <div class="row">
+            <div class="col-xs-7 col-sm-9 vcenter">
+                <label translate="TOTAL_MAGICITE_BONUS_HARD_2" class="ng-scope">Magicite + Bonus per fight (HARD mode)  :</label>
+            </div>
+            <div class="col-xs-4 col-sm-2 vcenter">
+                <h4 name="pande_magicites_bonus_hard" ng-model="pande_magicites_bonus_Hard_2" placeholder="0" class="ng-pristine ng-untouched ng-valid ng-empty">35 + <span ng-model="magBonus" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">0</span>&nbsp;</h4>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-xs-7 col-sm-9 vcenter">
+                <label translate="TOTAL_MAGICITE_BONUS_NORMAL_2" class="ng-scope">Magicite + Bonus per fight (NORMAL mode)  :</label>
+            </div>
+            <div class="col-xs-4 col-sm-2 vcenter">
+                <h4 name="pande_magicites_bonus_normal" ng-model="pande_magicites_bonus_normal" placeholder="0" class="ng-pristine ng-untouched ng-valid ng-empty">15 + <span ng-model="magBonus" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">0</span>&nbsp;</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-7 col-sm-9 vcenter">
+                <span class="hard_tag">HARD</span><label translate="NUMBER_ELIXIRS_REGULAR_2" class="ng-scope">Number of Elixirs Needed  :</label>
+            </div>
+            <div class="col-xs-4 col-sm-2 vcenter">
+                <h4 name="pande_elixirs_regular_2" placeholder="0"><span ng-model="pande_elixirs_regular_2" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">191</span>&nbsp;</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-7 col-sm-9 vcenter">
+                <span class="hard_tag">HARD</span><label translate="NUMBER_ELIXIRS_2X_2" class="ng-scope">Number of Elixirs Needed (2X Stamina)  :</label>
+            </div>
+            <div class="col-xs-4 col-sm-2 vcenter">
+                <h4 name="pande_elixirs_2x" ng-model="pande_elixirs_2x" placeholder="0" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="ng-binding">96</span>&nbsp;</h4>
+            </div>
+        </div>
+        <!-- NON-FEATURED NORMAL -->
+        <div class="row">
+            <div class="col-xs-7 col-sm-9 vcenter">
+                <span class="normal_tag">NORMAL</span><label translate="NUMBER_ELIXIRS_REGULAR_2_NORMAL" class="ng-scope">Number of Elixirs Needed  :</label>
+            </div>
+            <div class="col-xs-4 col-sm-2 vcenter">
+                <h4 name="pande_elixirs_regular_2_normal" placeholder="0"><span ng-model="pande_elixirs_regular_2_normal" class="ng-pristine ng-untouched ng-valid ng-binding ng-not-empty">445</span>&nbsp;</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-7 col-sm-9 vcenter">
+                <span class="normal_tag">NORMAL</span><label translate="NUMBER_ELIXIRS_2X_2_NORMAL" class="ng-scope">Number of Elixirs Needed (2X Stamina)  :</label>
+            </div>
+            <div class="col-xs-4 col-sm-2 vcenter">
+                <h4 name="pande_elixirs_2x_normal" ng-model="pande_elixirs_2x_normal" placeholder="0" class="ng-pristine ng-untouched ng-valid ng-empty"><span class="ng-binding">223</span>&nbsp;</h4>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-sm-12">
+            
+                <p><i translate="DISCLAIMER_TXT" class="ng-scope">Disclaimer: This calculator will only provide us an approximate/estimation value of results to be closest as possible. Please take this app as a grain of salts.</i>
+                    <b translate="CREDIT_TEXT" translate-values="options" class="ng-scope">Built with love by <a href="https://twitter.com/wfang3456" target="_blank">wfang3456</a>,   and helpful contributors from <a href="https://www.reddit.com/r/MobiusFF" target="_blank">Reddit MFF</a>.</b></p>
+            </div>
+        </div>
+    </div>
+
+<script src="./MFF Pandemonium Calculator (BETA) _ メビウスFFパンデ計算機_files/angular-translate.min.js.download"></script>
+<script src="./MFF Pandemonium Calculator (BETA) _ メビウスFFパンデ計算機_files/angular-sanitize.js.download"></script>
+<script type="text/javascript">
+var translationEN = {
+    BTN_EN: 'ENG',
+    BTN_JP: '日本語',
+    TITLE: 'MobiusFF Pandemonium Farming Calculator (BETA)',
+    INFO_CHECKBOX: 'For more info, please kindly click the checkbox',
+    INFO_TITLE: 'What this tool does?',
+    INFO_DESCRIPTION_1: 'This app helps to calculate <u>approximate number of days</u> needed to farm ability/supreme cards from The Rift region, according to resources you possess and inputs.',
+    INFO_DESCRIPTION_2: '<b>5,700 cores</b> can be obtained by clearing all challenge nodes in The Rift. No tablet is required to access those nodes',
+    INFO_DESCRIPTION_3: '<b>7,500 cores</b> will be required to unlock 5-star regular Extreme (極) Sicarius card',
+    INFO_DESCRIPTION_4: '<b>20,000 cores</b> will be required to unlock 5-star Ultimate/Supreme Extreme <b>X</b> (真・極) Sicarius card',
+    INFO_NOTE: 'To close this, please kindly untick the checkbox',
+    PRE_TEXT: 'Before we begin, please kindly insert the inputs',
+    PLAYER_STAMINA_LABEL: 'Player MAX Stamina',
+    TARGET_MAGICITE_NUMBER_LABEL: 'Target Magicites to be farmed',
+    PANDE_BOSS_LABEL: 'Pandemonium I Bosses (tick if completed token rewards)',
+    CHECKALL_BTN:'Check All',
+    UNCHECKALL_BTN:'Uncheck All',
+    PANDEMOB_1_1: 'Big Eye',
+    PANDEMOB_1_2: 'Gigaworm',
+    PANDEMOB_1_3: 'Fenrir',
+    PANDEMOB_1_4: 'Coeurl',
+    PANDEMOB_1_5: 'Neslug',
+    PANDEMOB_1_6: 'Ogre',
+    PANDEMOB_1_7: 'Basilisk',
+    PANDEMOB_1_8: 'Drainer/Stalker',
+    FEATURED:'FEATURED BOSS APPEARANCE',
+    NON_FEATURED:'NON FEATURED BOSS APPEARANCE',
+    TOTAL_MAGICITE_BONUS_HARD: 'Magicite + Bonus per fight (HARD mode)  :',
+    TOTAL_MAGICITE_BONUS_HARD_2: 'Magicite + Bonus per fight (HARD mode)  :',
+    TOTAL_MAGICITE_BONUS_NORMAL: 'Magicite + Bonus per fight (NORMAL mode)  :',
+    TOTAL_MAGICITE_BONUS_NORMAL_2: 'Magicite + Bonus per fight (NORMAL mode)  :',
+    NUMBER_ELIXIRS_REGULAR: ' Number of Elixirs Needed  :',
+    NUMBER_ELIXIRS_REGULAR_NORMAL: ' Number of Elixirs Needed  :',
+    NUMBER_ELIXIRS_REGULAR_2: ' Number of Elixirs Needed  :',
+    NUMBER_ELIXIRS_REGULAR_2_NORMAL: ' Number of Elixirs Needed  :',
+    NUMBER_ELIXIRS_2X: ' Number of Elixirs Needed (2X Stamina)  :',
+    NUMBER_ELIXIRS_2X_NORMAL: ' Number of Elixirs Needed (2X Stamina)  :',
+    NUMBER_ELIXIRS_2X_2: ' Number of Elixirs Needed (2X Stamina)  :',
+    NUMBER_ELIXIRS_2X_2_NORMAL: ' Number of Elixirs Needed (2X Stamina)  :',
+    ANALYSIS_LABEL: 'Analysis',
+    DISCLAIMER_TXT: 'Disclaimer: This calculator will only provide us an approximate/estimation value of results to be closest as possible. Please take this app as a grain of salts.',
+    CREDIT_TEXT: 'Built with love by {{owner}}, {{team}} and helpful contributors from {{reddit}}.'
+};
+var translationJP = {
+    BTN_EN: '英語',
+    BTN_JP: '日本語',
+    TITLE: 'メビウスFFパンデ計算機(ベータ)',
+    INFO_CHECKBOX: '詳細については、チェックボックスをクリックしてください',
+    INFO_TITLE: 'このツールは何をしていますか？',
+    INFO_DESCRIPTION_1: 'このアプリは、あなたが所有し、入力したリソースに応じて、次元の狭間のアルティメットカードを栽培するのに,<u>必要な日数</u>を計算するのに役立ちます。',
+    INFO_DESCRIPTION_2: '狭間すべてのチャレンジ・ノードをクリアすることで,<b>5700コア</b>取得できます。',
+    INFO_DESCRIPTION_3: '準 5 ★ 極神カードのロックを解除するには、<b>7500コア</b>が必要です。',
+    INFO_DESCRIPTION_4: 'アルティメット 5 ★ 真・極神カードのロックを解除するには、<b>20000コア</b>が必要です。',
+    INFO_NOTE: 'これを閉じるには、チェックボックスを解除してください。',
+    PRE_TEXT: '始める前に、インプットを挿入してください。',
+    PLAYER_STAMINA_LABEL: 'プレイヤーMAXスタミナ',
+    TARGET_MAGICITE_NUMBER_LABEL: '掘る魔石の数',
+    PANDE_BOSS_LABEL: 'パンデIボス（トークンの報酬が完了したらチェックしてください）',
+    CHECKALL_BTN:'全部チェック',
+    UNCHECKALL_BTN:'全部リセット',
+    PANDEMOB_1_1: 'ビッグアイ',
+    PANDEMOB_1_2: 'ギガウォーム',
+    PANDEMOB_1_3: 'フェンリル',
+    PANDEMOB_1_4: 'クァール',
+    PANDEMOB_1_5: 'ネスラグ',
+    PANDEMOB_1_6: 'オーガ',
+    PANDEMOB_1_7: 'バジリスク',
+    PANDEMOB_1_8: 'ドレイナー',
+    FEATURED:'新モンスター登場',
+    NON_FEATURED:'正常モンスター登場',
+    TOTAL_MAGICITE_BONUS_HARD: '魔石 + ボーナス (HARD モード) ：',
+    TOTAL_MAGICITE_BONUS_HARD_2: '魔石 + ボーナス (HARD モード) ：',
+    TOTAL_MAGICITE_BONUS_NORMAL: '魔石 + ボーナス (NORMAL モード) ：',
+    TOTAL_MAGICITE_BONUS_NORMAL_2: '魔石 + ボーナス (NORMAL モード) ：',
+    NUMBER_ELIXIRS_REGULAR: ' 必要な草の数： ',
+    NUMBER_ELIXIRS_REGULAR_NORMAL: ' 必要な草の数 ：',
+    NUMBER_ELIXIRS_REGULAR_2: ' 必要な草の数 ：',
+    NUMBER_ELIXIRS_REGULAR_2_NORMAL: ' 必要な草の数  :',
+    NUMBER_ELIXIRS_2X: ' 必要な草の数(スタミナ2倍)  :',
+    NUMBER_ELIXIRS_2X_NORMAL: ' 必要な草の数(スタミナ2倍)  :',
+    NUMBER_ELIXIRS_2X_2: ' 必要な草の数(スタミナ2倍)  :',
+    NUMBER_ELIXIRS_2X_2_NORMAL: ' 必要な草の数(スタミナ2倍)  :',
+    ANALYSIS_LABEL: '分析',
+    DISCLAIMER_TXT: '免責事項：この計算機は、可能な限り近い結果の概算値または推定値を提供します。',
+    CREDIT_TEXT: 'これは {{owner}}、{{team}} と他の{{reddit}}の貢献者による情熱をもって開発されました。'
+};
+var app = angular.module('mtabletCalc', ['pascalprecht.translate', 'ngSanitize']);
+app.config(function($translateProvider) {
+    $translateProvider.translations('en', translationEN);
+    $translateProvider.translations('jp', translationJP);
+    $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
+    $translateProvider.preferredLanguage('en');
+});
+app.controller('translateCtrl', function($scope, $translate) {
+    $scope.language_used = 'en';
+    $scope.changeLanguage = function(key) {
+        $translate.use(key);
+        $scope.language_used = key;
+    };
+    $scope.options = {
+        owner: '<a href="https://twitter.com/wfang3456" target="_blank">wfang3456</a>',
+        team: ' ',
+        reddit: '<a href="https://www.reddit.com/r/MobiusFF" target="_blank">Reddit MFF</a>'
+    };
+});
+app.controller('CoreCalcCtrl', ['$scope', function($scope) {
+    var rCores, sCores, maxCores, magBonus;
+    $scope.magBonus = 0;
+    $scope.pande_magicites_bonus = 0;
+    $scope.pande_player_max_stam = 180;
+    $scope.pandeElixirsRegular = 0;
+    $scope.pandeElixirsRegular_2 = 0;
+    $scope.pande_target_magicite_number = 20000;
+    $scope.pande_bosses = {
+        boss11: false,
+        boss12: false,
+        boss13: false,
+        boss14: false,
+        boss15: false,
+        boss16: false,
+        boss17: false,
+        boss18: false
+    };
+    //Check all mobs with TickALL, update ngModel
+    $scope.pande_mobs_checkall = function() {
+        $scope.pande_mobs_checkval = true;
+        var pande_bosses = $scope.pande_bosses;
+        angular.forEach(pande_bosses, function(value, key) {
+            $scope.pande_bosses[key] = true;
+        });
+    }
+    //Check all mobs with UntickALL, reset ngModel
+    $scope.pande_mobs_checkReset = function() {
+        $scope.pande_mobs_checkval = false;
+        var pande_bosses = $scope.pande_bosses;
+        angular.forEach(pande_bosses, function(value, key) {
+            $scope.pande_bosses[key] = false;
+        });
+    }
+    $scope.calculateMagBonus = function() {
+        var pande_bosses = $scope.pande_bosses;
+        var magBonus = (pande_bosses.boss11 ? 1 : 0) + (pande_bosses.boss12 ? 3 : 0) + (pande_bosses.boss13 ? 3 : 0) + (pande_bosses.boss14 ? 3 : 0) + (pande_bosses.boss15 ? 3 : 0) + (pande_bosses.boss16 ? 3 : 0) + (pande_bosses.boss17 ? 3 : 0) + (pande_bosses.boss18 ? 3 : 0);
+        $scope.magBonus = magBonus;
+        return magBonus;
+    }
+     // FEATURED
+    $scope.calculateElixirsRegular = function(pande_player_max_stam, pande_target_magicite_number, calculateMagBonus) {
+        var totalElixirsHardRegular = (60 * pande_target_magicite_number / (60 + calculateMagBonus)) / pande_player_max_stam;
+        $scope.pande_elixirs_regular = totalElixirsHardRegular;
+        return Math.ceil(totalElixirsHardRegular);
+    }
+
+    $scope.calculateElixirsRegular_Normal = function(pande_player_max_stam, pande_target_magicite_number, calculateMagBonus) {
+        var totalElixirsHardRegularNormal = (60 * pande_target_magicite_number / (25 + calculateMagBonus)) / pande_player_max_stam;
+        $scope.pande_elixirs_regular_normal = totalElixirsHardRegularNormal;
+        return Math.ceil(totalElixirsHardRegularNormal);
+    }
+    
+    $scope.calculateElixirs2X = function(pande_elixirs_regular) {
+        var pande_elixirs_regular = $scope.pande_elixirs_regular;
+        return Math.ceil(pande_elixirs_regular / 2);
+    }
+    $scope.calculateElixirs2X_Normal = function(pande_elixirs_regular_normal) {
+        var pande_elixirs_regular_normal = $scope.pande_elixirs_regular_normal;
+        return Math.ceil(pande_elixirs_regular_normal / 2);
+    }
+    // NON_FEATURED
+    $scope.calculateElixirsRegular_2 = function(pande_player_max_stam, pande_target_magicite_number, calculateMagBonus) {
+        var totalElixirsHardRegular_2 = (60 * pande_target_magicite_number / (35 + calculateMagBonus)) / pande_player_max_stam;
+        $scope.pande_elixirs_regular_2 = totalElixirsHardRegular_2;
+        return Math.ceil(totalElixirsHardRegular_2);
+    }
+    $scope.calculateElixirs2X_2 = function(pande_elixirs_regular_2) {
+        var pande_elixirs_regular_2 = $scope.pande_elixirs_regular_2;
+        return Math.ceil(pande_elixirs_regular_2 / 2);
+    }
+    $scope.calculateElixirsRegular_2_Normal = function(pande_player_max_stam, pande_target_magicite_number, calculateMagBonus) {
+        var totalElixirsHardRegular_2_normal = (60 * pande_target_magicite_number / (15 + calculateMagBonus)) / pande_player_max_stam;
+        $scope.pande_elixirs_regular_2_normal = totalElixirsHardRegular_2_normal;
+        return Math.ceil(totalElixirsHardRegular_2_normal);
+    }
+    $scope.calculateElixirs2X_2_Normal = function(pande_elixirs_regular_2_normal) {
+        var pande_elixirs_regular_2_normal = $scope.pande_elixirs_regular_2_normal;
+        return Math.ceil(pande_elixirs_regular_2_normal / 2);
+    }
+
+}]);
+</script>
+
+</body></html>
