@@ -222,7 +222,7 @@
 	}
 	
 	function ComputeDmg(userInput, job, isBroken, isWeakness, isAOE=true){
-		var dmg = parseInt2(userInput.atk);
+		var dmg = userInput.atk;
 		
 		// Filter out jobs that can't use the card due to jobs lore
 		if(!userInput.ignoreLoreOption){
