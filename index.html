@@ -23,7 +23,11 @@
     <meta name="author" content="sanjilyh">
 	<style type="text/css">
 		.elem_table img {
-			max-width: 16px;
+			max-width: 30px;
+		}
+		
+		.lore_table img {
+			max-width: 30px;
 		}
 		
 		.elem_table div {
@@ -87,7 +91,7 @@
 	}
 	
 	function UpdateChanges(isCustom=true){
-		var ability = {
+		var userInput = {
 			// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark		
 			elem: parseInt($("input[name='elem_input']:checked").val()),
 			
@@ -100,7 +104,12 @@
 			attunedChain: parseInt($("input[name='attuned_chain']").val()),
 			abilityChain: parseInt($("input[name='ability_chain']").val()),
 			painfulBreak: parseInt($("input[name='pb_power']").val()),
-			ravage: parseInt($("input[name='ravage_power']").val())
+			ravage: parseInt($("input[name='ravage_power']").val()),
+			
+			// 1 = warrior, 2 = mage, 3 = ranger, 4 = monk
+			lore: parseInt($("input[name='lore_input']:checked").val()),
+			ignoreLoreOption: $("#ignore_lore").is(":checked"),
+			showElementsOption: $("#display_element").is(":checked")
 		};
 		
 		if(isCustom){
@@ -108,7 +117,7 @@
 		}
 		
 		if(isLoaded){
-			ProcessRanking(ability);
+			ProcessRanking(userInput);
 		}
 		else {
 			alert("Error in loading job list. Please refresh the page and try again");
@@ -141,6 +150,23 @@
 			$("input[name='ability_chain']").val(curAbility["AbilityChain"]);
 			$("input[name='pb_power']").val(curAbility["PainfulBreak"]);
 			$("input[name='ravage_power']").val(curAbility["Ravage"]);
+			
+			var loreValue = 0;
+			switch(curAbility["Type"]){
+				case "Warrior":
+					loreValue = 1;
+					break;
+				case "Mage":
+					loreValue = 2;
+					break;
+				case "Ranger":
+					loreValue = 3;
+					break;
+				case "Monk":
+					loreValue = 4;
+					break;
+			}
+			$("input[name='lore_input'][value=" +loreValue+"]").prop("checked", true);
 		}
 		
 		UpdateChanges(false);
@@ -153,17 +179,17 @@
 		return parts.join(".");
 	}
 	
-	function ProcessRanking(ability){
+	function ProcessRanking(userInput){	
 		resultList = [];
 	
 		// compute dmg for each job first
 		for(i = 0; i < jobList.length; i++){
 			var resultEntry = {
 				name: jobList[i]["Job Name"],
-				unbrokenWeaknessDmg: ComputeDmg(ability, jobList[i], false, true),
-				unbrokenNeutralDmg: ComputeDmg(ability, jobList[i], false, false),
-				brokenWeaknessDmg: ComputeDmg(ability, jobList[i], true, true),
-				brokenNeutralDmg: ComputeDmg(ability, jobList[i], true, false)
+				unbrokenWeaknessDmg: ComputeDmg(userInput, jobList[i], false, true),
+				unbrokenNeutralDmg: ComputeDmg(userInput, jobList[i], false, false),
+				brokenWeaknessDmg: ComputeDmg(userInput, jobList[i], true, true),
+				brokenNeutralDmg: ComputeDmg(userInput, jobList[i], true, false)
 			};
 			
 			resultList.push(resultEntry);
@@ -189,17 +215,85 @@
 		return parseInt(input.toLocaleString().replace(/,/g,'')) || 0;
 	}
 	
-	function ComputeDmg(ability, job, isBroken, isWeakness, isAOE=false){
-		var dmg = parseInt2(ability.atk);
+	function ComputeDmg(userInput, job, isBroken, isWeakness, isAOE=false){
+		var dmg = parseInt2(userInput.atk);
 		
-		if(!ability.type && !(job["Class"] === "Monk" || job["Class"] === "Sophie")){
-			dmg = 0;
+		// Filter out jobs that can't use the card due to jobs lore
+		if(!userInput.ignoreLoreOption){
+			// 1 = warrior, 2 = mage, 3 = ranger, 4 = monk
+			switch(userInput.lore){
+				case 1:
+					if(!(job["Class"] === "Graff" || job["Class"] === "Warrior" || job["Lore"] === "Warrior")){
+						dmg = 0;
+					}
+					break;
+				case 2:
+					if(!(job["Class"] === "Mage" || job["Class"] === "Meia" || job["Lore"] === "Mage")){
+						dmg = 0;
+					}
+					break;
+				case 3:
+					if(!(job["Class"] === "Ranger" || job["Class"] === "Sarah" || job["Lore"] === "Ranger")){
+						dmg = 0;
+					}
+					break;
+				case 4:
+					if(!(job["Class"] === "Monk" || job["Class"] === "Sophie" || job["Lore"] === "Monk")){
+						dmg = 0;
+					}
+					break;
+			}
 		}
+		
+		// TODO: Rewrite this portion of code (ugly, but works)
+		if(userInput.showElementsOption){
+			switch(userInput.elem){
+				// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark
+				case 1:
+					if(!(job["OrbSet1_1"] === "F" || job["OrbSet1_2"] === "F" || job["OrbSet1_3"] === "F"
+						|| job["OrbSet2_1"] === "F" || job["OrbSet2_2"] === "F" || job["OrbSet2_3"] === "F")){
+							dmg = 0;
+					}
+					break;
+				case 2:
+					if(!(job["OrbSet1_1"] === "W" || job["OrbSet1_2"] === "W" || job["OrbSet1_3"] === "W"
+						|| job["OrbSet2_1"] === "W" || job["OrbSet2_2"] === "W" || job["OrbSet2_3"] === "W")){
+							dmg = 0;
+					}
+					break;
+				case 3:
+					if(!(job["OrbSet1_1"] === "A" || job["OrbSet1_2"] === "A" || job["OrbSet1_3"] === "A"
+						|| job["OrbSet2_1"] === "A" || job["OrbSet2_2"] === "A" || job["OrbSet2_3"] === "A")){
+							dmg = 0;
+					}
+					break;
+				case 4:
+					if(!(job["OrbSet1_1"] === "E" || job["OrbSet1_2"] === "E" || job["OrbSet1_3"] === "E"
+						|| job["OrbSet2_1"] === "E" || job["OrbSet2_2"] === "E" || job["OrbSet2_3"] === "E")){
+							dmg = 0;
+					}
+					break;
+				case 5:
+					if(!(job["OrbSet1_1"] === "L" || job["OrbSet1_2"] === "L" || job["OrbSet1_3"] === "L"
+						|| job["OrbSet2_1"] === "L" || job["OrbSet2_2"] === "L" || job["OrbSet2_3"] === "L")){
+							dmg = 0;
+					}
+					break;
+				case 6:
+					if(!(job["OrbSet1_1"] === "D" || job["OrbSet1_2"] === "D" || job["OrbSet1_3"] === "D"
+						|| job["OrbSet2_1"] === "D" || job["OrbSet2_2"] === "D" || job["OrbSet2_3"] === "D")){
+							dmg = 0;
+					}
+					break;
+			}
+		}
+		
+		// Filter out jobs that can't use the elements
 	
 		//Output Dmg = Card's Attack * Magic * EE * Critical * Broken * Weakness * Ravage * Supreme
 		//Output Dmg = Card's Attack * Attack * EE * Critical * Broken * Weakness * Ravage * Supreme
 		
-		if(ability.type){  // true = magic, false = atk
+		if(userInput.type){  // true = magic, false = atk
 			//Mag: (1 + magic_stat/100) * (1 + magic_mod/100) * (1 + stat_mod/100) + additional_magic/100
 			dmg *= (1 + parseInt2(job["Magic"])/100);
 		}
@@ -209,47 +303,47 @@
 		}
 		
 		// EE: 1 + (enhance_element + ee_additional)/100
-		switch(ability.elem){
+		switch(userInput.elem){
 			// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark
 			case 1:
-				dmg *= (1 + (parseInt2(job["Fire_EE"]) + parseInt2(job["Ability Chain"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				dmg *= (1 + (parseInt2(job["Fire_EE"]) + parseInt2(job["Ability Chain"]) + userInput.ee + userInput.attunedChain + userInput.abilityChain)/100);
 				break;
 			case 2:
-				dmg *= (1 + (parseInt2(job["Water_EE"]) + parseInt2(job["Ability Chain"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				dmg *= (1 + (parseInt2(job["Water_EE"]) + parseInt2(job["Ability Chain"]) + userInput.ee + userInput.attunedChain + userInput.abilityChain)/100);
 				break;
 			case 3:
-				dmg *= (1 + (parseInt2(job["Wind_EE"]) + parseInt2(job["Ability Chain"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				dmg *= (1 + (parseInt2(job["Wind_EE"]) + parseInt2(job["Ability Chain"]) + userInput.ee + userInput.attunedChain + userInput.abilityChain)/100);
 				break;
 			case 4:
-				dmg *= (1 + (parseInt2(job["Earth_EE"]) + parseInt2(job["Ability Chain"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				dmg *= (1 + (parseInt2(job["Earth_EE"]) + parseInt2(job["Ability Chain"]) + userInput.ee + userInput.attunedChain + userInput.abilityChain)/100);
 				break;
 			case 5:
-				dmg *= (1 + (parseInt2(job["Light_EE"]) + parseInt2(job["Ability Chain"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				dmg *= (1 + (parseInt2(job["Light_EE"]) + parseInt2(job["Ability Chain"]) + userInput.ee + userInput.attunedChain + userInput.abilityChain)/100);
 				break;
 			case 6:
-				dmg *= (1 + (parseInt2(job["Dark_EE"]) + parseInt2(job["Ability Chain"]) + ability.ee + ability.attunedChain + ability.abilityChain)/100);
+				dmg *= (1 + (parseInt2(job["Dark_EE"]) + parseInt2(job["Ability Chain"]) + userInput.ee + userInput.attunedChain + userInput.abilityChain)/100);
 				break;
 		}
 		
 		// Critical: 1 + (base_crit + imp_crit + crit_additional)/100
-		dmg *= (1 + (50 + parseInt2(job["Improved Crits"]) + ability.improvedCrit)/100);
+		dmg *= (1 + (50 + parseInt2(job["Improved Crits"]) + userInput.improvedCrit)/100);
 		
 		// Broken: 1 + (base_break + painful_break + break_additional)/100
 		if(isBroken){
-			dmg *= (1 + (100 + parseInt2(job["Painful Break"]) + ability.painfulBreak)/100);
+			dmg *= (1 + (100 + parseInt2(job["Painful Break"]) + userInput.painfulBreak)/100);
 		}
 		
 		// Weakness: 1 + (base_weak + broken_weak + exp_weak + weak_additional)/100
 		if(isWeakness && isBroken){
-			dmg *= (1 + (30 + 70 + parseInt2(job["Exploit Weakness"]) + ability.weakness)/100);
+			dmg *= (1 + (30 + 70 + parseInt2(job["Exploit Weakness"]) + userInput.weakness)/100);
 		}
 		else if(isWeakness){
-			dmg *= (1 + (30 + parseInt2(job["Exploit Weakness"]) + ability.weakness)/100);
+			dmg *= (1 + (30 + parseInt2(job["Exploit Weakness"]) + userInput.weakness)/100);
 		}
 				
 		// Ravage: 1 + (ravage + ravage_additional)/100
 		if(isAOE){
-			dmg *= (1 + (parseInt2(job["Ravage"]) + ability.ravage)/100);
+			dmg *= (1 + (parseInt2(job["Ravage"]) + userInput.ravage)/100);
 		}
 		
 		return dmg;
@@ -265,7 +359,15 @@
 		
 		$("#ability_template").change(function(){
 			OnTemplateChange();
-		});		
+		});
+
+		$("#ignore_lore").change(function(){
+			UpdateChanges(false);
+		});
+		
+		$("#display_element").change(function(){
+			UpdateChanges(false);
+		});
 		
 		$('#result_table').DataTable( {
 			"order": [[ 1, "desc" ]],
@@ -280,7 +382,7 @@
 	<div class="container ">
 		<div class="row header_bar">
             <div class="col-xs-12 col-sm-8">
-                <h4 class="title_heading">Mobius Final Fantasy - Damage Ranking Calculator (v 1.0)</h4>
+                <h4 class="title_heading">Mobius Final Fantasy - Damage Ranking Calculator (v 1.1)</h4>
             </div>
         </div>
 		
@@ -296,24 +398,79 @@
 		</select>
 		
 		<br/>
+		<div class="row options_table">
+			<div class="form-check col-xs-6 col-sm-4">
+				<input class="form-check-input" type="checkbox" name="ignore_lore" value="1" id="ignore_lore">
+				<label class="form-check-label" for="ignore_lore">Ignore Lore</label>
+			</div>
+			
+			<div class="form-check col-xs-6 col-sm-4">
+				<input class="form-check-input" type="checkbox" name="display_element" value="1" id="display_element" checked>
+				<label class="form-check-label" for="display_element">Display jobs with elements</label>
+			</div>
+		</div>
+				
 		<hr/>
 		<form id="input">
 		<div class="row elem_table">
 			<div class="row">
-				<div class="col-xs-6 col-sm-4"><input type="radio" name="elem_input" value="1" checked>&nbsp;<img src="img/elem_fire.png"> Fire</div>
-				<div class="col-xs-6 col-sm-4"><input type="radio" name="elem_input" value="2">&nbsp;<img src="img/elem_water.png"> Water</div>
-				<div class="col-xs-6 col-sm-4"><input type="radio" name="elem_input" value="3">&nbsp;<img src="img/elem_wind.png"> Wind</div>
-				<div class="col-xs-6 col-sm-4"><input type="radio" name="elem_input" value="4">&nbsp;<img src="img/elem_earth.png"> Earth</div>
-				<div class="col-xs-6 col-sm-4"><input type="radio" name="elem_input" value="5">&nbsp;<img src="img/elem_light.png"> Light</div>
-				<div class="col-xs-6 col-sm-4"><input type="radio" name="elem_input" value="6">&nbsp;<img src="img/elem_dark.png"> Dark</div>
+				<div class="form-check col-xs-6 col-sm-4">
+					<input class="form-check-input" type="radio" name="elem_input" value="1" id="fireElem" checked>
+					<label class="form-check-label" for="fireElem"><img src="img/elem_fire.png"> Fire</label>
+				</div>
+				
+				<div class="form-check col-xs-6 col-sm-4">
+					<input class="form-check-input" type="radio" name="elem_input" value="2" id="waterElem">
+					<label class="form-check-label" for="waterElem"><img src="img/elem_water.png"> Water</label>
+				</div>
+				
+				<div class="form-check col-xs-6 col-sm-4">
+					<input class="form-check-input" type="radio" name="elem_input" value="3" id="windElem">
+					<label class="form-check-label" for="windElem"><img src="img/elem_wind.png"> Wind</label>
+				</div>
+				
+				<div class="form-check col-xs-6 col-sm-4">
+					<input class="form-check-input" type="radio" name="elem_input" value="4" id="earthElem">
+					<label class="form-check-label" for="earthElem"><img src="img/elem_earth.png"> Earth</label>
+				</div>
+				<div class="form-check col-xs-6 col-sm-4">
+					<input class="form-check-input" type="radio" name="elem_input" value="5" id="lightElem">
+					<label class="form-check-label" for="lightElem"><img src="img/elem_light.png"> Light</label>
+				</div>
+				<div class="form-check col-xs-6 col-sm-4">
+					<input class="form-check-input" type="radio" name="elem_input" value="6" id="darkElem">
+					<label class="form-check-label" for="darkElem"><img src="img/elem_dark.png"> Dark</label>
+				</div>
+
 			</div>
 		</div>
 		
 		<br/>
-		<p class="">Select whether it's magic-based or attack-based damage:</p>
 		<input name="type" type="checkbox" checked data-toggle="toggle" data-on="Magic-based" data-off="Attack-based" data-onstyle="primary" data-offstyle="info" data-width="100%">
 		
 		<br/>
+		<br/>
+		
+		<div class="row lore_table">
+			<div class="form-check col-xs-6 col-sm-3">
+				<input class="form-check-input" type="radio" name="lore_input" value="1" id="lore_warrior" checked>
+				<label class="form-check-label" for="lore_warrior"><img src="img/lore_warrior.png"> Warrior</label>
+			</div>
+			
+			<div class="form-check col-xs-6 col-sm-3">
+				<input class="form-check-input" type="radio" name="lore_input" value="2" id="lore_mage">
+				<label class="form-check-label" for="lore_mage"><img src="img/lore_mage.png"> Mage</label>
+			</div>
+			<div class="form-check col-xs-6 col-sm-3">
+				<input class="form-check-input" type="radio" name="lore_input" value="3" id="lore_ranger">
+				<label class="form-check-label" for="lore_ranger"><img src="img/lore_ranger.png"> Ranger</label>
+			</div>
+			<div class="form-check col-xs-6 col-sm-3">
+				<input class="form-check-input" type="radio" name="lore_input" value="4" id="lore_monk">
+				<label class="form-check-label" for="lore_monk"><img src="img/lore_monk.png"> Monk</label>
+			</div>
+		</div>
+		
 		<br/>
 		<div class="row">
 			<div class="col-xs-6 col-sm-3 vcenter">
