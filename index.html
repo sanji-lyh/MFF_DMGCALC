@@ -70,7 +70,7 @@
 		$.getJSON('./data/job.json', function(data) {         
 			jobList = data;
 			isLoaded = true;
-			OnInputChange();
+			UpdateChanges(false);
 		});
 	}
 	
@@ -87,7 +87,7 @@
 	}
 	
 	function OnInputChange(){
-			UpdateChanges();
+		UpdateChanges();
 	}
 	
 	function UpdateChanges(isCustom=true){
