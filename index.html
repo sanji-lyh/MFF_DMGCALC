@@ -218,7 +218,7 @@
 	}
 	
 	function parseInt2(input){
-		return parseInt(input.toLocaleString().replace(/,/g,'')) || 0;
+		return parseInt(input.toString().replace(/,/g,'')) || 0;
 	}
 	
 	function ComputeDmg(userInput, job, isBroken, isWeakness, isAOE=true){
