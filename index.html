@@ -56,6 +56,10 @@
 		.result_table th {
 			text-align: center;
 		}
+		
+		.result_table_div {
+			overflow-x: auto;
+		}
 	</style>
 	<script type="text/javascript">
 	var jobList;
@@ -77,10 +81,16 @@
 			for(i=(abilityList.length-1); i >= 0; i--){
 				$('#ability_template').append($('<option>', {value:i, text:(abilityList[i]["AbilityName"]+" -- Atk: " + abilityList[i]["Attack"])}));
 			}
+			
+			$('#ability_template').append($('<option>', {value:-1, text:"Custom input ability"}));
 		});
 	}
 	
 	function OnInputChange(){
+			UpdateChanges();
+	}
+	
+	function UpdateChanges(isCustom=true){
 		var ability = {
 			// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark		
 			elem: parseInt($("input[name='elem_input']:checked").val()),
@@ -97,6 +107,10 @@
 			ravage: parseInt($("input[name='ravage_power']").val())
 		};
 		
+		if(isCustom){
+			$("#ability_template").val(-1);
+		}
+		
 		if(isLoaded){
 			ProcessRanking(ability);
 		}
@@ -108,27 +122,32 @@
 	function OnTemplateChange(){
 		var index = $("#ability_template").val()
 		
-		curAbility = abilityList[index];
-		
-		// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark		
-		$("input[name='elem_input'][value="+curAbility["Elem"]+"]").prop("checked",true);
-		
-		if(curAbility["Type"] === "Monk"){
-			$("input[name='type']").prop("checked", false).change();
+		if(index >= 0) {
+			curAbility = abilityList[index];
+			
+			// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark		
+			$("input[name='elem_input'][value="+curAbility["Elem"]+"]").prop("checked",true);
+			
+			var typeToggle = $("input[name='type']").data('bs.toggle');
+						
+			if(curAbility["Type"] === "Monk"){
+				typeToggle.off(true);
+			}
+			else{
+				typeToggle.on(true);
+			}
+			
+			$("input[name='atk_power']").val(curAbility["Attack"]);
+			$("input[name='improved_crit']").val(curAbility["ImprovedCrit"]);
+			$("input[name='exploit_weakness']").val(curAbility["ExploitWeakness"]);
+			$("input[name='ee_power']").val(curAbility["ElementEnhance"]);
+			$("input[name='attuned_chain']").val(curAbility["AttunedChain"]);
+			$("input[name='ability_chain']").val(curAbility["AbilityChain"]);
+			$("input[name='pb_power']").val(curAbility["PainfulBreak"]);
+			$("input[name='ravage_power']").val(curAbility["Ravage"]);
 		}
-		else{
-			$("input[name='type']").prop("checked", true).change();
-		}
 		
-		$("input[name='atk_power']").val(curAbility["Attack"]);
-		$("input[name='improved_crit']").val(curAbility["ImprovedCrit"]);
-		$("input[name='exploit_weakness']").val(curAbility["ExploitWeakness"]);
-		$("input[name='ee_power']").val(curAbility["ElementEnhance"]);
-		$("input[name='attuned_chain']").val(curAbility["AttunedChain"]);
-		$("input[name='ability_chain']").val(curAbility["AbilityChain"]);
-		$("input[name='pb_power']").val(curAbility["PainfulBreak"]);
-		$("input[name='ravage_power']").val(curAbility["Ravage"]);
-		
+		UpdateChanges(false);
 	}
 	
 	function numberWithCommas(x) {
@@ -277,10 +296,11 @@
 		<p>Fill in the inputs below to begin (or select the ability from dropdown to auto-fill)</P>
 		
 		<select class="form-control" id="ability_template">
-			<option value="empty">Select an ability to auto-fill</option>
+			<option value="-2">Select an ability to auto-fill</option>
 		</select>
 		
 		<br/>
+		<hr/>
 		<form id="input">
 		<div class="row elem_table">
 			<div class="row">
@@ -364,7 +384,7 @@
 		
 		<hr/>
 		<h3 class="resultTxt">Result</h3>
-		<div class="col-sm-12 col-xs-10">
+		<div class="col-sm-12 col-xs-10 result_table_div">
 			<table class="table table-hover result_table table-bordered" id="result_table" width="100%">
 				<thead>
 					<tr>
