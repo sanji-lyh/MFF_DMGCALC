@@ -192,7 +192,13 @@
 				brokenNeutralDmg: ComputeDmg(userInput, jobList[i], true, false)
 			};
 			
-			resultList.push(resultEntry);
+			if(!(resultEntry.unbrokenWeaknessDmg == 0
+				&& resultEntry.unbrokenNeutralDmg == 0
+				&& resultEntry.brokenWeaknessDmg == 0
+				&& resultEntry.brokenNeutralDmg == 0))
+			{
+				resultList.push(resultEntry);
+			}
 		}
 		
 		if ($.fn.DataTable.isDataTable("#result_table")) {
