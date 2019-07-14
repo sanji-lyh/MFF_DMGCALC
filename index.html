@@ -18,7 +18,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#000000">
     <meta charset="UTF-8">
-    <meta name="description" content="Mobius Final Fantasy Damage Calculator / メビウスFF">
+    <meta name="description" content="Mobius Final Fantasy Damage Ranking Calculator / メビウスFF">
     <meta name="keywords" content="MobiusFF, Final Fantasy, メビウスFF">
     <meta name="author" content="sanjilyh">
 	<style type="text/css">
@@ -28,6 +28,7 @@
 		
 		.elem_table div {
 			padding: 4px 16px;
+			font-weight: 700;
 		}
 		
 		.header_bar {
@@ -58,6 +59,7 @@
 	</style>
 	<script type="text/javascript">
 	var jobList;
+	var abilityList;
 	var isLoaded = false;
 	
 	function GetJob(){
@@ -65,6 +67,18 @@
 			jobList = data;
 			isLoaded = true;
 			OnInputChange();
+		});
+	}
+	
+	function GetAbility(){
+		$.getJSON('./data/ability.json', function(data) {         
+			abilityList = data;
+			
+			console.log(abilityList);			
+			for(i=(abilityList.length-1); i >= 0; i--){
+				console.log(abilityList[i]);
+				$('#ability_template').append($('<option>', {value:i, text:(abilityList[i]["AbilityName"]+" -- Atk: " + abilityList[i]["Attack"])}));
+			}
 		});
 	}
 	
@@ -85,16 +99,38 @@
 			ravage: parseInt($("input[name='ravage_power']").val())
 		};
 		
-		
-		// Todo: validation
-		console.log(ability);
-		
 		if(isLoaded){
 			ProcessRanking(ability);
 		}
 		else {
 			alert("Error in loading job list. Please refresh the page and try again");
 		}
+	}
+	
+	function OnTemplateChange(){
+		var index = $("#ability_template").val()
+		
+		curAbility = abilityList[index];
+		
+		// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark		
+		$("input[name='elem_input'][value="+curAbility["Elem"]+"]").prop("checked",true);
+		
+		if(curAbility["Type"] === "Monk"){
+			$("input[name='type']").prop("checked", false).change();
+		}
+		else{
+			$("input[name='type']").prop("checked", true).change();
+		}
+		
+		$("input[name='atk_power']").val(curAbility["Attack"]);
+		$("input[name='improved_crit']").val(curAbility["ImprovedCrit"]);
+		$("input[name='exploit_weakness']").val(curAbility["ExploitWeakness"]);
+		$("input[name='ee_power']").val(curAbility["ElementEnhance"]);
+		$("input[name='attuned_chain']").val(curAbility["AttunedChain"]);
+		$("input[name='ability_chain']").val(curAbility["AbilityChain"]);
+		$("input[name='pb_power']").val(curAbility["PainfulBreak"]);
+		$("input[name='ravage_power']").val(curAbility["Ravage"]);
+		
 	}
 	
 	function numberWithCommas(x) {
@@ -120,24 +156,19 @@
 			resultList.push(resultEntry);
 		}
 		
-		//console.log(resultList);
 		if ($.fn.DataTable.isDataTable("#result_table")) {
 		  $('#result_table').DataTable().clear().destroy();
 		}
 				
 		for(i=0; i < resultList.length; i++){
-			$("#result_table > tbody:last-child").append("<tr><td>" + resultList[i].name + "</td><td>" + numberWithCommas(resultList[i].unbrokenWeaknessDmg) + "</td><td>" + numberWithCommas(resultList[i].unbrokenNeutralDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenWeaknessDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenNeutralDmg) + "</td>")
+			$("#result_table > tbody:last-child").append("<tr><td>" + resultList[i].name + "</td><td>" + numberWithCommas(resultList[i].unbrokenNeutralDmg) + "</td><td>" + numberWithCommas(resultList[i].unbrokenWeaknessDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenNeutralDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenWeaknessDmg)  + "</td>")
 		}
 		
-		
-	
 		$('#result_table').DataTable( {
 			"order": [[ 1, "desc" ]],
 			"lengthMenu": [[25, 50, -1], [25, 50, "All"]],
 			columnDefs: [{targets: [ "_all" ], orderSequence: [ "desc", "desc", "asc" ]  }]
 		} );
-		
-		// sort them accordingly
 	}
 	
 	function parseInt2(input){
@@ -211,11 +242,16 @@
 	}
 	
 	$(document).ready(function() {
-		GetJob();
+		GetAbility();
+		GetJob();		
 		
 		$("#input").change(function(){
 			OnInputChange();
 		});
+		
+		$("#ability_template").change(function(){
+			OnTemplateChange();
+		});		
 		
 		$('#result_table').DataTable( {
 			"order": [[ 1, "desc" ]],
@@ -236,11 +272,8 @@
 		<br/>
 		<p class="">Fill in the inputs below to begin (or select the ability from dropdown to auto-fill)</P>
 		
-		<select name="ability_template" class="form-control">
+		<select class="form-control" id="ability_template">
 			<option value="empty">Select an ability to auto-fill</option>
-			<option value="duncan">Duncan</option>
-			<option value="duncan">Ragnarok</option>
-			<option value="duncan">Minwu</option>
 		</select>
 		
 		<br/>
@@ -336,10 +369,10 @@
 						<th colspan="2">Broken</th>
 					</tr>
 					<tr>
-						<th>Weakness</th>
 						<th>Neutral</th>
 						<th>Weakness</th>
 						<th>Neutral</th>
+						<th>Weakness</th>
 					</tr>
 				</thead>
 				<tbody>
