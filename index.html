@@ -79,8 +79,17 @@
 			text-align: center;
 		}
 		
+		.result_table tbody td {
+			word-break: break-word;
+			vertical-align: top;
+		}
+		
 		.result_table th {
 			text-align: center;
+			background-color: #4f6da2;
+			color: white;
+			word-break: break-word;
+			vertical-align: top;
 		}
 		
 		.result_table_div {
@@ -240,6 +249,7 @@
 			"lengthMenu": [[25, 50, -1], [25, 50, "All"]],
 			"searching": false,
 			"lengthChange": false,
+			"autoWidth": false,
 			columnDefs: [{targets: [ "_all" ], orderSequence: [ "desc", "desc", "asc" ]  }]
 		} );
 	}
@@ -406,6 +416,7 @@
 			"order": [[ 1, "desc" ]],
 			"searching": false,
 			"lengthChange": false,
+			"autoWidth": false,
 			"lengthMenu": [[25, 50, -1], [25, 50, "All"]]
 		} );
 	});
@@ -579,25 +590,23 @@
 			</div>
 		</div>
 		<br/>
-		<div class="col-sm-12 col-xs-10 result_table_div">
-			<table class="table table-hover result_table table-bordered" id="result_table" width="100%">
-				<thead>
-					<tr>
-						<th rowspan="2">Job Name</th>
-						<th colspan="2">Unbroken</th>
-						<th colspan="2">Broken</th>
-					</tr>
-					<tr>
-						<th>Neutral</th>
-						<th>Weakness</th>
-						<th>Neutral</th>
-						<th>Weakness</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>					
-			</table>
-		</div>		
+		<table class="table table-hover wrap result_table table-bordered" id="result_table" width="100%">
+			<thead>
+				<tr>
+					<th rowspan="2">Job Name</th>
+					<th colspan="2">Unbroken</th>
+					<th colspan="2">Broken</th>
+				</tr>
+				<tr>
+					<th>Neutral</th>
+					<th>Weakness</th>
+					<th>Neutral</th>
+					<th>Weakness</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>					
+		</table>
 	</div>
 	
 	
