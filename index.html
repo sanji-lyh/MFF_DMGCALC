@@ -30,6 +30,28 @@
 			max-width: 30px;
 		}
 		
+		.collapseBut img {
+			max-width: 60px;
+			margin-right:10px;
+		}
+		
+		.collapseBut {
+			font-size: 18px;
+			width: 99%;
+			text-align:left;
+			padding: 0px!important;
+			background-color: #129066;
+		}
+		
+		.collapseBut:hover{
+			background-color: #117554!important;
+		}
+		
+		.collapseBut:focus{
+			background-color: #159067;
+		}
+		
+		
 		.elem_table div {
 			padding: 4px 16px;
 			font-weight: 700;
@@ -59,6 +81,10 @@
 		
 		.result_table th {
 			text-align: center;
+		}
+		
+		.result_table_div {
+			padding:0px;		
 		}
 	</style>
 	<script type="text/javascript">
@@ -213,6 +239,7 @@
 			"order": [[ 1, "desc" ]],
 			"lengthMenu": [[25, 50, -1], [25, 50, "All"]],
 			"searching": false,
+			"lengthChange": false,
 			columnDefs: [{targets: [ "_all" ], orderSequence: [ "desc", "desc", "asc" ]  }]
 		} );
 	}
@@ -378,6 +405,7 @@
 		$('#result_table').DataTable( {
 			"order": [[ 1, "desc" ]],
 			"searching": false,
+			"lengthChange": false,
 			"lengthMenu": [[25, 50, -1], [25, 50, "All"]]
 		} );
 	});
@@ -397,152 +425,160 @@
 		Credits goes to <b>Shiro</b> (for general pointers), <b>IJNA</b> (for maintaining the job spreadsheet), <b>blue2eyes</b> (for documenting damage formula) and many, many more awesome and helpful contributors from <b>Discord MFF</b></p>
 	
 		<br/>
-		<p>Fill in the inputs below to begin (or select the ability from dropdown to auto-fill)</P>
+		<p> Select the ability from dropdown to auto-fill (or click on "Show Ability Card" for manual input)</p>
 		
 		<select class="form-control" id="ability_template">
 			<option value="-2">Select an ability to auto-fill</option>
 		</select>
 		
-		<br/>
+		<hr/>
+
+		<p>
+		  <a class="btn btn-primary collapseBut" data-toggle="collapse" href="#collapseInput" aria-expanded="false" aria-controls="collapseInput">
+			<img src="img/ability-cards.png"> Show Ability Card
+			</a>
+		</p>
+		<div class="collapse" id="collapseInput">
+			<form id="input">
+				<div class="row elem_table">
+					<div class="row">
+						<div class="form-check col-xs-6 col-sm-4">
+							<input class="form-check-input" type="radio" name="elem_input" value="1" id="fireElem" checked>
+							<label class="form-check-label" for="fireElem"><img src="img/elem_fire.png"> Fire</label>
+						</div>
+						
+						<div class="form-check col-xs-6 col-sm-4">
+							<input class="form-check-input" type="radio" name="elem_input" value="2" id="waterElem">
+							<label class="form-check-label" for="waterElem"><img src="img/elem_water.png"> Water</label>
+						</div>
+						
+						<div class="form-check col-xs-6 col-sm-4">
+							<input class="form-check-input" type="radio" name="elem_input" value="3" id="windElem">
+							<label class="form-check-label" for="windElem"><img src="img/elem_wind.png"> Wind</label>
+						</div>
+						
+						<div class="form-check col-xs-6 col-sm-4">
+							<input class="form-check-input" type="radio" name="elem_input" value="4" id="earthElem">
+							<label class="form-check-label" for="earthElem"><img src="img/elem_earth.png"> Earth</label>
+						</div>
+						<div class="form-check col-xs-6 col-sm-4">
+							<input class="form-check-input" type="radio" name="elem_input" value="5" id="lightElem">
+							<label class="form-check-label" for="lightElem"><img src="img/elem_light.png"> Light</label>
+						</div>
+						<div class="form-check col-xs-6 col-sm-4">
+							<input class="form-check-input" type="radio" name="elem_input" value="6" id="darkElem">
+							<label class="form-check-label" for="darkElem"><img src="img/elem_dark.png"> Dark</label>
+						</div>
+
+					</div>
+				</div>
+				
+				<br/>
+				<input name="type" type="checkbox" checked data-toggle="toggle" data-on="Magic-based" data-off="Attack-based" data-onstyle="primary" data-offstyle="info" data-width="100%">
+				
+				<br/>
+				<br/>
+				
+				<div class="row lore_table">
+					<div class="form-check col-xs-6 col-sm-3">
+						<input class="form-check-input" type="radio" name="lore_input" value="1" id="lore_warrior" checked>
+						<label class="form-check-label" for="lore_warrior"><img src="img/lore_warrior.png"> Warrior</label>
+					</div>
+					
+					<div class="form-check col-xs-6 col-sm-3">
+						<input class="form-check-input" type="radio" name="lore_input" value="2" id="lore_mage">
+						<label class="form-check-label" for="lore_mage"><img src="img/lore_mage.png"> Mage</label>
+					</div>
+					<div class="form-check col-xs-6 col-sm-3">
+						<input class="form-check-input" type="radio" name="lore_input" value="3" id="lore_ranger">
+						<label class="form-check-label" for="lore_ranger"><img src="img/lore_ranger.png"> Ranger</label>
+					</div>
+					<div class="form-check col-xs-6 col-sm-3">
+						<input class="form-check-input" type="radio" name="lore_input" value="4" id="lore_monk">
+						<label class="form-check-label" for="lore_monk"><img src="img/lore_monk.png"> Monk</label>
+					</div>
+				</div>
+				
+				<br/>
+				<div class="row">
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<label class="control-label">Attack</label>
+					</div>
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<input type="number" class="form-control" name="atk_power" value="1800">
+					</div>
+					<!--<div class="col-xs-3 col-sm-2 vcenter">
+						<label class="">Break Power</label>
+					</div>
+					<div class="col-xs-3 col-sm-3 vcenter">
+						<input type="number" class="form-control" name="brk_power" placeholder="1800">
+					</div>
+					-->
+					
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<label class="">Improved Crit</label>
+					</div>
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<input type="number" class="form-control" name="improved_crit" value="0">
+					</div>
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<label class="">Exploit Weakness</label>
+					</div>
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<input type="number" class="form-control" name="exploit_weakness" value="0">
+					</div>
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<label class="">Element Enhance</label>
+					</div>
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<input type="number" class="form-control" name="ee_power" value="0">
+					</div>
+					
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<label class="">Attuned Chain</label>
+					</div>
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<input type="number" class="form-control" name="attuned_chain" value="0">
+					</div>
+					
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<label class="">Ability Chain</label>
+					</div>
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<input type="number" class="form-control" name="ability_chain" value="0">
+					</div>
+					
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<label class="">Painful Break</label>
+					</div>
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<input type="number" class="form-control" name="pb_power" value="0">
+					</div>
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<label class="">Ravage</label>
+					</div>
+					<div class="col-xs-6 col-sm-3 vcenter">
+						<input type="number" class="form-control" name="ravage_power" value="0">
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		
+		
+		<hr/>
 		<div class="row options_table">
-			<div class="form-check col-xs-6 col-sm-4">
+			<div class="form-check col-xs-12 col-sm-6">
 				<input class="form-check-input" type="checkbox" name="ignore_lore" value="1" id="ignore_lore">
 				<label class="form-check-label" for="ignore_lore">Ignore Lore</label>
 			</div>
 			
-			<div class="form-check col-xs-6 col-sm-4">
+			<div class="form-check col-xs-12 col-sm-6">
 				<input class="form-check-input" type="checkbox" name="display_element" value="1" id="display_element" checked>
-				<label class="form-check-label" for="display_element">Display jobs with elements</label>
+				<label class="form-check-label" for="display_element">Hide jobs which can't use element</label>
 			</div>
 		</div>
-				
-		<hr/>
-		<form id="input">
-		<div class="row elem_table">
-			<div class="row">
-				<div class="form-check col-xs-6 col-sm-4">
-					<input class="form-check-input" type="radio" name="elem_input" value="1" id="fireElem" checked>
-					<label class="form-check-label" for="fireElem"><img src="img/elem_fire.png"> Fire</label>
-				</div>
-				
-				<div class="form-check col-xs-6 col-sm-4">
-					<input class="form-check-input" type="radio" name="elem_input" value="2" id="waterElem">
-					<label class="form-check-label" for="waterElem"><img src="img/elem_water.png"> Water</label>
-				</div>
-				
-				<div class="form-check col-xs-6 col-sm-4">
-					<input class="form-check-input" type="radio" name="elem_input" value="3" id="windElem">
-					<label class="form-check-label" for="windElem"><img src="img/elem_wind.png"> Wind</label>
-				</div>
-				
-				<div class="form-check col-xs-6 col-sm-4">
-					<input class="form-check-input" type="radio" name="elem_input" value="4" id="earthElem">
-					<label class="form-check-label" for="earthElem"><img src="img/elem_earth.png"> Earth</label>
-				</div>
-				<div class="form-check col-xs-6 col-sm-4">
-					<input class="form-check-input" type="radio" name="elem_input" value="5" id="lightElem">
-					<label class="form-check-label" for="lightElem"><img src="img/elem_light.png"> Light</label>
-				</div>
-				<div class="form-check col-xs-6 col-sm-4">
-					<input class="form-check-input" type="radio" name="elem_input" value="6" id="darkElem">
-					<label class="form-check-label" for="darkElem"><img src="img/elem_dark.png"> Dark</label>
-				</div>
-
-			</div>
-		</div>
-		
 		<br/>
-		<input name="type" type="checkbox" checked data-toggle="toggle" data-on="Magic-based" data-off="Attack-based" data-onstyle="primary" data-offstyle="info" data-width="100%">
-		
-		<br/>
-		<br/>
-		
-		<div class="row lore_table">
-			<div class="form-check col-xs-6 col-sm-3">
-				<input class="form-check-input" type="radio" name="lore_input" value="1" id="lore_warrior" checked>
-				<label class="form-check-label" for="lore_warrior"><img src="img/lore_warrior.png"> Warrior</label>
-			</div>
-			
-			<div class="form-check col-xs-6 col-sm-3">
-				<input class="form-check-input" type="radio" name="lore_input" value="2" id="lore_mage">
-				<label class="form-check-label" for="lore_mage"><img src="img/lore_mage.png"> Mage</label>
-			</div>
-			<div class="form-check col-xs-6 col-sm-3">
-				<input class="form-check-input" type="radio" name="lore_input" value="3" id="lore_ranger">
-				<label class="form-check-label" for="lore_ranger"><img src="img/lore_ranger.png"> Ranger</label>
-			</div>
-			<div class="form-check col-xs-6 col-sm-3">
-				<input class="form-check-input" type="radio" name="lore_input" value="4" id="lore_monk">
-				<label class="form-check-label" for="lore_monk"><img src="img/lore_monk.png"> Monk</label>
-			</div>
-		</div>
-		
-		<br/>
-		<div class="row">
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<label class="control-label">Attack</label>
-			</div>
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<input type="number" class="form-control" name="atk_power" value="1800">
-			</div>
-			<!--<div class="col-xs-3 col-sm-2 vcenter">
-				<label class="">Break Power</label>
-			</div>
-			<div class="col-xs-3 col-sm-3 vcenter">
-				<input type="number" class="form-control" name="brk_power" placeholder="1800">
-			</div>
-			-->
-			
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<label class="">Improved Crit</label>
-			</div>
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<input type="number" class="form-control" name="improved_crit" value="0">
-			</div>
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<label class="">Exploit Weakness</label>
-			</div>
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<input type="number" class="form-control" name="exploit_weakness" value="0">
-			</div>
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<label class="">Element Enhance</label>
-			</div>
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<input type="number" class="form-control" name="ee_power" value="0">
-			</div>
-			
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<label class="">Attuned Chain</label>
-			</div>
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<input type="number" class="form-control" name="attuned_chain" value="0">
-			</div>
-			
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<label class="">Ability Chain</label>
-			</div>
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<input type="number" class="form-control" name="ability_chain" value="0">
-			</div>
-			
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<label class="">Painful Break</label>
-			</div>
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<input type="number" class="form-control" name="pb_power" value="0">
-			</div>
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<label class="">Ravage</label>
-			</div>
-			<div class="col-xs-6 col-sm-3 vcenter">
-				<input type="number" class="form-control" name="ravage_power" value="0">
-			</div>
-		</div>
-		</form>
-		
-		<hr/>
-		<h3 class="resultTxt">Result</h3>
 		<div class="col-sm-12 col-xs-10 result_table_div">
 			<table class="table table-hover result_table table-bordered" id="result_table" width="100%">
 				<thead>
