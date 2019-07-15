@@ -80,8 +80,8 @@
 		}
 		
 		.result_table tbody td {
-			word-break: break-word;
-			vertical-align: top;
+			#word-break: break-word;
+			#vertical-align: top;
 		}
 		
 		.result_table th {
@@ -249,7 +249,6 @@
 			"lengthMenu": [[25, 50, -1], [25, 50, "All"]],
 			"searching": false,
 			"lengthChange": false,
-			"autoWidth": false,
 			columnDefs: [{targets: [ "_all" ], orderSequence: [ "desc", "desc", "asc" ]  }]
 		} );
 	}
@@ -416,7 +415,6 @@
 			"order": [[ 1, "desc" ]],
 			"searching": false,
 			"lengthChange": false,
-			"autoWidth": false,
 			"lengthMenu": [[25, 50, -1], [25, 50, "All"]]
 		} );
 	});
