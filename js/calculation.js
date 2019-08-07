@@ -139,7 +139,8 @@ function damageCalc(card, job, title, setting) {
         let HP = job.totalHP(setting);
         ucTerm += Math.max(100, Math.floor(HP / 700));
     }
-
+    ucTerm /= 100;
+    
     // TODO: defense term and barrier term
 
 
