@@ -3,6 +3,7 @@ import { ELEMENT } from './const.js';
 class Job {
     constructor() {
         // stats
+        this.HP = 0;
         this.attack = 0;
         this.magic = 0;
         this.break = 0;
@@ -48,6 +49,11 @@ class Job {
                 ee = 0;
         }
         return this.attune_chain + this.ability_chain + ee;
+    }
+
+    totalHP(setting) {
+        // TODO
+        return this.HP;
     }
 
     loadAllJobs(server) {
