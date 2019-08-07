@@ -24,6 +24,10 @@ class AbilityCard {
         // TODO
         return true;
     }
+
+    hasES(es) {
+        return this.extra_skill.includes(es);
+    }
 }
 
 export { AbilityCard }

@@ -32,6 +32,9 @@ UC list for complete mechanics
 */
 
 function damageCalc(card, job, title, setting) {
+
+    // TODO: take AA into account and titles
+
     let magicTerm = 100,
         attackTerm = 0,
         eeTerm = 100,
@@ -140,7 +143,7 @@ function damageCalc(card, job, title, setting) {
         ucTerm += Math.max(100, Math.floor(HP / 700));
     }
     ucTerm /= 100;
-    
+
     // TODO: defense term and barrier term
 
 
