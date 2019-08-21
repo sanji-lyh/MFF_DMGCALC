@@ -1,0 +1,43 @@
+.header_bar {
+	background: #a94442;
+	color: white;
+	padding: 16px 8px;
+}
+
+.container {
+	max-width: 960px;
+}
+
+.vcenter {
+	margin-bottom:15px;
+}
+
+.resultTxt {
+	color: #9c8131
+}
+
+.result_table {
+	text-align: center;
+}
+
+.result_table th {
+	text-align: center;
+	background-color: #4f6da2;
+	color: white;
+}
+
+.result_table_div {
+	padding:0px;		
+}
+
+.ability_panel {
+	margin: 35px 25px;
+}
+.ability_panel img{
+	float: left;
+	margin-right: 40px;
+}
+
+.ability_panel input[readonly]{
+  background-color:transparent;
+}

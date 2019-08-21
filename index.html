@@ -17,558 +17,57 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#000000">
-    <meta charset="UTF-8">
     <meta name="description" content="Mobius Final Fantasy Damage Ranking Calculator / メビウスFF">
     <meta name="keywords" content="MobiusFF, Final Fantasy, メビウスFF">
     <meta name="author" content="sanjilyh">
+	<meta charset="UTF-8">
+	
+	<link href="css/index.css" rel="stylesheet">
+		
 	<style type="text/css">
-		.elem_table img {
-			max-width: 30px;
-		}
 		
-		.lore_table img {
-			max-width: 30px;
-		}
-		
-		.collapseBut img {
-			max-width: 60px;
-			margin-right:10px;
-		}
-		
-		.collapseBut {
-			font-size: 18px;
-			width: 99%;
-			text-align:left;
-			padding: 0px!important;
-			background-color: #129066;
-		}
-		
-		.collapseBut:hover{
-			background-color: #117554!important;
-		}
-		
-		.collapseBut:focus{
-			background-color: #159067;
-		}
-		
-		
-		.elem_table div {
-			padding: 4px 16px;
-			font-weight: 700;
-		}
-		
-		.header_bar {
-			background: #a94442;
-			color: white;
-			padding: 16px 8px;
-		}
-		
-		.container {
-			max-width: 960px;
-		}
-
-		.vcenter {
-			margin-bottom:6px;
-		}
-		
-		.resultTxt {
-			color: #9c8131
-		}
-		
-		.result_table {
-			text-align: center;
-		}
-		
-		.result_table th {
-			text-align: center;
-			background-color: #4f6da2;
-			color: white;
-		}
-		
-		.result_table_div {
-			padding:0px;		
-		}
 	</style>
-	<script type="text/javascript">
-	var jobList;
-	var abilityList;
-	var isLoaded = false;
 	
-	function GetJob(){
-		$.getJSON('./data/job.json', function(data) {         
-			jobList = data;
-			isLoaded = true;
-			UpdateChanges(false);
-		});
-	}
-	
-	function GetAbility(){
-		$.getJSON('./data/ability.json', function(data) {         
-			abilityList = data;
-			
-			for(i=(abilityList.length-1); i >= 0; i--){
-				$('#ability_template').append($('<option>', {value:i, text:(abilityList[i]["AbilityName"]+" -- Atk: " + abilityList[i]["Attack"])}));
-			}
-			
-			$('#ability_template').append($('<option>', {value:-1, text:"Custom input ability"}));
-		});
-	}
-	
-	function OnInputChange(){
-		UpdateChanges();
-	}
-	
-	function UpdateChanges(isCustom=true){
-		var userInput = {
-			// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark		
-			elem: parseInt($("input[name='elem_input']:checked").val()),
-			
-			// true = magic, false = atk
-			type: $("input[name='type']").prop("checked"),
-			atk: parseInt($("input[name='atk_power']").val()),
-			improvedCrit: parseInt($("input[name='improved_crit']").val()),
-			weakness: parseInt($("input[name='exploit_weakness']").val()),
-			ee: parseInt($("input[name='ee_power']").val()),
-			attunedChain: parseInt($("input[name='attuned_chain']").val()),
-			abilityChain: parseInt($("input[name='ability_chain']").val()),
-			painfulBreak: parseInt($("input[name='pb_power']").val()),
-			ravage: parseInt($("input[name='ravage_power']").val()),
-			
-			// 1 = warrior, 2 = mage, 3 = ranger, 4 = monk
-			lore: parseInt($("input[name='lore_input']:checked").val()),
-			ignoreLoreOption: $("#ignore_lore").is(":checked"),
-			showElementsOption: $("#display_element").is(":checked")
-		};
-		
-		if(isCustom){
-			$("#ability_template").val(-1);
-		}
-		
-		if(isLoaded){
-			ProcessRanking(userInput);
-		}
-		else {
-			alert("Error in loading job list. Please refresh the page and try again");
-		}
-	}
-	
-	function OnTemplateChange(){
-		var index = $("#ability_template").val()
-		
-		if(index >= 0) {
-			curAbility = abilityList[index];
-			
-			// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark		
-			$("input[name='elem_input'][value="+curAbility["Elem"]+"]").prop("checked",true);
-			
-			var typeToggle = $("input[name='type']").data('bs.toggle');
-						
-			if(curAbility["Type"] === "Monk"){
-				typeToggle.off(true);
-			}
-			else{
-				typeToggle.on(true);
-			}
-			
-			$("input[name='atk_power']").val(curAbility["Attack"]);
-			$("input[name='improved_crit']").val(curAbility["ImprovedCrit"]);
-			$("input[name='exploit_weakness']").val(curAbility["ExploitWeakness"]);
-			$("input[name='ee_power']").val(curAbility["ElementEnhance"]);
-			$("input[name='attuned_chain']").val(curAbility["AttunedChain"]);
-			$("input[name='ability_chain']").val(curAbility["AbilityChain"]);
-			$("input[name='pb_power']").val(curAbility["PainfulBreak"]);
-			$("input[name='ravage_power']").val(curAbility["Ravage"]);
-			
-			var loreValue = 0;
-			switch(curAbility["Type"]){
-				case "Warrior":
-					loreValue = 1;
-					break;
-				case "Mage":
-					loreValue = 2;
-					break;
-				case "Ranger":
-					loreValue = 3;
-					break;
-				case "Monk":
-					loreValue = 4;
-					break;
-			}
-			$("input[name='lore_input'][value=" +loreValue+"]").prop("checked", true);
-		}
-		
-		UpdateChanges(false);
-	}
-	
-	function numberWithCommas(x) {
-		x = x.toFixed(0);
-		var parts = x.toString().split(".");
-		parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		return parts.join(".");
-	}
-	
-	function ProcessRanking(userInput){	
-		resultList = [];
-	
-		// compute dmg for each job first
-		for(i = 0; i < jobList.length; i++){
-			var resultEntry = {
-				name: jobList[i]["Job Name"],
-				unbrokenWeaknessDmg: ComputeDmg(userInput, jobList[i], false, true),
-				unbrokenNeutralDmg: ComputeDmg(userInput, jobList[i], false, false),
-				brokenWeaknessDmg: ComputeDmg(userInput, jobList[i], true, true),
-				brokenNeutralDmg: ComputeDmg(userInput, jobList[i], true, false)
-			};
-			
-			if(!(resultEntry.unbrokenWeaknessDmg == 0
-				&& resultEntry.unbrokenNeutralDmg == 0
-				&& resultEntry.brokenWeaknessDmg == 0
-				&& resultEntry.brokenNeutralDmg == 0))
-			{
-				resultList.push(resultEntry);
-			}
-		}
-		
-		if ($.fn.DataTable.isDataTable("#result_table")) {
-		  $('#result_table').DataTable().clear().destroy();
-		}
-				
-		for(i=0; i < resultList.length; i++){
-			$("#result_table > tbody:last-child").append("<tr><td>" + resultList[i].name + "</td><td>" + numberWithCommas(resultList[i].unbrokenNeutralDmg) + "</td><td>" + numberWithCommas(resultList[i].unbrokenWeaknessDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenNeutralDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenWeaknessDmg)  + "</td>")
-		}
-		
-		$('#result_table').DataTable( {
-			"order": [[ 1, "desc" ]],
-			"lengthMenu": [[25, 50, -1], [25, 50, "All"]],
-			"searching": false,
-			"lengthChange": false,
-			columnDefs: [{targets: [ "_all" ], orderSequence: [ "desc", "desc", "asc" ]  }]
-		} );
-	}
-	
-	function parseInt2(input){
-		return parseInt(input.toString().replace(/,/g,'')) || 0;
-	}
-	
-	function ComputeDmg(userInput, job, isBroken, isWeakness, isAOE=true){
-		var dmg = userInput.atk;
-		
-		// Filter out jobs that can't use the card due to jobs lore
-		if(!userInput.ignoreLoreOption){
-			// 1 = warrior, 2 = mage, 3 = ranger, 4 = monk
-			switch(userInput.lore){
-				case 1:
-					if(!(job["Class"] === "Graff" || job["Class"] === "Warrior" || job["Lore"] === "Warrior")){
-						dmg = 0;
-					}
-					break;
-				case 2:
-					if(!(job["Class"] === "Mage" || job["Class"] === "Meia" || job["Lore"] === "Mage")){
-						dmg = 0;
-					}
-					break;
-				case 3:
-					if(!(job["Class"] === "Ranger" || job["Class"] === "Sarah" || job["Lore"] === "Ranger")){
-						dmg = 0;
-					}
-					break;
-				case 4:
-					if(!(job["Class"] === "Monk" || job["Class"] === "Sophie" || job["Lore"] === "Monk")){
-						dmg = 0;
-					}
-					break;
-			}
-		}
-		
-		// TODO: Rewrite this portion of code (ugly, but works)
-		if(userInput.showElementsOption){
-			switch(userInput.elem){
-				// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark
-				case 1:
-					if(!(job["OrbSet1_1"] === "F" || job["OrbSet1_2"] === "F" || job["OrbSet1_3"] === "F"
-						|| job["OrbSet2_1"] === "F" || job["OrbSet2_2"] === "F" || job["OrbSet2_3"] === "F")){
-							dmg = 0;
-					}
-					break;
-				case 2:
-					if(!(job["OrbSet1_1"] === "W" || job["OrbSet1_2"] === "W" || job["OrbSet1_3"] === "W"
-						|| job["OrbSet2_1"] === "W" || job["OrbSet2_2"] === "W" || job["OrbSet2_3"] === "W")){
-							dmg = 0;
-					}
-					break;
-				case 3:
-					if(!(job["OrbSet1_1"] === "A" || job["OrbSet1_2"] === "A" || job["OrbSet1_3"] === "A"
-						|| job["OrbSet2_1"] === "A" || job["OrbSet2_2"] === "A" || job["OrbSet2_3"] === "A")){
-							dmg = 0;
-					}
-					break;
-				case 4:
-					if(!(job["OrbSet1_1"] === "E" || job["OrbSet1_2"] === "E" || job["OrbSet1_3"] === "E"
-						|| job["OrbSet2_1"] === "E" || job["OrbSet2_2"] === "E" || job["OrbSet2_3"] === "E")){
-							dmg = 0;
-					}
-					break;
-				case 5:
-					if(!(job["OrbSet1_1"] === "L" || job["OrbSet1_2"] === "L" || job["OrbSet1_3"] === "L"
-						|| job["OrbSet2_1"] === "L" || job["OrbSet2_2"] === "L" || job["OrbSet2_3"] === "L")){
-							dmg = 0;
-					}
-					break;
-				case 6:
-					if(!(job["OrbSet1_1"] === "D" || job["OrbSet1_2"] === "D" || job["OrbSet1_3"] === "D"
-						|| job["OrbSet2_1"] === "D" || job["OrbSet2_2"] === "D" || job["OrbSet2_3"] === "D")){
-							dmg = 0;
-					}
-					break;
-			}
-		}
-		
-		// Filter out jobs that can't use the elements
-	
-		//Output Dmg = Card's Attack * Magic * EE * Critical * Broken * Weakness * Ravage * Supreme
-		//Output Dmg = Card's Attack * Attack * EE * Critical * Broken * Weakness * Ravage * Supreme
-		
-		if(userInput.type){  // true = magic, false = atk
-			//Mag: (1 + magic_stat/100) * (1 + magic_mod/100) * (1 + stat_mod/100) + additional_magic/100
-			dmg *= (1 + parseInt2(job["Magic"])/100);
-		}
-		else{
-			//Atk: (1 + attack_stat/100) * (1 + attack_mod/100) * (1 + stat_mod/100) + additional_attack/100
-			dmg *= (1 + parseInt2(job["Attack"])/100);
-		}
-		
-		// EE: 1 + (enhance_element + ee_additional)/100
-		switch(userInput.elem){
-			// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark
-			case 1:
-				dmg *= (1 + (parseInt2(job["Fire_EE"]) + parseInt2(job["Ability Chain"]) + userInput.ee + userInput.attunedChain + userInput.abilityChain)/100);
-				break;
-			case 2:
-				dmg *= (1 + (parseInt2(job["Water_EE"]) + parseInt2(job["Ability Chain"]) + userInput.ee + userInput.attunedChain + userInput.abilityChain)/100);
-				break;
-			case 3:
-				dmg *= (1 + (parseInt2(job["Wind_EE"]) + parseInt2(job["Ability Chain"]) + userInput.ee + userInput.attunedChain + userInput.abilityChain)/100);
-				break;
-			case 4:
-				dmg *= (1 + (parseInt2(job["Earth_EE"]) + parseInt2(job["Ability Chain"]) + userInput.ee + userInput.attunedChain + userInput.abilityChain)/100);
-				break;
-			case 5:
-				dmg *= (1 + (parseInt2(job["Light_EE"]) + parseInt2(job["Ability Chain"]) + userInput.ee + userInput.attunedChain + userInput.abilityChain)/100);
-				break;
-			case 6:
-				dmg *= (1 + (parseInt2(job["Dark_EE"]) + parseInt2(job["Ability Chain"]) + userInput.ee + userInput.attunedChain + userInput.abilityChain)/100);
-				break;
-		}
-		
-		// Critical: 1 + (base_crit + imp_crit + crit_additional)/100
-		dmg *= (1 + (50 + parseInt2(job["Improved Crits"]) + userInput.improvedCrit)/100);
-		
-		// Broken: 1 + (base_break + painful_break + break_additional)/100
-		if(isBroken){
-			dmg *= (1 + (100 + parseInt2(job["Painful Break"]) + userInput.painfulBreak)/100);
-		}
-		
-		// Weakness: 1 + (base_weak + broken_weak + exp_weak + weak_additional)/100
-		if(isWeakness && isBroken){
-			dmg *= (1 + (30 + 70 + parseInt2(job["Exploit Weakness"]) + userInput.weakness)/100);
-		}
-		else if(isWeakness){
-			dmg *= (1 + (30 + parseInt2(job["Exploit Weakness"]) + userInput.weakness)/100);
-		}
-				
-		// Ravage: 1 + (ravage + ravage_additional)/100
-		if(isAOE){
-			dmg *= (1 + (parseInt2(job["Ravage"]) + userInput.ravage)/100);
-		}
-		
-		return dmg;
-	}
-	
-	$(document).ready(function() {
-		GetAbility();
-		GetJob();		
-		
-		$("#input").change(function(){
-			OnInputChange();
-		});
-		
-		$("#ability_template").change(function(){
-			OnTemplateChange();
-		});
-
-		$("#ignore_lore").change(function(){
-			UpdateChanges(false);
-		});
-		
-		$("#display_element").change(function(){
-			UpdateChanges(false);
-		});
-		
-		$('#result_table').DataTable( {
-			"order": [[ 1, "desc" ]],
-			"searching": false,
-			"lengthChange": false,
-			"lengthMenu": [[25, 50, -1], [25, 50, "All"]]
-		} );
-	});
-	</script>
+	<script src="js/data.js"></script>
+	<script src="js/calc.js"></script>
+	<script src="js/index.js"></script>
 </head>
 
 <body>
-	<div class="container ">
+	<div class="container">
 		<div class="row header_bar">
             <div class="col-xs-12 col-sm-8">
-                <h4 class="title_heading">Mobius Final Fantasy - Damage Ranking Calculator (v 1.1)</h4>
+                <h4 class="title_heading">Mobius Final Fantasy - Damage Ranking Calculator (v 1.2)</h4>
             </div>
         </div>
-		
+			
 		<br/>
-		<p><i>Disclaimer: This calculator will only provide us an approximate/estimation value of results to be closest as possible. Please take it with a grain of salts.</i>
-		Credits goes to <b>Shiro</b> (for general pointers), <b>IJNA</b> (for maintaining the job spreadsheet), <b>blue2eyes</b> (for documenting damage formula) and many, many more awesome and helpful contributors from <b>Discord MFF</b></p>
-	
-		<br/>
-		<p> Select the ability from dropdown to auto-fill (or click on "Show Ability Card" for manual input)</p>
+		<p> Select the ability: </p>
 		
 		<select class="form-control" id="ability_template">
-			<option value="-2">Select an ability to auto-fill</option>
 		</select>
 		
-		<hr/>
-
-		<p>
-		  <a class="btn btn-primary collapseBut" data-toggle="collapse" href="#collapseInput" aria-expanded="false" aria-controls="collapseInput">
-			<img src="img/ability-cards.png"> Show Ability Card
-			</a>
-		</p>
-		<div class="collapse" id="collapseInput">
-			<form id="input">
-				<div class="row elem_table">
-					<div class="row">
-						<div class="form-check col-xs-6 col-sm-4">
-							<input class="form-check-input" type="radio" name="elem_input" value="1" id="fireElem" checked>
-							<label class="form-check-label" for="fireElem"><img src="img/elem_fire.png"> Fire</label>
-						</div>
-						
-						<div class="form-check col-xs-6 col-sm-4">
-							<input class="form-check-input" type="radio" name="elem_input" value="2" id="waterElem">
-							<label class="form-check-label" for="waterElem"><img src="img/elem_water.png"> Water</label>
-						</div>
-						
-						<div class="form-check col-xs-6 col-sm-4">
-							<input class="form-check-input" type="radio" name="elem_input" value="3" id="windElem">
-							<label class="form-check-label" for="windElem"><img src="img/elem_wind.png"> Wind</label>
-						</div>
-						
-						<div class="form-check col-xs-6 col-sm-4">
-							<input class="form-check-input" type="radio" name="elem_input" value="4" id="earthElem">
-							<label class="form-check-label" for="earthElem"><img src="img/elem_earth.png"> Earth</label>
-						</div>
-						<div class="form-check col-xs-6 col-sm-4">
-							<input class="form-check-input" type="radio" name="elem_input" value="5" id="lightElem">
-							<label class="form-check-label" for="lightElem"><img src="img/elem_light.png"> Light</label>
-						</div>
-						<div class="form-check col-xs-6 col-sm-4">
-							<input class="form-check-input" type="radio" name="elem_input" value="6" id="darkElem">
-							<label class="form-check-label" for="darkElem"><img src="img/elem_dark.png"> Dark</label>
-						</div>
-
-					</div>
+		<div class="ability_panel">
+			<img src="img/supreme/default.jpg" width="35%" id="ability_img">
+			
+			<div class="row">
+				<div class="col-xs-6 col-sm-3 vcenter">
+					<label class="control-label">Attack</label>
+				</div>
+				<div class="col-xs-6 col-sm-3 vcenter">
+					<input type="number" class="form-control" name="atk_display" value="1800" readonly>
 				</div>
 				
-				<br/>
-				<input name="type" type="checkbox" checked data-toggle="toggle" data-on="Magic-based" data-off="Attack-based" data-onstyle="primary" data-offstyle="info" data-width="100%">
-				
-				<br/>
-				<br/>
-				
-				<div class="row lore_table">
-					<div class="form-check col-xs-6 col-sm-3">
-						<input class="form-check-input" type="radio" name="lore_input" value="1" id="lore_warrior" checked>
-						<label class="form-check-label" for="lore_warrior"><img src="img/lore_warrior.png"> Warrior</label>
-					</div>
-					
-					<div class="form-check col-xs-6 col-sm-3">
-						<input class="form-check-input" type="radio" name="lore_input" value="2" id="lore_mage">
-						<label class="form-check-label" for="lore_mage"><img src="img/lore_mage.png"> Mage</label>
-					</div>
-					<div class="form-check col-xs-6 col-sm-3">
-						<input class="form-check-input" type="radio" name="lore_input" value="3" id="lore_ranger">
-						<label class="form-check-label" for="lore_ranger"><img src="img/lore_ranger.png"> Ranger</label>
-					</div>
-					<div class="form-check col-xs-6 col-sm-3">
-						<input class="form-check-input" type="radio" name="lore_input" value="4" id="lore_monk">
-						<label class="form-check-label" for="lore_monk"><img src="img/lore_monk.png"> Monk</label>
-					</div>
+				<div class="col-xs-6 col-sm-3 vcenter">
+					<label class="control-label">Break Power</label>
 				</div>
-				
-				<br/>
-				<div class="row">
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<label class="control-label">Attack</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<input type="number" class="form-control" name="atk_power" value="1800">
-					</div>
-					<!--<div class="col-xs-3 col-sm-2 vcenter">
-						<label class="">Break Power</label>
-					</div>
-					<div class="col-xs-3 col-sm-3 vcenter">
-						<input type="number" class="form-control" name="brk_power" placeholder="1800">
-					</div>
-					-->
-					
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<label class="">Improved Crit</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<input type="number" class="form-control" name="improved_crit" value="0">
-					</div>
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<label class="">Exploit Weakness</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<input type="number" class="form-control" name="exploit_weakness" value="0">
-					</div>
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<label class="">Element Enhance</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<input type="number" class="form-control" name="ee_power" value="0">
-					</div>
-					
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<label class="">Attuned Chain</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<input type="number" class="form-control" name="attuned_chain" value="0">
-					</div>
-					
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<label class="">Ability Chain</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<input type="number" class="form-control" name="ability_chain" value="0">
-					</div>
-					
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<label class="">Painful Break</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<input type="number" class="form-control" name="pb_power" value="0">
-					</div>
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<label class="">Ravage</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 vcenter">
-						<input type="number" class="form-control" name="ravage_power" value="0">
-					</div>
+				<div class="col-xs-6 col-sm-3 vcenter">
+					<input type="number" class="form-control" name="break_power_display" value="1800" readonly>
 				</div>
-			</form>
+			</div>
 		</div>
-		
-		
-		
 		<hr/>
+		
 		<div class="row options_table">
 			<div class="form-check col-xs-12 col-sm-6">
 				<input class="form-check-input" type="checkbox" name="ignore_lore" value="1" id="ignore_lore">
@@ -598,6 +97,20 @@
 			<tbody>
 			</tbody>					
 		</table>
+		
+		<hr/>
+		<p>
+		Credits goes to:
+		<ul>
+			<li><b>blue2eyes</b> (for documenting damage formula)</li>
+			<li><b>IJNA</b> (for maintaining the job spreadsheet)
+			<li><b>Shiro</b> (for general pointers)</li>
+			<li>And many helpful contributors from <b>Discord MFF</b></li>
+		</ul> 
+		</p>
+		<hr/>
+		<i>Disclaimer: This calculator will only provide us an approximate/estimation value of results to be closest as possible. Please take it with a grain of salts.</i>
+		<hr/>
 	</div>
 	
 	

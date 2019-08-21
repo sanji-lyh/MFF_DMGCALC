@@ -1,6 +1,7 @@
 [
   {
     "AbilityName": "Minwu",
+    "ImageName": "minwu.jpg",
     "Type": "Mage",
     "Elem": 5,
     "Attack": 2100,
@@ -20,6 +21,7 @@
   },
   {
     "AbilityName": "Minwu (Single-target)",
+    "ImageName": "minwu.jpg",
     "Type": "Mage",
     "Elem": 5,
     "Attack": 2100,
@@ -39,6 +41,7 @@
   },
   {
     "AbilityName": "Unbreakable Bond: FFXV (Full HP)",
+    "ImageName": "unbreakable_bonds.jpg",
     "Type": "Warrior",
     "Elem": 6,
     "Attack": 2700,
@@ -58,6 +61,7 @@
   },
   {
     "AbilityName": "Duncan",
+    "ImageName": "duncan.jpg",
     "Type": "Monk",
     "Elem": 5,
     "Attack": 3600,
@@ -77,6 +81,7 @@
   },
   {
     "AbilityName": "Ragnarok: FFXIII",
+    "ImageName": "ragnarok.jpg",
     "Type": "Ranger",
     "Elem": 4,
     "Attack": 1500,
@@ -96,9 +101,10 @@
   },
   {
     "AbilityName": "Xezat: FFV",
+    "ImageName": "xezat.jpg",
     "Type": "Warrior",
     "Elem": 2,
-    "Attack": 900,
+    "Attack": 960,
     "BreakPower": 2640,
     "ImprovedCrit": 0,
     "ExploitWeakness": 0,
@@ -115,6 +121,7 @@
   },
   {
     "AbilityName": "Yiazmat: FFXII (Full Ult)",
+    "ImageName": "yiazmat.jpg",
     "Type": "Monk",
     "Elem": 3,
     "Attack": 2250,
@@ -134,6 +141,7 @@
   },
   {
     "AbilityName": "Fusoya: FFIV (Full Orb)",
+    "ImageName": "fusoya.jpg",
     "Type": "Mage",
     "Elem": 1,
     "Attack": 2550,
@@ -153,6 +161,7 @@
   },
   {
     "AbilityName": "Sin: FFX",
+    "ImageName": "sin.jpg",
     "Type": "Mage",
     "Elem": 6,
     "Attack": 1800,
@@ -172,6 +181,7 @@
   },
   {
     "AbilityName": "Shadow Lord: FFXII (Max Dmg)",
+    "ImageName": "shadow_lord.jpg",
     "Type": "Warrior",
     "Elem": 6,
     "Attack": 1950,
@@ -191,6 +201,7 @@
   },
   {
     "AbilityName": "Braska's Final Aeon: FFX",
+    "ImageName": "braska_final_aeon.jpg",
     "Type": "Monk",
     "Elem": 4,
     "Attack": 2850,
@@ -210,6 +221,7 @@
   },
   {
     "AbilityName": "Floral Fallal: FFX-2 (10 buffs)",
+    "ImageName": "floral.jpg",
     "Type": "Ranger",
     "Elem": 2,
     "Attack": 2700,
@@ -229,6 +241,7 @@
   },
   {
     "AbilityName": "Godo: FFVII",
+    "ImageName": "godo.jpg",
     "Type": "Ranger",
     "Elem": 3,
     "Attack": 2250,
@@ -247,11 +260,12 @@
     "MultiplySubAtk": 0
   },
   {
-    "AbilityName": "Emperor of Arubboth: FII (7 debuff)",
+    "AbilityName": "Emperor of Arubboth: FII (5 debuff)",
+    "ImageName": "emperor.jpg",
     "Type": "Mage",
     "Elem": 3,
-    "Attack": 1200,
-    "BreakPower": 30,
+    "Attack": 1650,
+    "BreakPower": 600,
     "ImprovedCrit": 0,
     "ExploitWeakness": 0,
     "ElementEnhance": 1050,
@@ -267,6 +281,7 @@
   },
   {
     "AbilityName": "Bahamut Neo",
+    "ImageName": "bahamut_neo.jpg",
     "Type": "Warrior",
     "Elem": 1,
     "Attack": 1800,
@@ -286,10 +301,11 @@
   },
   {
     "AbilityName": "Eden (5 turns Omnidrive)",
+    "ImageName": "eden.jpg",
     "Type": "Monk",
     "Elem": 2,
-    "Attack": 1650,
-    "BreakPower": 450,
+    "Attack": 2550,
+    "BreakPower": 750,
     "ImprovedCrit": 0,
     "ExploitWeakness": 0,
     "ElementEnhance": 600,
@@ -305,6 +321,7 @@
   },
   {
     "AbilityName": "Gilgamesh X",
+    "ImageName": "gilgamesh_x.jpg",
     "Type": "Ranger",
     "Elem": 5,
     "Attack": 2850,
@@ -324,6 +341,7 @@
   },
   {
     "AbilityName": "Bhunivelze: FFXIII",
+    "ImageName": "bhunivelze.jpg",
     "Type": "Warrior",
     "Elem": 5,
     "Attack": 2850,
@@ -343,6 +361,7 @@
   },
   {
     "AbilityName": "Faris: FFV",
+    "ImageName": "faris.jpg",
     "Type": "Mage",
     "Elem": 2,
     "Attack": 2940,
@@ -362,6 +381,7 @@
   },
   {
     "AbilityName": "Zeromus: FFIV",
+    "ImageName": "zeromus.jpg",
     "Type": "Monk",
     "Elem": 1,
     "Attack": 2550,
@@ -378,5 +398,25 @@
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
     "MultiplySubAtk": 50
+  },
+  {
+    "AbilityName": "Griever: FFVIII",
+    "ImageName": "griever.jpg",
+    "Type": "Monk",
+    "Elem": 6,
+    "Attack": 2700,
+    "BreakPower": 900,
+    "ImprovedCrit": 0,
+    "ExploitWeakness": 0,
+    "ElementEnhance": 0,
+    "AttunedChain": 0,
+    "AbilityChain": 0,
+    "PainfulBreak": 0,
+    "Ravage": 0,
+    "SupremeEffect": 0,
+    "MultiplyMag": 0,
+    "MultiplySubMag": 0,
+    "MultiplyAtk": 0,
+    "MultiplySubAtk": 0
   }
 ]
