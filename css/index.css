@@ -59,6 +59,9 @@ table.dataTable tbody tr:hover {
 .ability_panel img{
 	float: left;
 	margin-right: 80px;
+	margin-bottom: 20px;
+	max-width: 380px;
+	width:100%;
 }
 
 .ability_panel input[readonly]{
