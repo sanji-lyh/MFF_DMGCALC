@@ -8,45 +8,6 @@ function numberWithCommas(x) {
 function parseInt2(input){
 	return parseInt(input.toString().replace(/,/g,'')) || 0;
 }
-
-function ProcessRanking(userInput, jobList){	
-	resultList = [];
-
-	// compute dmg for each job first
-	for(i = 0; i < jobList.length; i++){
-		var resultEntry = {
-			name: jobList[i]["Job Name"],
-			unbrokenWeaknessDmg: ComputeDmg(userInput, jobList[i], false, true),
-			unbrokenNeutralDmg: ComputeDmg(userInput, jobList[i], false, false),
-			brokenWeaknessDmg: ComputeDmg(userInput, jobList[i], true, true),
-			brokenNeutralDmg: ComputeDmg(userInput, jobList[i], true, false)
-		};
-		
-		if(!(resultEntry.unbrokenWeaknessDmg == 0
-			&& resultEntry.unbrokenNeutralDmg == 0
-			&& resultEntry.brokenWeaknessDmg == 0
-			&& resultEntry.brokenNeutralDmg == 0))
-		{
-			resultList.push(resultEntry);
-		}
-	}
-	
-	if ($.fn.DataTable.isDataTable("#result_table")) {
-	  $('#result_table').DataTable().clear().destroy();
-	}
-			
-	for(i=0; i < resultList.length; i++){
-		$("#result_table > tbody:last-child").append("<tr><td>" + resultList[i].name + "</td><td>" + numberWithCommas(resultList[i].unbrokenNeutralDmg) + "</td><td>" + numberWithCommas(resultList[i].unbrokenWeaknessDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenNeutralDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenWeaknessDmg)  + "</td>")
-	}
-	
-	$('#result_table').DataTable( {
-		"order": [[ 1, "desc" ]],
-		"lengthMenu": [[25, 50, -1], [25, 50, "All"]],
-		"searching": false,
-		"lengthChange": false,
-		columnDefs: [{targets: [ "_all" ], orderSequence: [ "desc", "desc", "asc" ]  }]
-	} );
-}
 	
 function ComputeDmg(userInput, job, isBroken, isWeakness, isAOE=true){	
 	var dmg = userInput.ability["Attack"];
