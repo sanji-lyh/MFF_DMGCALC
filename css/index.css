@@ -3,10 +3,19 @@ body {
 	color: #d7ddde;
 }
 
+a{
+		
+}
+
 .header_bar {
 	background-image: linear-gradient(to bottom right, #ac7310, #ebb04a);
 	color: white;
 	padding: 16px 8px;
+}
+
+.older-version-div {
+	text-align: right;
+	padding: 10px;
 }
 
 .container {
