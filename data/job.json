@@ -1,6 +1,7 @@
 [
   {
     "Job Name": "Warrior",
+    "ImageName": "2.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "9,230",
@@ -50,6 +51,7 @@
   },
   {
     "Job Name": "Warrior [HoF]",
+    "ImageName": "2.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "13,845",
@@ -99,6 +101,7 @@
   },
   {
     "Job Name": "Knight",
+    "ImageName": "3.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "10,030",
@@ -148,6 +151,7 @@
   },
   {
     "Job Name": "Knight [HoF]",
+    "ImageName": "3.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "15,045",
@@ -197,6 +201,7 @@
   },
   {
     "Job Name": "Mage",
+    "ImageName": "9.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "9,230",
@@ -246,6 +251,7 @@
   },
   {
     "Job Name": "Mage [HoF]",
+    "ImageName": "9.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "13,845",
@@ -295,6 +301,7 @@
   },
   {
     "Job Name": "White Mage",
+    "ImageName": "10.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "7,830",
@@ -344,6 +351,7 @@
   },
   {
     "Job Name": "White Mage [HoF]",
+    "ImageName": "10.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "11,745",
@@ -393,6 +401,7 @@
   },
   {
     "Job Name": "Ranger",
+    "ImageName": "16.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "9,230",
@@ -442,6 +451,7 @@
   },
   {
     "Job Name": "Ranger [HoF]",
+    "ImageName": "16.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "13,845",
@@ -491,6 +501,7 @@
   },
   {
     "Job Name": "Hunter",
+    "ImageName": "17.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "9,230",
@@ -540,6 +551,7 @@
   },
   {
     "Job Name": "Hunter [HoF]",
+    "ImageName": "17.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "13,845",
@@ -589,6 +601,7 @@
   },
   {
     "Job Name": "Dark Knight",
+    "ImageName": "4.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "9,080",
@@ -638,6 +651,7 @@
   },
   {
     "Job Name": "Dark Knight [HoF]",
+    "ImageName": "4.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "13,620",
@@ -687,6 +701,7 @@
   },
   {
     "Job Name": "Black Mage",
+    "ImageName": "11.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "9,230",
@@ -736,6 +751,7 @@
   },
   {
     "Job Name": "Black Mage [HoF]",
+    "ImageName": "11.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "13,845",
@@ -785,6 +801,7 @@
   },
   {
     "Job Name": "Thief",
+    "ImageName": "18.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "7,830",
@@ -834,6 +851,7 @@
   },
   {
     "Job Name": "Thief [HoF]",
+    "ImageName": "18.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "11,745",
@@ -883,6 +901,7 @@
   },
   {
     "Job Name": "Samurai",
+    "ImageName": "22.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "6,734",
@@ -932,6 +951,7 @@
   },
   {
     "Job Name": "Samurai [HoF]",
+    "ImageName": "22.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "9,428",
@@ -981,6 +1001,7 @@
   },
   {
     "Job Name": "Red Mage",
+    "ImageName": "23.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "6,734",
@@ -1030,6 +1051,7 @@
   },
   {
     "Job Name": "Red Mage [HoF]",
+    "ImageName": "23.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "9,428",
@@ -1079,6 +1101,7 @@
   },
   {
     "Job Name": "Assassin",
+    "ImageName": "24.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "6,734",
@@ -1128,6 +1151,7 @@
   },
   {
     "Job Name": "Assassin [HoF]",
+    "ImageName": "24.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "9,428",
@@ -1177,6 +1201,7 @@
   },
   {
     "Job Name": "Dragoon",
+    "ImageName": "28.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "10,408",
@@ -1226,6 +1251,7 @@
   },
   {
     "Job Name": "Dragoon [HoF]",
+    "ImageName": "28.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "14,572",
@@ -1275,6 +1301,7 @@
   },
   {
     "Job Name": "Scholar",
+    "ImageName": "29.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "10,408",
@@ -1324,6 +1351,7 @@
   },
   {
     "Job Name": "Scholar [HoF]",
+    "ImageName": "29.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "14,572",
@@ -1373,6 +1401,7 @@
   },
   {
     "Job Name": "Dancer",
+    "ImageName": "30.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "10,408",
@@ -1422,6 +1451,7 @@
   },
   {
     "Job Name": "Dancer [HoF]",
+    "ImageName": "30.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "14,572",
@@ -1471,6 +1501,7 @@
   },
   {
     "Job Name": "Ace Striker",
+    "ImageName": "49.jpg",
     "Class": "Warrior",
     "Lore": "Mage",
     "HP": "7,320",
@@ -1520,6 +1551,7 @@
   },
   {
     "Job Name": "Ace Striker [HoF]",
+    "ImageName": "49.jpg",
     "Class": "Warrior",
     "Lore": "Mage",
     "HP": "10,980",
@@ -1569,6 +1601,7 @@
   },
   {
     "Job Name": "Mythic Knight",
+    "ImageName": "50.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "6,506",
@@ -1618,6 +1651,7 @@
   },
   {
     "Job Name": "Mythic Knight [HoF]",
+    "ImageName": "50.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "9,759",
@@ -1667,6 +1701,7 @@
   },
   {
     "Job Name": "Mythic Sage",
+    "ImageName": "51.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "6,506",
@@ -1716,6 +1751,7 @@
   },
   {
     "Job Name": "Mythic Sage [HoF]",
+    "ImageName": "51.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "9,759",
@@ -1765,6 +1801,7 @@
   },
   {
     "Job Name": "Mythic Ninja",
+    "ImageName": "52.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "6,506",
@@ -1814,6 +1851,7 @@
   },
   {
     "Job Name": "Mythic Ninja [HoF]",
+    "ImageName": "52.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "9,759",
@@ -1863,6 +1901,7 @@
   },
   {
     "Job Name": "Paladin",
+    "ImageName": "53.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "12,646",
@@ -1912,6 +1951,7 @@
   },
   {
     "Job Name": "Paladin [HoF]",
+    "ImageName": "53.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "17,705",
@@ -1961,6 +2001,7 @@
   },
   {
     "Job Name": "Devout",
+    "ImageName": "55.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "11,816",
@@ -2010,6 +2051,7 @@
   },
   {
     "Job Name": "Devout [HoF]",
+    "ImageName": "55.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "16,543",
@@ -2059,6 +2101,7 @@
   },
   {
     "Job Name": "Viking",
+    "ImageName": "54.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "11,876",
@@ -2108,6 +2151,7 @@
   },
   {
     "Job Name": "Viking [HoF]",
+    "ImageName": "54.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "16,627",
@@ -2157,6 +2201,7 @@
   },
   {
     "Job Name": "Soldier 1st Class",
+    "ImageName": "62.jpg",
     "Class": "Warrior",
     "Lore": "Ranger",
     "HP": "7,916",
@@ -2206,6 +2251,7 @@
   },
   {
     "Job Name": "Soldier 1st Class [HoF]",
+    "ImageName": "62.jpg",
     "Class": "Warrior",
     "Lore": "Ranger",
     "HP": "11,874",
@@ -2255,6 +2301,7 @@
   },
   {
     "Job Name": "Berserker",
+    "ImageName": "63.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "10,896",
@@ -2304,6 +2351,7 @@
   },
   {
     "Job Name": "Berserker [HoF]",
+    "ImageName": "63.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "15,254",
@@ -2353,6 +2401,7 @@
   },
   {
     "Job Name": "Occultist",
+    "ImageName": "64.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "11,076",
@@ -2402,6 +2451,7 @@
   },
   {
     "Job Name": "Occultist [HoF]",
+    "ImageName": "64.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "15,506",
@@ -2451,6 +2501,7 @@
   },
   {
     "Job Name": "Rogue",
+    "ImageName": "65.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "11,016",
@@ -2500,6 +2551,7 @@
   },
   {
     "Job Name": "Rogue [HoF]",
+    "ImageName": "65.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "15,422",
@@ -2549,6 +2601,7 @@
   },
   {
     "Job Name": "Heretical Knight",
+    "ImageName": "72.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "12,454",
@@ -2598,6 +2651,7 @@
   },
   {
     "Job Name": "Heretical Knight [HoF]",
+    "ImageName": "72.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "18,681",
@@ -2647,6 +2701,7 @@
   },
   {
     "Job Name": "Monk",
+    "ImageName": "73.jpg",
     "Class": "Monk",
     "Lore": "Warrior",
     "HP": "12,470",
@@ -2696,6 +2751,7 @@
   },
   {
     "Job Name": "Monk [HoF]",
+    "ImageName": "73.jpg",
     "Class": "Monk",
     "Lore": "Warrior",
     "HP": "17,458",
@@ -2745,6 +2801,7 @@
   },
   {
     "Job Name": "Pugilist",
+    "ImageName": "75.jpg",
     "Class": "Monk",
     "Lore": "Mage",
     "HP": "13,270",
@@ -2794,6 +2851,7 @@
   },
   {
     "Job Name": "Pugilist [HoF]",
+    "ImageName": "75.jpg",
     "Class": "Monk",
     "Lore": "Mage",
     "HP": "18,578",
@@ -2843,6 +2901,7 @@
   },
   {
     "Job Name": "Grappler",
+    "ImageName": "76.jpg",
     "Class": "Monk",
     "Lore": "Ranger",
     "HP": "12,320",
@@ -2892,6 +2951,7 @@
   },
   {
     "Job Name": "Grappler [HoF]",
+    "ImageName": "76.jpg",
     "Class": "Monk",
     "Lore": "Ranger",
     "HP": "17,248",
@@ -2941,6 +3001,7 @@
   },
   {
     "Job Name": "Highwind",
+    "ImageName": "89.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "8,266",
@@ -2990,6 +3051,7 @@
   },
   {
     "Job Name": "Highwind [HoF]",
+    "ImageName": "89.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "11,573",
@@ -3039,6 +3101,7 @@
   },
   {
     "Job Name": "Tactician",
+    "ImageName": "90.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "8,366",
@@ -3088,6 +3151,7 @@
   },
   {
     "Job Name": "Tactician [HoF]",
+    "ImageName": "90.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "11,713",
@@ -3137,6 +3201,7 @@
   },
   {
     "Job Name": "Bard",
+    "ImageName": "83.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "8,366",
@@ -3186,6 +3251,7 @@
   },
   {
     "Job Name": "Bard [HoF]",
+    "ImageName": "83.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "11,713",
@@ -3235,6 +3301,7 @@
   },
   {
     "Job Name": "Hermit",
+    "ImageName": "86.jpg",
     "Class": "Monk",
     "Lore": "Warrior",
     "HP": "8,266",
@@ -3284,6 +3351,7 @@
   },
   {
     "Job Name": "Hermit [HoF]",
+    "ImageName": "86.jpg",
     "Class": "Monk",
     "Lore": "Warrior",
     "HP": "11,573",
@@ -3333,6 +3401,7 @@
   },
   {
     "Job Name": "Judge Magister",
+    "ImageName": "95.jpg",
     "Class": "Ranger",
     "Lore": "Mage",
     "HP": "8,634",
@@ -3382,6 +3451,7 @@
   },
   {
     "Job Name": "Judge Magister [HoF]",
+    "ImageName": "95.jpg",
     "Class": "Ranger",
     "Lore": "Mage",
     "HP": "12,951",
@@ -3431,6 +3501,7 @@
   },
   {
     "Job Name": "Balamb Mercenary",
+    "ImageName": "97.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "12,236",
@@ -3480,6 +3551,7 @@
   },
   {
     "Job Name": "Balamb Mercenary [HoF]",
+    "ImageName": "97.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "17,131",
@@ -3529,6 +3601,7 @@
   },
   {
     "Job Name": "Tonberry Suit",
+    "ImageName": "96.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "12,236",
@@ -3578,6 +3651,7 @@
   },
   {
     "Job Name": "Tonberry Suit [HoF]",
+    "ImageName": "96.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "17,009",
@@ -3627,6 +3701,7 @@
   },
   {
     "Job Name": "Thief of Tantalus",
+    "ImageName": "98.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "12,236",
@@ -3676,6 +3751,7 @@
   },
   {
     "Job Name": "Thief of Tantalus [HoF]",
+    "ImageName": "98.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "17,131",
@@ -3725,6 +3801,7 @@
   },
   {
     "Job Name": "Moogle Suit",
+    "ImageName": "99.jpg",
     "Class": "Monk",
     "Lore": "Mage",
     "HP": "12,236",
@@ -3774,6 +3851,7 @@
   },
   {
     "Job Name": "Moogle Suit [HoF]",
+    "ImageName": "99.jpg",
     "Class": "Monk",
     "Lore": "Mage",
     "HP": "31,131",
@@ -3823,6 +3901,7 @@
   },
   {
     "Job Name": "Knight of Etro",
+    "ImageName": "103.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "12,236",
@@ -3872,6 +3951,7 @@
   },
   {
     "Job Name": "Knight of Etro [HoF]",
+    "ImageName": "103.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "17,131",
@@ -3921,6 +4001,7 @@
   },
   {
     "Job Name": "Knight of Etro [HoF] + 150% Painful Break",
+    "ImageName": "103.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "17,131",
@@ -3970,6 +4051,7 @@
   },
   {
     "Job Name": "Hope's Guide",
+    "ImageName": "102.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "12,236",
@@ -4019,6 +4101,7 @@
   },
   {
     "Job Name": "Hope's Guide [HoF]",
+    "ImageName": "102.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "17,131",
@@ -4068,6 +4151,7 @@
   },
   {
     "Job Name": "Hope's Guide [HoF] +150% Painful Break",
+    "ImageName": "102.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "17,131",
@@ -4117,6 +4201,7 @@
   },
   {
     "Job Name": "Last Hunter",
+    "ImageName": "104.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "12,236",
@@ -4166,6 +4251,7 @@
   },
   {
     "Job Name": "Last Hunter [HoF]",
+    "ImageName": "104.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "17,131",
@@ -4215,6 +4301,7 @@
   },
   {
     "Job Name": "Last Hunter [HoF] +150% Painful Break",
+    "ImageName": "104.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "17,131",
@@ -4264,6 +4351,7 @@
   },
   {
     "Job Name": "Unbroken Hero",
+    "ImageName": "101.jpg",
     "Class": "Monk",
     "Lore": "",
     "HP": "12,236",
@@ -4313,6 +4401,7 @@
   },
   {
     "Job Name": "Unbroken Hero [HoF]",
+    "ImageName": "101.jpg",
     "Class": "Monk",
     "Lore": "",
     "HP": "17,131",
@@ -4362,6 +4451,7 @@
   },
   {
     "Job Name": "Unbroken Hero [HoF] +150% Painful Break",
+    "ImageName": "101.jpg",
     "Class": "Monk",
     "Lore": "",
     "HP": "17,131",
@@ -4411,6 +4501,7 @@
   },
   {
     "Job Name": "Fauviste",
+    "ImageName": "110.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "7,455",
@@ -4460,6 +4551,7 @@
   },
   {
     "Job Name": "Fauviste [HoF]",
+    "ImageName": "110.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "7,956",
@@ -4509,6 +4601,7 @@
   },
   {
     "Job Name": "Esmeralda",
+    "ImageName": "111.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "7,456",
@@ -4558,6 +4651,7 @@
   },
   {
     "Job Name": "Esmeralda [HoF]",
+    "ImageName": "111.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "7,956",
@@ -4607,6 +4701,7 @@
   },
   {
     "Job Name": "Amalthea",
+    "ImageName": "115.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "7,456",
@@ -4656,6 +4751,7 @@
   },
   {
     "Job Name": "Amalthea [HoF]",
+    "ImageName": "115.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "7,956",
@@ -4705,6 +4801,7 @@
   },
   {
     "Job Name": "Master Monk",
+    "ImageName": "112.jpg",
     "Class": "Monk",
     "Lore": "Ranger",
     "HP": "11,160",
@@ -4754,6 +4851,7 @@
   },
   {
     "Job Name": "Master Monk [HoF]",
+    "ImageName": "112.jpg",
     "Class": "Monk",
     "Lore": "Ranger",
     "HP": "15,624",
@@ -4803,6 +4901,7 @@
   },
   {
     "Job Name": "Santa Lucia",
+    "ImageName": "117.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "11,776",
@@ -4852,6 +4951,7 @@
   },
   {
     "Job Name": "Santa Lucia [HoF]",
+    "ImageName": "117.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "16,487",
@@ -4901,6 +5001,7 @@
   },
   {
     "Job Name": "Ninja",
+    "ImageName": "118.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "10,624",
@@ -4950,6 +5051,7 @@
   },
   {
     "Job Name": "Ninja [HoF]",
+    "ImageName": "118.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "14,874",
@@ -4999,6 +5101,7 @@
   },
   {
     "Job Name": "Glam Vamp",
+    "ImageName": "121.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "11,776",
@@ -5048,6 +5151,7 @@
   },
   {
     "Job Name": "Hero of Despair",
+    "ImageName": "122.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "9,956",
@@ -5097,6 +5201,7 @@
   },
   {
     "Job Name": "Cait Sith Suit",
+    "ImageName": "128.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "13,604",
@@ -5146,6 +5251,7 @@
   },
   {
     "Job Name": "Flower Girl of Midgar",
+    "ImageName": "124.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "11,776",
@@ -5195,6 +5301,7 @@
   },
   {
     "Job Name": "Sword Saint (Blade)",
+    "ImageName": "129.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "13,471",
@@ -5244,6 +5351,7 @@
   },
   {
     "Job Name": "Sword Saint (Blade) [HoF]",
+    "ImageName": "129.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "18,860",
@@ -5293,6 +5401,7 @@
   },
   {
     "Job Name": "Sword Saint (Steel)",
+    "ImageName": "129.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "13,471",
@@ -5342,6 +5451,7 @@
   },
   {
     "Job Name": "Sword Saint (Steel) [HoF]",
+    "ImageName": "129.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "18,860",
@@ -5391,6 +5501,7 @@
   },
   {
     "Job Name": "Sage",
+    "ImageName": "125.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "13,471",
@@ -5440,6 +5551,7 @@
   },
   {
     "Job Name": "Sage [HoF]",
+    "ImageName": "125.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "18,860",
@@ -5489,6 +5601,7 @@
   },
   {
     "Job Name": "Vesna Krasna",
+    "ImageName": "132.jpg",
     "Class": "Meia",
     "Lore": "Warrior",
     "HP": "11,776",
@@ -5538,6 +5651,7 @@
   },
   {
     "Job Name": "Cocoon Aviator",
+    "ImageName": "133.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "13,014",
@@ -5587,6 +5701,7 @@
   },
   {
     "Job Name": "PSICOM Officer",
+    "ImageName": "135.jpg",
     "Class": "Meia",
     "Lore": "Ranger",
     "HP": "11,776",
@@ -5636,6 +5751,7 @@
   },
   {
     "Job Name": "Eorzean Paladin",
+    "ImageName": "136.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "13,791",
@@ -5685,6 +5801,7 @@
   },
   {
     "Job Name": "Eorzean Bard",
+    "ImageName": "138.jpg",
     "Class": "Sarah",
     "Lore": "",
     "HP": "13,014",
@@ -5734,6 +5851,7 @@
   },
   {
     "Job Name": "Crimson Archer",
+    "ImageName": "139.jpg",
     "Class": "Sarah",
     "Lore": "",
     "HP": "13,260",
@@ -5783,6 +5901,7 @@
   },
   {
     "Job Name": "Primeval Witch (No CPs)",
+    "ImageName": "145.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "12,439",
@@ -5832,6 +5951,7 @@
   },
   {
     "Job Name": "Primeval Witch (Dmg build)",
+    "ImageName": "145.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "12,439",
@@ -5881,6 +6001,7 @@
   },
   {
     "Job Name": "Primeval Witch (Break build)",
+    "ImageName": "145.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "12,439",
@@ -5930,6 +6051,7 @@
   },
   {
     "Job Name": "Nachtflug",
+    "ImageName": "144.jpg",
     "Class": "Sarah",
     "Lore": "",
     "HP": "13,713",
@@ -5979,6 +6101,7 @@
   },
   {
     "Job Name": "Prima Donna",
+    "ImageName": "146.jpg",
     "Class": "Sarah",
     "Lore": "",
     "HP": "13,382",
@@ -6028,6 +6151,7 @@
   },
   {
     "Job Name": "Deep Diver",
+    "ImageName": "142.jpg",
     "Class": "Monk",
     "Lore": "",
     "HP": "13,273",
@@ -6077,6 +6201,7 @@
   },
   {
     "Job Name": "Mellow Mermaid",
+    "ImageName": "143.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "12,428",
@@ -6126,6 +6251,7 @@
   },
   {
     "Job Name": "Beach Queen",
+    "ImageName": "140.jpg",
     "Class": "Sarah",
     "Lore": "",
     "HP": "13,020",
@@ -6175,6 +6301,7 @@
   },
   {
     "Job Name": "Proud Cygnus",
+    "ImageName": "155.jpg",
     "Class": "Sarah",
     "Lore": "",
     "HP": "12,020",
@@ -6224,6 +6351,7 @@
   },
   {
     "Job Name": "Legendary Guardian",
+    "ImageName": "147.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "17,780",
@@ -6273,6 +6401,7 @@
   },
   {
     "Job Name": "Vana'diel Monk",
+    "ImageName": "153.jpg",
     "Class": "Monk",
     "Lore": "Ranger",
     "HP": "23,317",
@@ -6322,6 +6451,7 @@
   },
   {
     "Job Name": "Vana'diel Geomancer",
+    "ImageName": "152.jpg",
     "Class": "Meia",
     "Lore": "Ranger",
     "HP": "13,716",
@@ -6371,6 +6501,7 @@
   },
   {
     "Job Name": "Al Bhed Huntress",
+    "ImageName": "149.jpg",
     "Class": "Sarah",
     "Lore": "",
     "HP": "12,371",
@@ -6420,6 +6551,7 @@
   },
   {
     "Job Name": "Shorn One",
+    "ImageName": "154.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "16,377",
@@ -6469,6 +6601,7 @@
   },
   {
     "Job Name": "Skyseer (ATK)",
+    "ImageName": "156.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "13,942",
@@ -6518,6 +6651,7 @@
   },
   {
     "Job Name": "Skyseer (SUP)",
+    "ImageName": "156.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "13,942",
@@ -6567,6 +6701,7 @@
   },
   {
     "Job Name": "Gambler",
+    "ImageName": "159.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "15,014",
@@ -6616,6 +6751,7 @@
   },
   {
     "Job Name": "Ascetic (ATK)",
+    "ImageName": "151.jpg",
     "Class": "Monk",
     "Lore": "Warrior",
     "HP": "27,500",
@@ -6665,6 +6801,7 @@
   },
   {
     "Job Name": "Ascetic (DEF)",
+    "ImageName": "151.jpg",
     "Class": "Monk",
     "Lore": "Warrior",
     "HP": "27,500",
@@ -6714,6 +6851,7 @@
   },
   {
     "Job Name": "Night Walker",
+    "ImageName": "157.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "13,681",
@@ -6763,6 +6901,7 @@
   },
   {
     "Job Name": "Materia Hunter",
+    "ImageName": "158.jpg",
     "Class": "Sarah",
     "Lore": "",
     "HP": "14,766",
@@ -6812,6 +6951,7 @@
   },
   {
     "Job Name": "Agent of Scarlet Woe",
+    "ImageName": "161.jpg",
     "Class": "Monk",
     "Lore": "Mage",
     "HP": "18,413",
@@ -6861,6 +7001,7 @@
   },
   {
     "Job Name": "Wild Rider",
+    "ImageName": "166.jpg",
     "Class": "Sophie",
     "Lore": "",
     "HP": "15,576",
@@ -6910,6 +7051,7 @@
   },
   {
     "Job Name": "Jet Stunner",
+    "ImageName": "169.jpg",
     "Class": "Sophie",
     "Lore": "",
     "HP": "22,466",
@@ -6959,6 +7101,7 @@
   },
   {
     "Job Name": "Magical Jester",
+    "ImageName": "167.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "19,873",
@@ -7008,6 +7151,7 @@
   },
   {
     "Job Name": "Magitek Heroine",
+    "ImageName": "168.jpg",
     "Class": "Sarah",
     "Lore": "Mage",
     "HP": "18,647",
@@ -7057,6 +7201,7 @@
   },
   {
     "Job Name": "Gardien",
+    "ImageName": "170.jpg",
     "Class": "Graff",
     "Lore": "",
     "HP": "15,678",
@@ -7106,6 +7251,7 @@
   },
   {
     "Job Name": "Toreador",
+    "ImageName": "175.jpg",
     "Class": "Graff",
     "Lore": "",
     "HP": "19,887",
@@ -7155,6 +7301,7 @@
   },
   {
     "Job Name": "Cacciatrice",
+    "ImageName": "176.jpg",
     "Class": "Sarah",
     "Lore": "",
     "HP": "21,338",
@@ -7204,6 +7351,7 @@
   },
   {
     "Job Name": "Stranger to the Mythos",
+    "ImageName": "177.jpg",
     "Class": "Sophie",
     "Lore": "",
     "HP": "20,391",
@@ -7253,6 +7401,7 @@
   },
   {
     "Job Name": "Paradox Wanderer",
+    "ImageName": "178.jpg",
     "Class": "Sarah",
     "Lore": "Mage",
     "HP": "19,330",
@@ -7302,6 +7451,7 @@
   },
   {
     "Job Name": "Scharfrichter (ATK)",
+    "ImageName": "179.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "22,680",
@@ -7351,6 +7501,7 @@
   },
   {
     "Job Name": "Scharfrichter (DEF)",
+    "ImageName": "179.jpg",
     "Class": "Warrior",
     "Lore": "",
     "HP": "22,680",
@@ -7400,6 +7551,7 @@
   },
   {
     "Job Name": "Kämpfer (ATK)",
+    "ImageName": "180.jpg",
     "Class": "Monk",
     "Lore": "Ranger",
     "HP": "29,362",
@@ -7449,6 +7601,7 @@
   },
   {
     "Job Name": "Kämpfer (DEF)",
+    "ImageName": "180.jpg",
     "Class": "Monk",
     "Lore": "Ranger",
     "HP": "29,362",
@@ -7498,6 +7651,7 @@
   },
   {
     "Job Name": "Tropical Traveler",
+    "ImageName": "172.jpg",
     "Class": "Sophie",
     "Lore": "",
     "HP": "18,013",
@@ -7547,6 +7701,7 @@
   },
   {
     "Job Name": "Vagabond",
+    "ImageName": "174.jpg",
     "Class": "Graff",
     "Lore": "",
     "HP": "20,960",
@@ -7596,6 +7751,7 @@
   },
   {
     "Job Name": "Sorceress's Knight",
+    "ImageName": "181.jpg",
     "Class": "Graff",
     "Lore": "",
     "HP": "21,454",
@@ -7645,6 +7801,7 @@
   },
   {
     "Job Name": "Sorceress of Oblivion",
+    "ImageName": "184.jpg",
     "Class": "Meia",
     "Lore": "",
     "HP": "18,411",
@@ -7655,7 +7812,7 @@
     "Spd": 6,
     "Def": 3,
     "OrbSet1_1": "F",
-    "OrbSet1_2": "W",
+    "OrbSet1_2": "A",
     "OrbSet1_3": "D",
     "OrbSet2_1": "F",
     "OrbSet2_2": "L",
