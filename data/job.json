@@ -47,7 +47,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Warrior [HoF]",
@@ -97,7 +99,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Knight",
@@ -147,7 +151,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "0%"
+    "Chance": "0%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Knight [HoF]",
@@ -197,7 +203,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "0%"
+    "Chance": "0%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Mage",
@@ -247,7 +255,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Mage [HoF]",
@@ -297,7 +307,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "35%"
+    "Chance": "35%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "White Mage",
@@ -347,7 +359,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "5%"
+    "Chance": "5%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "White Mage [HoF]",
@@ -397,7 +411,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "5%"
+    "Chance": "5%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Ranger",
@@ -447,7 +463,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Ranger [HoF]",
@@ -497,7 +515,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Hunter",
@@ -547,7 +567,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Hunter [HoF]",
@@ -597,7 +619,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Dark Knight",
@@ -647,7 +671,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Dark Knight [HoF]",
@@ -697,7 +723,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Black Mage",
@@ -747,7 +775,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Black Mage [HoF]",
@@ -797,7 +827,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Thief",
@@ -847,7 +879,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Thief [HoF]",
@@ -897,7 +931,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Samurai",
@@ -947,7 +983,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Samurai [HoF]",
@@ -997,7 +1035,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Red Mage",
@@ -1047,7 +1087,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Red Mage [HoF]",
@@ -1097,7 +1139,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Assassin",
@@ -1147,7 +1191,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Assassin [HoF]",
@@ -1197,7 +1243,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Dragoon",
@@ -1247,7 +1295,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Dragoon [HoF]",
@@ -1297,7 +1347,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Scholar",
@@ -1347,7 +1399,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Scholar [HoF]",
@@ -1397,7 +1451,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Dancer",
@@ -1447,7 +1503,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Dancer [HoF]",
@@ -1497,7 +1555,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Ace Striker",
@@ -1547,7 +1607,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Ace Striker [HoF]",
@@ -1597,7 +1659,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "35%"
+    "Chance": "35%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Mythic Knight",
@@ -1647,7 +1711,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "0%"
+    "Chance": "0%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Mythic Knight [HoF]",
@@ -1697,7 +1763,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "0%"
+    "Chance": "0%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Mythic Sage",
@@ -1747,7 +1815,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Mythic Sage [HoF]",
@@ -1797,7 +1867,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Mythic Ninja",
@@ -1847,7 +1919,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Mythic Ninja [HoF]",
@@ -1897,7 +1971,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Paladin",
@@ -1947,7 +2023,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "0%"
+    "Chance": "0%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Paladin [HoF]",
@@ -1997,7 +2075,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "0%"
+    "Chance": "0%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Devout",
@@ -2047,7 +2127,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "5%"
+    "Chance": "5%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Devout [HoF]",
@@ -2097,7 +2179,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "5%"
+    "Chance": "5%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Viking",
@@ -2147,7 +2231,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Viking [HoF]",
@@ -2197,7 +2283,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Soldier 1st Class",
@@ -2247,7 +2335,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Soldier 1st Class [HoF]",
@@ -2297,7 +2387,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Berserker",
@@ -2347,7 +2439,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Berserker [HoF]",
@@ -2397,7 +2491,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "50%"
+    "Chance": "50%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Occultist",
@@ -2447,7 +2543,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Occultist [HoF]",
@@ -2497,7 +2595,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Rogue",
@@ -2547,7 +2647,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Rogue [HoF]",
@@ -2597,7 +2699,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Heretical Knight",
@@ -2647,7 +2751,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "5%"
+    "Chance": "5%",
+    "Reckoning": 1,
+    "Retribution": ""
   },
   {
     "Job Name": "Heretical Knight [HoF]",
@@ -2697,7 +2803,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "5%"
+    "Chance": "5%",
+    "Reckoning": 1,
+    "Retribution": ""
   },
   {
     "Job Name": "Monk",
@@ -2747,7 +2855,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Monk [HoF]",
@@ -2797,7 +2907,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Pugilist",
@@ -2847,7 +2959,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Pugilist [HoF]",
@@ -2897,7 +3011,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "45%"
+    "Chance": "45%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Grappler",
@@ -2947,7 +3063,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Grappler [HoF]",
@@ -2997,7 +3115,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Highwind",
@@ -3047,7 +3167,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Highwind [HoF]",
@@ -3097,7 +3219,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Tactician",
@@ -3147,7 +3271,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Tactician [HoF]",
@@ -3197,7 +3323,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Bard",
@@ -3247,7 +3375,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "30%"
+    "Chance": "30%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Bard [HoF]",
@@ -3297,7 +3427,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "30%"
+    "Chance": "30%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Hermit",
@@ -3347,7 +3479,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Hermit [HoF]",
@@ -3397,7 +3531,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Judge Magister",
@@ -3447,7 +3583,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Judge Magister [HoF]",
@@ -3497,7 +3635,9 @@
     "Base Attributes": 50,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Balamb Mercenary",
@@ -3547,7 +3687,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Balamb Mercenary [HoF]",
@@ -3597,7 +3739,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Tonberry Suit",
@@ -3647,7 +3791,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Tonberry Suit [HoF]",
@@ -3697,7 +3843,9 @@
     "Base Attributes": 39,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Thief of Tantalus",
@@ -3747,7 +3895,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "30%"
+    "Chance": "30%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Thief of Tantalus [HoF]",
@@ -3797,7 +3947,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "30%"
+    "Chance": "30%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Moogle Suit",
@@ -3847,7 +3999,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "0%"
+    "Chance": "0%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Moogle Suit [HoF]",
@@ -3897,7 +4051,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "0%"
+    "Chance": "0%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Knight of Etro",
@@ -3947,7 +4103,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Knight of Etro [HoF]",
@@ -3997,7 +4155,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Knight of Etro [HoF] + 150% Painful Break",
@@ -4047,7 +4207,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Hope's Guide",
@@ -4097,7 +4259,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Hope's Guide [HoF]",
@@ -4147,7 +4311,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Hope's Guide [HoF] +150% Painful Break",
@@ -4197,7 +4363,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Last Hunter",
@@ -4247,7 +4415,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "30%"
+    "Chance": "30%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Last Hunter [HoF]",
@@ -4297,7 +4467,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "30%"
+    "Chance": "30%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Last Hunter [HoF] +150% Painful Break",
@@ -4347,7 +4519,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "30%"
+    "Chance": "30%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Unbroken Hero",
@@ -4397,7 +4571,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "5%"
+    "Chance": "5%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Unbroken Hero [HoF]",
@@ -4447,7 +4623,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "5%"
+    "Chance": "5%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Unbroken Hero [HoF] +150% Painful Break",
@@ -4497,7 +4675,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "5%"
+    "Chance": "5%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Fauviste",
@@ -4547,7 +4727,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Fauviste [HoF]",
@@ -4597,7 +4779,9 @@
     "Base Attributes": "",
     "Overpower": 50,
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Esmeralda",
@@ -4647,7 +4831,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Esmeralda [HoF]",
@@ -4697,7 +4883,9 @@
     "Base Attributes": "",
     "Overpower": 50,
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Amalthea",
@@ -4747,7 +4935,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Amalthea [HoF]",
@@ -4797,7 +4987,9 @@
     "Base Attributes": "",
     "Overpower": 50,
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Master Monk",
@@ -4847,7 +5039,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Master Monk [HoF]",
@@ -4897,7 +5091,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Santa Lucia",
@@ -4947,7 +5143,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "0%"
+    "Chance": "0%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Santa Lucia [HoF]",
@@ -4997,7 +5195,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "0%"
+    "Chance": "0%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Ninja",
@@ -5047,7 +5247,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "35%"
+    "Chance": "35%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Ninja [HoF]",
@@ -5097,7 +5299,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "35%"
+    "Chance": "35%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Glam Vamp",
@@ -5147,7 +5351,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "5%"
+    "Chance": "5%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Hero of Despair",
@@ -5197,7 +5403,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Cait Sith Suit",
@@ -5247,7 +5455,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Flower Girl of Midgar",
@@ -5297,7 +5507,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Sword Saint (Blade)",
@@ -5347,7 +5559,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Sword Saint (Blade) [HoF]",
@@ -5397,7 +5611,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Sword Saint (Steel)",
@@ -5447,7 +5663,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Sword Saint (Steel) [HoF]",
@@ -5497,7 +5715,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Sage",
@@ -5547,7 +5767,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Sage [HoF]",
@@ -5597,7 +5819,9 @@
     "Base Attributes": 40,
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Vesna Krasna",
@@ -5647,7 +5871,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Cocoon Aviator",
@@ -5697,7 +5923,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "30%"
+    "Chance": "30%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "PSICOM Officer",
@@ -5747,7 +5975,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Eorzean Paladin",
@@ -5797,7 +6027,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Eorzean Bard",
@@ -5847,7 +6079,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Crimson Archer",
@@ -5897,7 +6131,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Primeval Witch (No CPs)",
@@ -5947,7 +6183,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Primeval Witch (Dmg build)",
@@ -5997,7 +6235,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Primeval Witch (Break build)",
@@ -6047,7 +6287,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Nachtflug",
@@ -6097,7 +6339,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Prima Donna",
@@ -6147,7 +6391,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Deep Diver",
@@ -6197,7 +6443,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Mellow Mermaid",
@@ -6247,7 +6495,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Beach Queen",
@@ -6297,7 +6547,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Proud Cygnus",
@@ -6347,7 +6599,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Legendary Guardian",
@@ -6397,7 +6651,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": 1,
+    "Retribution": ""
   },
   {
     "Job Name": "Vana'diel Monk",
@@ -6447,7 +6703,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "45%"
+    "Chance": "45%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Vana'diel Geomancer",
@@ -6497,7 +6755,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Al Bhed Huntress",
@@ -6547,7 +6807,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "50%"
+    "Chance": "50%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Shorn One",
@@ -6597,7 +6859,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Skyseer (ATK)",
@@ -6647,7 +6911,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Skyseer (SUP)",
@@ -6697,7 +6963,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Gambler",
@@ -6747,7 +7015,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "55%"
+    "Chance": "55%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Ascetic (ATK)",
@@ -6797,7 +7067,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "35%"
+    "Chance": "35%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Ascetic (DEF)",
@@ -6847,7 +7119,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Night Walker",
@@ -6897,7 +7171,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "35%"
+    "Chance": "35%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Materia Hunter",
@@ -6947,7 +7223,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Agent of Scarlet Woe",
@@ -6997,7 +7275,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Wild Rider",
@@ -7047,7 +7327,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "25%"
+    "Chance": "25%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Jet Stunner",
@@ -7097,7 +7379,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Magical Jester",
@@ -7147,7 +7431,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Magitek Heroine",
@@ -7197,7 +7483,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "15%"
+    "Chance": "15%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Gardien",
@@ -7247,7 +7535,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Toreador",
@@ -7297,7 +7587,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Cacciatrice",
@@ -7347,7 +7639,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Stranger to the Mythos",
@@ -7397,7 +7691,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "20%"
+    "Chance": "20%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Paradox Wanderer",
@@ -7447,7 +7743,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "35%"
+    "Chance": "35%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Scharfrichter (ATK)",
@@ -7497,7 +7795,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": 1,
+    "Retribution": ""
   },
   {
     "Job Name": "Scharfrichter (DEF)",
@@ -7547,7 +7847,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": 1,
+    "Retribution": ""
   },
   {
     "Job Name": "Kämpfer (ATK)",
@@ -7597,7 +7899,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": 1
   },
   {
     "Job Name": "Kämpfer (DEF)",
@@ -7647,7 +7951,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "10%"
+    "Chance": "10%",
+    "Reckoning": "",
+    "Retribution": 1
   },
   {
     "Job Name": "Tropical Traveler",
@@ -7697,7 +8003,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "5%"
+    "Chance": "5%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Vagabond",
@@ -7747,7 +8055,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "5%"
+    "Chance": "5%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Sorceress's Knight",
@@ -7797,7 +8107,9 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "40%"
+    "Chance": "40%",
+    "Reckoning": "",
+    "Retribution": ""
   },
   {
     "Job Name": "Sorceress of Oblivion",
@@ -7847,6 +8159,164 @@
     "Base Attributes": "",
     "Overpower": "",
     "Boost Ultimate": "",
-    "Chance": "35%"
+    "Chance": "35%",
+    "Reckoning": "",
+    "Retribution": ""
+  },
+  {
+    "Job Name": "Reisender (BRK)",
+    "ImageName": "189.jpg",
+    "Class": "Ranger",
+    "Lore": "",
+    "HP": "24,563",
+    "Attack": "1,226",
+    "Break": "1,433",
+    "Magic": "1,141",
+    "Crit": 8,
+    "Spd": 6,
+    "Def": 1,
+    "OrbSet1_1": "F",
+    "OrbSet1_2": "W",
+    "OrbSet1_3": "D",
+    "OrbSet2_1": "",
+    "OrbSet2_2": "",
+    "OrbSet2_3": "",
+    "Fire_Resist": 30,
+    "Water_Resist": 30,
+    "Wind_Resist": 30,
+    "Earth_Resist": 30,
+    "Light_Resist": 30,
+    "Dark_Resist": 30,
+    "Role": "BRK",
+    "Fire_EE": "",
+    "Water_EE": "",
+    "Wind_EE": "",
+    "Earth_EE": "",
+    "Light_EE": "",
+    "Dark_EE": "",
+    "Exploit Weakness": 75,
+    "Painful Break": 175,
+    "Improved Crits": 100,
+    "Ability Chain": 75,
+    "Imbue: Boost": 100,
+    "Piercing Break": 200,
+    "Flash Break": "",
+    "Armour Break": 150,
+    "Scourge": "",
+    "Ravage": "",
+    "Steelguard": "",
+    "Skilled Duelist": "",
+    "Risk Taker": "",
+    "Cross Counter": 30,
+    "Base Attributes": "",
+    "Overpower": "",
+    "Boost Ultimate": "",
+    "Chance": "40%",
+    "Reckoning": 1,
+    "Retribution": ""
+  },
+  {
+    "Job Name": "Reisender (DEF)",
+    "ImageName": "189.jpg",
+    "Class": "Ranger",
+    "Lore": "",
+    "HP": "24,563",
+    "Attack": "1,226",
+    "Break": "1,433",
+    "Magic": "1,141",
+    "Crit": 2,
+    "Spd": 6,
+    "Def": 7,
+    "OrbSet1_1": "F",
+    "OrbSet1_2": "W",
+    "OrbSet1_3": "D",
+    "OrbSet2_1": "",
+    "OrbSet2_2": "",
+    "OrbSet2_3": "",
+    "Fire_Resist": 30,
+    "Water_Resist": 30,
+    "Wind_Resist": 30,
+    "Earth_Resist": 30,
+    "Light_Resist": 30,
+    "Dark_Resist": 30,
+    "Role": "DEF",
+    "Fire_EE": "",
+    "Water_EE": "",
+    "Wind_EE": "",
+    "Earth_EE": "",
+    "Light_EE": "",
+    "Dark_EE": "",
+    "Exploit Weakness": 75,
+    "Painful Break": 175,
+    "Improved Crits": 100,
+    "Ability Chain": 75,
+    "Imbue: Boost": 100,
+    "Piercing Break": 200,
+    "Flash Break": "",
+    "Armour Break": 150,
+    "Scourge": "",
+    "Ravage": "",
+    "Steelguard": "",
+    "Skilled Duelist": "",
+    "Risk Taker": "",
+    "Cross Counter": 30,
+    "Base Attributes": "",
+    "Overpower": "",
+    "Boost Ultimate": "",
+    "Chance": "10%",
+    "Reckoning": 1,
+    "Retribution": ""
+  },
+  {
+    "Job Name": "Wahrsager",
+    "ImageName": "188.jpg",
+    "Class": "Mage",
+    "Lore": "",
+    "HP": "22,547",
+    "Attack": "1,051",
+    "Break": "1,287",
+    "Magic": "1,282",
+    "Crit": 2,
+    "Spd": 6,
+    "Def": 8,
+    "OrbSet1_1": "W",
+    "OrbSet1_2": "E",
+    "OrbSet1_3": "D",
+    "OrbSet2_1": "",
+    "OrbSet2_2": "",
+    "OrbSet2_3": "",
+    "Fire_Resist": 35,
+    "Water_Resist": 35,
+    "Wind_Resist": 35,
+    "Earth_Resist": 35,
+    "Light_Resist": 35,
+    "Dark_Resist": 35,
+    "Role": "ATK/DEF",
+    "Fire_EE": "",
+    "Water_EE": "",
+    "Wind_EE": "",
+    "Earth_EE": "",
+    "Light_EE": "",
+    "Dark_EE": "",
+    "Exploit Weakness": 150,
+    "Painful Break": 75,
+    "Improved Crits": 75,
+    "Ability Chain": 100,
+    "Imbue: Boost": "",
+    "Piercing Break": 200,
+    "Flash Break": "",
+    "Armour Break": 200,
+    "Scourge": "",
+    "Ravage": "",
+    "Steelguard": "",
+    "Skilled Duelist": "",
+    "Risk Taker": "",
+    "Cross Counter": 30,
+    "Base Attributes": "",
+    "Overpower": "",
+    "Boost Ultimate": "",
+    "Chance": "10%",
+    "Reckoning": 1,
+    "Retribution": ""
   }
 ]

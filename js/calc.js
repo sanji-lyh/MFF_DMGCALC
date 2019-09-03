@@ -88,12 +88,32 @@ function ComputeDmg(userInput, job, isBroken, isWeakness, isAOE=true){
 	//Output Dmg = Card's Attack * Attack * EE * Critical * Broken * Weakness * Ravage * Supreme
 	
 	if(userInput.ability["Type"] !== "Monk"){  // true = magic, false = atk
-		//Mag: (1 + magic_stat/100) * (1 + magic_mod/100) * (1 + stat_mod/100) + additional_magic/100
-		dmg *= (1 + parseInt2(job["Magic"])/100);
+		additional_mag = 0;
+		if(userInput.isMaxReckoning && job["Reckoning"]==1){
+			additional_mag += 25;
+		}		
+		
+		mag_mod = 1;
+		if(userInput.isCrossCounter && job["Cross Counter"] != ""){		
+			mag_mod += (parseInt2(job["Cross Counter"])/100);
+		}
+	
+		//Mag: (1 + magic_stat/100) * (1 + magic_mod/100) * (1 + stat_mod/100) + additional_magic/100		
+		dmg *= ( ((1 + parseInt2(job["Magic"])/100) * mag_mod) + additional_mag);
 	}
 	else{
+		additional_atk = 0;
+		if(userInput.isMaxRetribution && job["Retribution"]==1){
+			additional_atk += 25;
+		}
+		
+		atk_mod = 1;
+		if(userInput.isCrossCounter && job["Cross Counter"] != ""){		
+			atk_mod += (parseInt2(job["Cross Counter"])/100);
+		}
+		
 		//Atk: (1 + attack_stat/100) * (1 + attack_mod/100) * (1 + stat_mod/100) + additional_attack/100
-		dmg *= (1 + parseInt2(job["Attack"])/100);
+		dmg *= ( ((1 + parseInt2(job["Attack"])/100) * atk_mod ) + additional_atk);
 	}
 	
 	var loreValue = 0;

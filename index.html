@@ -12,6 +12,7 @@
 	  gtag('config', 'UA-146421724-1');
 	</script>
 
+	
     <title>MFF Dmg Calculator</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -33,21 +34,17 @@
 	<meta charset="UTF-8">
 	
 	<link href="css/index.css" rel="stylesheet">
-		
-	<style type="text/css">
-		
-	</style>
-	
+			
 	<script src="js/data.js"></script>
 	<script src="js/calc.js"></script>
-	<script src="js/index.js"></script>
+	<script src="js/index.v1.2.js"></script>
 </head>
 
 <body>
 	<div class="container">
 		<div class="row header_bar">
             <div class="col-xs-12 col-sm-8">
-                <h4 class="title_heading">Mobius Final Fantasy - Damage Ranking Calculator (v 1.2)</h4>
+                <h4 class="title_heading">Mobius Final Fantasy - Damage Ranking Calculator <br/>(v 1.2)</h4>
             </div>
 			
 			<div class="col-xs-12 col-sm-4">
@@ -91,6 +88,20 @@
 			<div class="form-check col-xs-12 col-sm-6">
 				<input class="form-check-input" type="checkbox" name="display_element" value="1" id="display_element" checked>
 				<label class="form-check-label" for="display_element">Hide jobs which can't use element</label>
+			</div>
+			<div class="form-check col-xs-12 col-sm-6">
+				<input class="form-check-input" type="checkbox" name="max_retribution" value="1" id="max_retribution" checked>
+				<label class="form-check-label" for="max_retribution">Max Retribution (+2500% Atk)</label>
+			</div>
+			
+			<div class="form-check col-xs-12 col-sm-6">
+				<input class="form-check-input" type="checkbox" name="max_reckoning" value="1" id="max_reckoning" checked>
+				<label class="form-check-label" for="max_reckoning">Max Reckoning (+2500% Mag)</label>
+			</div>
+			
+			<div class="form-check col-xs-12 col-sm-6">
+				<input class="form-check-input" type="checkbox" name="cross_counter" value="1" id="cross_counter" checked>
+				<label class="form-check-label" for="cross_counter">Cross-Counter</label>
 			</div>
 		</div>
 		<br/>
