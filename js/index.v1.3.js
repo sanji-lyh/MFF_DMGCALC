@@ -39,7 +39,7 @@ function ProcessRanking(userInput){
 	// compute dmg for each job first
 	for(i = 0; i < jobList.length; i++){
 		var resultEntry = {
-			name: jobList[i]["Job Name"],
+			job: jobList[i],
 			unbrokenWeaknessDmg: ComputeDmg(userInput, jobList[i], false, true),
 			unbrokenNeutralDmg: ComputeDmg(userInput, jobList[i], false, false),
 			brokenWeaknessDmg: ComputeDmg(userInput, jobList[i], true, true),
@@ -55,21 +55,68 @@ function ProcessRanking(userInput){
 		}
 	}
 	
-	if ($.fn.DataTable.isDataTable("#result_table")) {
-	  $('#result_table').DataTable().clear().destroy();
+	DisplayResult(resultList);
+}
+
+function compareUnbrokenWeakness(a, b){
+	if(a.unbrokenWeaknessDmg < b.unbrokenWeaknessDmg){
+		return 1;
 	}
-			
-	for(i=0; i < resultList.length; i++){
-		$("#result_table > tbody:last-child").append("<tr><td>" + resultList[i].name + "</td><td>" + numberWithCommas(resultList[i].unbrokenNeutralDmg) + "</td><td>" + numberWithCommas(resultList[i].unbrokenWeaknessDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenNeutralDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenWeaknessDmg)  + "</td>")
+	else if(a.unbrokenWeaknessDmg > b.unbrokenWeaknessDmg){
+		return -1;
 	}
+	else{
+		return 0;
+	}	
+}
+
+function compareUnbrokenNeutralDmg(a, b){
+	if(a.unbrokenNeutralDmgDmg < b.unbrokenNeutralDmgDmg){
+		return 1;
+	}
+	else if(a.unbrokenNeutralDmgDmg > b.unbrokenNeutralDmgDmg){
+		return -1;
+	}
+	else{
+		return 0;
+	}	
+}
+
+function compareBrokenWeaknessDmg(a, b){
+	if(a.brokenWeaknessDmg < b.brokenWeaknessDmg){
+		return 1;
+	}
+	else if(a.brokenWeaknessDmg > b.brokenWeaknessDmg){
+		return -1;
+	}
+	else{
+		return 0;
+	}	
+}
+
+function compareBrokenNeutralDmg(a, b){
+	if(a.brokenNeutralDmg < b.brokenNeutralDmg){
+		return 1;
+	}
+	else if(a.brokenNeutralDmg > b.brokenNeutralDmg){
+		return -1;
+	}
+	else{
+		return 0;
+	}	
+}
+
+function DisplayResult(resultList){
+	var compareFn = [compareUnbrokenNeutralDmg, compareUnbrokenWeakness, compareBrokenNeutralDmg, compareBrokenWeaknessDmg];
+	var dmgSortTypeName = ["Unbroken Neutral", "Unbroken Weakness", "Broken Neutral", "Broken Weakness"];
+	var dmgSortType = 0;
 	
-	$('#result_table').DataTable( {
-		"order": [[ 1, "desc" ]],
-		"lengthMenu": [[25, 50, -1], [25, 50, "All"]],
-		"searching": false,
-		"lengthChange": false,
-		columnDefs: [{targets: [ "_all" ], orderSequence: [ "desc", "desc", "asc" ]  }, {width: 350, targets: 0}]
-	} );
+	
+	
+	resultList.sort(compareFn[dmgSortType]);
+	console.log(resultList);
+	
+	$("#result_panel").append("")
 }
 
 $(document).ready(function() {
@@ -99,11 +146,4 @@ $(document).ready(function() {
 	$("#cross_counter").change(function(){
 		UpdateChanges();
 	});
-	
-	$('#result_table').DataTable( {
-		"order": [[ 1, "desc" ]],
-		"searching": false,
-		"lengthChange": false,
-		"lengthMenu": [[25, 50, -1], [25, 50, "All"]]
-	} );
 });

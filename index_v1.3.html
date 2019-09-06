@@ -13,7 +13,9 @@
 	</script>
 
     <title>MFF Dmg Calculator</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+	
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -32,7 +34,7 @@
     <meta name="author" content="sanjilyh">
 	<meta charset="UTF-8">
 	
-	<link href="css/index.css" rel="stylesheet">
+	<link href="css/index.v1.3.css" rel="stylesheet">
 		
 	<style type="text/css">
 		
@@ -40,7 +42,7 @@
 	
 	<script src="js/data.js"></script>
 	<script src="js/calc.js"></script>
-	<script src="js/index.js"></script>
+	<script src="js/index.v1.3.js"></script>
 </head>
 
 <body>
@@ -54,35 +56,45 @@
 				<div class="older-version-div">Browse older version: <a href="index_v1.1.html"> v1.1</a></div>
 			</div>
         </div>
-			
 		<br/>
-		<p> Select the ability: </p>
 		
-		<select class="form-control" id="ability_template">
-		</select>
-		
-		<div class="ability_panel">
-			<img src="img/supreme/default.jpg" id="ability_img">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12">
+			Select the ability:
+			</div>
 			
-			<div class="row">
-				<div class="col-xs-6 col-sm-3 vcenter">
-					<label class="control-label">Attack</label>
-				</div>
-				<div class="col-xs-6 col-sm-3 vcenter">
-					<input type="number" class="form-control" name="atk_display" value="1800" readonly>
-				</div>
-				
-				<div class="col-xs-6 col-sm-3 vcenter">
-					<label class="control-label">Break Power</label>
-				</div>
-				<div class="col-xs-6 col-sm-3 vcenter">
-					<input type="number" class="form-control" name="break_power_display" value="1800" readonly>
+			<div class="col-xs-12 col-sm-12">
+				<select class="row form-control" id="ability_template">
+				</select>
+			</div>
+		</div>
+		
+	
+		<div class="row ability_panel">
+			<div class="col-xs-6 col-sm-4">
+				<img src="img/supreme/default.jpg" id="ability_img">
+			</div>
+			
+			<div class="col-xs-6 col-sm-8">		
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 vcenter">
+						<label class="control-label">Attack</label>
+					</div>
+					<div class="col-xs-6 col-sm-6 vcenter">
+						<input type="number" class="form-control" name="atk_display" value="1800" readonly>
+					</div>
+					
+					<div class="col-xs-6 col-sm-6 vcenter">
+						<label class="control-label">Break Power</label>
+					</div>
+					<div class="col-xs-6 col-sm-6 vcenter">
+						<input type="number" class="form-control" name="break_power_display" value="1800" readonly>
+					</div>
 				</div>
 			</div>
 		</div>
-		<hr/>
 		
-		<div class="row options_table">
+		<div class="row options_table top-border">
 			<div class="form-check col-xs-12 col-sm-6">
 				<input class="form-check-input" type="checkbox" name="ignore_lore" value="1" id="ignore_lore">
 				<label class="form-check-label" for="ignore_lore">Ignore Lore</label>
@@ -91,6 +103,20 @@
 			<div class="form-check col-xs-12 col-sm-6">
 				<input class="form-check-input" type="checkbox" name="display_element" value="1" id="display_element" checked>
 				<label class="form-check-label" for="display_element">Hide jobs which can't use element</label>
+			</div>
+			<div class="form-check col-xs-12 col-sm-6">
+				<input class="form-check-input" type="checkbox" name="max_retribution" value="1" id="max_retribution" checked>
+				<label class="form-check-label" for="max_retribution">Max Retribution (+2500% Atk)</label>
+			</div>
+			
+			<div class="form-check col-xs-12 col-sm-6">
+				<input class="form-check-input" type="checkbox" name="max_reckoning" value="1" id="max_reckoning" checked>
+				<label class="form-check-label" for="max_reckoning">Max Reckoning (+2500% Mag)</label>
+			</div>
+			
+			<div class="form-check col-xs-12 col-sm-6">
+				<input class="form-check-input" type="checkbox" name="cross_counter" value="1" id="cross_counter" checked>
+				<label class="form-check-label" for="cross_counter">Cross-Counter</label>
 			</div>
 		</div>
 		<br/>
@@ -101,6 +127,25 @@
 				<img src="img/job/10.jpg" width="70px" style="border-radius:15%; overflow:hidden;"> 
 				<p>White Mage</p>
 			</div>
+		</div>
+		
+		<div class="list-group">
+			<div class="list-group-item list-group-item-action flex-column align-items-start">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1">List group item heading</h5>
+					<small class="text-muted">3 days ago</small>
+				</div>
+				<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				<small class="text-muted">Donec id elit non mi porta.</small>
+			</div>
+			<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1">List group item heading</h5>
+					<small class="text-muted">3 days ago</small>
+				</div>
+				<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				<small class="text-muted">Donec id elit non mi porta.</small>
+			</a>
 		</div>
 		
 		<hr/>

@@ -16,7 +16,10 @@ function UpdateChanges(){
 	var userInput = {
 		ability: curAbility,
 		ignoreLoreOption: $("#ignore_lore").is(":checked"),
-		showElementsOption: $("#display_element").is(":checked")
+		showElementsOption: $("#display_element").is(":checked"),
+		isMaxRetribution: $("#max_retribution").is(":checked"),
+		isMaxReckoning: $("#max_reckoning").is(":checked"),
+		isCrossCounter: $("#cross_counter").is(":checked")
 	};
 	
 	if(jobList != null){
@@ -36,7 +39,7 @@ function ProcessRanking(userInput){
 	// compute dmg for each job first
 	for(i = 0; i < jobList.length; i++){
 		var resultEntry = {
-			job: jobList[i],
+			name: jobList[i]["Job Name"],
 			unbrokenWeaknessDmg: ComputeDmg(userInput, jobList[i], false, true),
 			unbrokenNeutralDmg: ComputeDmg(userInput, jobList[i], false, false),
 			brokenWeaknessDmg: ComputeDmg(userInput, jobList[i], true, true),
@@ -52,68 +55,21 @@ function ProcessRanking(userInput){
 		}
 	}
 	
-	DisplayResult(resultList);
-}
-
-function compareUnbrokenWeakness(a, b){
-	if(a.unbrokenWeaknessDmg < b.unbrokenWeaknessDmg){
-		return 1;
+	if ($.fn.DataTable.isDataTable("#result_table")) {
+	  $('#result_table').DataTable().clear().destroy();
 	}
-	else if(a.unbrokenWeaknessDmg > b.unbrokenWeaknessDmg){
-		return -1;
+			
+	for(i=0; i < resultList.length; i++){
+		$("#result_table > tbody:last-child").append("<tr><td>" + resultList[i].name + "</td><td>" + numberWithCommas(resultList[i].unbrokenNeutralDmg) + "</td><td>" + numberWithCommas(resultList[i].unbrokenWeaknessDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenNeutralDmg) + "</td><td>" + numberWithCommas(resultList[i].brokenWeaknessDmg)  + "</td>")
 	}
-	else{
-		return 0;
-	}	
-}
-
-function compareUnbrokenNeutralDmg(a, b){
-	if(a.unbrokenNeutralDmgDmg < b.unbrokenNeutralDmgDmg){
-		return 1;
-	}
-	else if(a.unbrokenNeutralDmgDmg > b.unbrokenNeutralDmgDmg){
-		return -1;
-	}
-	else{
-		return 0;
-	}	
-}
-
-function compareBrokenWeaknessDmg(a, b){
-	if(a.brokenWeaknessDmg < b.brokenWeaknessDmg){
-		return 1;
-	}
-	else if(a.brokenWeaknessDmg > b.brokenWeaknessDmg){
-		return -1;
-	}
-	else{
-		return 0;
-	}	
-}
-
-function compareBrokenNeutralDmg(a, b){
-	if(a.brokenNeutralDmg < b.brokenNeutralDmg){
-		return 1;
-	}
-	else if(a.brokenNeutralDmg > b.brokenNeutralDmg){
-		return -1;
-	}
-	else{
-		return 0;
-	}	
-}
-
-function DisplayResult(resultList){
-	var compareFn = [compareUnbrokenNeutralDmg, compareUnbrokenWeakness, compareBrokenNeutralDmg, compareBrokenWeaknessDmg];
-	var dmgSortTypeName = ["Unbroken Neutral", "Unbroken Weakness", "Broken Neutral", "Broken Weakness"];
-	var dmgSortType = 0;
 	
-	
-	
-	resultList.sort(compareFn[dmgSortType]);
-	console.log(resultList);
-	
-	$("#result_panel").append("")
+	$('#result_table').DataTable( {
+		"order": [[ 1, "desc" ]],
+		"lengthMenu": [[25, 50, -1], [25, 50, "All"]],
+		"searching": false,
+		"lengthChange": false,
+		columnDefs: [{targets: [ "_all" ], orderSequence: [ "desc", "desc", "asc" ]  }]
+	} );
 }
 
 $(document).ready(function() {
@@ -129,6 +85,18 @@ $(document).ready(function() {
 	});
 	
 	$("#display_element").change(function(){
+		UpdateChanges();
+	});
+	
+	$("#max_retribution").change(function(){
+		UpdateChanges();
+	});
+	
+	$("#max_reckoning").change(function(){
+		UpdateChanges();
+	});
+	
+	$("#cross_counter").change(function(){
 		UpdateChanges();
 	});
 	
