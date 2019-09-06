@@ -6,6 +6,7 @@ function numberWithCommas(x) {
 }
 
 function parseInt2(input){
+	if(!input) return 0;
 	return parseInt(input.toString().replace(/,/g,'')) || 0;
 }
 	
@@ -175,6 +176,9 @@ function ComputeDmg(userInput, job, isBroken, isWeakness, isAOE=true){
 	if(isAOE){
 		dmg *= (1 + (parseInt2(job["Ravage"]) + userInput.ability["Ravage"])/100);
 	}
+	
+	// Supreme: 1 + (supreme_effect)/100
+	dmg *= (1 + parseInt2(userInput.ability["SupremeEffect"])/100);	
 	
 	return dmg;
 }

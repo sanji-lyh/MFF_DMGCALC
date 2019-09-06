@@ -400,7 +400,7 @@
     "MultiplySubAtk": 50
   },
   {
-    "AbilityName": "Griever: FFVIII",
+    "AbilityName": "Griever: FFVIII (70k HP)",
     "ImageName": "griever.jpg",
     "Type": "Monk",
     "Elem": 6,
@@ -413,7 +413,7 @@
     "AbilityChain": 0,
     "PainfulBreak": 0,
     "Ravage": 0,
-    "SupremeEffect": 0,
+    "SupremeEffect": 100,
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
