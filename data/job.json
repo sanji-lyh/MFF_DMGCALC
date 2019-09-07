@@ -1769,7 +1769,7 @@
   },
   {
     "Job Name": "Mythic Sage",
-    "ImageName": "51.jpg",
+    "ImageName": "52.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "6,506",
@@ -1821,7 +1821,7 @@
   },
   {
     "Job Name": "Mythic Sage [HoF]",
-    "ImageName": "51.jpg",
+    "ImageName": "52.jpg",
     "Class": "Mage",
     "Lore": "",
     "HP": "9,759",
@@ -1873,7 +1873,7 @@
   },
   {
     "Job Name": "Mythic Ninja",
-    "ImageName": "52.jpg",
+    "ImageName": "51.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "6,506",
@@ -1925,7 +1925,7 @@
   },
   {
     "Job Name": "Mythic Ninja [HoF]",
-    "ImageName": "52.jpg",
+    "ImageName": "51.jpg",
     "Class": "Ranger",
     "Lore": "",
     "HP": "9,759",
