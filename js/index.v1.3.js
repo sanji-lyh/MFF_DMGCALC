@@ -196,7 +196,7 @@ function DisplayResult(resultList, userInput){
 		if(userInput.ability["Type"] !== "Monk"){  // true = magic, false = atk
 			additional_mag = 0;
 			if(userInput.isMaxReckoning && resultList[i].job["Reckoning"]==1){
-				additional_mag += 2500;
+				additional_mag += 2400;
 			}		
 			
 			mag_mod = 1;
@@ -212,7 +212,7 @@ function DisplayResult(resultList, userInput){
 		else{
 			additional_atk = 0;
 			if(userInput.isMaxRetribution && resultList[i].job["Retribution"]==1){
-				additional_atk += 2500;
+				additional_atk += 2400;
 			}
 			
 			atk_mod = 1;

@@ -91,7 +91,7 @@ function ComputeDmg(userInput, job, isBroken, isWeakness, isAOE=true){
 	if(userInput.ability["Type"] !== "Monk"){  // true = magic, false = atk
 		additional_mag = 0;
 		if(userInput.isMaxReckoning && job["Reckoning"]==1){
-			additional_mag += 25;
+			additional_mag += 24;
 		}		
 		
 		mag_mod = 1;
@@ -105,7 +105,7 @@ function ComputeDmg(userInput, job, isBroken, isWeakness, isAOE=true){
 	else{
 		additional_atk = 0;
 		if(userInput.isMaxRetribution && job["Retribution"]==1){
-			additional_atk += 25;
+			additional_atk += 24;
 		}
 		
 		atk_mod = 1;
