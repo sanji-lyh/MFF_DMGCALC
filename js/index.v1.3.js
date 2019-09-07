@@ -41,7 +41,6 @@ function ProcessRanking(userInput){
 	for(i = 0; i < jobList.length; i++){
 		var resultEntry = {
 			job: jobList[i],
-			userInput: userInput,
 			unbrokenWeaknessDmg: ComputeDmg(userInput, jobList[i], false, true),
 			unbrokenNeutralDmg: ComputeDmg(userInput, jobList[i], false, false),
 			brokenWeaknessDmg: ComputeDmg(userInput, jobList[i], true, true),
@@ -57,7 +56,7 @@ function ProcessRanking(userInput){
 		}
 	}
 	
-	DisplayResult(resultList, userInput.dmgSortType);
+	DisplayResult(resultList, userInput);
 }
 
 function compareUnbrokenWeakness(a, b){
@@ -108,11 +107,12 @@ function compareBrokenNeutralDmg(a, b){
 	}	
 }
 
-function DisplayResult(resultList, dmgSortType=0){
+function DisplayResult(resultList, userInput){
 	var compareFn = [compareUnbrokenNeutralDmg, compareUnbrokenWeakness, compareBrokenNeutralDmg, compareBrokenWeaknessDmg];
 	var dmgSortTypeName = ["Unbroken Neutral", "Unbroken Weakness", "Broken Neutral", "Broken Weakness"];
 	var elemIcon = ["elem_fire.png", "elem_water.png", "elem_wind.png", "elem_earth.png", "elem_light.png", "elem_dark.png"];
 	var orbSetLabels = ["OrbSet1_1", "OrbSet1_2", "OrbSet1_3", "OrbSet2_1", "OrbSet2_2", "OrbSet2_3"];
+	var dmgSortType = userInput.dmgSortType;
 	
 	resultList = resultList.sort(compareFn[dmgSortType]);
 	
@@ -187,17 +187,130 @@ function DisplayResult(resultList, dmgSortType=0){
 		if(resultHTML.slice(-3) === " / "){
 			resultHTML = resultHTML.substr(0, resultHTML.length-3);
 		}
+		resultHTML += "</p></div></div>";		
+		
+		resultHTML += "<div class=\"d-flex flex-wrap\">";
+		dmgDivider = "<div class=\"mr-2\"> | </div>";
+		
+		// Mag/Atk
+		if(userInput.ability["Type"] !== "Monk"){  // true = magic, false = atk
+			additional_mag = 0;
+			if(userInput.isMaxReckoning && resultList[i].job["Reckoning"]==1){
+				additional_mag += 2500;
+			}		
+			
+			mag_mod = 1;
+			if(userInput.isCrossCounter && resultList[i].job["Cross Counter"] != ""){		
+				mag_mod += (parseInt2(resultList[i].job["Cross Counter"])/100);
+			}
+		
+			//Mag: (1 + magic_stat/100) * (1 + magic_mod/100) * (1 + stat_mod/100) + additional_magic/100		
+			mag = ( ((parseInt2(resultList[i].job["Magic"])) * mag_mod) + additional_mag);
+			
+			resultHTML += "<div class=\"mr-2 perk-label\">Magic +" + numberWithCommas(mag) + "%</div>";
+		}
+		else{
+			additional_atk = 0;
+			if(userInput.isMaxRetribution && resultList[i].job["Retribution"]==1){
+				additional_atk += 25;
+			}
+			
+			atk_mod = 1;
+			if(userInput.isCrossCounter && resultList[i].job["Cross Counter"] != ""){		
+				atk_mod += (parseInt2(resultList[i].job["Cross Counter"])/100);
+			}
+			
+			//Atk: (1 + attack_stat/100) * (1 + attack_mod/100) * (1 + stat_mod/100) + additional_attack/100
+			atk = ( ((parseInt2(resultList[i].job["Attack"])) * atk_mod ) + additional_atk);
+			
+			resultHTML += "<div class=\"mr-2 perk-label\">Atk +"+ numberWithCommas(atk) + "%</div>";
+		}
+		
+		// EE
+		switch(userInput.ability["Elem"]){
+		// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark
+		case 1:
+			ee = parseInt2(resultList[i].job["Fire_EE"]) + userInput.ability["ElementEnhance"];
+			break;
+		case 2:
+			ee = parseInt2(resultList[i].job["Water_EE"]) + userInput.ability["ElementEnhance"];
+			break;
+		case 3:
+			ee = parseInt2(resultList[i].job["Wind_EE"]) + userInput.ability["ElementEnhance"];
+			break;
+		case 4:
+			ee = parseInt2(resultList[i].job["Earth_EE"]) + userInput.ability["ElementEnhance"];
+			break;
+		case 5:
+			ee = parseInt2(resultList[i].job["Light_EE"]) + userInput.ability["ElementEnhance"];
+			break;
+		case 6:
+			ee = parseInt2(resultList[i].job["Dark_EE"])+ userInput.ability["ElementEnhance"];
+			break;
+		}
+		if(ee >0){
+			resultHTML += dmgDivider;
+			resultHTML += "<div class=\"mr-2 perk-label\">Element Enhance +" + numberWithCommas(ee) + "%</div>";
+		}
+		
+		// Ability Chain
+		abilityChain = parseInt2(resultList[i].job["Ability Chain"]) + userInput.ability["AbilityChain"];
+		if(abilityChain > 0){
+			resultHTML += dmgDivider;
+			resultHTML += "<div class=\"mr-2 perk-label\">Ability Chain +" + numberWithCommas(abilityChain) + "%</div>";
+		}
+	
+		// Attuned Chain
+		attunedChain = userInput.ability["AttunedChain"];
+		if(attunedChain > 0){
+			resultHTML += dmgDivider;
+			resultHTML += "<div class=\"mr-2 perk-label\">Attuned Chain +" + numberWithCommas(attunedChain) + "%</div>";
+		}
+		
+		// Critical
+		crit = parseInt2(resultList[i].job["Improved Crits"]) + userInput.ability["ImprovedCrit"];
+		if(crit > 0){
+			resultHTML += dmgDivider;
+			resultHTML += "<div class=\"mr-2 perk-label\">Crit +" + numberWithCommas(crit) + "%</div>";
+		}
+		
+		// Broken
+		if(dmgSortType == 2 || dmgSortType == 3){
+			painfulBreak = parseInt2(resultList[i].job["Painful Break"]) + userInput.ability["PainfulBreak"];
+			if(painfulBreak > 0){
+				resultHTML += dmgDivider;
+				resultHTML += "<div class=\"mr-2 perk-label\">Painful Break +" + numberWithCommas(painfulBreak) + "%</div>";
+			}
+		}
+		
+		if(dmgSortType == 1 || dmgSortType == 3){
+			exploitWeakness = parseInt2(resultList[i].job["Exploit Weakness"]) + userInput.ability["ExploitWeakness"];
+			if(exploitWeakness > 0){
+				resultHTML += dmgDivider;
+				resultHTML += "<div class=\"mr-2 perk-label\">Exploit Weakness +" + numberWithCommas(exploitWeakness) + "%</div>";
+			}
+			
+		}
+
+		ravage = parseInt2(resultList[i].job["Ravage"]) + userInput.ability["Ravage"];
+		if(ravage > 0){
+			resultHTML += dmgDivider;
+			resultHTML += "<div class=\"mr-2 perk-label\">Ravage +" + numberWithCommas(ravage) + "%</div>";
+		}
+		
+		supremeEffect = parseInt2(userInput.ability["SupremeEffect"])
+		if (supremeEffect > 0){
+			resultHTML += dmgDivider;
+			resultHTML += "<div class=\"mr-2 perk-label\">Supreme Effect +" + numberWithCommas(supremeEffect) + "%</div>";
+		}
+		
+
+		resultHTML += "</div>";
 		
 		
-		resultHTML += "</p></div>";		
-		resultHTML += "</div></div>";	
+		resultHTML += "</div>";	
 		
 		$("#result_list").append(resultHTML);
-		
-		
-		// <p class="mb-1">Magic +200%</p>
-		// <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-	    // <small class="text-muted">Donec id elit non mi porta.</small>
 	}	
 	
 	
