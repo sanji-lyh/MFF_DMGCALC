@@ -212,7 +212,7 @@ function DisplayResult(resultList, userInput){
 		else{
 			additional_atk = 0;
 			if(userInput.isMaxRetribution && resultList[i].job["Retribution"]==1){
-				additional_atk += 25;
+				additional_atk += 2500;
 			}
 			
 			atk_mod = 1;
