@@ -12,9 +12,10 @@
 	  gtag('config', 'UA-146421724-1');
 	</script>
 
-	
     <title>MFF Dmg Calculator</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+	
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -33,53 +34,68 @@
     <meta name="author" content="sanjilyh">
 	<meta charset="UTF-8">
 	
-	<link href="css/index.css" rel="stylesheet">
-			
+	<link href="css/index.v1.3.css" rel="stylesheet">
+		
+	<style type="text/css">
+		
+	</style>
+	
 	<script src="js/data.js"></script>
 	<script src="js/calc.js"></script>
-	<script src="js/index.js"></script>
+	<script src="js/index.v1.3.js"></script>
 </head>
 
 <body>
 	<div class="container">
-		<div class="row header_bar">
+		<div class="row header-bar">
             <div class="col-xs-12 col-sm-8">
-                <h4 class="title_heading">Mobius Final Fantasy - Damage Ranking Calculator <br/>(v 1.2)</h4>
+                <h4 class="title_heading">Mobius Final Fantasy - Damage Ranking Calculator (v 1.3)</h4>
             </div>
 			
 			<div class="col-xs-12 col-sm-4">
-				<div class="older-version-div">Browse older version: <a href="index_v1.1.html"> v1.1</a></div>
+				<div class="older-version-div">Browse older version: <a href="index_v1.2.html"> v1.2</a> | <a href="index_v1.1.html"> v1.1</a></div>
 			</div>
         </div>
-			
 		<br/>
-		<p> Select the ability: </p>
 		
-		<select class="form-control" id="ability_template">
-		</select>
-		
-		<div class="ability_panel">
-			<img src="img/supreme/default.jpg" id="ability_img">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12">
+				Select the ability:
+			</div>
 			
-			<div class="row">
-				<div class="col-xs-6 col-sm-3 vcenter">
-					<label class="control-label">Attack</label>
-				</div>
-				<div class="col-xs-6 col-sm-3 vcenter">
-					<input type="number" class="form-control" name="atk_display" value="1800" readonly>
-				</div>
-				
-				<div class="col-xs-6 col-sm-3 vcenter">
-					<label class="control-label">Break Power</label>
-				</div>
-				<div class="col-xs-6 col-sm-3 vcenter">
-					<input type="number" class="form-control" name="break_power_display" value="1800" readonly>
+			<div class="col-xs-12 col-sm-12">
+				<select class="row form-control" id="ability_template" width="100%">
+				</select>
+			</div>
+		</div>
+		<br/>
+		
+	
+		<div class="row ability-panel">
+			<div class="col-xs-6 col-sm-5 text-center">
+				<img src="img/supreme/default.jpg" id="ability_img">
+			</div>
+			
+			<div class="col-xs-6 col-sm-7">		
+				<div class="row row-margin-offset">
+					<div class="col-xs-6 col-sm-6 mb-2">
+						<label class="control-label">Attack</label>
+					</div>
+					<div class="col-xs-6 col-sm-6 mb-2">
+						<input type="number" class="form-control" name="atk_display" value="1800" readonly>
+					</div>
+					
+					<div class="col-xs-6 col-sm-6 mb-4">
+						<label class="control-label">Break Power</label>
+					</div>
+					<div class="col-xs-6 col-sm-6 mb-4">
+						<input type="number" class="form-control" name="break_power_display" value="1800" readonly>
+					</div>
 				</div>
 			</div>
 		</div>
-		<hr/>
-		
-		<div class="row options_table">
+			
+		<div class="row options-table border-top">
 			<div class="form-check col-xs-12 col-sm-6">
 				<input class="form-check-input" type="checkbox" name="ignore_lore" value="1" id="ignore_lore">
 				<label class="form-check-label" for="ignore_lore">Ignore Lore</label>
@@ -105,23 +121,26 @@
 			</div>
 		</div>
 		<br/>
-		<table class="table wrap result_table table-bordered" id="result_table" width="100%">
-			<thead>
-				<tr>
-					<th rowspan="2">Job Name</th>
-					<th colspan="2">Unbroken</th>
-					<th colspan="2">Broken</th>
-				</tr>
-				<tr>
-					<th>Neutral</th>
-					<th>Weakness</th>
-					<th>Neutral</th>
-					<th>Weakness</th>
-				</tr>
-			</thead>
-			<tbody>
-			</tbody>					
-		</table>
+		
+		<form id="sort_input">
+		<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
+			<label class="btn btn-secondary active">
+				<input type="radio" name="dmg_type" id="unbroken_neutral_dmg" value="0" autocomplete="off" checked>Unbroken Neutral
+			</label>
+			<label class="btn btn-secondary">
+				<input type="radio" name="dmg_type" id="unbroken_weakness_dmg" value="1" autocomplete="off">Unbroken Weakness
+			</label>
+			<label class="btn btn-secondary">
+				<input type="radio" name="dmg_type" id="broken_neutral_dmg" value="2" autocomplete="off">Broken Neutral
+			</label>
+			<label class="btn btn-secondary">
+				<input type="radio" name="dmg_type" id="broken_weakness_dmg" value="3" autocomplete="off">Broken Weakness
+			</label>
+		</div>
+		</form>
+		
+		<div class="list-group result-list" id="result_list">
+		</div>
 		
 		<hr/>
 		<p>
@@ -131,7 +150,7 @@
 			<li><b>IJustNeedAccount</b> (for maintaining the <a href="https://docs.google.com/spreadsheets/d/1GYuKh0MxhzHdH3fLFd4c0Wahj7zXaIOGSutuQHqDsLc/edit?usp=sharing">job spreadsheet</a>)
 			<li><b>Shiro</b> (for general pointers)</li>
 			<li>And many helpful contributors from <b>Discord MFF</b></li>
-		</ul> 
+		</ul>  
 		</p>
 		<hr/>
 		<i>Disclaimer: This calculator will only provide us an approximate/estimation value of results to be closest as possible. Please take it with a grain of salts.</i>

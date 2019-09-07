@@ -15,8 +15,8 @@ hr {
 	border: 1px solid #d7ddde;
 }
 
-.header_bar {
-	background-image: linear-gradient(to bottom right, #ac7310, #ebb04a);
+.header-bar {
+	background-image: linear-gradient(to bottom right, #82ac10, #bceb4a);
 	color: white;
 	padding: 16px 8px;
 }
@@ -30,58 +30,39 @@ hr {
 	max-width: 1200px;
 }
 
-.vcenter {
-	margin-bottom:15px;
-}
-
 .resultTxt {
 	color: #9c8131
 }
 
-.result_table {
-	text-align: center;
-	border: 1px solid #ddd
+.job-img{
+	min-width: 70px;
+	max-width: 70px;
+	min-height: 70px;
+	max-height: 70px;
+	border-radius:15%; overflow:hidden;
 }
 
-.result_table th {
-	text-align: center;
-	background-color: #4f6da2;
-	color: #d7ddde;
+.icon-img{
+	max-width: 20px;
 }
 
-table.dataTable tbody tr {
-	background-color: #36393f;
+.options-table {
+	margin-left: 15px!important;
+	margin-right: 15px!important;
 }
 
-table, table.dataTable {
-	border-collapse: collapse;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-	background: none;
-	color: #d7ddde!important;
-}
-
-table.dataTable tbody tr:hover {
-	background-color: #4c4d50;
-}
-
-.result_table_div {
-	padding:0px;		
-}
-
-.ability_panel {
+.ability-panel {
 	#margin: 25px 25px;
 }
-.ability_panel img{
+.ability-panel img{
 	#float: left;
 	margin-right: 80px;
 	margin-bottom: 20px;
-	max-width: 340px;
+	max-width: 350px;
 	width:100%;
 }
 
-.ability_panel input[readonly]{
+.ability-panel input[readonly]{
 	background-color:transparent;
 	color:#d7ddde;
 }
@@ -91,6 +72,38 @@ table.dataTable tbody tr:hover {
 	color: #d7ddde;
 }
 
-.top-border {
+.border-top {
+	padding-top: 20px;
 	border-top: 1px solid #d7ddde;
+}
+
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.row-margin-offset{
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+.dmg-label {
+	min-width: 120px; 
+	float: right;
+	background-color: #4c4d50;
+}
+
+.rank-label {
+	min-width: 40px;
+}
+
+.list-group-item {
+	color: #d7ddde;
+	background-color: #3f4349;
+	border: 1px solid #979797;
+}
+
+.list-group-item:hover {
+	color: #d7ddde;
+	background-color: #4c4d50;
 }
