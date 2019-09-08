@@ -201,6 +201,7 @@ function DisplayResult(resultList, userInput){
 			}		
 			
 			mag_mod = 1;
+			mag_mod += (parseInt2(userInput.ability["MultiplyMag"])/100);
 			if(userInput.isCrossCounter && resultList[i].job["Cross Counter"] != ""){		
 				mag_mod += (parseInt2(resultList[i].job["Cross Counter"])/100);
 			}
@@ -217,6 +218,7 @@ function DisplayResult(resultList, userInput){
 			}
 			
 			atk_mod = 1;
+			atk_mod += (parseInt2(userInput.ability["MultiplyAtk"])/100);
 			if(userInput.isCrossCounter && resultList[i].job["Cross Counter"] != ""){		
 				atk_mod += (parseInt2(resultList[i].job["Cross Counter"])/100);
 			}

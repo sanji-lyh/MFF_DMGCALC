@@ -95,6 +95,7 @@ function ComputeDmg(userInput, job, isBroken, isWeakness, isAOE=true){
 		}		
 		
 		mag_mod = 1;
+		mag_mod += (parseInt2(userInput.ability["MultiplyMag"])/100);
 		if(userInput.isCrossCounter && job["Cross Counter"] != ""){		
 			mag_mod += (parseInt2(job["Cross Counter"])/100);
 		}
@@ -109,6 +110,7 @@ function ComputeDmg(userInput, job, isBroken, isWeakness, isAOE=true){
 		}
 		
 		atk_mod = 1;
+		atk_mod += (parseInt2(userInput.ability["MultiplyAtk"])/100);
 		if(userInput.isCrossCounter && job["Cross Counter"] != ""){		
 			atk_mod += (parseInt2(job["Cross Counter"])/100);
 		}
