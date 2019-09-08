@@ -302,7 +302,7 @@ function DisplayResult(resultList, userInput){
 		supremeEffect = parseInt2(userInput.ability["SupremeEffect"])
 		if (supremeEffect > 0){
 			resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Supreme Effect +" + numberWithCommas(supremeEffect) + "%</div>";
+			resultHTML += "<div class=\"mr-2 perk-label\">Damage up (Supreme Effect) +" + numberWithCommas(supremeEffect) + "%</div>";
 		}
 		
 
