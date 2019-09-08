@@ -18,22 +18,22 @@ function ComputeDmg(userInput, job, isBroken, isWeakness, isAOE=true){
 		// 1 = warrior, 2 = mage, 3 = ranger, 4 = monk
 		switch(userInput.ability["Type"]){
 			case "Warrior":
-				if(!(job["Class"] === "Graff" || job["Class"] === "Warrior" || job["Lore"] === "Warrior")){
+				if(!((job["Class"].indexOf("Graff") !== -1) || (job["Class"].indexOf("Warrior") !== -1) || (job["Lore"].indexOf("Warrior") !== -1))){
 					dmg = 0;
 				}
 				break;
 			case "Mage":
-				if(!(job["Class"] === "Mage" || job["Class"] === "Meia" || job["Lore"] === "Mage")){
+				if(!((job["Class"].indexOf("Mage") !== -1) || (job["Class"].indexOf("Meia") !== -1) || (job["Lore"].indexOf("Mage") !== -1))){
 					dmg = 0;
 				}
 				break;
 			case "Ranger":
-				if(!(job["Class"] === "Ranger" || job["Class"] === "Sarah" || job["Lore"] === "Ranger")){
+				if(!((job["Class"].indexOf("Ranger") !== -1) || (job["Class"].indexOf("Sarah") !== -1) || (job["Lore"].indexOf("Ranger") !== -1))){
 					dmg = 0;
 				}
 				break;
 			case "Monk":
-				if(!(job["Class"] === "Monk" || job["Class"] === "Sophie" || job["Lore"] === "Monk")){
+				if(!((job["Class"].indexOf("Monk") !== -1) || (job["Class"].indexOf("Sophie") !== -1) || (job["Lore"].indexOf("Monk") !== -1))){
 					dmg = 0;
 				}
 				break;
