@@ -191,6 +191,7 @@ function DisplayResult(resultList, userInput){
 		
 		resultHTML += "<div class=\"d-flex flex-wrap\">";
 		dmgDivider = "<div class=\"mr-2\"> | </div>";
+		resultHTML += "<div class=\"mr-2 perk-label font-weight-bold\">Total (Ability + Job): </div>";
 		
 		// Mag/Atk
 		if(userInput.ability["Type"] !== "Monk"){  // true = magic, false = atk
@@ -271,7 +272,7 @@ function DisplayResult(resultList, userInput){
 		crit = parseInt2(resultList[i].job["Improved Crits"]) + userInput.ability["ImprovedCrit"];
 		if(crit > 0){
 			resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Crit +" + numberWithCommas(crit) + "%</div>";
+			resultHTML += "<div class=\"mr-2 perk-label\">Improved Crit +" + numberWithCommas(crit) + "%</div>";
 		}
 		
 		// Broken
