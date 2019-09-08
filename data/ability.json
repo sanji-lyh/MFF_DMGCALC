@@ -483,7 +483,7 @@
     "AbilityName": "Extreme Odin",
     "ImageName": "fake_extreme_odin.jpg",
     "Type": "Ranger",
-    "Elem": 4,
+    "Elem": 3,
     "Attack": 1500,
     "BreakPower": 3,
     "ImprovedCrit": 500,
