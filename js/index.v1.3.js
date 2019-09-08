@@ -191,7 +191,7 @@ function DisplayResult(resultList, userInput){
 		
 		resultHTML += "<div class=\"d-flex flex-wrap\">";
 		dmgDivider = "<div class=\"mr-2\"> | </div>";
-		resultHTML += "<div class=\"mr-2 perk-label font-weight-bold\">Total (Ability + Job): </div>";
+		resultHTML += "<div class=\"mr-2 perk-label font-weight-bold\">Total: </div>";
 		
 		// Mag/Atk
 		if(userInput.ability["Type"] !== "Monk"){  // true = magic, false = atk
