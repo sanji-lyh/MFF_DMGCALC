@@ -1,5 +1,10 @@
 var curAbility;
 
+function parseInt2(input){
+	if(!input) return 0;
+	return parseInt(input.toString().replace(/,/g,'')) || 0;
+}
+
 function OnAbilityChange(){
 	var index = $("#ability_template").val()
 	
@@ -55,27 +60,38 @@ function OnAbilityChange(){
 }
 
 function OnInputChange(){
+	var validateFields = ["input[name='atk_power']", "input[name='improved_crit']", "input[name='exploit_weakness']", 
+		"input[name='ee_power']", "input[name='attuned_chain']", "input[name='ability_chain']", "input[name='pb_power']", "input[name='ravage_power']",
+		"input[name='multiply_mag']", "input[name='multiply_atk']", "input[name='supreme_effect']"]
+		
+	for(i=0; i< validateFields.length; i++){
+		if(!$(validateFields[i]).val()){
+			$(validateFields[i]).val(0);
+		}
+	}
+	
+	
 	$("#ability_template").val(-1);
 	curAbility = {};
 	
-	curAbility["Elem"] = parseInt($("input[name='elem_input']:checked").val());
-	curAbility["Attack"] = parseInt($("input[name='atk_power']").val());
+	curAbility["Elem"] = parseInt2($("input[name='elem_input']:checked").val());
+	curAbility["Attack"] = parseInt2($("input[name='atk_power']").val());
 	
 	// true = magic, false = atk
 	curAbility["IsMantra"] = !($("input[name='type']").prop("checked"));
 		
-	curAbility["ImprovedCrit"] = parseInt($("input[name='improved_crit']").val());
-	curAbility["ExploitWeakness"] = parseInt($("input[name='exploit_weakness']").val());
-	curAbility["ElementEnhance"] = parseInt($("input[name='ee_power']").val());
-	curAbility["AttunedChain"] = parseInt($("input[name='attuned_chain']").val());
-	curAbility["AbilityChain"] = parseInt($("input[name='ability_chain']").val());
-	curAbility["PainfulBreak"] = parseInt($("input[name='pb_power']").val());
-	curAbility["Ravage"] = parseInt($("input[name='ravage_power']").val());
-	curAbility["MultiplyMag"] = parseInt($("input[name='multiply_mag']").val());
-	curAbility["MultiplyAtk"] = parseInt($("input[name='multiply_atk']").val());
-	curAbility["SupremeEffect"] = parseInt($("input[name='supreme_effect']").val());
+	curAbility["ImprovedCrit"] = parseInt2($("input[name='improved_crit']").val());
+	curAbility["ExploitWeakness"] = parseInt2($("input[name='exploit_weakness']").val());
+	curAbility["ElementEnhance"] = parseInt2($("input[name='ee_power']").val());
+	curAbility["AttunedChain"] = parseInt2($("input[name='attuned_chain']").val());
+	curAbility["AbilityChain"] = parseInt2($("input[name='ability_chain']").val());
+	curAbility["PainfulBreak"] = parseInt2($("input[name='pb_power']").val());
+	curAbility["Ravage"] = parseInt2($("input[name='ravage_power']").val());
+	curAbility["MultiplyMag"] = parseInt2($("input[name='multiply_mag']").val());
+	curAbility["MultiplyAtk"] = parseInt2($("input[name='multiply_atk']").val());
+	curAbility["SupremeEffect"] = parseInt2($("input[name='supreme_effect']").val());
 	
-	switch(parseInt($("input[name='lore_input']:checked").val())){
+	switch(parseInt2($("input[name='lore_input']:checked").val())){
 		case 1:
 			curAbility["Type"] = "Warrior";
 			break;
