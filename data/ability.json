@@ -352,7 +352,7 @@
     "SupremeEffect": 0,
     "MultiplyMag": 5,
     "MultiplySubMag": 0,
-    "MultiplyAtk": 50,
+    "MultiplyAtk": 0,
     "MultiplySubAtk": 0,
     "IsMantra": 0
   },
