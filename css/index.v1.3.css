@@ -11,6 +11,11 @@ hr {
 	border: 1px solid #d7ddde;
 }
 
+.btn {
+	touch-action: manipulation;
+	cursor: pointer;
+}
+
 .header-bar {
 	background-image: linear-gradient(to bottom right, #ac5210, #ebb44a);
 	color: white;
