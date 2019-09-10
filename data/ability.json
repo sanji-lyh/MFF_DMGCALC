@@ -505,7 +505,7 @@
   },
   {
     "AbilityName": "Extreme Odin",
-    "ImageName": "fake_extreme_odin.jpg",
+    "ImageName": "extreme_odin.jpg",
     "Type": "Ranger",
     "Elem": 3,
     "Attack": 1500,
