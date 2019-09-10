@@ -56,6 +56,7 @@ function OnAbilityChange(){
 
 function OnInputChange(){
 	$("#ability_template").val(-1);
+	curAbility = {};
 	
 	curAbility["Elem"] = parseInt($("input[name='elem_input']:checked").val());
 	curAbility["Attack"] = parseInt($("input[name='atk_power']").val());
