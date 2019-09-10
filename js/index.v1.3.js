@@ -6,9 +6,93 @@ function OnAbilityChange(){
 	if(index!= null && index >= 0) {
 		curAbility = abilityList[index];
 		
+		// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark		
+		$("input[name='elem_input'][value="+curAbility["Elem"]+"]").prop("checked",true);
+		
+		var typeToggle = $("input[name='type']").data('bs.toggle');
+					
+		if(curAbility["IsMantra"]){
+			typeToggle.off(true);
+		}
+		else{
+			typeToggle.on(true);
+		}
+		
+		$("input[name='atk_power']").val(curAbility["Attack"]);
+		$("input[name='improved_crit']").val(curAbility["ImprovedCrit"]);
+		$("input[name='exploit_weakness']").val(curAbility["ExploitWeakness"]);
+		$("input[name='ee_power']").val(curAbility["ElementEnhance"]);
+		$("input[name='attuned_chain']").val(curAbility["AttunedChain"]);
+		$("input[name='ability_chain']").val(curAbility["AbilityChain"]);
+		$("input[name='pb_power']").val(curAbility["PainfulBreak"]);
+		$("input[name='ravage_power']").val(curAbility["Ravage"]);
+		
+		$("input[name='multiply_mag']").val(curAbility["MultiplyMag"]);
+		$("input[name='multiply_atk']").val(curAbility["MultiplyAtk"]);
+		$("input[name='supreme_effect']").val(curAbility["SupremeEffect"]);
+		
+		var loreValue = 0;
+		switch(curAbility["Type"]){
+			case "Warrior":
+				loreValue = 1;
+				break;
+			case "Mage":
+				loreValue = 2;
+				break;
+			case "Ranger":
+				loreValue = 3;
+				break;
+			case "Monk":
+				loreValue = 4;
+				break;
+		}
+		$("input[name='lore_input'][value=" +loreValue+"]").prop("checked", true);
+		
 		if(jobList != null){
 			UpdateChanges();
 		}
+	}
+}
+
+function OnInputChange(){
+	$("#ability_template").val(-1);
+	
+	curAbility["Elem"] = parseInt($("input[name='elem_input']:checked").val());
+	curAbility["Attack"] = parseInt($("input[name='atk_power']").val());
+	
+	// true = magic, false = atk
+	curAbility["IsMantra"] = !($("input[name='type']").prop("checked"));
+		
+	curAbility["ImprovedCrit"] = parseInt($("input[name='improved_crit']").val());
+	curAbility["ExploitWeakness"] = parseInt($("input[name='exploit_weakness']").val());
+	curAbility["ElementEnhance"] = parseInt($("input[name='ee_power']").val());
+	curAbility["AttunedChain"] = parseInt($("input[name='attuned_chain']").val());
+	curAbility["AbilityChain"] = parseInt($("input[name='ability_chain']").val());
+	curAbility["PainfulBreak"] = parseInt($("input[name='pb_power']").val());
+	curAbility["Ravage"] = parseInt($("input[name='ravage_power']").val());
+	curAbility["MultiplyMag"] = parseInt($("input[name='multiply_mag']").val());
+	curAbility["MultiplyAtk"] = parseInt($("input[name='multiply_atk']").val());
+	curAbility["SupremeEffect"] = parseInt($("input[name='supreme_effect']").val());
+	
+	switch(parseInt($("input[name='lore_input']:checked").val())){
+		case 1:
+			curAbility["Type"] = "Warrior";
+			break;
+		case 2:
+			curAbility["Type"] = "Mage";
+			break;
+		case 3:
+			curAbility["Type"] = "Ranger";
+			break;
+		case 4:
+			curAbility["Type"] = "Monk";
+			break;
+	}
+	
+	curAbility["ImageName"] = "default.jpg"
+	
+	if(jobList != null){
+		UpdateChanges();
 	}
 }
 
@@ -194,7 +278,7 @@ function DisplayResult(resultList, userInput){
 		resultHTML += "<div class=\"mr-2 perk-label font-weight-bold\">Total: </div>";
 		
 		// Mag/Atk
-		if(userInput.ability["Type"] !== "Monk"){  // true = magic, false = atk
+		if(!userInput.ability["IsMantra"]){  // true = magic, false = atk
 			additional_mag = 0;
 			if(userInput.isMaxReckoning && resultList[i].job["Reckoning"]==1){
 				additional_mag += 2400;
@@ -315,8 +399,6 @@ function DisplayResult(resultList, userInput){
 		
 		$("#result_list").append(resultHTML);
 	}	
-	
-	
 }
 
 $(document).ready(function() {
@@ -350,4 +432,12 @@ $(document).ready(function() {
 	$("#sort_input").change(function(){
 		UpdateChanges();
 	});
+	
+	$("#ability_input").change(function(){
+		OnInputChange();
+	});
+	
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})
 });

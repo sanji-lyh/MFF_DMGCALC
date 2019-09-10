@@ -17,7 +17,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Minwu (Single-target)",
@@ -37,7 +38,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Unbreakable Bond: FFXV (Full HP)",
@@ -57,7 +59,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Duncan",
@@ -77,7 +80,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 8,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 1
   },
   {
     "AbilityName": "Ragnarok: FFXIII",
@@ -97,7 +101,8 @@
     "MultiplyMag": 8,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Xezat: FFV",
@@ -117,7 +122,8 @@
     "MultiplyMag": 8,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Yiazmat: FFXII (Full Ult)",
@@ -137,7 +143,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 1
   },
   {
     "AbilityName": "Fusoya: FFIV (Full Orb)",
@@ -157,7 +164,8 @@
     "MultiplyMag": 8,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Sin: FFX",
@@ -177,7 +185,8 @@
     "MultiplyMag": 8,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Shadow Lord: FFXII (Max Dmg)",
@@ -197,7 +206,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Braska's Final Aeon: FFX",
@@ -217,7 +227,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 8,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 1
   },
   {
     "AbilityName": "Floral Fallal: FFX-2 (10 buffs)",
@@ -237,7 +248,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Godo: FFVII",
@@ -257,7 +269,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 50,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Emperor of Arubboth: FII (5 debuff)",
@@ -277,7 +290,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Bahamut Neo",
@@ -297,7 +311,8 @@
     "MultiplyMag": 5,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Eden (5 turns Omnidrive)",
@@ -317,7 +332,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 1
   },
   {
     "AbilityName": "Gilgamesh X",
@@ -337,7 +353,8 @@
     "MultiplyMag": 5,
     "MultiplySubMag": 0,
     "MultiplyAtk": 50,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Bhunivelze: FFXIII",
@@ -357,7 +374,8 @@
     "MultiplyMag": 5,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Faris: FFV",
@@ -377,7 +395,8 @@
     "MultiplyMag": 150,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Zeromus: FFIV",
@@ -397,7 +416,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 50
+    "MultiplySubAtk": 50,
+    "IsMantra": 1
   },
   {
     "AbilityName": "Griever: FFVIII (70k HP)",
@@ -417,7 +437,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 1
   },
   {
     "AbilityName": "Extreme Ifrit",
@@ -437,7 +458,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 6,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Extreme Shiva",
@@ -457,7 +479,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Extreme Shiva (Single-target)",
@@ -477,7 +500,8 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Extreme Odin",
@@ -497,7 +521,8 @@
     "MultiplyMag": 6,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Extreme Hashmal",
@@ -517,7 +542,8 @@
     "MultiplyMag": 6,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   },
   {
     "AbilityName": "Rinoa",
@@ -537,6 +563,7 @@
     "MultiplyMag": 0,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
-    "MultiplySubAtk": 0
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
   }
 ]

@@ -17,6 +17,8 @@ function GetAbility(callback){
 			$('#ability_template').append($('<option>', {value:i, text:(abilityList[i]["AbilityName"]+" -- Atk: " + abilityList[i]["Attack"])}));
 		}
 		
+		$('#ability_template').append($('<option>', {value:-1, text:"Custom input ability"}));
+		
 		callback();
 	});
 }

@@ -88,7 +88,7 @@ function ComputeDmg(userInput, job, isBroken, isWeakness, isAOE=true){
 	//Output Dmg = Card's Attack * Magic * EE * Critical * Broken * Weakness * Ravage * Supreme
 	//Output Dmg = Card's Attack * Attack * EE * Critical * Broken * Weakness * Ravage * Supreme
 	
-	if(userInput.ability["Type"] !== "Monk"){  // true = magic, false = atk
+	if(!userInput.ability["IsMantra"]){  // true = magic, false = atk
 		additional_mag = 0;
 		if(userInput.isMaxReckoning && job["Reckoning"]==1){
 			additional_mag += 24;

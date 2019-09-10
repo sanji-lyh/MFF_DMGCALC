@@ -4,11 +4,7 @@ body {
 }
 
 a {
-		
-}
-
-.row div{
-	#padding-left: 30px;
+	color: #d7ddde;
 }
 
 hr {
@@ -16,7 +12,7 @@ hr {
 }
 
 .header-bar {
-	background-image: linear-gradient(to bottom right, #82ac10, #bceb4a);
+	background-image: linear-gradient(to bottom right, #ac5210, #ebb44a);
 	color: white;
 	padding: 16px 8px;
 }
@@ -46,17 +42,12 @@ hr {
 	max-width: 20px;
 }
 
-.options-table {
-	margin-left: 15px!important;
-	margin-right: 15px!important;
-}
-
 .ability-panel {
 	#margin: 25px 25px;
 }
 .ability-panel img{
 	#float: left;
-	margin-right: 80px;
+	margin-right: 40px;
 	margin-bottom: 20px;
 	max-width: 350px;
 	width:100%;
@@ -109,4 +100,48 @@ hr {
 .list-group-item:hover {
 	color: #d7ddde;
 	background-color: #4c4d50;
+}
+
+.collapseBut img {
+	max-width: 60px;
+	margin-right:10px;
+}
+
+.collapseBut {
+	color: #d7ddde;
+	font-size: 18px;
+	width: 100%;
+	text-align:left;
+	padding: 0px!important;
+	background-image: linear-gradient(to bottom right, #124190, #3b77d0);
+	##background-color: #129066;
+}
+
+.collapseBut:hover{
+	color: #d7ddde;
+	background-image: linear-gradient(to bottom right, #114275, #2b5da7)!important;
+}
+
+.elem-table img {
+	max-width: 30px;
+}
+
+.lore-table img {
+	max-width: 30px;
+}
+
+/* Bootstrap Toggle v2.2.2 corrections for Bootsrtap 4*/
+.toggle > .toggle-group {
+    background:white;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    color:#666;
+}
+
+.toggle.off {
+    border-color: rgba(0, 0, 0, .25);
+}
+
+.toggle-handle {
+    background-color: white;
+    border: thin rgba(0, 0, 0, .25) solid;
 }

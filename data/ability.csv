@@ -1,28 +1,28 @@
-AbilityName,ImageName,Type,Elem,Attack,BreakPower,ImprovedCrit,ExploitWeakness,ElementEnhance,AttunedChain,AbilityChain,PainfulBreak,Ravage,SupremeEffect,MultiplyMag,MultiplySubMag,MultiplyAtk,MultiplySubAtk
-Minwu,minwu.jpg,Mage,5,2100,3,0,0,15,0,0,0,25,0,0,0,0,0
-Minwu (Single-target),minwu.jpg,Mage,5,2100,3,0,0,15,0,0,0,125,0,0,0,0,0
-Unbreakable Bond: FFXV (Full HP),unbreakable_bonds.jpg,Warrior,6,2700,3,0,0,15,0,0,0,0,90,0,0,0,0
-Duncan,duncan.jpg,Monk,5,3600,720,0,0,0,0,0,0,0,0,0,0,8,0
-Ragnarok: FFXIII,ragnarok.jpg,Ranger,4,1500,3,500,0,15,0,0,0,0,0,8,0,0,0
-Xezat: FFV,xezat.jpg,Warrior,2,960,2640,0,0,0,0,0,1000,0,0,8,0,0,0
-Yiazmat: FFXII (Full Ult),yiazmat.jpg,Monk,3,2250,1050,0,0,315,0,0,0,0,0,0,0,0,0
-Fusoya: FFIV (Full Orb),fusoya.jpg,Mage,1,2550,1200,0,0,400,15,0,0,0,0,8,0,0,0
-Sin: FFX,sin.jpg,Mage,6,1800,1800,100,100,0,0,0,100,0,0,8,0,0,0
-Shadow Lord: FFXII (Max Dmg),shadow_lord.jpg,Warrior,6,1950,3,15,0,0,0,0,0,200,0,0,0,0,0
-Braska's Final Aeon: FFX,braska_final_aeon.jpg,Monk,4,2850,960,0,0,0,0,0,0,0,0,0,0,8,0
-Floral Fallal: FFX-2 (10 buffs),floral.jpg,Ranger,2,2700,1800,0,0,500,0,0,0,0,0,0,0,0,0
-Godo: FFVII,godo.jpg,Ranger,3,2250,1050,0,0,0,15,0,0,0,0,0,50,0,0
-Emperor of Arubboth: FII (5 debuff),emperor.jpg,Mage,3,1650,600,0,0,1050,0,0,0,0,0,0,0,0,0
-Bahamut Neo,bahamut_neo.jpg,Warrior,1,1800,1200,0,0,0,0,0,0,0,150,5,0,0,0
-Eden (5 turns Omnidrive),eden.jpg,Monk,2,2550,750,0,0,600,0,0,0,0,0,0,0,0,0
-Gilgamesh X,gilgamesh_x.jpg,Ranger,5,2850,1140,0,0,0,0,0,0,0,0,5,0,50,0
-Bhunivelze: FFXIII,bhunivelze.jpg,Warrior,5,2850,1140,0,0,0,0,0,0,0,0,5,0,0,0
-Faris: FFV,faris.jpg,Mage,2,2940,1140,0,0,0,0,0,0,25,0,150,0,0,0
-Zeromus: FFIV,zeromus.jpg,Monk,1,2550,1050,0,0,0,0,0,0,0,0,0,0,0,50
-Griever: FFVIII (70k HP),griever.jpg,Monk,6,2700,900,0,0,0,0,0,0,0,100,0,0,0,0
-Extreme Ifrit,extreme_ifrit.jpg,Monk,1,3600,720,0,0,0,0,0,0,0,0,0,0,6,0
-Extreme Shiva,extreme_shiva.jpg,Mage,2,2100,3,0,0,12,0,0,0,20,0,0,0,0,0
-Extreme Shiva (Single-target),extreme_shiva.jpg,Mage,2,2100,3,0,0,12,0,0,0,120,0,0,0,0,0
-Extreme Odin,fake_extreme_odin.jpg,Ranger,3,1500,3,500,0,12,0,0,0,0,0,6,0,0,0
-Extreme Hashmal,extreme_hashmal.jpg,Warrior,4,960,2640,0,0,0,0,0,1000,0,0,6,0,0,0
-Rinoa,rinoa.jpg,Mage,4,2550,3000,0,0,0,0,0,160,0,0,0,0,0,0
+AbilityName,ImageName,Type,Elem,Attack,BreakPower,ImprovedCrit,ExploitWeakness,ElementEnhance,AttunedChain,AbilityChain,PainfulBreak,Ravage,SupremeEffect,MultiplyMag,MultiplySubMag,MultiplyAtk,MultiplySubAtk,IsMantra
+Minwu,minwu.jpg,Mage,5,2100,3,0,0,15,0,0,0,25,0,0,0,0,0,0
+Minwu (Single-target),minwu.jpg,Mage,5,2100,3,0,0,15,0,0,0,125,0,0,0,0,0,0
+Unbreakable Bond: FFXV (Full HP),unbreakable_bonds.jpg,Warrior,6,2700,3,0,0,15,0,0,0,0,90,0,0,0,0,0
+Duncan,duncan.jpg,Monk,5,3600,720,0,0,0,0,0,0,0,0,0,0,8,0,1
+Ragnarok: FFXIII,ragnarok.jpg,Ranger,4,1500,3,500,0,15,0,0,0,0,0,8,0,0,0,0
+Xezat: FFV,xezat.jpg,Warrior,2,960,2640,0,0,0,0,0,1000,0,0,8,0,0,0,0
+Yiazmat: FFXII (Full Ult),yiazmat.jpg,Monk,3,2250,1050,0,0,315,0,0,0,0,0,0,0,0,0,1
+Fusoya: FFIV (Full Orb),fusoya.jpg,Mage,1,2550,1200,0,0,400,15,0,0,0,0,8,0,0,0,0
+Sin: FFX,sin.jpg,Mage,6,1800,1800,100,100,0,0,0,100,0,0,8,0,0,0,0
+Shadow Lord: FFXII (Max Dmg),shadow_lord.jpg,Warrior,6,1950,3,15,0,0,0,0,0,200,0,0,0,0,0,0
+Braska's Final Aeon: FFX,braska_final_aeon.jpg,Monk,4,2850,960,0,0,0,0,0,0,0,0,0,0,8,0,1
+Floral Fallal: FFX-2 (10 buffs),floral.jpg,Ranger,2,2700,1800,0,0,500,0,0,0,0,0,0,0,0,0,0
+Godo: FFVII,godo.jpg,Ranger,3,2250,1050,0,0,0,15,0,0,0,0,0,50,0,0,0
+Emperor of Arubboth: FII (5 debuff),emperor.jpg,Mage,3,1650,600,0,0,1050,0,0,0,0,0,0,0,0,0,0
+Bahamut Neo,bahamut_neo.jpg,Warrior,1,1800,1200,0,0,0,0,0,0,0,150,5,0,0,0,0
+Eden (5 turns Omnidrive),eden.jpg,Monk,2,2550,750,0,0,600,0,0,0,0,0,0,0,0,0,1
+Gilgamesh X,gilgamesh_x.jpg,Ranger,5,2850,1140,0,0,0,0,0,0,0,0,5,0,50,0,0
+Bhunivelze: FFXIII,bhunivelze.jpg,Warrior,5,2850,1140,0,0,0,0,0,0,0,0,5,0,0,0,0
+Faris: FFV,faris.jpg,Mage,2,2940,1140,0,0,0,0,0,0,25,0,150,0,0,0,0
+Zeromus: FFIV,zeromus.jpg,Monk,1,2550,1050,0,0,0,0,0,0,0,0,0,0,0,50,1
+Griever: FFVIII (70k HP),griever.jpg,Monk,6,2700,900,0,0,0,0,0,0,0,100,0,0,0,0,1
+Extreme Ifrit,extreme_ifrit.jpg,Monk,1,3600,720,0,0,0,0,0,0,0,0,0,0,6,0,0
+Extreme Shiva,extreme_shiva.jpg,Mage,2,2100,3,0,0,12,0,0,0,20,0,0,0,0,0,0
+Extreme Shiva (Single-target),extreme_shiva.jpg,Mage,2,2100,3,0,0,12,0,0,0,120,0,0,0,0,0,0
+Extreme Odin,fake_extreme_odin.jpg,Ranger,3,1500,3,500,0,12,0,0,0,0,0,6,0,0,0,0
+Extreme Hashmal,extreme_hashmal.jpg,Warrior,4,960,2640,0,0,0,0,0,1000,0,0,6,0,0,0,0
+Rinoa,rinoa.jpg,Mage,4,2550,3000,0,0,0,0,0,160,0,0,0,0,0,0,0
