@@ -2,18 +2,21 @@ import { URL, EXTRA_SKILL as ES } from './const.js';
 import { getJSON } from './helper.js';
 
 class AbilityCard {
-    constructor(options) {
+    constructor(options) {	
         this.attack = options.attack;
         this.break = options.break;
         this.name = options.name || '';
-        this.extra_skill = options.extra_skill || [];
-        this.auto_ability = options.auto_ability || {};
-        this.mechanics = options.mechanics || {};
+		
+		this.element = options.element;
+		this.type = options.type;
+		
+		this.extra_skill = options["extra skill"] || [];
+        this.auto_ability = options["auto ability"] || {};
+        this.mechanics = options["mechanics"] || {};
     }
 
-    static loadAllCards() {
-        // TODO
-        return [];
+    static loadAllCards(cardsJSON) {				
+        return cardsJSON.map(x => new AbilityCard(x));
     }
 
     isMagicBased() {

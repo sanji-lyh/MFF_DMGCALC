@@ -104,7 +104,9 @@ const EXTRA_SKILL = {
 
 const URL = {
     JP_CARDS: 'https://script.google.com/macros/s/AKfycby5HVdcFyPDu9kLXT7pM_YhPjhyskSUqtm7suKcEUKJSHaiyslA/exec',
-    GL_CARDS: ''
+    GL_CARDS: 'https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id=1-E5RbZpdvWaqdCmSHoidrxEgZ8ZJzPJZJovM8DB4zHA&sheet=Sheet1',
+	JP_JOBS: '',
+	GL_JOBS: ''
 };
 
 export { AUTO_ABILITY, URL, EXTRA_SKILL, CLASS, STATS, ELEMENT };

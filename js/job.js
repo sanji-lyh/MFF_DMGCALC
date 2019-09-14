@@ -56,7 +56,7 @@ class Job {
         return this.HP;
     }
 
-    loadAllJobs(server) {
+    static loadAllJobs(server) {
         /*
             function for loading all jobs before feeding to ranking functions
         */
@@ -65,3 +65,4 @@ class Job {
     }
 }
 
+export { Job }
