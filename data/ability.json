@@ -354,7 +354,7 @@
     "MultiplySubMag": 0,
     "MultiplyAtk": 6,
     "MultiplySubAtk": 0,
-    "IsMantra": 0
+    "IsMantra": 1
   },
   {
     "AbilityName": "Extreme Shiva",
@@ -457,7 +457,7 @@
     "SupremeEffect": 0,
     "MultiplyMag": 5,
     "MultiplySubMag": 0,
-    "MultiplyAtk": 0,
+    "MultiplyAtk": 50,
     "MultiplySubAtk": 0,
     "IsMantra": 0
   },
@@ -561,6 +561,27 @@
     "Ravage": 0,
     "SupremeEffect": 0,
     "MultiplyMag": 0,
+    "MultiplySubMag": 0,
+    "MultiplyAtk": 0,
+    "MultiplySubAtk": 0,
+    "IsMantra": 0
+  },
+  {
+    "AbilityName": "Extreme Ultima (Full Orb)",
+    "ImageName": "extreme_ultima.jpg",
+    "Type": "Mage",
+    "Elem": 5,
+    "Attack": 2550,
+    "BreakPower": 1200,
+    "ImprovedCrit": 0,
+    "ExploitWeakness": 0,
+    "ElementEnhance": 400,
+    "AttunedChain": 12,
+    "AbilityChain": 0,
+    "PainfulBreak": 0,
+    "Ravage": 0,
+    "SupremeEffect": 0,
+    "MultiplyMag": 6,
     "MultiplySubMag": 0,
     "MultiplyAtk": 0,
     "MultiplySubAtk": 0,

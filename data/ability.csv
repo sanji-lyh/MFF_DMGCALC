@@ -15,7 +15,7 @@ Godo: FFVII,godo.jpg,Ranger,3,2250,1050,0,0,0,15,0,0,0,0,0,50,0,0,0
 Emperor of Arubboth: FII (5 debuff),emperor.jpg,Mage,3,1650,600,0,0,1050,0,0,0,0,0,0,0,0,0,0
 Bahamut Neo,bahamut_neo.jpg,Warrior,1,1800,1200,0,0,0,0,0,0,0,150,5,0,0,0,0
 Eden (5 turns Omnidrive),eden.jpg,Monk,2,2550,750,0,0,600,0,0,0,0,0,0,0,0,0,1
-Extreme Ifrit,extreme_ifrit.jpg,Monk,1,3600,720,0,0,0,0,0,0,0,0,0,0,6,0,0
+Extreme Ifrit,extreme_ifrit.jpg,Monk,1,3600,720,0,0,0,0,0,0,0,0,0,0,6,0,1
 Extreme Shiva,extreme_shiva.jpg,Mage,2,2100,3,0,0,12,0,0,0,20,0,0,0,0,0,0
 Extreme Shiva (Single-target),extreme_shiva.jpg,Mage,2,2100,3,0,0,12,0,0,0,120,0,0,0,0,0,0
 Extreme Odin,extreme_odin.jpg,Ranger,3,1500,3,500,0,12,0,0,0,0,0,6,0,0,0,0
@@ -26,3 +26,4 @@ Faris: FFV,faris.jpg,Mage,2,2940,1140,0,0,0,0,0,0,25,0,150,0,0,0,0
 Zeromus: FFIV,zeromus.jpg,Monk,1,2550,1050,0,0,0,0,0,0,0,0,0,0,0,50,1
 Griever: FFVIII (70k HP),griever.jpg,Monk,6,2700,900,0,0,0,0,0,0,0,100,0,0,0,0,1
 Rinoa,rinoa.jpg,Mage,4,2550,3000,0,0,0,0,0,160,0,0,0,0,0,0,0
+Extreme Ultima (Full Orb),extreme_ultima.jpg,Mage,5,2550,1200,0,0,400,12,0,0,0,0,6,0,0,0,0
