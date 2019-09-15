@@ -16,6 +16,15 @@ class Setting {
         this.enemyHP = 100;
         this.playerHP = 100;
         this.enemyElement = null;
+		
+		this.isBroken = false;
+		this.isWeakness = false;
+		this.ignoreLore = false;
+		this.ignoreElement = false;		
+		
+		this.crit_dmg_up = 0;
+        this.break_dmg_up = 0;
+        this.weak_dmg_up = 0;
     }
 
     getEE() {

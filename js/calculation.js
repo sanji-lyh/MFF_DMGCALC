@@ -1,5 +1,8 @@
 import { AUTO_ABILITY as AA, EXTRA_SKILL as ES } from './const.js';
+import { Title } from './title.js';
+import { AbilityCard } from './ability-card.js';
 import { Setting } from './settings.js';
+import { Job } from './job.js';
 
 /* 
 UC list for complete mechanics
@@ -31,7 +34,7 @@ UC list for complete mechanics
     vegnagun: done
 */
 
-function damageCalc(card, job, title, setting) {
+function damageCalc(card, job, setting, title) {
 
     // TODO: take AA into account and titles
 
@@ -46,6 +49,7 @@ function damageCalc(card, job, title, setting) {
         barrierTerm = 100,
         defenseTerm = 100;
 
+	title = title || new Title();
     setting = setting || new Setting();
 
     // magic / attack term
@@ -78,7 +82,7 @@ function damageCalc(card, job, title, setting) {
 
     // ee term
     eeTerm += job.getEE(card.element);
-    eeTerm += title.getEE(card.elemet);
+    eeTerm += title.getEE(card.element);
     eeTerm += setting.getEE();
     eeTerm += card.hasES(ES.element_drive_synergy) ? 600 : 0;
     eeTerm += card.hasES(ES.element_everyday) ? 600 : 0;
@@ -94,7 +98,7 @@ function damageCalc(card, job, title, setting) {
     critTerm += job.crit_dmg_up;
     critTerm += card.hasES(ES.critical_rupture) ? 30 : 0;
     critTerm += card.hasES(ES.ultra_critical_damage_up) ? 500 : 0;
-    critTerm += critTerm.crit_dmg_up;
+    critTerm += title.crit_dmg_up;
     // TODO: add from card's description
     critTerm /= 100;
 
@@ -109,9 +113,9 @@ function damageCalc(card, job, title, setting) {
         // TODO: add from card's description
     }
     brokenTerm /= 100;
-
+	
     // weakness term
-    if (setting.isWeakness || setting.isOppositeElement(card.element)) {
+    if (setting.isWeakness) {
         weakTerm += 30;
         weakTerm += job.weak_dmg_up;
         weakTerm += card.hasES(ES.break_enhance) ? 25 : 0;
@@ -146,11 +150,32 @@ function damageCalc(card, job, title, setting) {
 
     // TODO: defense term and barrier term
 
-
     let damage = card.attack;
-    damage *= (card.isMagicBased()) ? magicTerm : attackTerm;
+	damage *= (card.isMagicBased()) ? magicTerm : attackTerm;
     damage = damage * eeTerm * critTerm * brokenTerm * weakTerm * ravageTerm * ucTerm;
-    return damage;
+	
+	// Check lore
+	if(!setting.ignoreLore && !job.checkLore(card)){
+		damage = 0;
+	}
+	
+	// Check element
+	if(!setting.ignoreElement && !job.checkElement(card)){
+		damage = 0;
+	}
+		
+	var result = {
+		damage: damage, 
+		dmgTerm: (card.isMagicBased()) ? magicTerm * 100 : attackTerm * 100,
+		eeTerm: (eeTerm * 100)-100,
+		critTerm: (critTerm * 100)-150,
+		brokenTerm: (brokenTerm * 100)-200,
+		weakTerm: (weakTerm * 100)-130,
+		ravageTerm: (ravageTerm * 100)-100,
+		ucTerm: (ucTerm * 100)-100
+	}
+
+	return result;
 }
 
 export { damageCalc };

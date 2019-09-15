@@ -1,4 +1,4 @@
-import { ELEMENT } from './const.js';
+import { ELEMENT, CLASS, ELEMENT_SHORT } from './const.js';
 
 class Job {
     constructor(options) {
@@ -14,9 +14,41 @@ class Job {
         this.attack = options.Attack;
         this.magic = options.Magic;
         this.break = options.Break;
+	
 		
-		this.orbset1 = options.OrbSet1 || [];
-		this.orbset2 = options.OrbSet2 || [];
+		this.orbset1 = [];
+		this.orbset2 = [];
+		
+		let orbset = [this.orbset1, this.orbset2];
+		let optionOrbset = [options.OrbSet1, options.OrbSet2];
+	
+		for(let i=0; i < orbset.length; i++){			
+			for(let j=0; j < optionOrbset[i].length; j++){
+				switch(optionOrbset[i][j]){
+					case ELEMENT_SHORT.fire:
+						orbset[i].push(ELEMENT.fire);
+						break;
+					case ELEMENT_SHORT.water:
+						orbset[i].push(ELEMENT.water);
+						break;
+					case ELEMENT_SHORT.wind:
+						orbset[i].push(ELEMENT.wind);
+						break;
+					case ELEMENT_SHORT.earth:
+						orbset[i].push(ELEMENT.earth);
+						break;
+					case ELEMENT_SHORT.light:
+						orbset[i].push(ELEMENT.light);
+						break;
+					case ELEMENT_SHORT.dark:
+						orbset[i].push(ELEMENT.dark);
+						break;
+					case ELEMENT_SHORT.empty:
+						orbset[i].push(ELEMENT.empty);
+						break;
+				}
+			}
+		}
 
         // AA
 		this.fire_ee = options.Fire_EE || 0;
@@ -71,6 +103,52 @@ class Job {
     static loadAllJobs(jobsJSON) {
         return jobsJSON.map(x => new Job(x));
     }
+	
+	checkLore(card) {
+		let result = false;
+		let typeFields, checkFields;
+		checkFields = [this.jobClass.toLowerCase(), this.lore.toLowerCase()];
+	
+		switch(card.type){
+			case CLASS.warrior:
+				typeFields = [CLASS.warrior, CLASS.graff];
+				break;
+			case CLASS.mage:
+				typeFields = [CLASS.mage, CLASS.meia];
+				break;
+			case CLASS.ranger:
+				typeFields = [CLASS.ranger, CLASS.sarah];
+				break;
+			case CLASS.monk:
+				typeFields = [CLASS.monk, CLASS.sophie];
+				break;
+		}
+		
+		for(let i=0; i < checkFields.length; i++){
+			for(let j=0; j < typeFields.length; j++){
+				if(checkFields[i].indexOf(typeFields[j]) !== -1){
+					result = true;
+				}
+			}
+		}
+				
+		return result;
+	}
+	
+	checkElement(card) {
+		let checkFields = [this.orbset1, this.orbset2];
+		let result = false;
+		
+		for(let i=0; i < checkFields.length; i++){
+			for(let j=0; j < checkFields[i].length; j++){
+				if(card.element === checkFields[i][j]){
+					result = true;
+				}
+			}
+		}
+		
+		return result;
+	}
 }
 
 export { Job }

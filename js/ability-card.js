@@ -1,11 +1,14 @@
 import { URL, EXTRA_SKILL as ES } from './const.js';
 import { getJSON } from './helper.js';
+import { ELEMENT } from './const.js';
 
 class AbilityCard {
     constructor(options) {	
         this.attack = options.attack;
         this.break = options.break;
         this.name = options.name || '';
+		
+		this.img = options["image name"] || "default.jpg";
 		
 		this.element = options.element;
 		this.type = options.type;

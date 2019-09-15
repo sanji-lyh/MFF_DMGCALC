@@ -1,3 +1,5 @@
+import { ELEMENT } from './const.js';
+
 // only contains titles with damage related stats for now
 
 // const titles = {
@@ -22,25 +24,25 @@
 
 class Title {
     constructor() {
-        this.HP;
-        this.attack;
-        this.break;
-        this.magic;
-        this.critical;
-        this.break_dmg_up;
-        this.weak_dmg_up;
-        this.ravage;
-        this.fire_ee;
-        this.water_ee;
-        this.wind_ee;
-        this.earth_ee;
-        this.light_ee;
-        this.dark_ee;
-        this.attune_chain;
-        this.ability_chain;
-        this.ability_rising;
-        this.ovepower;
-        this.taiman;
+        this.HP = 0;
+        this.attack = 0;
+        this.break = 0;
+        this.magic = 0;
+        this.crit_dmg_up = 0;
+        this.break_dmg_up = 0;
+        this.weak_dmg_up = 0;
+        this.ravage = 0;
+        this.fire_ee = 0;
+        this.water_ee = 0;
+        this.wind_ee = 0;
+        this.earth_ee = 0;
+        this.light_ee = 0;
+        this.dark_ee = 0;
+        this.attune_chain = 0;
+        this.ability_chain = 0;
+        this.ability_rising = 0;
+        this.ovepower = 0;
+        this.taiman = 0;
     }
 
     getEE(element) {

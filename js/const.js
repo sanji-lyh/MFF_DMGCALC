@@ -17,14 +17,14 @@ const AUTO_ABILITY = {
 };
 
 const CLASS = {
-    warrior: 'Warrior',
-    mage: 'Mage',
-    ranger: 'Ranger',
-    monk: 'Monk',
-    meia: 'Meia',
-    sarah: 'Sarah',
-    sophie: 'Sophie',
-    graff: 'Graff',
+    warrior: 'warrior',
+    mage: 'mage',
+    ranger: 'ranger',
+    monk: 'monk',
+    meia: 'meia',
+    sarah: 'sarah',
+    sophie: 'sophie',
+    graff: 'graff',
 }
 
 const STATS = {
@@ -41,6 +41,17 @@ const ELEMENT = {
     earth: 'earth',
     light: 'light',
     dark: 'dark',
+	empty: ''
+}
+
+const ELEMENT_SHORT = {
+	fire: 'F',
+	water: 'W',
+	wind: 'A',
+	earth: 'E',
+	light: 'L',
+	dark: 'D',
+	empty: ''
 }
 
 const EXTRA_SKILL = {
@@ -108,4 +119,4 @@ const URL = {
 	JOBS: 'https://script.google.com/macros/s/AKfycbzb8iuyTiIPjMBQgw4HOaY21HTmccOQQpezlQDQzxUMrASLoFT6/exec'
 };
 
-export { AUTO_ABILITY, URL, EXTRA_SKILL, CLASS, STATS, ELEMENT };
+export { AUTO_ABILITY, URL, EXTRA_SKILL, CLASS, STATS, ELEMENT, ELEMENT_SHORT };

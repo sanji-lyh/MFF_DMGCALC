@@ -1,7 +1,12 @@
 import { AUTO_ABILITY as AA, EXTRA_SKILL as ES, URL, CLASS, STATS, ELEMENT } from './const.js';
 import { AbilityCard } from './ability-card.js';
+import { Setting } from './settings.js';
 import { Job } from './job.js';
 import { getJSON } from './helper.js';
+import { damageCalc } from './calculation.js';
+import { Title } from './title.js';
+
+var IS_GL = false;
 
 var cards;
 var jobs;
@@ -13,6 +18,13 @@ var isJobLoaded = 0;
 
 function cappedFirst(str){
 	return str.charAt(0).toUpperCase() + str.substring(1);
+}
+
+function numberWithCommas(x) {
+	x = x.toFixed(0);
+	var parts = x.toString().split(".");
+	parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return parts.join(".");
 }
 
 function parseInt2(input){
@@ -58,11 +70,13 @@ function finishLoading(){
 		$('#main_div').hide();
 		$('#main_div').removeClass("d-none");
 		$('#main_div').fadeToggle("slow");
+		
+		OnAbilityChange();
 	}	
 }
 
 function init(){
-	getJSON(URL.JP_CARDS, loadAllCards);
+	getJSON((IS_GL) ? URL.GL_CARDS : URL.JP_CARDS, loadAllCards);
 	getJSON(URL.JOBS, loadAllJobs);
 }
 
@@ -70,35 +84,36 @@ function OnAbilityChange(){
 	var index = $("#ability_template").val()
 	
 	if(index!= null && index >= 0) {
-		curAbility = abilityList[index];
+		curCard = cards[index];
 		
+		/*
 		// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark		
-		$("input[name='elem_input'][value="+curAbility["Elem"]+"]").prop("checked",true);
+		$("input[name='elem_input'][value="+curCard["Elem"]+"]").prop("checked",true);
 		
 		var typeToggle = $("input[name='type']").data('bs.toggle');
 					
-		if(curAbility["IsMantra"]){
+		if(curCard["IsMantra"]){
 			typeToggle.off(true);
 		}
 		else{
 			typeToggle.on(true);
 		}
 		
-		$("input[name='atk_power']").val(curAbility["Attack"]);
-		$("input[name='improved_crit']").val(curAbility["ImprovedCrit"]);
-		$("input[name='exploit_weakness']").val(curAbility["ExploitWeakness"]);
-		$("input[name='ee_power']").val(curAbility["ElementEnhance"]);
-		$("input[name='attuned_chain']").val(curAbility["AttunedChain"]);
-		$("input[name='ability_chain']").val(curAbility["AbilityChain"]);
-		$("input[name='pb_power']").val(curAbility["PainfulBreak"]);
-		$("input[name='ravage_power']").val(curAbility["Ravage"]);
+		$("input[name='atk_power']").val(curCard["Attack"]);
+		$("input[name='improved_crit']").val(curCard["ImprovedCrit"]);
+		$("input[name='exploit_weakness']").val(curCard["ExploitWeakness"]);
+		$("input[name='ee_power']").val(curCard["ElementEnhance"]);
+		$("input[name='attuned_chain']").val(curCard["AttunedChain"]);
+		$("input[name='ability_chain']").val(curCard["AbilityChain"]);
+		$("input[name='pb_power']").val(curCard["PainfulBreak"]);
+		$("input[name='ravage_power']").val(curCard["Ravage"]);
 		
-		$("input[name='multiply_mag']").val(curAbility["MultiplyMag"]);
-		$("input[name='multiply_atk']").val(curAbility["MultiplyAtk"]);
-		$("input[name='supreme_effect']").val(curAbility["SupremeEffect"]);
+		$("input[name='multiply_mag']").val(curCard["MultiplyMag"]);
+		$("input[name='multiply_atk']").val(curCard["MultiplyAtk"]);
+		$("input[name='supreme_effect']").val(curCard["SupremeEffect"]);
 		
 		var loreValue = 0;
-		switch(curAbility["Type"]){
+		switch(curCard["Type"]){
 			case "Warrior":
 				loreValue = 1;
 				break;
@@ -112,9 +127,9 @@ function OnAbilityChange(){
 				loreValue = 4;
 				break;
 		}
-		$("input[name='lore_input'][value=" +loreValue+"]").prop("checked", true);
+		$("input[name='lore_input'][value=" +loreValue+"]").prop("checked", true);*/
 		
-		if(jobList != null){
+		if(jobs != null){
 			UpdateChanges();
 		}
 	}
@@ -131,174 +146,148 @@ function OnInputChange(){
 		}
 	}
 	
+	/*
 	
 	$("#ability_template").val(-1);
-	curAbility = {};
+	curCard = {};
 	
-	curAbility["Elem"] = parseInt2($("input[name='elem_input']:checked").val());
-	curAbility["Attack"] = parseInt2($("input[name='atk_power']").val());
+	curCard["Elem"] = parseInt2($("input[name='elem_input']:checked").val());
+	curCard["Attack"] = parseInt2($("input[name='atk_power']").val());
 	
 	// true = magic, false = atk
-	curAbility["IsMantra"] = !($("input[name='type']").prop("checked"));
+	curCard["IsMantra"] = !($("input[name='type']").prop("checked"));
 		
-	curAbility["ImprovedCrit"] = parseInt2($("input[name='improved_crit']").val());
-	curAbility["ExploitWeakness"] = parseInt2($("input[name='exploit_weakness']").val());
-	curAbility["ElementEnhance"] = parseInt2($("input[name='ee_power']").val());
-	curAbility["AttunedChain"] = parseInt2($("input[name='attuned_chain']").val());
-	curAbility["AbilityChain"] = parseInt2($("input[name='ability_chain']").val());
-	curAbility["PainfulBreak"] = parseInt2($("input[name='pb_power']").val());
-	curAbility["Ravage"] = parseInt2($("input[name='ravage_power']").val());
-	curAbility["MultiplyMag"] = parseInt2($("input[name='multiply_mag']").val());
-	curAbility["MultiplyAtk"] = parseInt2($("input[name='multiply_atk']").val());
-	curAbility["SupremeEffect"] = parseInt2($("input[name='supreme_effect']").val());
+	curCard["ImprovedCrit"] = parseInt2($("input[name='improved_crit']").val());
+	curCard["ExploitWeakness"] = parseInt2($("input[name='exploit_weakness']").val());
+	curCard["ElementEnhance"] = parseInt2($("input[name='ee_power']").val());
+	curCard["AttunedChain"] = parseInt2($("input[name='attuned_chain']").val());
+	curCard["AbilityChain"] = parseInt2($("input[name='ability_chain']").val());
+	curCard["PainfulBreak"] = parseInt2($("input[name='pb_power']").val());
+	curCard["Ravage"] = parseInt2($("input[name='ravage_power']").val());
+	curCard["MultiplyMag"] = parseInt2($("input[name='multiply_mag']").val());
+	curCard["MultiplyAtk"] = parseInt2($("input[name='multiply_atk']").val());
+	curCard["SupremeEffect"] = parseInt2($("input[name='supreme_effect']").val());
 	
 	switch(parseInt2($("input[name='lore_input']:checked").val())){
 		case 1:
-			curAbility["Type"] = "Warrior";
+			curCard["Type"] = "Warrior";
 			break;
 		case 2:
-			curAbility["Type"] = "Mage";
+			curCard["Type"] = "Mage";
 			break;
 		case 3:
-			curAbility["Type"] = "Ranger";
+			curCard["Type"] = "Ranger";
 			break;
 		case 4:
-			curAbility["Type"] = "Monk";
+			curCard["Type"] = "Monk";
 			break;
 	}
 	
-	curAbility["ImageName"] = "default.jpg"
+	curCard["ImageName"] = "default.jpg"
 	
-	if(jobList != null){
+	if(jobs != null){
 		UpdateChanges();
 	}
+	*/
 }
 
 function UpdateChanges(){
-	var userInput = {
-		ability: curAbility,
-		ignoreLoreOption: $("#ignore_lore").is(":checked"),
-		showElementsOption: $("#display_element").is(":checked"),
-		isMaxRetribution: $("#max_retribution").is(":checked"),
-		isMaxReckoning: $("#max_reckoning").is(":checked"),
-		isCrossCounter: $("#cross_counter").is(":checked"),
-		dmgSortType: parseInt($("input[name='dmg_type']:checked").val())
-	};
+	var setting = new Setting();
+	var title = new Title();
+
+	var dmgSortType = parseInt($("input[name='dmg_type']:checked").val());
+	switch(dmgSortType){
+		case 0:
+			// unbroken neutral dmg
+			setting.isBroken = false;
+			setting.isWeakness = false;
+			break;
+		case 1:
+			// unbroken weakness dmg
+			setting.isBroken = false;
+			setting.isWeakness = true;
+			break;
+		case 2:
+			// broken neutral dmg
+			setting.isBroken = true;
+			setting.isWeakness = false;
+			break;
+		case 3:
+			// broken weakness dmg
+			setting.isBroken = true;
+			setting.isWeakness = true;
+			break;
+	}
 	
-	if(jobList != null){
-		$('#ability_img').attr('src', "img/supreme/"+curAbility["ImageName"]);
-		$("input[name='atk_display']").val(curAbility["Attack"]);
-		$("input[name='break_power_display']").val(curAbility["BreakPower"]);
-		ProcessRanking(userInput);
+	setting.ignoreLore = $("#ignore_lore").is(":checked");
+	setting.ignoreElement = !($("#display_element").is(":checked"));
+	/*isMaxRetribution: $("#max_retribution").is(":checked"),
+	  isMaxReckoning: $("#max_reckoning").is(":checked"),
+	  isCrossCounter: $("#cross_counter").is(":checked"),*/
+	
+	if(jobs != null){
+		$('#ability_img').attr('src', "img/supreme/"+curCard.img);
+		$("input[name='atk_display']").val(curCard.attack);
+		$("input[name='break_power_display']").val(curCard.break);
+		ProcessRanking(setting, title);
 	}
 	else {
 		alert("Error in loading job list. Please refresh the page and try again");
 	}
 }
 
-function ProcessRanking(userInput){	
-	resultList = [];
+function ProcessRanking(setting, title){	
+	var resultList = [];
 
 	// compute dmg for each job first
-	for(i = 0; i < jobList.length; i++){
-		var resultEntry = {
-			job: jobList[i],
-			unbrokenWeaknessDmg: ComputeDmg(userInput, jobList[i], false, true),
-			unbrokenNeutralDmg: ComputeDmg(userInput, jobList[i], false, false),
-			brokenWeaknessDmg: ComputeDmg(userInput, jobList[i], true, true),
-			brokenNeutralDmg: ComputeDmg(userInput, jobList[i], true, false)
+	for(let i = 0; i < jobs.length; i++){
+		if(IS_GL && !jobs[i].isReleaseGL){
+			continue;
+		}
+		
+		let resultEntry = {
+			job: jobs[i],
+			dmgResult: damageCalc(curCard, jobs[i], setting, title)
 		};
 		
-		if(!(resultEntry.unbrokenWeaknessDmg == 0
-			&& resultEntry.unbrokenNeutralDmg == 0
-			&& resultEntry.brokenWeaknessDmg == 0
-			&& resultEntry.brokenNeutralDmg == 0))
+		if(!(resultEntry.dmgResult.damage == 0))
 		{
 			resultList.push(resultEntry);
 		}
 	}
 	
-	DisplayResult(resultList, userInput);
-}
-
-function compareUnbrokenWeakness(a, b){
-	if(a.unbrokenWeaknessDmg < b.unbrokenWeaknessDmg){
-		return 1;
-	}
-	else if(a.unbrokenWeaknessDmg > b.unbrokenWeaknessDmg){
-		return -1;
-	}
-	else{
-		return 0;
-	}	
-}
-
-function compareUnbrokenNeutralDmg(a, b){
-	if(a.unbrokenNeutralDmg < b.unbrokenNeutralDmg){
-		return 1;
-	}
-	else if(a.unbrokenNeutralDmg > b.unbrokenNeutralDmg){
-		return -1;
-	}
-	else{
-		return 0;
-	}	
-}
-
-function compareBrokenWeaknessDmg(a, b){
-	if(a.brokenWeaknessDmg < b.brokenWeaknessDmg){
-		return 1;
-	}
-	else if(a.brokenWeaknessDmg > b.brokenWeaknessDmg){
-		return -1;
-	}
-	else{
-		return 0;
-	}	
-}
-
-function compareBrokenNeutralDmg(a, b){
-	if(a.brokenNeutralDmg < b.brokenNeutralDmg){
-		return 1;
-	}
-	else if(a.brokenNeutralDmg > b.brokenNeutralDmg){
-		return -1;
-	}
-	else{
-		return 0;
-	}	
-}
-
-function DisplayResult(resultList, userInput){
-	var compareFn = [compareUnbrokenNeutralDmg, compareUnbrokenWeakness, compareBrokenNeutralDmg, compareBrokenWeaknessDmg];
-	var dmgSortTypeName = ["Unbroken Neutral", "Unbroken Weakness", "Broken Neutral", "Broken Weakness"];
-	var elemIcon = ["elem_fire.png", "elem_water.png", "elem_wind.png", "elem_earth.png", "elem_light.png", "elem_dark.png"];
-	var orbSetLabels = ["OrbSet1_1", "OrbSet1_2", "OrbSet1_3", "OrbSet2_1", "OrbSet2_2", "OrbSet2_3"];
-	var dmgSortType = userInput.dmgSortType;
+	resultList = resultList.sort(compareDmg);
 	
-	resultList = resultList.sort(compareFn[dmgSortType]);
+	DisplayResult(resultList, setting);
+}
+
+function compareDmg(a, b){
+	if(a.dmgResult.damage < b.dmgResult.damage){
+		return 1;
+	}
+	else if(a.dmgResult.damage > b.dmgResult.damage){
+		return -1;
+	}
+	else{
+		return 0;
+	}	
+}
+
+function DisplayResult(resultList, setting){
+	var dmgSortTypeName = ["Unbroken Neutral", "Unbroken Weakness", "Broken Neutral", "Broken Weakness"];
+	var dmgSortType = parseInt($("input[name='dmg_type']:checked").val());
+	var elemIcon = ["elem_fire.png", "elem_water.png", "elem_wind.png", "elem_earth.png", "elem_light.png", "elem_dark.png"];
 	
 	$("#result_list").empty();
 	
-	for(i=0; i < resultList.length; i++){
-		displayDmg = 0;
-		switch(dmgSortType){
-			case 0:
-				displayDmg = numberWithCommas(resultList[i].unbrokenNeutralDmg);
-				break;
-			case 1:
-				displayDmg = numberWithCommas(resultList[i].unbrokenWeaknessDmg);
-				break;
-			case 2:
-				displayDmg = numberWithCommas(resultList[i].brokenNeutralDmg);
-				break;
-			case 3:
-				displayDmg = numberWithCommas(resultList[i].brokenWeaknessDmg);
-				break;
-		}
+	for(let i=0; i < resultList.length; i++){
+		let job = resultList[i].job;
+		let dmgResult = resultList[i].dmgResult;
+		
+		let displayDmg = numberWithCommas(dmgResult.damage);
 		
 		
-		resultHTML = "<div class=\"list-group-item list-group-item-action flex-column align-items-start\">";
+		let resultHTML = "<div class=\"list-group-item list-group-item-action flex-column align-items-start\">";
 		
 		// Damage Label
 		resultHTML += "<div class=\"text-center dmg-label\">";
@@ -311,169 +300,94 @@ function DisplayResult(resultList, userInput){
 		resultHTML += "<h4 class=\"mr-2 rank-label\">#"+ (i+1) + "</h4>";
 		
 		// Job Image label
-		resultHTML += "<img class=\"mr-2 mb-1 job-img\" src=\"img/job/" + resultList[i].job["ImageName"] +"\" width=\"70px\">";
+		resultHTML += "<img class=\"mr-2 mb-1 job-img\" src=\"img/job/" + job.img +"\" width=\"70px\">";
 		
 		// Job Name and Orbs usage
-		resultHTML += "<div><h5 class=\"mb-1\">" +  resultList[i].job["Job Name"] + "</h5>";
-			
+		resultHTML += "<div><h5 class=\"mb-1\">" +  job.name + "</h5>";
+		
+
 		// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark
 		// F, W, A, E, L, D
 		resultHTML += "<p>";
-		for(j=0; j < orbSetLabels.length; j++){
-			if(j == 3){
-				resultHTML += " / "
+		let orbset = [job.orbset1, job.orbset2];
+		for(let i=0; i < orbset.length; i++){
+			if(i >= 1 && orbset[i][0] !== ELEMENT.empty){
+				resultHTML += " / ";
 			}
-			switch(resultList[i].job[orbSetLabels[j]]){
-				case "F":
-					resultHTML += "<img class=\"icon-img\" src=\"img/" + elemIcon[0] + "\">"
-					break;
-				case "W":
-					resultHTML += "<img class=\"icon-img\" src=\"img/" + elemIcon[1] + "\">"
-					break;
-				case "A":
-					resultHTML += "<img class=\"icon-img\" src=\"img/" + elemIcon[2] + "\">"
-					break;
-				case "E":
-					resultHTML += "<img class=\"icon-img\" src=\"img/" + elemIcon[3] + "\">"
-					break;
-				case "L":
-					resultHTML += "<img class=\"icon-img\" src=\"img/" + elemIcon[4] + "\">"
-					break;
-				case "D":
-					resultHTML += "<img class=\"icon-img\" src=\"img/" + elemIcon[5] + "\">"
-					break;
-				default:
+			for(let j=0; j < orbset[i].length; j++){
+				switch(orbset[i][j]){
+					case ELEMENT.fire:
+						resultHTML += "<img class=\"icon-img\" src=\"img/" + elemIcon[0] + "\">"
+						break;
+					case ELEMENT.water:
+						resultHTML += "<img class=\"icon-img\" src=\"img/" + elemIcon[1] + "\">"
+						break;
+					case ELEMENT.wind:
+						resultHTML += "<img class=\"icon-img\" src=\"img/" + elemIcon[2] + "\">"
+						break;
+					case ELEMENT.earth:
+						resultHTML += "<img class=\"icon-img\" src=\"img/" + elemIcon[3] + "\">"
+						break;
+					case ELEMENT.light:
+						resultHTML += "<img class=\"icon-img\" src=\"img/" + elemIcon[4] + "\">"
+						break;
+					case ELEMENT.dark:
+						resultHTML += "<img class=\"icon-img\" src=\"img/" + elemIcon[5] + "\">"
+						break;
+				}
 			}
-		}
-		
-		if(resultHTML.slice(-3) === " / "){
-			resultHTML = resultHTML.substr(0, resultHTML.length-3);
-		}
-		resultHTML += "</p></div></div>";		
+			
+			
+		}		
+		resultHTML += "</p></div></div>";	
 		
 		resultHTML += "<div class=\"d-flex flex-wrap\">";
-		dmgDivider = "<div class=\"mr-2\"> | </div>";
+		let dmgDivider = "<div class=\"mr-2\"> | </div>";
 		resultHTML += "<div class=\"mr-2 perk-label font-weight-bold\">Total: </div>";
 		
-		// Mag/Atk
-		if(!userInput.ability["IsMantra"]){  // true = magic, false = atk
-			additional_mag = 0;
-			if(userInput.isMaxReckoning && resultList[i].job["Reckoning"]==1){
-				additional_mag += 2400;
-			}		
-			
-			mag_mod = 1;
-			mag_mod += (parseInt2(userInput.ability["MultiplyMag"])/100);
-			if(userInput.isCrossCounter && resultList[i].job["Cross Counter"] != ""){		
-				mag_mod += (parseInt2(resultList[i].job["Cross Counter"])/100);
-			}
-		
-			//Mag: (1 + magic_stat/100) * (1 + magic_mod/100) * (1 + stat_mod/100) + additional_magic/100		
-			mag = ( ((parseInt2(resultList[i].job["Magic"])) * mag_mod) + additional_mag);
-			
-			resultHTML += "<div class=\"mr-2 perk-label\">Magic +" + numberWithCommas(mag) + "%</div>";
+		if(curCard.isMagicBased()){
+			resultHTML += "<div class=\"mr-2 perk-label\">Magic +" + numberWithCommas(dmgResult.dmgTerm) + "%</div>";
 		}
 		else{
-			additional_atk = 0;
-			if(userInput.isMaxRetribution && resultList[i].job["Retribution"]==1){
-				additional_atk += 2400;
-			}
-			
-			atk_mod = 1;
-			atk_mod += (parseInt2(userInput.ability["MultiplyAtk"])/100);
-			if(userInput.isCrossCounter && resultList[i].job["Cross Counter"] != ""){		
-				atk_mod += (parseInt2(resultList[i].job["Cross Counter"])/100);
-			}
-			
-			//Atk: (1 + attack_stat/100) * (1 + attack_mod/100) * (1 + stat_mod/100) + additional_attack/100
-			atk = ( ((parseInt2(resultList[i].job["Attack"])) * atk_mod ) + additional_atk);
-			
-			resultHTML += "<div class=\"mr-2 perk-label\">Atk +"+ numberWithCommas(atk) + "%</div>";
+			resultHTML += "<div class=\"mr-2 perk-label\">Atk +" + numberWithCommas(dmgResult.dmgTerm) + "%</div>";
 		}
 		
-		// EE
-		switch(userInput.ability["Elem"]){
-		// 1 = fire, 2 = water, 3 = wind, 4 = earth, 5 = light, 6 = dark
-		case 1:
-			ee = parseInt2(resultList[i].job["Fire_EE"]) + userInput.ability["ElementEnhance"];
-			break;
-		case 2:
-			ee = parseInt2(resultList[i].job["Water_EE"]) + userInput.ability["ElementEnhance"];
-			break;
-		case 3:
-			ee = parseInt2(resultList[i].job["Wind_EE"]) + userInput.ability["ElementEnhance"];
-			break;
-		case 4:
-			ee = parseInt2(resultList[i].job["Earth_EE"]) + userInput.ability["ElementEnhance"];
-			break;
-		case 5:
-			ee = parseInt2(resultList[i].job["Light_EE"]) + userInput.ability["ElementEnhance"];
-			break;
-		case 6:
-			ee = parseInt2(resultList[i].job["Dark_EE"])+ userInput.ability["ElementEnhance"];
-			break;
-		}
-		if(ee >0){
+		if(dmgResult.eeTerm >0){
 			resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Element Enhance +" + numberWithCommas(ee) + "%</div>";
+			resultHTML += "<div class=\"mr-2 perk-label\">Element Enhance +" + numberWithCommas(dmgResult.eeTerm) + "%</div>";
 		}
 		
-		// Ability Chain
-		abilityChain = parseInt2(resultList[i].job["Ability Chain"]) + userInput.ability["AbilityChain"];
-		if(abilityChain > 0){
+		if(dmgResult.critTerm > 0){
 			resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Ability Chain +" + numberWithCommas(abilityChain) + "%</div>";
-		}
-	
-		// Attuned Chain
-		attunedChain = userInput.ability["AttunedChain"];
-		if(attunedChain > 0){
-			resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Attuned Chain +" + numberWithCommas(attunedChain) + "%</div>";
+			resultHTML += "<div class=\"mr-2 perk-label\">Improved Crit +" + numberWithCommas(dmgResult.critTerm) + "%</div>";
 		}
 		
-		// Critical
-		crit = parseInt2(resultList[i].job["Improved Crits"]) + userInput.ability["ImprovedCrit"];
-		if(crit > 0){
-			resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Improved Crit +" + numberWithCommas(crit) + "%</div>";
-		}
-		
-		// Broken
 		if(dmgSortType == 2 || dmgSortType == 3){
-			painfulBreak = parseInt2(resultList[i].job["Painful Break"]) + userInput.ability["PainfulBreak"];
-			if(painfulBreak > 0){
+			if(dmgResult.brokenTerm > 0){
 				resultHTML += dmgDivider;
-				resultHTML += "<div class=\"mr-2 perk-label\">Painful Break +" + numberWithCommas(painfulBreak) + "%</div>";
+				resultHTML += "<div class=\"mr-2 perk-label\">Painful Break +" + numberWithCommas(dmgResult.brokenTerm) + "%</div>";
 			}
 		}
 		
 		if(dmgSortType == 1 || dmgSortType == 3){
-			exploitWeakness = parseInt2(resultList[i].job["Exploit Weakness"]) + userInput.ability["ExploitWeakness"];
-			if(exploitWeakness > 0){
+			if(dmgResult.weakTerm > 0){
 				resultHTML += dmgDivider;
-				resultHTML += "<div class=\"mr-2 perk-label\">Exploit Weakness +" + numberWithCommas(exploitWeakness) + "%</div>";
+				resultHTML += "<div class=\"mr-2 perk-label\">Exploit Weakness +" + numberWithCommas(dmgResult.weakTerm) + "%</div>";
 			}
 			
 		}
-
-		ravage = parseInt2(resultList[i].job["Ravage"]) + userInput.ability["Ravage"];
-		if(ravage > 0){
+		
+		if(dmgResult.ravageTerm > 0){
 			resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Ravage +" + numberWithCommas(ravage) + "%</div>";
+			resultHTML += "<div class=\"mr-2 perk-label\">Ravage +" + numberWithCommas(dmgResult.ravageTerm) + "%</div>";
 		}
 		
-		supremeEffect = parseInt2(userInput.ability["SupremeEffect"])
-		if (supremeEffect > 0){
+		if(dmgResult.ucTerm > 0){
 			resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Damage up (Supreme Effect) +" + numberWithCommas(supremeEffect) + "%</div>";
+			resultHTML += "<div class=\"mr-2 perk-label\">Damage up (Supreme Effect) +" + numberWithCommas(dmgResult.ucTerm) + "%</div>";
 		}
-		
 
-		resultHTML += "</div>";
-		
-		
-		resultHTML += "</div>";	
+		resultHTML += "</div></div>";	
 		
 		$("#result_list").append(resultHTML);
 	}	
@@ -481,9 +395,6 @@ function DisplayResult(resultList, userInput){
 
 $(document).ready(function() {
 	init();
-	
-	//GetJob(OnAbilityChange);
-	//GetAbility(OnAbilityChange);
 	
 	$("#ability_template").change(function(){
 		OnAbilityChange();
@@ -521,3 +432,5 @@ $(document).ready(function() {
 		$('[data-toggle="tooltip"]').tooltip()
 	})
 });
+
+export { IS_GL }
