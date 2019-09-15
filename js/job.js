@@ -1,27 +1,39 @@
 import { ELEMENT } from './const.js';
 
 class Job {
-    constructor() {
+    constructor(options) {
+		this.name = options.JobName || '';
+		this.img = options.ImageName || "0.jpg";
+		this.jobClass = options.Class;
+		this.lore = options.Lore || '';
+		
+		this.isReleaseGL = options.IsReleaseGL || 0;
+		
         // stats
-        this.HP = 0;
-        this.attack = 0;
-        this.magic = 0;
-        this.break = 0;
+        this.HP = options.HP;
+        this.attack = options.Attack;
+        this.magic = options.Magic;
+        this.break = options.Break;
+		
+		this.orbset1 = options.OrbSet1 || [];
+		this.orbset2 = options.OrbSet2 || [];
 
         // AA
-        this.break_dmg_up = 0;
-        this.crit_dmg_up = 0;
-        this.weak_dmg_up = 0;
-        this.ravage = 0;
-        this.fire_ee = 0;
-        this.water_ee = 0;
-        this.wind_ee = 0;
-        this.earth_ee = 0;
-        this.light_ee = 0;
-        this.dark_ee = 0;
-        this.attune_chain = 0;
-        this.ability_chain = 0;
-        this.ability_rising = 0;
+		this.fire_ee = options.Fire_EE || 0;
+        this.water_ee = options.Water_EE || 0;
+        this.wind_ee = options.Wind_EE || 0;
+        this.earth_ee = options.Earth_EE || 0;
+        this.light_ee = options.Light_EE || 0;
+        this.dark_ee = options.Dark_EE || 0;
+		
+		this.break_dmg_up = options["Painful Break"] || 0;
+        this.crit_dmg_up = options["Improved Crits"] || 0;
+        this.weak_dmg_up = options["Exploit Weakness"] || 0;
+        this.ravage = options.Ravage || 0;
+		
+        this.attune_chain = options["Attuned Chain"] || 0;
+        this.ability_chain = options["Ability Chain"] || 0;
+        this.ability_rising = options["Ability Rising"] ||0;
     }
 
     getEE(element) {
@@ -56,12 +68,8 @@ class Job {
         return this.HP;
     }
 
-    static loadAllJobs(server) {
-        /*
-            function for loading all jobs before feeding to ranking functions
-        */
-        server = server || 'JP';
-        // TODO
+    static loadAllJobs(jobsJSON) {
+        return jobsJSON.map(x => new Job(x));
     }
 }
 

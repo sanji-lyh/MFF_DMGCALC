@@ -4,10 +4,12 @@ import { Job } from './job.js';
 import { getJSON } from './helper.js';
 
 var cards;
+var jobs;
+
 var curCard;
 
 var isCardLoaded = 0;
-var isJobLoaded = 1;
+var isJobLoaded = 0;
 
 function cappedFirst(str){
 	return str.charAt(0).toUpperCase() + str.substring(1);
@@ -22,7 +24,6 @@ function loadAllCards(data){
 	cards = AbilityCard.loadAllCards(data.attack_uc);
 		
 	var elements = [ELEMENT.fire, ELEMENT.water, ELEMENT.wind, ELEMENT.earth, ELEMENT.light, ELEMENT.dark];
-	console.log(elements);
 	
 	for(var i=1; i<=6; i++){
 		$('#ability_template').append($('<optgroup/>').attr('label', cappedFirst(elements[i-1])));
@@ -41,6 +42,15 @@ function loadAllCards(data){
 	finishLoading();
 }
 
+function loadAllJobs(data){
+	jobs = Job.loadAllJobs(data);
+	
+	console.log(jobs);
+	
+	isJobLoaded = 1;
+	finishLoading();
+}
+
 function finishLoading(){
 	if(isCardLoaded && isJobLoaded){ 
 		$('#loading_div').addClass('d-none');
@@ -53,7 +63,7 @@ function finishLoading(){
 
 function init(){
 	getJSON(URL.JP_CARDS, loadAllCards);
-	//getJSON(URL.GL_JOBS, Job.loadAllJobs);
+	getJSON(URL.JOBS, loadAllJobs);
 }
 
 function OnAbilityChange(){

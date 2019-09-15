@@ -17,14 +17,14 @@ const AUTO_ABILITY = {
 };
 
 const CLASS = {
-    warrior: 'warrior',
-    mage: 'mage',
-    ranger: 'ranger',
-    monk: 'monk',
-    meia: 'meia',
-    sarah: 'sarah',
-    sophie: 'sophie',
-    graff: 'graff',
+    warrior: 'Warrior',
+    mage: 'Mage',
+    ranger: 'Ranger',
+    monk: 'Monk',
+    meia: 'Meia',
+    sarah: 'Sarah',
+    sophie: 'Sophie',
+    graff: 'Graff',
 }
 
 const STATS = {
@@ -104,9 +104,8 @@ const EXTRA_SKILL = {
 
 const URL = {
     JP_CARDS: 'https://script.google.com/macros/s/AKfycby5HVdcFyPDu9kLXT7pM_YhPjhyskSUqtm7suKcEUKJSHaiyslA/exec',
-    GL_CARDS: 'https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id=1-E5RbZpdvWaqdCmSHoidrxEgZ8ZJzPJZJovM8DB4zHA&sheet=Sheet1',
-	JP_JOBS: '',
-	GL_JOBS: ''
+    GL_CARDS: 'https://script.google.com/macros/s/AKfycbz_7KPqyW9GNGIo76kYzrgS6Gl6shkhhr-OT1cdY5dc2KGL-MU/exec',
+	JOBS: 'https://script.google.com/macros/s/AKfycbzb8iuyTiIPjMBQgw4HOaY21HTmccOQQpezlQDQzxUMrASLoFT6/exec'
 };
 
 export { AUTO_ABILITY, URL, EXTRA_SKILL, CLASS, STATS, ELEMENT };
