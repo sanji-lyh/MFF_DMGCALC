@@ -158,3 +158,6 @@ hr {
   top: 50%;
   right: 50%; /* or: left: 50%; */
 }
+
+.toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 5px; }
+.toggle.ios .toggle-handle { border-radius: 5px; }

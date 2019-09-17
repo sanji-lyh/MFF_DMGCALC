@@ -6,7 +6,7 @@ import { getJSON, capitalize, numberWithCommas, parseInt2 } from './helper.js';
 import { damageCalc } from './calculation.js';
 import { Title } from './title.js';
 
-var IS_GL = false;
+var IS_GL = true;
 
 var cards;
 var jobs;
@@ -317,6 +317,12 @@ function DisplayResult(resultList, setting) {
 	}
 
 	$(document).ready(function () {
+		if(window.location.search.substring(1).toLowerCase() === "jpn"){
+			IS_GL = false;
+			var serverToggle = $("#serverToggle").data('bs.toggle');
+			serverToggle.off(true);
+		}
+		
 		init();
 
 		$("#ability_template").change(function () {
@@ -353,6 +359,11 @@ function DisplayResult(resultList, setting) {
 
 		$(function () {
 			$('[data-toggle="tooltip"]').tooltip()
+		})
+		
+		$('#serverToggle').change(function() {
+			IS_GL = !IS_GL;
+			init();
 		})
 	});
 })();
