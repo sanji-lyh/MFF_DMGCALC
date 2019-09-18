@@ -98,6 +98,7 @@ function damageCalc(card, job, setting, title) {
     // critical term
     critTerm += 50;
     critTerm += job.crit_dmg_up;
+	critTerm += setting.crit_dmg_up;
     critTerm += card.getCritDmgUp();
     critTerm += card.hasES(ES.critical_rupture) ? 30 : 0;
     critTerm += card.hasES(ES.ultra_critical_damage_up) ? 500 : 0;
@@ -109,6 +110,7 @@ function damageCalc(card, job, setting, title) {
     if (setting.isBroken) {
         brokenTerm += 100;
         brokenTerm += job.break_dmg_up;
+		brokenTerm += setting.break_dmg_up;
         brokenTerm += card.getBreakDmgUp();
         brokenTerm += card.hasES(ES.break_escalate) ? 15 : 0;
         brokenTerm += card.hasES(ES.ultra_break_escalate) ? 1000 : 0;
@@ -122,6 +124,7 @@ function damageCalc(card, job, setting, title) {
     if (setting.isWeakness) {
         weakTerm += 30;
         weakTerm += job.weak_dmg_up;
+		weakTerm += setting.weak_dmg_up;
         weakTerm += (card.hasES(ES.break_enhance) && setting.isBroken) ? 25 : 0;
         weakTerm += setting.weak_dmg_up;
         weakTerm += title.weak_dmg_up;
@@ -133,6 +136,7 @@ function damageCalc(card, job, setting, title) {
     if (card.isAoE()) {
         ravageTerm += job.ravage;
         ravageTerm += title.ravage;
+		ravageTerm += setting.ravage;
         ravageTerm += card.getRavage();
         ravageTerm += (setting.isTaiman && card.hasES(ES.ultra_convergence)) ? 100 : 0;
         // TODO: change number of casts from setting

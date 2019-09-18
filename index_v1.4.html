@@ -87,172 +87,58 @@
 			</div>
 		</div>
 
-		<!--
+		
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 mb-3">
 				<a class="btn collapseBut" data-toggle="collapse" href="#collapseInput" aria-expanded="false" aria-controls="collapseInput">
-					<img src="img/ability-cards.png"> Customize Ability Card
+					<img src="img/ability-cards.png"> Additional Stats
 				</a>
 			</div>
 		</div>
 		<div class="collapse customize-div" id="collapseInput">
-			<form id="ability_input">
-				<div class="row elem-table mb-4">
-					<div class="col-xs-6 col-sm-4 mb-2">
-						<div class="custom-control custom-radio">
-							<input class="custom-control-input" type="radio" name="elem_input" value="1" id="fireElem" checked>
-							<label class="custom-control-label" for="fireElem"><img src="img/elem_fire.png"> Fire</label>
-						</div>
-					</div>
-
-					<div class="col-xs-6 col-sm-4 mb-2">
-						<div class="custom-control custom-radio">
-							<input class="custom-control-input" type="radio" name="elem_input" value="2" id="waterElem">
-							<label class="custom-control-label" for="waterElem"><img src="img/elem_water.png"> Water</label>
-						</div>
-					</div>
-
-					<div class="col-xs-6 col-sm-4 mb-2">
-						<div class="custom-control custom-radio">
-							<input class="custom-control-input" type="radio" name="elem_input" value="3" id="windElem">
-							<label class="custom-control-label" for="windElem"><img src="img/elem_wind.png"> Wind</label>
-						</div>
-					</div>
-
-					<div class="col-xs-6 col-sm-4 mb-2">
-						<div class="custom-control custom-radio">
-							<input class="custom-control-input" type="radio" name="elem_input" value="4" id="earthElem">
-							<label class="custom-control-label" for="earthElem"><img src="img/elem_earth.png"> Earth</label>
-						</div>
-					</div>
-
-					<div class="col-xs-6 col-sm-4 mb-2">
-						<div class="custom-control custom-radio">
-							<input class="custom-control-input" type="radio" name="elem_input" value="5" id="lightElem" checked>
-							<label class="custom-control-label" for="lightElem"><img src="img/elem_light.png"> Light</label>
-						</div>
-					</div>
-
-					<div class="col-xs-6 col-sm-4 mb-2">
-						<div class="custom-control custom-radio">
-							<input class="custom-control-input" type="radio" name="elem_input" value="6" id="darkElem" checked>
-							<label class="custom-control-label" for="darkElem"><img src="img/elem_dark.png"> Dark</label>
-						</div>
-					</div>
-				</div>
-
-				<div class="row mb-4">
-					<div class="col-xs-12 col-sm-12">
-						<input name="type" type="checkbox" checked data-toggle="toggle" data-on="Magic-based" data-off="Attack-based" data-onstyle="primary" data-offstyle="info" data-width="100%">
-					</div>
-				</div>
-
-				<div class="row lore-table">
-					<div class="col-xs-6 col-sm-3">
-						<div class="custom-control custom-radio">
-							<input class="custom-control-input" type="radio" name="lore_input" value="1" id="lore_warrior" checked>
-							<label class="custom-control-label" for="lore_warrior"><img src="img/lore_warrior.png"> Warrior</label>
-						</div>
-					</div>
-
-					<div class="col-xs-6 col-sm-3">
-						<div class="custom-control custom-radio">
-							<input class="custom-control-input" type="radio" name="lore_input" value="2" id="lore_mage">
-							<label class="custom-control-label" for="lore_mage"><img src="img/lore_mage.png"> Mage</label>
-						</div>
-					</div>
-
-					<div class="col-xs-6 col-sm-3">
-						<div class="custom-control custom-radio">
-							<input class="custom-control-input" type="radio" name="lore_input" value="3" id="lore_ranger">
-							<label class="custom-control-label" for="lore_ranger"><img src="img/lore_ranger.png"> Ranger</label>
-						</div>
-					</div>
-
-
-					<div class="col-xs-6 col-sm-3">
-						<div class="custom-control custom-radio">
-							<input class="custom-control-input" type="radio" name="lore_input" value="4" id="lore_monk">
-							<label class="custom-control-label" for="lore_monk"><img src="img/lore_monk.png"> Monk</label>
-						</div>
-					</div>
-				</div>
-
-				<br/>
+			<form id="setting_input">
 				<div class="row mb-2">
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<label class="control-label">Attack</label>
+					<div class="col-xs-6 col-sm-6 mb-2">
+						<label for="addition_mag">Additional Mag % </label>
+						<input type="number" class="form-control" name="addition_mag" value="0" min="0">
 					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<input type="number" class="form-control" name="atk_power" value="0" min="0">
+					<div class="col-xs-6 col-sm-6 mb-2">
+						<label for="addition_atk">Additional Atk %</label>
+						<input type="number" class="form-control" name="addition_atk" value="0" min="0">
 					</div>
-
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<label class="">Improved Crit</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
+					<div class="col-xs-6 col-sm-6 mb-2">
+						<label for="improved_crit">Improved Crit</label>
 						<input type="number" class="form-control" name="improved_crit" value="0" min="0">
 					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<label class="">Exploit Weakness</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
+					<div class="col-xs-6 col-sm-6 mb-2">
+						<label for="exploit_weakness">Exploit Weakness</label>
 						<input type="number" class="form-control" name="exploit_weakness" value="0" min="0">
 					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<label class="">Element Enhance</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
+					<div class="col-xs-6 col-sm-6 mb-2">
+						<label for="ee_power">Element Enhance</label>
 						<input type="number" class="form-control" name="ee_power" value="0" min="0">
 					</div>
-
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<label class="">Attuned Chain</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
+					<div class="col-xs-6 col-sm-6 mb-2">
+						<label for="attuned_chain">Attuned Chain</label>
 						<input type="number" class="form-control" name="attuned_chain" value="0" min="0">
 					</div>
-
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<label class="">Ability Chain</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
+					<div class="col-xs-6 col-sm-6 mb-2">
+						<label for="ability_chain">Ability Chain</label>
 						<input type="number" class="form-control" name="ability_chain" value="0" min="0">
 					</div>
-
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<label class="">Painful Break</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
+					<div class="col-xs-6 col-sm-6 mb-2">
+						<label for="pb_power">Painful Break</label>
 						<input type="number" class="form-control" name="pb_power" value="0" min="0">
 					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<label class="">Ravage</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
+					
+					<div class="col-xs-6 col-sm-6 mb-2">
+						<label for="ravage_power">Ravage</label>
 						<input type="number" class="form-control" name="ravage_power" value="0" min="0">
 					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<label class="">Mag %</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<input type="number" class="form-control" name="multiply_mag" value="0" min="0">
-					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<label class="">Atk %</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<input type="number" class="form-control" name="multiply_atk" value="0" min="0">
-					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<label class="">Supreme Effect</label>
-					</div>
-					<div class="col-xs-6 col-sm-3 mb-2">
-						<input type="number" class="form-control" name="supreme_effect" value="0" min="0">
-					</div>
+					
 				</div>
 			</form>
-		</div> -->
+		</div>
 
 		<div class="row options-table border-top">
 			<div class="col-xs-12 col-sm-6">

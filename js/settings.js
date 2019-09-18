@@ -25,10 +25,19 @@ class Setting {
 		this.crit_dmg_up = 0;
         this.break_dmg_up = 0;
         this.weak_dmg_up = 0;
+		
+		this.ee = 0;
+		this.attuned_chain = 0;
+		this.ability_chain = 0;
+		this.ravage = 0;
     }
 
     getEE() {
-        return 0;
+		let ee = 0;
+		ee += this.ee;
+		ee += this.attuned_chain;
+		ee += this.ability_chain;
+        return ee;
     }
 
     getMagicMod() {

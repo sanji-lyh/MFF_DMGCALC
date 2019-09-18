@@ -86,7 +86,7 @@ function OnAbilityChange() {
 	var index = $("#ability_template").val()
 
 	if (index != null && index >= 0) {
-		curCard = cards[index];
+		curCard = cards[index];		
 
 		if (jobs != null) {
 			UpdateChanges();
@@ -94,59 +94,68 @@ function OnAbilityChange() {
 	}
 }
 
-function OnInputChange() {
+function UpdateChanges() {
+	var curSetting = new Setting();
+	var title = new Title();
+	
 	var validateFields = [
-		"input[name='atk_power']", "input[name='improved_crit']", "input[name='exploit_weakness']",
-		"input[name='ee_power']", "input[name='attuned_chain']", "input[name='ability_chain']", "input[name='pb_power']", "input[name='ravage_power']",
-		"input[name='multiply_mag']", "input[name='multiply_atk']", "input[name='supreme_effect']"]
+		"input[name='addition_mag']", "input[name='improved_crit']", "input[name='exploit_weakness']",
+		"input[name='ee_power']", "input[name='attuned_chain']", "input[name='ability_chain']", 
+		"input[name='pb_power']", "input[name='ravage_power']", "input[name='addition_atk']"]
 
-	for (i = 0; i < validateFields.length; i++) {
+	for (var i = 0; i < validateFields.length; i++) {
 		if (!$(validateFields[i]).val()) {
 			$(validateFields[i]).val(0);
 		}
 	}
-
-}
-
-function UpdateChanges() {
-	var setting = new Setting();
-	var title = new Title();
+	
+	curSetting.additionalMagic = parseInt2($("input[name='addition_mag']").val());
+	curSetting.additionalAttack = parseInt2($("input[name='addition_atk']").val());
+	curSetting.crit_dmg_up = parseInt2($("input[name='improved_crit']").val());
+	curSetting.break_dmg_up = parseInt2($("input[name='pb_power']").val());
+	curSetting.weak_dmg_up = parseInt2($("input[name='exploit_weakness']").val());
+	curSetting.ee = parseInt2($("input[name='ee_power']").val());
+	curSetting.ability_chain = parseInt2($("input[name='ability_chain']").val());
+	curSetting.attuned_chain = parseInt2($("input[name='attuned_chain']").val());
+	curSetting.ravage = parseInt2($("input[name='ravage_power']").val());
 
 	var dmgSortType = parseInt($("input[name='dmg_type']:checked").val());
 	switch (dmgSortType) {
 		case 0:
 			// unbroken neutral dmg
-			setting.isBroken = false;
-			setting.isWeakness = false;
+			curSetting.isBroken = false;
+			curSetting.isWeakness = false;
 			break;
 		case 1:
 			// unbroken weakness dmg
-			setting.isBroken = false;
-			setting.isWeakness = true;
+			curSetting.isBroken = false;
+			curSetting.isWeakness = true;
 			break;
 		case 2:
 			// broken neutral dmg
-			setting.isBroken = true;
-			setting.isWeakness = false;
+			curSetting.isBroken = true;
+			curSetting.isWeakness = false;
 			break;
 		case 3:
 			// broken weakness dmg
-			setting.isBroken = true;
-			setting.isWeakness = true;
+			curSetting.isBroken = true;
+			curSetting.isWeakness = true;
 			break;
 	}
 
-	setting.ignoreLore = $("#ignore_lore").is(":checked");
-	setting.ignoreElement = !($("#display_element").is(":checked"));
+	curSetting.ignoreLore = $("#ignore_lore").is(":checked");
+	curSetting.ignoreElement = !($("#display_element").is(":checked"));
 	/*isMaxRetribution: $("#max_retribution").is(":checked"),
 	  isMaxReckoning: $("#max_reckoning").is(":checked"),
 	  isCrossCounter: $("#cross_counter").is(":checked"),*/
+	  
+	 console.log(curSetting);
 
 	if (jobs != null) {
 		$('#ability_img').attr('src', "img/supreme/" + curCard.img);
 		$("input[name='atk_display']").val(curCard.attack);
 		$("input[name='break_power_display']").val(curCard.break);
-		ProcessRanking(setting, title);
+		ProcessRanking(curSetting, title);
 	}
 	else {
 		alert("Error in loading job list. Please refresh the page and try again");
@@ -353,8 +362,8 @@ function DisplayResult(resultList, setting) {
 			UpdateChanges();
 		});
 
-		$("#ability_input").change(function () {
-			OnInputChange();
+		$("#setting_input").change(function () {
+			UpdateChanges();
 		});
 
 		$(function () {
