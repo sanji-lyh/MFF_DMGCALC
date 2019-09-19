@@ -1,4 +1,4 @@
-import { URL, EXTRA_SKILL as ES } from './const.js';
+import { URL, EXTRA_SKILL as ES, AUTO_ABILITY as AA } from './const.js';
 import { getJSON } from './helper.js';
 import { ELEMENT } from './const.js';
 
@@ -40,32 +40,40 @@ class AbilityCard {
     // EE from Auto Ability & mechanics
     let ee = 0;
     ee += this.auto_ability[`enhance ${this.element}`] || 0;
-    ee += this.auto_ability['attune chain'] || 0;
-    ee += this.auto_ability['ability chain'] || 0;
+    ee += this.auto_ability[AA.attune_chain] || 0;
+    ee += this.auto_ability[AA.ability_chain] || 0;
 
-    ee += this.mechanics['attune chain'] || 0;
-    ee += this.mechanics['ability chain'] || 0;
+    ee += this.mechanics[AA.attune_chain] || 0;
+    ee += this.mechanics[AA.ability_chain] || 0;
     return ee;
   }
 
   getCritDmgUp() {
     // Improved Critical from Auto Ability & mechanics
     let impCrit = 0;
-    impCrit += this.auto_ability['critical damage up'] || 0;
-    impCrit += this.mechanics['critical damage up'] || 0;
+    impCrit += this.auto_ability[AA.crit_dmg_up] || 0;
+    impCrit += this.mechanics[AA.crit_dmg_up] || 0;
     return impCrit;
   }
 
   getBreakDmgUp() {
     // Painful Break from Auto Ability & mechanics
     let painfulBreak = 0;
-    painfulBreak += this.auto_ability['break damage up'] || 0;
-    painfulBreak += this.mechanics['break damage up'] || 0;
+    painfulBreak += this.auto_ability[AA.break_dmg_up] || 0;
+    painfulBreak += this.mechanics[AA.break_dmg_up] || 0;
     return painfulBreak;
   }
 
+  getWeakDmgUp() {
+    // Exploit Weakness from Auto Ability & mechanics
+    let ew = 0;
+    ew += this.auto_ability[AA.weak_dmg_up] || 0;
+    ew += this.mechanics[AA.weak_dmg_up] || 0;
+    return ew;
+  }
+
   getRavage() {
-    return this.auto_ability['ravage'] || 0;
+    return this.auto_ability[AA.ravage] || 0;
   }
 
   // TODO: get stat up AA
