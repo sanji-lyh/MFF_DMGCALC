@@ -63,7 +63,7 @@ function damageCalc(card, job, setting, title, weapon) {
 
   // magic / attack term
   if (card.isMagicBased()) {
-    magicTerm += job.magic + title.magic;
+    magicTerm += job.magic + title.magic + weapon.magic;
 
     let magicMod = setting.magicMod;
     if (card.hasES(ES.high_voltage)) {
@@ -93,7 +93,7 @@ function damageCalc(card, job, setting, title, weapon) {
 
     magicTerm /= 100;
   } else {
-    attackTerm += job.attack + title.attack;
+    attackTerm += job.attack + title.attack + weapon.attack;
     attackTerm *= setting.attackMod;
 
     let statMod = setting.statMod;

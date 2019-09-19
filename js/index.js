@@ -275,20 +275,9 @@ function ProcessRanking(setting, title) {
 			}
 		}
 	}
-
-    let resultEntry = {
-      job: jobs[i],
-      dmgResult: damageCalc(curCard, jobs[i], setting, title)
-    };
-
-    if (!(resultEntry.dmgResult.damage == 0)) {
-      resultList.push(resultEntry);
-    }
-  }
-
-  resultList = resultList.sort(compareDmg);
-
-  DisplayResult(resultList, setting);
+	resultList = resultList.sort(compareDmg);
+	
+	DisplayResult(resultList, setting);
 }
 
 function compareDmg(a, b) {
