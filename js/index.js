@@ -5,11 +5,13 @@ import { Job } from './job.js';
 import { getJSON, capitalize, numberWithCommas, parseInt2 } from './helper.js';
 import { damageCalc } from './calculation.js';
 import { Title } from './title.js';
+import { Weapon } from './weapon.js';
 
 var IS_GL = true;
 
 var cards;
 var jobs;
+var weapons;
 
 var curCard;
 
@@ -41,6 +43,27 @@ async function loadAllJobs(data) {
 	return Promise.resolve();
 }
 
+async function loadAllWeapon(data){
+	weapons = Weapon.loadAllWeapon(data);
+	
+	$("#wpn_list").empty();
+	
+	weapons = weapons.sort((a, b) => (a.order < b.order) ? -1 : 1);
+	
+	let resultHTML = "";
+	
+	for(let i=0; i<weapons.length; i++){
+		let wpn = weapons[i];
+		resultHTML += '<input type="checkbox" name="wpn_choice" id="wpn' + i +'" value="' + i + '" class="d-none" autocomplete="off" checked>';
+		resultHTML += '<label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="' + wpn.getToolTips() + '" for="wpn' + i +'">';
+		resultHTML += '<img src="img/weapon/' + wpn.img + '" class="img-check"></label>';
+	}		
+	
+	$("#wpn_list").append(resultHTML);
+	
+	return Promise.resolve();
+}
+
 function cleanUp() {
 	$('#ability_template').empty();
 }
@@ -67,9 +90,15 @@ async function init() {
 	try {
 		cleanUp();
 		renderLoading()
-		const [cardsJSON, jobsJSON] = await Promise.all([getJSON(IS_GL ? URL.GL_CARDS : URL.JP_CARDS), getJSON(URL.JOBS)]);
+		const [cardsJSON, jobsJSON, wpnJSON] = await Promise.all([getJSON(IS_GL ? URL.GL_CARDS : URL.JP_CARDS), getJSON(URL.JOBS), getJSON(URL.WPN)]);
 		await loadAllCards(cardsJSON);
 		await loadAllJobs(jobsJSON);
+		await loadAllWeapon(wpnJSON);
+		
+		$(function () {
+			$('[data-toggle="tooltip"]').tooltip()
+		})
+		
 		renderRanking()
 		// console.dir(cards);
 	} catch (e) {
@@ -89,6 +118,16 @@ function OnAbilityChange() {
 			UpdateChanges();
 		}
 	}
+}
+
+function GetSelectedWeapons(){
+	let selectedWeapons = [];
+	
+	$("input:checkbox[name=wpn_choice]:checked").each(function(){
+		selectedWeapons.push(weapons[$(this).val()]);
+	});
+	
+	return selectedWeapons;
 }
 
 function UpdateChanges() {
@@ -205,20 +244,29 @@ function UpdateChanges() {
 
 function ProcessRanking(setting, title) {
 	var resultList = [];
+	let selectedWeapons = GetSelectedWeapons();
 
 	// compute dmg for each job first
 	for (let i = 0; i < jobs.length; i++) {
 		if (IS_GL && !jobs[i].isReleaseGL) {
 			continue;
 		}
+		
+		let suitableWeapons = selectedWeapons.filter(c => c.jobClass === jobs[i].jobClass);
+		
+		if(suitableWeapons.length == 0){
+			suitableWeapons.push(new Weapon());
+		}
+		
+		for (let j = 0; j < suitableWeapons.length; j++){
+			let resultEntry = {
+				job: jobs[i],
+				dmgResult: damageCalc(curCard, jobs[i], setting, title, suitableWeapons[j])
+			};
 
-		let resultEntry = {
-			job: jobs[i],
-			dmgResult: damageCalc(curCard, jobs[i], setting, title)
-		};
-
-		if (!(resultEntry.dmgResult.damage == 0)) {
-			resultList.push(resultEntry);
+			if (!(resultEntry.dmgResult.damage == 0)) {
+				resultList.push(resultEntry);
+			}
 		}
 	}
 
@@ -306,6 +354,15 @@ function DisplayResult(resultList, setting) {
 
 		}
 		resultHTML += "</p></div></div>";
+		
+		// Weapon DisplayResult
+		if(dmgResult.weapon.name){
+			resultHTML += '<div class="d-flex flex-wrap align-items-center">';
+			resultHTML += '<div class="mr-2 perk-label font-weight-bold">Weapon: </div>'
+			resultHTML += '<div class="mr-2 perk-label"><img src="img/weapon/'+ dmgResult.weapon.img +'"></div>';
+			resultHTML += '<div class="mr-2 perk-label">'+ dmgResult.weapon.name +'</div>';
+			resultHTML += '</div>';
+		}
 
 		resultHTML += "<div class=\"d-flex flex-wrap\">";
 		let dmgDivider = "<div class=\"mr-2\"> | </div>";
@@ -340,7 +397,6 @@ function DisplayResult(resultList, setting) {
 				resultHTML += dmgDivider;
 				resultHTML += "<div class=\"mr-2 perk-label\">Exploit Weakness +" + numberWithCommas(dmgResult.weakTerm) + "%</div>";
 			}
-
 		}
 
 		if (dmgResult.ravageTerm > 0) {
@@ -390,14 +446,14 @@ function DisplayResult(resultList, setting) {
 		$("#sort_input").change(function () {
 			UpdateChanges();
 		});
+		
+		$("#wpn_input").change(function () {
+			UpdateChanges();
+		});
 
 		$("#setting_input").change(function () {
 			UpdateChanges();
 		});
-
-		$(function () {
-			$('[data-toggle="tooltip"]').tooltip()
-		})
 		
 		$('#serverToggle').change(function() {
 			IS_GL = !IS_GL;

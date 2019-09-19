@@ -3,6 +3,7 @@ import { Title } from './title.js';
 import { AbilityCard } from './ability-card.js';
 import { Setting } from './settings.js';
 import { Job } from './job.js';
+import { Weapon } from './weapon.js';
 
 /*
 UC list for complete mechanics
@@ -34,7 +35,7 @@ UC list for complete mechanics
     vegnagun: done
 */
 
-function damageCalc(card, job, setting, title) {
+function damageCalc(card, job, setting, title, weapon) {
 
     // TODO: take AA into account and titles
     // TODO: refactor card related terms to Card class
@@ -52,10 +53,11 @@ function damageCalc(card, job, setting, title) {
 
     title = title || new Title();
     setting = setting || new Setting();
+	weapon = weapon || new Weapon();
 
     // magic / attack term
     if (card.isMagicBased()) {
-        magicTerm += job.magic + title.magic;
+        magicTerm += job.magic + title.magic + weapon.magic;
 
         let magicMod = setting.magicMod;
         if (card.hasES(ES.high_voltage)) {
@@ -71,7 +73,7 @@ function damageCalc(card, job, setting, title) {
         magicTerm *= statMod;
 
 		let risingMod = 175;
-		if(setting.maxAbilityRising && job.ability_rising){
+		if(setting.maxAbilityRising && (job.ability_rising || weapon.ability_rising)){
 			magicTerm *= risingMod / 100;
 		}
 		
@@ -85,7 +87,7 @@ function damageCalc(card, job, setting, title) {
 
         magicTerm /= 100;
     } else {	
-        attackTerm += job.attack + title.attack;
+        attackTerm += job.attack + title.attack + weapon.attack;
         attackTerm *= setting.attackMod;
 		
 		let statMod = setting.statMod;
@@ -114,6 +116,7 @@ function damageCalc(card, job, setting, title) {
     eeTerm += job.getEE(card.element);
     eeTerm += card.getEE();
     eeTerm += title.getEE(card.element);
+	eeTerm += weapon.getEE(card.element);
     eeTerm += setting.getEE(card.element);
     eeTerm += card.hasES(ES.element_drive_synergy) ? 600 : 0;
     eeTerm += card.hasES(ES.element_everyday) ? 600 : 0;
@@ -128,6 +131,7 @@ function damageCalc(card, job, setting, title) {
     critTerm += 50;
     critTerm += job.crit_dmg_up;
 	critTerm += setting.crit_dmg_up;
+	critTerm += weapon.crit_dmg_up;
     critTerm += card.getCritDmgUp();
     critTerm += card.hasES(ES.critical_rupture) ? 30 : 0;
     critTerm += card.hasES(ES.ultra_critical_damage_up) ? 500 : 0;
@@ -140,6 +144,7 @@ function damageCalc(card, job, setting, title) {
         brokenTerm += 100;
         brokenTerm += job.break_dmg_up;
 		brokenTerm += setting.break_dmg_up;
+		brokenTerm += weapon.break_dmg_up;
         brokenTerm += card.getBreakDmgUp();
         brokenTerm += card.hasES(ES.break_escalate) ? 15 : 0;
         brokenTerm += card.hasES(ES.ultra_break_escalate) ? 1000 : 0;
@@ -154,6 +159,7 @@ function damageCalc(card, job, setting, title) {
         weakTerm += 30;
         weakTerm += job.weak_dmg_up;
 		weakTerm += setting.weak_dmg_up;
+		weakTerm += weapon.weak_dmg_up;
         weakTerm += (card.hasES(ES.break_enhance) && setting.isBroken) ? 25 : 0;
         weakTerm += setting.weak_dmg_up;
         weakTerm += title.weak_dmg_up;
@@ -166,6 +172,7 @@ function damageCalc(card, job, setting, title) {
         ravageTerm += job.ravage;
         ravageTerm += title.ravage;
 		ravageTerm += setting.ravage;
+		ravageTerm += weapon.ravage;
         ravageTerm += card.getRavage();
         ravageTerm += (setting.isTaiman && card.hasES(ES.ultra_convergence)) ? 100 : 0;
         // TODO: change number of casts from setting
@@ -210,7 +217,8 @@ function damageCalc(card, job, setting, title) {
         brokenTerm: (brokenTerm * 100) - 200,
         weakTerm: (weakTerm * 100) - 130,
         ravageTerm: (ravageTerm * 100) - 100,
-        ucTerm: (ucTerm * 100) - 100
+        ucTerm: (ucTerm * 100) - 100,
+		weapon: weapon
     }
 
     return result;
