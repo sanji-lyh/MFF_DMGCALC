@@ -61,20 +61,49 @@ function damageCalc(card, job, setting, title) {
         if (card.hasES(ES.high_voltage)) {
             let enemyHP = setting.enemyHP;
             magicMod += enemyHP / 100 * 1.5;
-            magicTerm *= magicMod;
         }
+		magicTerm *= magicMod;
+		
+		let statMod = setting.statMod;
+		if(setting.maxCrossCounter && job.cross_counter){
+			statMod += job.cross_counter / 100;
+		}
+        magicTerm *= statMod;
 
-        magicTerm *= setting.statMod;
-        magicTerm += setting.additionalMagic
+		let risingMod = 175;
+		if(setting.maxAbilityRising && job.ability_rising){
+			magicTerm *= risingMod / 100;
+		}
+		
+        magicTerm += setting.additionalMagic;
+		
+		if(setting.maxReckoning && job.reckoning){
+			magicTerm += 2400;
+		}
 
         // TODO: Gilgamesh, Godo, Bhunivelze
 
         magicTerm /= 100;
-    } else {
+    } else {	
         attackTerm += job.attack + title.attack;
         attackTerm *= setting.attackMod;
-        attackTerm *= setting.statMod;
-        attackTerm += setting.additionalAttack;
+		
+		let statMod = setting.statMod;
+		if(setting.maxCrossCounter && job.cross_counter){
+			statMod += job.cross_counter / 100;
+		}
+        attackTerm *= statMod;
+		
+		let risingMod = 175;
+		if(setting.maxAbilityRising && job.ability_rising){
+			magicTerm *= risingMod / 100;
+		}
+		
+		attackTerm += setting.additionalAttack;
+		
+		if(setting.maxRetribution && job.retribution){
+			attackTerm += 2400;
+		}
 
         // TODO: Zeromus
 
@@ -171,11 +200,6 @@ function damageCalc(card, job, setting, title) {
     // Check element
     if (!setting.ignoreElement && !job.checkElement(card)) {
         damage = 0;
-    }
-
-    if (job.name == 'Flower Girl of Midgar') {
-        console.log(job);
-        console.log(damage);
     }
 
     var result = {

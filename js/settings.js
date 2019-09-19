@@ -19,8 +19,13 @@ class Setting {
 
 		this.isBroken = false;
 		this.isWeakness = false;
+		
 		this.ignoreLore = false;
 		this.ignoreElement = false;
+		this.maxReckoning = false;
+		this.maxAtribution = false;
+		this.maxCrossCounter = false;
+		this.maxAbilityRising = false;
 
 		this.crit_dmg_up = 0;
         this.break_dmg_up = 0;

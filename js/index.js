@@ -144,12 +144,56 @@ function UpdateChanges() {
 	}
 
 	curSetting.ignoreLore = $("#ignore_lore").is(":checked");
-	curSetting.ignoreElement = !($("#display_element").is(":checked"));
-	/*isMaxRetribution: $("#max_retribution").is(":checked"),
-	  isMaxReckoning: $("#max_reckoning").is(":checked"),
-	  isCrossCounter: $("#cross_counter").is(":checked"),*/
+	curSetting.ignoreElement = ($("#ignore_element").is(":checked"));
+	curSetting.maxRetribution = $("#max_retribution").is(":checked");
+	curSetting.maxReckoning = $("#max_reckoning").is(":checked");
+	curSetting.maxCrossCounter = $("#cross_counter").is(":checked");
+	curSetting.maxAbilityRising = $("#max_ability_rising").is(":checked");
 	  
-	 console.log(curSetting);
+	switch(parseInt($("input[name='buff_faith']:checked").val())){
+		case 0:
+			curSetting.magicMod = 1;
+			break;
+		case 1:
+			curSetting.magicMod = 1.5;
+			break;
+		case 2:
+			curSetting.magicMod = 1.75;
+			break;
+	}
+	
+	switch(parseInt($("input[name='buff_brave']:checked").val())){
+		case 0:
+			curSetting.attackMod = 1;
+			break;
+		case 1:
+			curSetting.attackMod = 2;
+			break;
+		case 2:
+			curSetting.attackMod = 2.5;
+			break;
+	}
+	
+	switch(parseInt($("input[name='buff_trance']:checked").val())){
+		case 0:
+			curSetting.statMod = 1;
+			break;
+		case 1:
+			curSetting.statMod = 1.30;
+			break;
+		case 2:
+			curSetting.statMod = 1.45;
+			break;
+	}
+	
+	switch(parseInt($("input[name='buff_ee']:checked").val())){
+		case 1:
+			curSetting.ee += 25;
+			break;
+		case 2:
+			curSetting.ee += 50;
+			break;
+	}
 
 	if (jobs != null) {
 		$('#ability_img').attr('src', "img/supreme/" + curCard.img);
@@ -338,23 +382,11 @@ function DisplayResult(resultList, setting) {
 			OnAbilityChange();
 		});
 
-		$("#ignore_lore").change(function () {
+		$("#buff_input").change(function () {
 			UpdateChanges();
 		});
-
-		$("#display_element").change(function () {
-			UpdateChanges();
-		});
-
-		$("#max_retribution").change(function () {
-			UpdateChanges();
-		});
-
-		$("#max_reckoning").change(function () {
-			UpdateChanges();
-		});
-
-		$("#cross_counter").change(function () {
+		
+		$("#filter_input").change(function () {
 			UpdateChanges();
 		});
 

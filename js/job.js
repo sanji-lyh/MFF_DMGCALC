@@ -66,6 +66,10 @@ class Job {
         this.attune_chain = options["Attuned Chain"] || 0;
         this.ability_chain = options["Ability Chain"] || 0;
         this.ability_rising = options["Ability Rising"] ||0;
+		
+		this.reckoning = options["Reckoning"] || 0;
+		this.retribution = options["Retribution"] || 0;
+		this.cross_counter = options["Cross Counter"] || 0;
     }
 
     getEE(element) {
