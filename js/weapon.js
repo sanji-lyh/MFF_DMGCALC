@@ -31,6 +31,9 @@ class Weapon {
 			this.overpower = options.Overpower || 0;
 			this.ravage = options.Ravage || 0
 			
+			this.prismatic_return = options["Prismatic Return"] || 0;
+			this.prismatic_draw = options["Prismatic Draw"] || 0;
+			
 			this.ultimate_charge_abilities = options["Ultimate Charge Abilities"] || 0;
 			this.extended_break = options["Extended Break"] || 0;
 			this.boost_ultimate = options["Boost Ultimate"] || 0;
@@ -58,6 +61,9 @@ class Weapon {
 			this.flash_break = 0;
 			this.quick_break = 0;
 			
+			this.prismatic_draw = 0;
+			this.prismatic_return = 0;
+			
 			this.overpower = 0;
 			this.ravage = 0
 			
@@ -74,14 +80,16 @@ class Weapon {
 	getToolTips(){
 		let statsTitle = ["Attuned Chain", "Ability Chain", "Ability Rising", "Improved Crits",
 							"Exploit Weakness", "Painful Break", "Piercing Break", "Flash Break",
+							"Prismatic Return", "Prismatic Draw",
 							"Quick Break", "Overpower", "Ravage", "Ultimate Charge Abilities",
 							"Extended Break", "Boost Ultimate"];
 							
 		let stats = [this.attune_chain, this.ability_chain, this.ability_rising, this.crit_dmg_up,
 						this.weak_dmg_up, this.break_dmg_up, this.piercing_break, this.flash_break,
+						this.prismatic_return, this.prismatic_draw,
 						this.quick_break, this.overpower, this.ravage, this.ultimate_charge_abilities,
 						this.extended_break, this.boost_ultimate];
-		let statsUnit = ["%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "", "", ""];
+		let statsUnit = ["%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "", "", ""];
 						
 		
 		let description = "";
