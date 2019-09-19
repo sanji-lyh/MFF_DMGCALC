@@ -33,9 +33,6 @@ async function loadAllCards(data) {
 			});
 	}
 
-	$('#ability_template').append($('<optgroup/>').attr('label', "Custom"));
-	$('#ability_template').find('optgroup').last().append($('<option>', { value: -1, text: "Custom input ability" }));
-
 	return Promise.resolve();
 }
 
