@@ -108,7 +108,7 @@ function damageCalc(card, job, setting, title, weapon) {
 
     let risingMod = 175;
     if (setting.maxAbilityRising && (job.ability_rising || weapon.ability_rising)) {
-      magicTerm *= risingMod / 100;
+      attackTerm *= risingMod / 100;
     }
 
     attackTerm += setting.additionalAttack;
