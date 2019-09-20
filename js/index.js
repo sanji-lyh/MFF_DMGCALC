@@ -423,6 +423,11 @@ function DisplayResult(resultList, setting) {
 	}
 }
 
+function WpnAllSelection(isChecked){
+	$("input:checkbox[name=wpn_choice]").prop('checked', isChecked);
+	UpdateChanges();
+}
+
 (async () => {
 
 	debug.switchVersion = () => {
@@ -461,6 +466,14 @@ function DisplayResult(resultList, setting) {
 
 		$("#setting_input").change(function () {
 			UpdateChanges();
+		});
+		
+		$("#wpn_select_all").click(function(){
+			WpnAllSelection(true);
+		});
+		
+		$("#wpn_unselect_all").click(function(){
+			WpnAllSelection(false);
 		});
 
 		$('#serverToggle').change(function() {
