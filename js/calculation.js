@@ -168,7 +168,6 @@ function damageCalc(card, job, setting, title, weapon) {
   if (setting.isWeakness) {
     weakTerm += 30;
     weakTerm += job.weak_dmg_up;
-    weakTerm += setting.weak_dmg_up;
     weakTerm += weapon.weak_dmg_up;
     weakTerm += card.hasES(ES.break_enhance) && setting.isBroken ? 25 : 0;
     weakTerm += card.getWeakDmgUp();
