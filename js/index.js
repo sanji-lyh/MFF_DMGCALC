@@ -143,6 +143,8 @@ function UpdateChanges() {
     "input[name='ability_chain']",
     "input[name='pb_power']",
     "input[name='ravage_power']",
+	"input[name='multiply_atk']",
+	"input[name='multiply_mag']",
     "input[name='addition_atk']"
   ];
 
@@ -161,6 +163,9 @@ function UpdateChanges() {
   curSetting.ability_chain = parseInt2($("input[name='ability_chain']").val());
   curSetting.attuned_chain = parseInt2($("input[name='attuned_chain']").val());
   curSetting.ravage = parseInt2($("input[name='ravage_power']").val());
+  
+  curSetting.setFractalAttack(parseInt2($("input[name='multiply_atk']").val()));
+  curSetting.setFractalMagic(parseInt2($("input[name='multiply_mag']").val()));
 
   var dmgSortType = parseInt($("input[name='dmg_type']:checked").val());
   switch (dmgSortType) {

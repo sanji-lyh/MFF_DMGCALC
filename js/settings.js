@@ -11,6 +11,10 @@ class Setting {
   constructor() {
     this.magicMod = 1;
     this.attackMod = 1;
+	
+	this.fractalMagicMod = 1;
+	this.fractalAttackMod = 1;
+	
     this.statMod = 1;
     this.additionalMagic = 0;
     this.additionalAttack = 0;
@@ -58,6 +62,14 @@ class Setting {
 
   isOppositeElement(element) {
     return true;
+  }
+  
+  setFractalMagic(m){
+	  this.fractalMagicMod = 1 + m / 100;
+  }
+  
+  setFractalAttack(a){
+	  this.fractalAttackMod = 1 + a / 100;
   }
 
   // setter method
