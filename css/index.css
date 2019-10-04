@@ -184,3 +184,35 @@ input[type=checkbox]:checked + label img {
 	margin-left: 15px;
 	margin-right: 15px;
 }
+
+
+
+.pagination > li > a
+{
+    background-color: #3f4349;
+    color: #d7ddde;
+	border-color: #3f4349;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #5a5a5a ;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #5A4181 !Important;
+    border: solid 1px #5A4181 !Important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #5A4181 !Important;
+    border: solid 1px #5A4181;
+}

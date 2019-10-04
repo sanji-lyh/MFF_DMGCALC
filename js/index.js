@@ -1,4 +1,4 @@
-import { AUTO_ABILITY as AA, EXTRA_SKILL as ES, URL, ELEMENT, BUFF } from './const.js';
+import { AUTO_ABILITY as AA, EXTRA_SKILL as ES, URL, ELEMENT, BUFF, UI_SETTING } from './const.js';
 import { AbilityCard } from './ability-card.js';
 import { Setting } from './settings.js';
 import { Job } from './job.js';
@@ -14,6 +14,9 @@ var jobs;
 var weapons;
 
 var curCard;
+var curResultList;
+var curSetting;
+var curPaginationIndex;
 
 async function loadAllCards(data) {
 	cards = AbilityCard.loadAllCards(data.attack_uc);
@@ -282,7 +285,11 @@ function ProcessRanking(setting, title) {
 	}
 	resultList = resultList.sort(compareDmg);
 	
-	DisplayResult(resultList, setting);
+	curResultList = resultList;
+	curSetting = setting;
+	curPaginationIndex = 0;
+	
+	DisplayResult();	
 }
 
 function compareDmg(a, b) {
@@ -295,16 +302,20 @@ function compareDmg(a, b) {
   }
 }
 
-function DisplayResult(resultList, setting) {
-	var dmgSortTypeName = ["Unbroken Neutral", "Unbroken Weakness", "Broken Neutral", "Broken Weakness"];
-	var dmgSortType = parseInt($("input[name='dmg_type']:checked").val());
-	var elemIcon = ["elem_fire.png", "elem_water.png", "elem_wind.png", "elem_earth.png", "elem_light.png", "elem_dark.png"];
+function DisplayResult() {
+	let dmgSortTypeName = ["Unbroken Neutral", "Unbroken Weakness", "Broken Neutral", "Broken Weakness"];
+	let dmgSortType = parseInt($("input[name='dmg_type']:checked").val());
+	let elemIcon = ["elem_fire.png", "elem_water.png", "elem_wind.png", "elem_earth.png", "elem_light.png", "elem_dark.png"];
 
 	$("#result_list").empty();
+	
+	let startIndex = curPaginationIndex * UI_SETTING.max_entry_count;
+	let remainingEntryCount = curResultList.length - startIndex;
+	let endCount = (remainingEntryCount < UI_SETTING.max_entry_count) ? remainingEntryCount : UI_SETTING.max_entry_count;
 
-	for (let i = 0; i < resultList.length; i++) {
-		let job = resultList[i].job;
-		let dmgResult = resultList[i].dmgResult;
+	for (let i = startIndex; i < (startIndex + endCount); i++) {
+		let job = curResultList[i].job;
+		let dmgResult = curResultList[i].dmgResult;
 
 		let displayDmg = numberWithCommas(dmgResult.damage);
 
@@ -420,6 +431,33 @@ function DisplayResult(resultList, setting) {
 		resultHTML += "</div></div>";
 
 		$("#result_list").append(resultHTML);
+	}
+	
+	// Pagination display
+	$("#pagination").empty();
+	let paginationCount = Math.ceil(curResultList.length / UI_SETTING.max_entry_count);
+	let paginationHTML = '<nav aria-label="pagination"><ul class="pagination justify-content-center">';
+	
+	if(paginationCount > 1){
+		for(var i = 0; i < paginationCount; i++){
+			let itemClass = "page-item";
+			if(curPaginationIndex == i){
+				itemClass += " active"
+			}
+			paginationHTML += '<li class="' + itemClass + '"><a class="page-link" href="#">' + (i+1) + '</a></li>';
+		}
+		
+		paginationHTML += '</ul></nav>';
+		
+		$("#pagination").append(paginationHTML);
+		
+		$('ul.pagination li a').on('click',function(e){
+			e.preventDefault();
+			var tag = $(this);
+			curPaginationIndex = parseInt2(tag.text())-1;
+			DisplayResult();
+			$("html, body").animate({ scrollTop: $("#sort_input").offset().top - 20 }, "fast");
+		});
 	}
 }
 

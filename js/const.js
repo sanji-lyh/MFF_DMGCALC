@@ -140,4 +140,8 @@ const URL = {
 	WPN: 'https://script.google.com/macros/s/AKfycbzjAa_YwJ_WcYnnRJ_irrAbFUV-mPwWBQqMDXyTR-Wtn5_dixMh/exec'
 };
 
-export { AUTO_ABILITY, URL, EXTRA_SKILL, CLASS, STATS, ELEMENT, ELEMENT_SHORT, BUFF, BUFF_VALUE };
+const UI_SETTING = {
+	max_entry_count: 50
+}
+
+export { AUTO_ABILITY, URL, EXTRA_SKILL, CLASS, STATS, ELEMENT, ELEMENT_SHORT, BUFF, BUFF_VALUE, UI_SETTING };
