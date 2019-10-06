@@ -62,65 +62,67 @@ function damageCalc(card, job, setting, title, weapon) {
   weapon = weapon || new Weapon();
 
   // magic / attack term
-  if (card.isMagicBased()) {
-    magicTerm += job.magic + title.magic + weapon.magic;
-	
-	magicTerm *= setting.fractalMagicMod;
+  magicTerm += job.magic + title.magic + weapon.magic;
 
-    let magicMod = setting.magicMod;
-    if (card.hasES(ES.high_voltage)) {
-      let enemyHP = setting.enemyHP;
-      magicMod += (enemyHP / 100) * 1.5;
-    }
-    magicTerm *= magicMod;
+  magicTerm *= setting.fractalMagicMod;
 
-    let statMod = setting.statMod;
-    if (setting.maxCrossCounter && job.cross_counter) {
-      statMod += job.cross_counter / 100;
-    }
-    magicTerm *= statMod;
-
-    let risingMod = 175;
-    if (setting.maxAbilityRising && (job.ability_rising || weapon.ability_rising)) {
-      magicTerm *= risingMod / 100;
-    }
-
-    magicTerm += setting.additionalMagic;
-
-    if (setting.maxReckoning && job.reckoning) {
-      magicTerm += 2400;
-    }
-
-    // TODO: Gilgamesh, Godo, Bhunivelze
-
-    magicTerm /= 100;
-  } else {
-    attackTerm += job.attack + title.attack + weapon.attack;
-	
-	attackTerm *= setting.fractalAttackMod;
-    attackTerm *= setting.attackMod;
-
-    let statMod = setting.statMod;
-    if (setting.maxCrossCounter && job.cross_counter) {
-      statMod += job.cross_counter / 100;
-    }
-    attackTerm *= statMod;
-
-    let risingMod = 175;
-    if (setting.maxAbilityRising && (job.ability_rising || weapon.ability_rising)) {
-      attackTerm *= risingMod / 100;
-    }
-
-    attackTerm += setting.additionalAttack;
-
-    if (setting.maxRetribution && job.retribution) {
-      attackTerm += 2400;
-    }
-
-    // TODO: Zeromus
-
-    attackTerm /= 100;
+  let magicMod = setting.magicMod;
+  if (card.hasES(ES.high_voltage)) {
+    let enemyHP = setting.enemyHP;
+    magicMod += (enemyHP / 100) * 1.5;
   }
+  magicTerm *= magicMod;
+
+  let statMod = setting.statMod;
+  if (setting.maxCrossCounter && job.cross_counter) {
+    statMod += job.cross_counter / 100;
+  }
+  magicTerm *= statMod;
+
+  let risingMod = 175;
+  if (setting.maxAbilityRising && (job.ability_rising || weapon.ability_rising)) {
+    magicTerm *= risingMod / 100;
+  }
+
+  magicTerm += setting.additionalMagic;
+
+  if (setting.maxReckoning && job.reckoning) {
+    magicTerm += 2400;
+  }
+
+  // TODO: Godo, Bhunivelze
+  
+  attackTerm += job.attack + title.attack + weapon.attack;
+	
+  attackTerm *= setting.fractalAttackMod;
+  attackTerm *= setting.attackMod;
+
+  statMod = setting.statMod;
+  if (setting.maxCrossCounter && job.cross_counter) {
+    statMod += job.cross_counter / 100;
+  }
+  attackTerm *= statMod;
+
+  risingMod = 175;
+  if (setting.maxAbilityRising && (job.ability_rising || weapon.ability_rising)) {
+    attackTerm *= risingMod / 100;
+  }
+
+  attackTerm += setting.additionalAttack;
+
+  if (setting.maxRetribution && job.retribution) {
+    attackTerm += 2400;
+  }
+
+  // TODO: Zeromus
+
+  // Gilgamesh X 
+  if(card.hasES(ES.legendary_blade_master)){
+    magicTerm += attackTerm * 0.5;	
+  }
+  
+  magicTerm /= 100;
+  attackTerm /= 100;
 
   // ee term
   eeTerm += job.getEE(card.element);
