@@ -66,6 +66,7 @@ class Job {
         this.attune_chain = options["Attuned Chain"] || 0;
         this.ability_chain = options["Ability Chain"] || 0;
         this.ability_rising = options["Ability Rising"] ||0;
+        this.discordant_chain = options["Discordant Chain"] || 0;
 		
 		this.reckoning = options["Reckoning"] || 0;
 		this.retribution = options["Retribution"] || 0;

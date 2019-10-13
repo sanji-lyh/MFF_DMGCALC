@@ -200,6 +200,7 @@ function UpdateChanges() {
   curSetting.maxReckoning = $('#max_reckoning').is(':checked');
   curSetting.maxCrossCounter = $('#cross_counter').is(':checked');
   curSetting.maxAbilityRising = $('#max_ability_rising').is(':checked');
+  curSetting.showDiscordantChain = $('#show_discordant_chain').is(':checked');
 
   switch (parseInt($("input[name='buff_faith']:checked").val())) {
     case 0:

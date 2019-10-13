@@ -32,6 +32,8 @@ class Setting {
     this.maxRetribution = false;
     this.maxCrossCounter = false;
     this.maxAbilityRising = false;
+    
+    this.showDiscordantChain = false;
 
     this.crit_dmg_up = 0;
     this.break_dmg_up = 0;

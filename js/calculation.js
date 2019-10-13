@@ -129,13 +129,17 @@ function damageCalc(card, job, setting, title, weapon) {
   eeTerm += card.getEE();
   eeTerm += title.getEE(card.element);
   eeTerm += setting.getEE(card.element);
-  eeTerm += weapon.getEE(card.element);
+  eeTerm += weapon.getEE(card.element);  
   eeTerm += card.hasES(ES.element_drive_synergy) ? 600 : 0;
   eeTerm += card.hasES(ES.element_everyday) ? 600 : 0;
   eeTerm += card.hasES(ES.fortune) ? 500 : 0;
   eeTerm += card.hasES(ES.misfortune) ? 1050 : 0;
   eeTerm += card.hasES(ES.ultra_element_synergy) ? 400 : 0;
   eeTerm += card.hasES(ES.ultra_martial_combat) ? 300 : 0;
+  if(setting.showDiscordantChain){
+      eeTerm += job.discordant_chain;
+  }
+  
   // TODO: add from card's description
   eeTerm /= 100;
 

@@ -167,7 +167,7 @@
 		</div>
 		
 		<form id="buff_input">
-		<div class="row buff-table">
+		<div class="row buff-table mb-1">
 			<div class="col-xs-12 col-sm-6 mb-3">
 				<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
 					<label class="btn btn-success">
@@ -238,17 +238,24 @@
 				</div>
 			</div>
 
-			<div class="col-xs-12 col-sm-6 mb-2">
+			<div class="col-xs-12 col-sm-6 mb-1">
 				<div class="custom-control custom-checkbox">
 					<input class="custom-control-input" type="checkbox" name="cross_counter" value="1" id="cross_counter" checked>
 					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Following <b>an enemy action</b>, your Attack, Break Power and Magic will increases. The bonus is additive to Trance. The bonus reset after new wave / battle. <br/><br/>It doesn't give any bonus if the enemy was stun / sleep. It does give the bonus if they spend their action buffing themselves, charging their ultimate, or making a coffee for you. <b>Pre-emptive action also counts.</b>" for="cross_counter">Cross-Counter</label>
 				</div>
 			</div>
 			
-			<div class="col-xs-12 col-sm-6 mb-2">
+			<div class="col-xs-12 col-sm-6 mb-1">
 				<div class="custom-control custom-checkbox">
 					<input class="custom-control-input" type="checkbox" name="max_ability_rising" value="1" id="max_ability_rising" checked>
-					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Capped at 75% increase Mag/Atk%.<br/><br/> E.g. If your job has 3% ability rising, ability casting 3 times will give you 9%" for="max_ability_rising">Max Ability Rising</label>
+					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Capped at 75% increase Mag/Atk%.<br/><br/> E.g. If your job has 3% ability rising, ability casting 3 times will give you 9%" for="max_ability_rising">Max Ability Salvo</label>
+				</div>
+			</div>
+            
+            <div class="col-xs-12 col-sm-6 mb-1">
+				<div class="custom-control custom-checkbox">
+					<input class="custom-control-input" type="checkbox" name="show_discordant_chain" value="1" id="show_discordant_chain">
+					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="If the previous action was an ability cast of a different element (regardless of card type), the following ability will get X% added Element Enhance. Attuned Chain and Discordant Chain cannot proc together. <br/><br/>Example: Fire > Water > Fire > Water > Wind > Water > Fire" for="show_discordant_chain">Discordant Chain</label>
 				</div>
 			</div>
 		</div>
