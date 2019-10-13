@@ -77,6 +77,9 @@ function damageCalc(card, job, setting, title, weapon) {
   if (setting.maxCrossCounter && job.cross_counter) {
     statMod += job.cross_counter / 100;
   }
+  if (setting.showSkilledDuelist && job.skilled_duelist){
+    statMod += job.skilled_duelist / 100;   
+  }
   magicTerm *= statMod;
 
   let risingMod = 175;
@@ -100,6 +103,9 @@ function damageCalc(card, job, setting, title, weapon) {
   statMod = setting.statMod;
   if (setting.maxCrossCounter && job.cross_counter) {
     statMod += job.cross_counter / 100;
+  }
+  if (setting.showSkilledDuelist && job.skilled_duelist){
+    statMod += job.skilled_duelist / 100;      
   }
   attackTerm *= statMod;
 

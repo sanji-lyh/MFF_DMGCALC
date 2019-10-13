@@ -34,6 +34,7 @@ class Setting {
     this.maxAbilityRising = false;
     
     this.showDiscordantChain = false;
+    this.showSkilledDuelist = false;
 
     this.crit_dmg_up = 0;
     this.break_dmg_up = 0;
