@@ -138,6 +138,7 @@ function damageCalc(card, job, setting, title, weapon) {
   eeTerm += card.hasES(ES.ultra_martial_combat) ? 300 : 0;
   if(setting.showDiscordantChain){
       eeTerm += job.discordant_chain;
+      eeTerm -= job.attune_chain;
   }
   
   // TODO: add from card's description
