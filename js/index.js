@@ -439,6 +439,11 @@ function DisplayResult() {
 			resultHTML += dmgDivider;
 			resultHTML += "<div class=\"mr-2 perk-label\">Damage up (Supreme Effect) +" + numberWithCommas(dmgResult.ucTerm) + "%</div>";
 		}
+        
+        if (dmgResult.prismatic_return > 0){
+            resultHTML += dmgDivider;
+			resultHTML += "<div class=\"mr-2 perk-label\">Prismatic Return +" + numberWithCommas(dmgResult.prismatic_return) + "%</div>";
+        }
 
 		resultHTML += "</div></div>";
 

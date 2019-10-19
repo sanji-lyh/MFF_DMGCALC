@@ -69,6 +69,7 @@ class Job {
         this.discordant_chain = options["Discordant Chain"] || 0;
         
         this.skilled_duelist = options["Skilled Duelist"] || 0;
+        this.prismatic_return = options["Prismatic Return"] || 0;
         
 		this.reckoning = options["Reckoning"] || 0;
 		this.retribution = options["Retribution"] || 0;

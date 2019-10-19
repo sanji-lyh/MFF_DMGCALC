@@ -238,7 +238,9 @@ function damageCalc(card, job, setting, title, weapon) {
   if (!setting.ignoreElement && !job.checkElement(card)) {
     damage = 0;
   }
-
+  
+  
+  
   var result = {
     damage: damage,
     dmgTerm: card.isMagicBased() ? magicTerm * 100 - 100 : attackTerm * 100,
@@ -248,7 +250,8 @@ function damageCalc(card, job, setting, title, weapon) {
     weakTerm: weakTerm * 100 - 130,
     ravageTerm: ravageTerm * 100 - 100,
     ucTerm: ucTerm * 100 - 100,
-    weapon: weapon
+    weapon: weapon,
+    prismatic_return: weapon.prismatic_return + job.prismatic_return
   };
 
   return result;
