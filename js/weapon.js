@@ -87,7 +87,7 @@ class Weapon {
     }
 	
 	getToolTips(){
-		let statsTitle = ["Ultimate Charger", "Attuned Chain", "Ability Chain", "Ability Rising", "Improved Crits",
+		let statsTitle = ["Ultimate Charger", "Attuned Chain", "Ability Chain", "Ability Salvo", "Improved Crits",
 							"Exploit Weakness", "Painful Break", "Piercing Break", "Flash Break",
 							"Prismatic Return", "Prismatic Draw",
 							"Quick Break", "Overpower", "Ravage", "Ultimate Charge Abilities",
