@@ -121,7 +121,9 @@ const BUFF_VALUE = {
   boost: 1,
   boost_II: 1.5,
   trance: 0.3,
-  trance_II: 0.45
+  trance_II: 0.45,
+  berserk: 50,
+  berserk_II: 75
 };
 
 const BUFF = {
@@ -130,7 +132,9 @@ const BUFF = {
   brave: 'brave',
   brave_II: 'brave II',
   trance: 'trance',
-  trance_II: 'trance II'
+  trance_II: 'trance II',
+  berserk: 'berserk',
+  berserk_II: 'berserk II'
 };
 
 const URL = {

@@ -248,6 +248,15 @@ function UpdateChanges() {
       curSetting.ee += IS_GL ? 50 : 75;
       break;
   }
+  
+  switch (parseInt($("input[name='buff_berserk']:checked").val())) {
+    case 1:
+      curSetting.ee += 50;
+      break;
+    case 2:
+      curSetting.ee += 75;
+      break;
+  }
 
   if (jobs != null) {
     $('#ability_img').attr('src', 'img/supreme/' + curCard.img);
