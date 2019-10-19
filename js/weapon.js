@@ -15,6 +15,8 @@ class Weapon {
 			this.attack = options.Attack || 0;
 			this.magic = options.Magic || 0;
 			this.break = options.Break || 0;
+            
+            this.attack_multiply = options["AttackMultiply"] || 0;
 			
 			this.attune_chain = options["Attuned Chain"] || 0;
 			this.ability_chain = options["Ability Chain"] || 0;
@@ -35,8 +37,12 @@ class Weapon {
 			this.prismatic_draw = options["Prismatic Draw"] || 0;
 			
 			this.ultimate_charge_abilities = options["Ultimate Charge Abilities"] || 0;
+            this.ultimate_charge = options["Ultimate Charger"] || 0;
 			this.extended_break = options["Extended Break"] || 0;
 			this.boost_ultimate = options["Boost Ultimate"] || 0;
+            
+                        
+            
 		}
 		else{
 			this.order = 0;
@@ -48,6 +54,8 @@ class Weapon {
 			this.attack = 0;
 			this.magic = 0;
 			this.break = 0;
+            
+            this.attack_multiply = 0;
 			
 			this.attune_chain = 0;
 			this.ability_chain = 0;
@@ -68,6 +76,7 @@ class Weapon {
 			this.ravage = 0
 			
 			this.ultimate_charge_abilities = 0;
+            this.ultimate_charge = 0;
 			this.extended_break = 0;
 			this.boost_ultimate = 0;
 		}
@@ -78,18 +87,18 @@ class Weapon {
     }
 	
 	getToolTips(){
-		let statsTitle = ["Attuned Chain", "Ability Chain", "Ability Rising", "Improved Crits",
+		let statsTitle = ["Ultimate Charger", "Attuned Chain", "Ability Chain", "Ability Rising", "Improved Crits",
 							"Exploit Weakness", "Painful Break", "Piercing Break", "Flash Break",
 							"Prismatic Return", "Prismatic Draw",
 							"Quick Break", "Overpower", "Ravage", "Ultimate Charge Abilities",
-							"Extended Break", "Boost Ultimate"];
+							"Extended Break", "Attack Up", "Boost Ultimate"];
 							
-		let stats = [this.attune_chain, this.ability_chain, this.ability_rising, this.crit_dmg_up,
+		let stats = [this.ultimate_charge, this.attune_chain, this.ability_chain, this.ability_rising, this.crit_dmg_up,
 						this.weak_dmg_up, this.break_dmg_up, this.piercing_break, this.flash_break,
 						this.prismatic_return, this.prismatic_draw,
 						this.quick_break, this.overpower, this.ravage, this.ultimate_charge_abilities,
-						this.extended_break, this.boost_ultimate];
-		let statsUnit = ["%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "", "", ""];
+						this.extended_break, this.attack_multiply, this.boost_ultimate];
+		let statsUnit = ["","%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "%", "", "", "%", ""];
 						
 		
 		let description = "";

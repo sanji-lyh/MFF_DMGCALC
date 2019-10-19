@@ -96,7 +96,9 @@ function damageCalc(card, job, setting, title, weapon) {
   // TODO: Godo, Bhunivelze
   
   attackTerm += job.attack + title.attack + weapon.attack;
-	
+  if(weapon.attack_multiply > 0){
+      attackTerm *= (1 + weapon.attack_multiply / 100);
+  }
   attackTerm *= setting.fractalAttackMod;
   attackTerm *= setting.attackMod;
 
