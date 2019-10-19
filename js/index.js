@@ -202,6 +202,7 @@ function UpdateChanges() {
   curSetting.maxAbilityRising = $('#max_ability_rising').is(':checked');
   curSetting.showDiscordantChain = $('#show_discordant_chain').is(':checked');
   curSetting.showSkilledDuelist = $('#show_skilled_duelist').is(':checked');
+  curSetting.isS2Reduction = $('#s2_reduction').is(':checked');
 
   switch (parseInt($("input[name='buff_faith']:checked").val())) {
     case 0:

@@ -221,6 +221,11 @@ function damageCalc(card, job, setting, title, weapon) {
   let damage = card.attack;
   damage *= card.isMagicBased() ? magicTerm : attackTerm;
   damage = damage * eeTerm * critTerm * brokenTerm * weakTerm * ravageTerm * ucTerm;
+  
+  // S2 reduction
+  if(setting.isS2Reduction){
+    damage /= 10;
+  }
 
   // Check lore
   if (!setting.ignoreLore && !job.checkLore(card)) {

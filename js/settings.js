@@ -33,6 +33,8 @@ class Setting {
     this.maxCrossCounter = false;
     this.maxAbilityRising = false;
     
+    this.isS2Reduction = false;
+    
     this.showDiscordantChain = false;
     this.showSkilledDuelist = false;
 
