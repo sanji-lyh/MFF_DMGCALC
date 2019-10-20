@@ -60,10 +60,23 @@ function damageCalc(card, job, setting, title, weapon) {
   title = title || new Title();
   setting = setting || new Setting();
   weapon = weapon || new Weapon();
+  
+  // TODO: improve the overpower formula
+  let overboost_mod = 0,
+    overpower_mod = 1;
+  switch(setting.overboost_lvl){
+    case 0:
+        overboost_mod = 0.34;
+        break;
+    case 32:
+        overboost_mod = 1;
+        break;
+  }
+  
+  overpower_mod = ((setting.overpower + job.overpower + weapon.overpower) * overboost_mod)/100 + 1;
 
   // magic / attack term
-  magicTerm += job.magic + title.magic + weapon.magic;
-
+  magicTerm += (job.magic * overpower_mod) + title.magic + weapon.magic;
   magicTerm *= setting.fractalMagicMod;
 
   let magicMod = setting.magicMod;
@@ -95,7 +108,7 @@ function damageCalc(card, job, setting, title, weapon) {
 
   // TODO: Godo, Bhunivelze
   
-  attackTerm += job.attack + title.attack + weapon.attack;
+  attackTerm += (job.attack * overpower_mod) + title.attack + weapon.attack;
   if(weapon.attack_multiply > 0){
       attackTerm *= (1 + weapon.attack_multiply / 100);
   }

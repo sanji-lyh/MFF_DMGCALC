@@ -144,6 +144,10 @@
 						<input type="number" class="form-control" name="ravage_power" value="0" min="0">
 					</div>
 					
+                    <div class="col-xs-6 col-sm-6 mb-2">
+						<label for="overpower">Overpower</label>
+						<input type="number" class="form-control" name="overpower" value="0" min="0">
+					</div>
 				</div>
 			</form>
 		</div>
@@ -173,10 +177,10 @@
 					<label class="btn btn-success">
 						<input type="radio" name="buff_faith" id="no_faith" value="0" autocomplete="off">No Faith
 					</label>
-					<label class="btn btn-success active">
+					<label class="btn btn-success active" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply Mag by 50%">
 						<input type="radio" name="buff_faith" id="faith_1" value="1" autocomplete="off" checked>Faith I
 					</label>
-					<label class="btn btn-success">
+					<label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply Mag by 75%">
 						<input type="radio" name="buff_faith" id="faith_2" value="2" autocomplete="off">Faith II
 					</label>
 				</div>
@@ -187,10 +191,10 @@
 					<label class="btn btn-success">
 						<input type="radio" name="buff_brave" id="no_brave" value="0" autocomplete="off">No Brave
 					</label>
-					<label class="btn btn-success active">
+					<label class="btn btn-success active"  data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply Atk by 100%">
 						<input type="radio" name="buff_brave" id="brave_1" value="1" autocomplete="off" checked>Brave I
 					</label>
-					<label class="btn btn-success">
+					<label class="btn btn-success"  data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply Atk by 150%">
 						<input type="radio" name="buff_brave" id="brave_2" value="2" autocomplete="off">Brave II
 					</label>
 				</div>
@@ -201,10 +205,10 @@
 					<label class="btn btn-success">
 						<input type="radio" name="buff_berserk" id="no_berserk" value="0" autocomplete="off">No Berserk
 					</label>
-					<label class="btn btn-success active">
+					<label class="btn btn-success active"  data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Increase Enhance Element by 50%">
 						<input type="radio" name="buff_berserk" id="berserk_1" value="1" autocomplete="off" checked>Berserk I
 					</label>
-					<label class="btn btn-success">
+					<label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Increase Enhance Element by 75%">
 						<input type="radio" name="buff_berserk" id="berserk_2" value="2" autocomplete="off">Berserk II
 					</label>
 				</div>
@@ -215,10 +219,10 @@
 					<label class="btn btn-success active">
 						<input type="radio" name="buff_ee" id="no_ee" value="0" autocomplete="off" checked>No EE Atk
 					</label>
-					<label class="btn btn-success">
+					<label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Increase Enhance Element by 25%">
 						<input type="radio" name="buff_ee" id="ee_1" value="1" autocomplete="off">EE Atk I
 					</label>
-					<label class="btn btn-success">
+					<label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Increase Enhance Element by 50% (GL) / 75% (JP)">
 						<input type="radio" name="buff_ee" id="ee_2" value="2" autocomplete="off">EE Atk II
 					</label>
 				</div>
@@ -229,11 +233,22 @@
 					<label class="btn btn-success">
 						<input type="radio" name="buff_trance" id="no_trance" value="0" autocomplete="off">No Trance
 					</label>
-					<label class="btn btn-success">
+					<label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply stats by 30%">
 						<input type="radio" name="buff_trance" id="trance_1" value="1" autocomplete="off">Trance I
 					</label>
-					<label class="btn btn-success active">
+					<label class="btn btn-success active" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply stats by 45%">
 						<input type="radio" name="buff_trance" id="trance_2" value="2" autocomplete="off" checked>Trance II
+					</label>
+				</div>
+			</div>
+            
+            <div class="col-xs-12 col-sm-6 mb-3">
+				<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
+					<label class="btn btn-success active">
+						<input type="radio" name="overboost_lvl" id="obj_0" value="0" autocomplete="off" checked>Overboost Job Lv. 0
+					</label>
+					<label class="btn btn-success">
+						<input type="radio" name="overboost_lvl" id="obj_32" value="1" autocomplete="off">Overboost Job Lv. 32
 					</label>
 				</div>
 			</div>

@@ -21,6 +21,7 @@ class Setting {
     this.enemyHP = 100;
     this.playerHP = 100;
     this.enemyElement = null;
+    this.overboost_lvl = 0;
 
     this.isBroken = false;
     this.isWeakness = false;
@@ -46,6 +47,7 @@ class Setting {
     this.attuned_chain = 0;
     this.ability_chain = 0;
     this.ravage = 0;
+    this.overpower = 0;
   }
 
   // getter method

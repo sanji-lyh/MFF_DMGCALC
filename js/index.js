@@ -43,6 +43,9 @@ async function loadAllCards(data) {
 
 async function loadAllJobs(data) {
   jobs = Job.loadAllJobs(data);
+  
+  console.log(jobs);
+  
   return Promise.resolve();
 }
 
@@ -166,6 +169,7 @@ function UpdateChanges() {
   curSetting.ability_chain = parseInt2($("input[name='ability_chain']").val());
   curSetting.attuned_chain = parseInt2($("input[name='attuned_chain']").val());
   curSetting.ravage = parseInt2($("input[name='ravage_power']").val());
+  curSetting.overpower = parseInt2($("input[name='overpower']").val());
   
   curSetting.setFractalAttack(parseInt2($("input[name='multiply_atk']").val()));
   curSetting.setFractalMagic(parseInt2($("input[name='multiply_mag']").val()));
@@ -255,6 +259,15 @@ function UpdateChanges() {
       break;
     case 2:
       curSetting.ee += 75;
+      break;
+  }
+  
+  switch (parseInt($("input[name='overboost_lvl']:checked").val())) {
+    case 0:
+      curSetting.overboost_lvl = 0;
+      break;
+    case 1:
+      curSetting.overboost_lvl = 32;
       break;
   }
 

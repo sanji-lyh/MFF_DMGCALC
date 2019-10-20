@@ -14,7 +14,7 @@ class Job {
         this.attack = options.Attack;
         this.magic = options.Magic;
         this.break = options.Break;
-	
+        this.overpower = options["Overpower"] || 0;
 		
 		this.orbset1 = [];
 		this.orbset2 = [];
