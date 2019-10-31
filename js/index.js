@@ -170,6 +170,7 @@ function UpdateChanges() {
   curSetting.attuned_chain = parseInt2($("input[name='attuned_chain']").val());
   curSetting.ravage = parseInt2($("input[name='ravage_power']").val());
   curSetting.overpower = parseInt2($("input[name='overpower']").val());
+  curSetting.ability_rising = parseInt2($("input[name='ability_rising']").val());
   
   curSetting.setFractalAttack(parseInt2($("input[name='multiply_atk']").val()));
   curSetting.setFractalMagic(parseInt2($("input[name='multiply_mag']").val()));
@@ -452,6 +453,11 @@ function DisplayResult() {
 			resultHTML += dmgDivider;
 			resultHTML += "<div class=\"mr-2 perk-label\">Damage up (Supreme Effect) +" + numberWithCommas(dmgResult.ucTerm) + "%</div>";
 		}
+        
+        if (dmgResult.ability_rising > 0) {
+            resultHTML += dmgDivider;
+			resultHTML += "<div class=\"mr-2 perk-label\">Ability Salvo +" + numberWithCommas(dmgResult.ability_rising) + "% ("+ Math.ceil(75/numberWithCommas(dmgResult.ability_rising)) +" time(s) to max dmg)</div>";
+        }
         
         if (dmgResult.prismatic_return > 0){
             resultHTML += dmgDivider;

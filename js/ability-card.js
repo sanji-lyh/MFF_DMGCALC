@@ -75,6 +75,10 @@ class AbilityCard {
   getRavage() {
     return this.auto_ability[AA.ravage] || 0;
   }
+  
+  getAbilityRising(){
+    return this.auto_ability[AA.ability_rising] || 0;
+  }
 
   // TODO: get stat up AA
 

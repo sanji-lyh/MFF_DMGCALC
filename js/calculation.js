@@ -55,7 +55,8 @@ function damageCalc(card, job, setting, title, weapon) {
     ravageTerm = 100,
     ucTerm = 100,
     barrierTerm = 100,
-    defenseTerm = 100;
+    defenseTerm = 100,
+    abilityRising = 0;
 
   title = title || new Title();
   setting = setting || new Setting();
@@ -96,7 +97,8 @@ function damageCalc(card, job, setting, title, weapon) {
   magicTerm *= statMod;
 
   let risingMod = 175;
-  if (setting.maxAbilityRising && (job.ability_rising || weapon.ability_rising)) {
+  if (setting.maxAbilityRising && (setting.ability_rising || job.ability_rising || weapon.ability_rising || card.getAbilityRising())) {
+    abilityRising = setting.ability_rising + job.ability_rising + weapon.ability_rising + card.getAbilityRising();
     magicTerm *= risingMod / 100;
   }
 
@@ -125,7 +127,8 @@ function damageCalc(card, job, setting, title, weapon) {
   attackTerm *= statMod;
 
   risingMod = 175;
-  if (setting.maxAbilityRising && (job.ability_rising || weapon.ability_rising)) {
+  if (setting.maxAbilityRising && (setting.ability_rising || job.ability_rising || weapon.ability_rising || card.getAbilityRising())) {
+    abilityRising = setting.ability_rising + job.ability_rising + weapon.ability_rising + card.getAbilityRising();
     attackTerm *= risingMod / 100;
   }
 
@@ -252,8 +255,6 @@ function damageCalc(card, job, setting, title, weapon) {
     damage = 0;
   }
   
-  
-  
   var result = {
     damage: damage,
     dmgTerm: card.isMagicBased() ? magicTerm * 100 - 100 : attackTerm * 100,
@@ -264,6 +265,7 @@ function damageCalc(card, job, setting, title, weapon) {
     ravageTerm: ravageTerm * 100 - 100,
     ucTerm: ucTerm * 100 - 100,
     weapon: weapon,
+    ability_rising: abilityRising,
     prismatic_return: weapon.prismatic_return + job.prismatic_return
   };
 

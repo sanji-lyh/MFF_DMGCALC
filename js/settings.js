@@ -22,6 +22,7 @@ class Setting {
     this.playerHP = 100;
     this.enemyElement = null;
     this.overboost_lvl = 0;
+    this.ability_rising = 0;
 
     this.isBroken = false;
     this.isWeakness = false;
