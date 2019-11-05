@@ -250,7 +250,7 @@ function UpdateChanges() {
       curSetting.ee += 25;
       break;
     case 2:
-      curSetting.ee += IS_GL ? 50 : 75;
+      curSetting.ee += 75;
       break;
   }
   
