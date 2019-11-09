@@ -134,7 +134,9 @@ const BUFF = {
   trance: 'trance',
   trance_II: 'trance II',
   berserk: 'berserk',
-  berserk_II: 'berserk II'
+  berserk_II: 'berserk II',
+  ee_atk: 'ee atk',
+  ee_atk_II: 'ee atk II'
 };
 
 const URL = {

@@ -44,8 +44,6 @@ async function loadAllCards(data) {
 async function loadAllJobs(data) {
   jobs = Job.loadAllJobs(data);
   
-  console.log(jobs);
-  
   return Promise.resolve();
 }
 
@@ -54,13 +52,13 @@ async function loadAllWeapon(data){
 
 	$("#wpn_list").empty();
 
-	weapons = weapons.sort((a, b) => (a.order < b.order) ? -1 : 1);
+	weapons = weapons.sort((a, b) => (a.id < b.id) ? -1 : 1);
 
 	let resultHTML = "";
 
 	for(let i=0; i<weapons.length; i++){
 		let wpn = weapons[i];
-		resultHTML += '<input type="checkbox" name="wpn_choice" id="wpn' + i +'" value="' + i + '" class="d-none" autocomplete="off" checked>';
+		resultHTML += '<input type="checkbox" name="wpn_choice" id="wpn' + i +'" value="' + weapons[i].id + '" class="d-none" autocomplete="off" checked>';
 		resultHTML += '<label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="' + wpn.getToolTips() + '" for="wpn' + i +'">';
 		resultHTML += '<img src="img/weapon/' + wpn.img + '" class="img-check"></label>';
 	}
@@ -89,6 +87,7 @@ function renderRanking() {
   $('#main_div').removeClass('d-none');
   $('#main_div').fadeToggle('slow');
 
+  LoadSetting();
   OnAbilityChange();
 }
 
@@ -130,7 +129,9 @@ function GetSelectedWeapons(){
 	let selectedWeapons = [];
 
 	$("input:checkbox[name=wpn_choice]:checked").each(function(){
-		selectedWeapons.push(weapons[$(this).val()]);
+        weapons.filter(c => c.id == $(this).val()).forEach(c => {
+            selectedWeapons.push(c);
+        });
 	});
 
 	return selectedWeapons;
@@ -171,9 +172,8 @@ function UpdateChanges() {
   curSetting.ravage = parseInt2($("input[name='ravage_power']").val());
   curSetting.overpower = parseInt2($("input[name='overpower']").val());
   curSetting.ability_rising = parseInt2($("input[name='ability_rising']").val());
-  
-  curSetting.setFractalAttack(parseInt2($("input[name='multiply_atk']").val()));
-  curSetting.setFractalMagic(parseInt2($("input[name='multiply_mag']").val()));
+  curSetting.fractalAttackMod = parseInt2($("input[name='multiply_atk']").val());
+  curSetting.fractalMagicMod = parseInt2($("input[name='multiply_mag']").val());
 
   var dmgSortType = parseInt($("input[name='dmg_type']:checked").val());
   switch (dmgSortType) {
@@ -235,31 +235,37 @@ function UpdateChanges() {
 
   switch (parseInt($("input[name='buff_trance']:checked").val())) {
     case 0:
-      curSetting.statMod = 1;
+      curSetting.setTrance('');
       break;
     case 1:
-      curSetting.statMod = 1.3;
+      curSetting.setTrance(BUFF.trance);
       break;
     case 2:
-      curSetting.statMod = 1.45;
+      curSetting.setTrance(BUFF.trance_II);
       break;
   }
 
   switch (parseInt($("input[name='buff_ee']:checked").val())) {
+    case 0:
+      curSetting.setEEAtk('');
+      break;
     case 1:
-      curSetting.ee += 25;
+      curSetting.setEEAtk(BUFF.ee_atk);
       break;
     case 2:
-      curSetting.ee += 75;
+      curSetting.setEEAtk(BUFF.ee_atk_II);
       break;
   }
   
   switch (parseInt($("input[name='buff_berserk']:checked").val())) {
+    case 0:
+      curSetting.setBerserk('');
+      break;
     case 1:
-      curSetting.ee += 50;
+      curSetting.setBerserk(BUFF.berserk);
       break;
     case 2:
-      curSetting.ee += 75;
+      curSetting.setBerserk(BUFF.berserk_II);
       break;
   }
   
@@ -282,9 +288,183 @@ function UpdateChanges() {
   }
 }
 
+function SaveSetting(curSetting){
+  var keys = Object.keys(curSetting);
+  var wpnId = "";
+  
+  for (var key of Object.keys(curSetting)) {
+    document.cookie= key + "=" + curSetting[key] + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  }
+  
+  $("input:checkbox[name=wpn_choice]:checked").each(function(){
+    wpnId += $(this).val() + ",";
+  });
+  
+  document.cookie = "wpnId=" + wpnId.slice(0, -1) +"; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "curAbility=" + $('#ability_template').val();
+  document.cookie = "existing=1; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function LoadSetting(){
+  var i=0;
+    
+  // Check if any cookie
+  if(getCookie("existing") !== "1"){
+    var defaultSetting = ["existing=1;", "fractalMagicMod=0;", "fractalAttackMod=0;", "additionalMagic=0;", "additionalAttack=0;", "ability_rising=0;", "isBroken=false;", "isWeakness=false;", 
+                         "isTaiman=false;", "ignoreLore=false;", "ignoreElement=false;", "showDiscordantChain=false;", "crit_dmg_up=0;", "break_dmg_up=0;", "weak_dmg_up=0;", "ee=0;", 
+                         "overpower=0;", "ravage=0;", "ability_chain=0;", "attuned_chain=0;", "isS2Reduction=true;", "maxCrossCounter=true;", "maxReckoning=true;", "maxRetribution=true;", 
+                         "maxAbilityRising=true;", "showSkilledDuelist=true;", "berserk=berserk;", "faith=faith;", "brave=brave;", "eeAtk=ee atk;", 
+                         "trance=trance II;", "overboost_lvl=32;", "curAbility=0;"]
+                         
+    for(i = 0; i < defaultSetting.length; i++){
+        document.cookie = defaultSetting[i] + " expires=Fri, 31 Dec 9999 23:59:59 GMT";
+    }
+  }
+    
+  var inputName = [ "input[name='addition_mag']", "input[name='addition_atk']",
+                    "input[name='improved_crit']", "input[name='pb_power']", "input[name='exploit_weakness']",
+                    "input[name='ee_power']", "input[name='ability_chain']", "input[name='attuned_chain']",
+                    "input[name='ravage_power']", "input[name='overpower']", "input[name='ability_rising']",
+                    "input[name='multiply_atk']", "input[name='multiply_mag']"]
+                    
+  var cookieName = ["additionalMagic" ,"additionalAttack", 
+                    "crit_dmg_up", "break_dmg_up", "weak_dmg_up",
+                    "ee", "ability_chain", "attuned_chain",
+                    "ravage", "overpower", "ability_rising", 
+                    "fractalAttackMod", "fractalMagicMod"]
+                    
+  for(i = 0; i<inputName.length; i++){
+    $(inputName[i]).val(getCookie(cookieName[i]));
+  }
+  
+  
+  var checkBoxName = ["#ignore_lore", "#ignore_element", "#max_retribution", 
+                      "#max_reckoning", "#cross_counter", "#max_ability_rising",
+                      "#show_discordant_chain", "#show_skilled_duelist", "#s2_reduction"];
+  
+  var cookieCheckName = ["ignoreLore", "ignoreElement", "maxRetribution",
+                         "maxReckoning", "maxCrossCounter", "maxAbilityRising",
+                         "showDiscordantChain", "showSkilledDuelist", "isS2Reduction"];
+                         
+  for(i = 0; i<checkBoxName.length; i++){     
+    $(checkBoxName[i]).prop('checked', getCookie(cookieCheckName[i]) == "true" ? true : false);
+  }
+  
+  switch(getCookie("faith")){
+    case BUFF.faith:
+      $("input[name='buff_faith'][value='1']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+    case BUFF.faith_II:
+      $("input[name='buff_faith'][value='2']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+    default:
+      $("input[name='buff_faith'][value='0']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+  }
+  
+  switch(getCookie("brave")){
+    case BUFF.brave:
+      $("input[name='buff_brave'][value='1']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+    case BUFF.brave_II:
+      $("input[name='buff_brave'][value='2']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+    default:
+      $("input[name='buff_brave'][value='0']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+  }
+  
+  switch(getCookie("trance")){
+    case BUFF.trance:
+      $("input[name='buff_trance'][value='1']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+    case BUFF.trance_II:
+      $("input[name='buff_trance'][value='2']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+    default:
+      $("input[name='buff_trance'][value='0']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+  }
+  
+  switch(getCookie("eeAtk")){
+    case BUFF.ee_atk:
+      $("input[name='buff_ee'][value='1']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+    case BUFF.ee_atk_II:
+      $("input[name='buff_ee'][value='2']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+    default:
+      $("input[name='buff_ee'][value='0']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+  }
+  
+  switch(getCookie("berserk")){
+    case BUFF.berserk:
+      $("input[name='buff_berserk'][value='1']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+    case BUFF.berserk_II:
+      $("input[name='buff_berserk'][value='2']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+    default:
+      $("input[name='buff_berserk'][value='0']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+  }
+  
+  switch(getCookie("overboost_lvl")){
+    case "32":
+      $("input[name='overboost_lvl'][value='1']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+    default:
+      $("input[name='overboost_lvl'][value='0']").prop("checked",true).parent('.btn').addClass('active');
+      break;
+  }
+  
+  var isBroken = getCookie("isBroken") == "true" ? true : false;
+  var isWeakness = getCookie("isWeakness") == "true" ? true : false;
+  
+  if(isBroken && isWeakness){
+      $("input[name='dmg_type'][value='3']").prop("checked",true).parent('.btn').addClass('active');
+  }
+  else if(isBroken && !isWeakness){
+      $("input[name='dmg_type'][value='2']").prop("checked",true).parent('.btn').addClass('active');
+  }
+  else if(!isBroken && isWeakness){
+      $("input[name='dmg_type'][value='1']").prop("checked",true).parent('.btn').addClass('active');
+  }
+  else{
+      $("input[name='dmg_type'][value='0']").prop("checked",true).parent('.btn').addClass('active');
+  }
+  
+  $("input:checkbox[name=wpn_choice]").prop('checked', false);
+  
+  getCookie("wpnId").split(',').forEach(c => {
+      $("input:checkbox[name=wpn_choice][value='" + c + "']").prop('checked', true);
+  });  
+  
+  $('#ability_template').val(getCookie("curAbility"));
+}
+
 function ProcessRanking(setting, title) {
 	var resultList = [];
 	let selectedWeapons = GetSelectedWeapons();
+    
+    SaveSetting(setting);
 
 	// compute dmg for each job first
 	for (let i = 0; i < jobs.length; i++) {
@@ -403,65 +583,57 @@ function DisplayResult() {
 		// Weapon DisplayResult
 		if(dmgResult.weapon.name){
 			resultHTML += '<div class="d-flex flex-wrap align-items-center">';
-			resultHTML += '<div class="mr-2 perk-label font-weight-bold">Weapon: </div>'
-			resultHTML += '<div class="mr-2 perk-label"><img src="img/weapon/'+ dmgResult.weapon.img +'"></div>';
-			resultHTML += '<div class="mr-2 perk-label">'+ dmgResult.weapon.name +'</div>';
+			resultHTML += '<div class="mr-2 font-weight-bold">Weapon: </div>'
+			resultHTML += '<div class="mr-2 wpn-label"><img src="img/weapon/'+ dmgResult.weapon.img +'"></div>';
+			resultHTML += '<div class="mr-2">'+ dmgResult.weapon.name +'</div>';
 			resultHTML += '</div>';
 		}
 
-		resultHTML += "<div class=\"d-flex flex-wrap\">";
-		let dmgDivider = "<div class=\"mr-2\"> | </div>";
-		resultHTML += "<div class=\"mr-2 perk-label font-weight-bold\">Total: </div>";
+		//resultHTML += "<div class=\"d-flex flex-wrap\">";
+		resultHTML += "<div class=\"mr-2 mt-2 font-weight-bold\">Total: </div>";
+        resultHTML += "<div class=\"d-flex flex-wrap perk-container\">";
 
 		if (curCard.isMagicBased()) {
-			resultHTML += "<div class=\"mr-2 perk-label\">Magic +" + numberWithCommas(dmgResult.dmgTerm) + "%</div>";
+			resultHTML += "<div class=\"perk-label\">Magic +" + numberWithCommas(dmgResult.dmgTerm) + "%</div>";
 		}
 		else {
-			resultHTML += "<div class=\"mr-2 perk-label\">Atk +" + numberWithCommas(dmgResult.dmgTerm) + "%</div>";
+			resultHTML += "<div class=\"perk-label\">Atk +" + numberWithCommas(dmgResult.dmgTerm) + "%</div>";
 		}
 
 		if (dmgResult.eeTerm > 0) {
-			resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Element Enhance +" + numberWithCommas(dmgResult.eeTerm) + "%</div>";
+			resultHTML += "<div class=\"perk-label\">Element Enhance +" + numberWithCommas(dmgResult.eeTerm) + "%</div>";
 		}
 
 		if (dmgResult.critTerm > 0) {
-			resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Improved Crit +" + numberWithCommas(dmgResult.critTerm) + "%</div>";
+			resultHTML += "<div class=\"perk-label\">Improved Crit +" + numberWithCommas(dmgResult.critTerm) + "%</div>";
 		}
 
 		if (dmgSortType == 2 || dmgSortType == 3) {
 			if (dmgResult.brokenTerm > 0) {
-				resultHTML += dmgDivider;
-				resultHTML += "<div class=\"mr-2 perk-label\">Painful Break +" + numberWithCommas(dmgResult.brokenTerm) + "%</div>";
+				resultHTML += "<div class=\"perk-label\">Painful Break +" + numberWithCommas(dmgResult.brokenTerm) + "%</div>";
 			}
 		}
 
 		if (dmgSortType == 1 || dmgSortType == 3) {
 			if (dmgResult.weakTerm > 0) {
-				resultHTML += dmgDivider;
-				resultHTML += "<div class=\"mr-2 perk-label\">Exploit Weakness +" + numberWithCommas(dmgResult.weakTerm) + "%</div>";
+				resultHTML += "<div class=\"perk-label\">Exploit Weakness +" + numberWithCommas(dmgResult.weakTerm) + "%</div>";
 			}
 		}
 
 		if (dmgResult.ravageTerm > 0) {
-			resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Ravage +" + numberWithCommas(dmgResult.ravageTerm) + "%</div>";
+			resultHTML += "<div class=\"perk-label\">Ravage +" + numberWithCommas(dmgResult.ravageTerm) + "%</div>";
 		}
 
 		if (dmgResult.ucTerm > 0) {
-			resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Damage up (Supreme Effect) +" + numberWithCommas(dmgResult.ucTerm) + "%</div>";
+			resultHTML += "<div class=\"perk-label\">Damage up (Supreme Effect) +" + numberWithCommas(dmgResult.ucTerm) + "%</div>";
 		}
         
         if (dmgResult.ability_rising > 0) {
-            resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Ability Salvo +" + numberWithCommas(dmgResult.ability_rising) + "% ("+ Math.ceil(75/numberWithCommas(dmgResult.ability_rising)) +" time(s) to max dmg)</div>";
+			resultHTML += "<div class=\"perk-label\">Ability Salvo +" + numberWithCommas(dmgResult.ability_rising) + "% ("+ Math.ceil(75/numberWithCommas(dmgResult.ability_rising)) +" time(s) to max dmg)</div>";
         }
         
         if (dmgResult.prismatic_return > 0){
-            resultHTML += dmgDivider;
-			resultHTML += "<div class=\"mr-2 perk-label\">Prismatic Return +" + numberWithCommas(dmgResult.prismatic_return) + "%</div>";
+			resultHTML += "<div class=\"perk-label\">Prismatic Return +" + numberWithCommas(dmgResult.prismatic_return) + "%</div>";
         }
 
 		resultHTML += "</div></div>";
@@ -500,6 +672,19 @@ function DisplayResult() {
 function WpnAllSelection(isChecked){
 	$("input:checkbox[name=wpn_choice]").prop('checked', isChecked);
 	UpdateChanges();
+}
+
+function resetInput(){
+    var inputName = [ "input[name='addition_mag']", "input[name='addition_atk']",
+                    "input[name='improved_crit']", "input[name='pb_power']", "input[name='exploit_weakness']",
+                    "input[name='ee_power']", "input[name='ability_chain']", "input[name='attuned_chain']",
+                    "input[name='ravage_power']", "input[name='overpower']", "input[name='ability_rising']",
+                    "input[name='multiply_atk']", "input[name='multiply_mag']"]
+    
+    for(var i = 0; i<inputName.length; i++){
+        $(inputName[i]).val(0);
+    }
+    UpdateChanges();
 }
 
 (async () => {
@@ -548,6 +733,10 @@ function WpnAllSelection(isChecked){
 		
 		$("#wpn_unselect_all").click(function(){
 			WpnAllSelection(false);
+		});
+        
+        $("#input_reset_all").click(function(){
+			resetInput();
 		});
 
 		$('#serverToggle').change(function() {

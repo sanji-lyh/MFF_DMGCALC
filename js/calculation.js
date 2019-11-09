@@ -78,7 +78,7 @@ function damageCalc(card, job, setting, title, weapon) {
 
   // magic / attack term
   magicTerm += (job.magic * overpower_mod) + title.magic + weapon.magic;
-  magicTerm *= setting.fractalMagicMod;
+  magicTerm *= 1 + setting.fractalMagicMod / 100;
 
   let magicMod = setting.magicMod;
   if (card.hasES(ES.high_voltage)) {
@@ -114,7 +114,7 @@ function damageCalc(card, job, setting, title, weapon) {
   if(weapon.attack_multiply > 0){
       attackTerm *= (1 + weapon.attack_multiply / 100);
   }
-  attackTerm *= setting.fractalAttackMod;
+  attackTerm *= 1 + setting.fractalAttackMod / 100;
   attackTerm *= setting.attackMod;
 
   statMod = setting.statMod;

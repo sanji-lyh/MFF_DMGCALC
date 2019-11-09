@@ -3,7 +3,7 @@ import { ELEMENT, CLASS, ELEMENT_SHORT } from './const.js';
 class Weapon {	
     constructor(options) {
 		if(options){
-			this.order = options["order"] || 0;
+			this.id = options["id"] || 0;
 			
 			this.name = options["Weapon Name"] || "";
 			this.img = options["Image Name"] || "";
@@ -45,7 +45,7 @@ class Weapon {
             
 		}
 		else{
-			this.order = 0;
+			this.id = 0;
 			
 			this.name = "";
 			this.img = "";

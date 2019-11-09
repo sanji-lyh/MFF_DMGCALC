@@ -84,16 +84,24 @@ hr {
 }
 
 .dmg-label {
-	min-width: 120px; 
+	min-width: 120px;
 	float: right;
-	background-color: #4c4d50;
+	background-color: #363639;
 }
 
 .perk-label {
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #403e46;
 }
 
-.perk-label img {
-	max-width: 45px;
+div.perk-container>div:nth-of-type(odd) {
+    background: #313136;
+}
+
+.wpn-label img {
+	max-width: 35px;
 }
 
 .rank-label {

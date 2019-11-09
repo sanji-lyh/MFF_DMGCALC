@@ -49,6 +49,12 @@ class Setting {
     this.ability_chain = 0;
     this.ravage = 0;
     this.overpower = 0;
+    
+    this.faith = "";
+    this.brave = "";
+    this.trance = "";
+    this.eeAtk = "";
+    this.berserk = "";
   }
 
   // getter method
@@ -57,6 +63,29 @@ class Setting {
     ee += this.ee;
     ee += this.attuned_chain;
     ee += this.ability_chain;
+    
+    switch (this.eeAtk) {
+      case BUFF.ee_atk:
+        ee += 25;
+        break;
+      case BUFF.ee_atk_II:
+        ee += 75;
+        break;
+      default:
+        break;
+    }
+    
+    switch (this.berserk) {
+      case BUFF.berserk:
+        ee += 50;
+        break;
+      case BUFF.berserk_II:
+        ee += 75;
+        break;
+      default:
+        break;
+    }
+    
     return ee;
   }
 
@@ -71,17 +100,10 @@ class Setting {
   isOppositeElement(element) {
     return true;
   }
-  
-  setFractalMagic(m){
-	  this.fractalMagicMod = 1 + m / 100;
-  }
-  
-  setFractalAttack(a){
-	  this.fractalAttackMod = 1 + a / 100;
-  }
-
+ 
   // setter method
   setFaith(f) {
+    this.faith = f;
     switch (f) {
       case BUFF.faith:
         this.magicMod = 1.5;
@@ -95,6 +117,7 @@ class Setting {
   }
 
   setBrave(b) {
+    this.brave = b;
     switch (b) {
       case BUFF.brave:
         this.attackMod = 2;
@@ -108,6 +131,7 @@ class Setting {
   }
 
   setTrance(t) {
+    this.trance = t;
     switch (t) {
       case BUFF.trance:
         this.statMod = 1.3;
@@ -118,6 +142,15 @@ class Setting {
       default:
         this.statMod = 1;
     }
+  }
+  
+  setEEAtk(e){
+    this.eeAtk = e;
+    
+  }
+  
+  setBerserk(b){
+    this.berserk = b;
   }
 }
 
