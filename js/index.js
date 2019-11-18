@@ -174,6 +174,7 @@ function UpdateChanges() {
   curSetting.ability_rising = parseInt2($("input[name='ability_rising']").val());
   curSetting.fractalAttackMod = parseInt2($("input[name='multiply_atk']").val());
   curSetting.fractalMagicMod = parseInt2($("input[name='multiply_mag']").val());
+  curSetting.simulate_ability_rising = parseInt2($("input[name='simulate_ability_rising']").val());
 
   var dmgSortType = parseInt($("input[name='dmg_type']:checked").val());
   switch (dmgSortType) {
@@ -203,8 +204,7 @@ function UpdateChanges() {
   curSetting.ignoreElement = $('#ignore_element').is(':checked');
   curSetting.maxRetribution = $('#max_retribution').is(':checked');
   curSetting.maxReckoning = $('#max_reckoning').is(':checked');
-  curSetting.maxCrossCounter = $('#cross_counter').is(':checked');
-  curSetting.maxAbilityRising = $('#max_ability_rising').is(':checked');
+  curSetting.maxCrossCounter = $('#cross_counter').is(':checked');  
   curSetting.showDiscordantChain = $('#show_discordant_chain').is(':checked');
   curSetting.showSkilledDuelist = $('#show_skilled_duelist').is(':checked');
   curSetting.isS2Reduction = $('#s2_reduction').is(':checked');
@@ -329,7 +329,7 @@ function LoadSetting(){
     var defaultSetting = ["existing=1;", "fractalMagicMod=0;", "fractalAttackMod=0;", "additionalMagic=0;", "additionalAttack=0;", "ability_rising=0;", "isBroken=false;", "isWeakness=false;", 
                          "isTaiman=false;", "ignoreLore=false;", "ignoreElement=false;", "showDiscordantChain=false;", "crit_dmg_up=0;", "break_dmg_up=0;", "weak_dmg_up=0;", "ee=0;", 
                          "overpower=0;", "ravage=0;", "ability_chain=0;", "attuned_chain=0;", "isS2Reduction=true;", "maxCrossCounter=true;", "maxReckoning=true;", "maxRetribution=true;", 
-                         "maxAbilityRising=true;", "showSkilledDuelist=true;", "berserk=berserk;", "faith=faith;", "brave=brave;", "eeAtk=ee atk;", 
+                         "simulate_ability_rising=75;", "showSkilledDuelist=true;", "berserk=berserk;", "faith=faith;", "brave=brave;", "eeAtk=ee atk;", 
                          "trance=trance II;", "overboost_lvl=32;", "curAbility=0;"]
                          
     for(i = 0; i < defaultSetting.length; i++){
@@ -341,13 +341,13 @@ function LoadSetting(){
                     "input[name='improved_crit']", "input[name='pb_power']", "input[name='exploit_weakness']",
                     "input[name='ee_power']", "input[name='ability_chain']", "input[name='attuned_chain']",
                     "input[name='ravage_power']", "input[name='overpower']", "input[name='ability_rising']",
-                    "input[name='multiply_atk']", "input[name='multiply_mag']"]
+                    "input[name='multiply_atk']", "input[name='multiply_mag']", "input[name='simulate_ability_rising']"]
                     
   var cookieName = ["additionalMagic" ,"additionalAttack", 
                     "crit_dmg_up", "break_dmg_up", "weak_dmg_up",
                     "ee", "ability_chain", "attuned_chain",
                     "ravage", "overpower", "ability_rising", 
-                    "fractalAttackMod", "fractalMagicMod"]
+                    "fractalAttackMod", "fractalMagicMod", "simulate_ability_rising"]
                     
   for(i = 0; i<inputName.length; i++){
     $(inputName[i]).val(getCookie(cookieName[i]));
@@ -355,11 +355,11 @@ function LoadSetting(){
   
   
   var checkBoxName = ["#ignore_lore", "#ignore_element", "#max_retribution", 
-                      "#max_reckoning", "#cross_counter", "#max_ability_rising",
+                      "#max_reckoning", "#cross_counter", 
                       "#show_discordant_chain", "#show_skilled_duelist", "#s2_reduction"];
   
   var cookieCheckName = ["ignoreLore", "ignoreElement", "maxRetribution",
-                         "maxReckoning", "maxCrossCounter", "maxAbilityRising",
+                         "maxReckoning", "maxCrossCounter", 
                          "showDiscordantChain", "showSkilledDuelist", "isS2Reduction"];
                          
   for(i = 0; i<checkBoxName.length; i++){     
@@ -590,7 +590,7 @@ function DisplayResult() {
 		}
 
 		//resultHTML += "<div class=\"d-flex flex-wrap\">";
-		resultHTML += "<div class=\"mr-2 mt-2 font-weight-bold\">Total: </div>";
+		resultHTML += "<div class=\"mr-2 mt-2 font-weight-bold\">Effective Total: </div>";
         resultHTML += "<div class=\"d-flex flex-wrap perk-container\">";
 
 		if (curCard.isMagicBased()) {
@@ -629,7 +629,7 @@ function DisplayResult() {
 		}
         
         if (dmgResult.ability_rising > 0) {
-			resultHTML += "<div class=\"perk-label\">Ability Salvo +" + numberWithCommas(dmgResult.ability_rising) + "% ("+ Math.ceil(75/numberWithCommas(dmgResult.ability_rising)) +" time(s) to max dmg)</div>";
+			resultHTML += "<div class=\"perk-label\">Ability Salvo +" + numberWithCommas(dmgResult.simulate_ability_rising) + "% [Actual: "+ numberWithCommas(dmgResult.ability_rising) +"%]</div>";
         }
         
         if (dmgResult.prismatic_return > 0){
@@ -687,6 +687,18 @@ function resetInput(){
     UpdateChanges();
 }
 
+function resetSimulateAbilityRising(){
+    $("input[name='simulate_ability_rising'").val(0);
+    
+    UpdateChanges();
+}
+
+function maxSimulateAbilityRising(){
+    $("input[name='simulate_ability_rising'").val(75);
+    
+    UpdateChanges();
+}
+
 (async () => {
 
 	debug.switchVersion = () => {
@@ -738,6 +750,14 @@ function resetInput(){
         $("#input_reset_all").click(function(){
 			resetInput();
 		});
+        
+        $("#max_simulate_ability_rising").click(function(){
+            maxSimulateAbilityRising();
+        });
+        
+        $("#reset_simulate_ability_rising").click(function(){
+            resetSimulateAbilityRising();
+        });
 
 		$('#serverToggle').change(function() {
 			IS_GL = !IS_GL;

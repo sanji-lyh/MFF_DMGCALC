@@ -99,7 +99,7 @@
             <div class="wpn-list mb-2 wpn-select-all text-left">
 				<button id="input_reset_all" type="button" class="btn btn-danger">Reset all</button>
 			</div>
-			<form id="setting_input">
+			<form id="setting_input" onSubmit="return false">
 				<div class="row mb-2">
 					<div class="col-xs-6 col-sm-6 mb-2">
 						<label for="addition_mag">Multiply Mag % (from Fractal) </label>
@@ -153,7 +153,7 @@
 					</div>
                     
                     <div class="col-xs-6 col-sm-6 mb-2">
-						<label for="ability_rising">Ability Salvo</label>
+						<label for="ability_rising">Ability Salvo (from CP)</label>
 						<input type="number" class="form-control" name="ability_rising" value="0" min="0">
 					</div>
 				</div>
@@ -172,13 +172,13 @@
 				<button id="wpn_select_all" type="button" class="btn btn-success">Select all</button>
 				<button id="wpn_unselect_all" type="button" class="btn btn-danger">Unselect all</button>
 			</div>
-			<form id="wpn_input">
+			<form id="wpn_input" onsubmit="return false">
 				<div class="wpn-list mb-2" id="wpn_list" >
 				</div>				
 			</form>
 		</div>
 		
-		<form id="buff_input">
+		<form id="buff_input" onSubmit="return false">
 		<div class="row buff-table mb-1">
 			<div class="col-xs-12 col-sm-6 mb-3">
 				<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
@@ -261,6 +261,17 @@
 				</div>
 			</div>
         </div>
+        
+        <div class="row buff-table mb-3 ">
+            <div class="col-xs-12 col-sm-6">
+                <label for="simulate_ability_rising" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Capped at 75% increase Mag/Atk%. Apply to those who have Ability Salvo either from CP or from innate Job stats.<br/><br/> E.g. If your job has 3% ability rising, ability casting 3 times will give you 9%">Ability Salvo (Simulation) &nbsp;&nbsp;
+                <button id="max_simulate_ability_rising" type="button" class="btn btn-success">Max</button>
+				<button id="reset_simulate_ability_rising" type="button" class="btn btn-danger">Reset</button>
+                </label>
+                <input type="number" class="form-control" name="simulate_ability_rising" min="0" max="75" step="1" value="0">
+            </div>
+        </div>
+        
         <div class="row buff-table mb-1">            
             <div class="col-xs-12 col-sm-6 mb-1">
 				<div class="custom-control custom-checkbox">
@@ -289,13 +300,6 @@
 					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="<em>Bonus Atk% = [(Enemy Damage Output / 2000)^2]</em> <br/><br/>Up to 2400% Atk bonus at 100k Enemy Damage Output<br/><br/>The effect doesn't carry over to the other deck, but switching decks and/or using substrike doesn't reset the bonus. Enemy Damage Output refers to the outgoing damage from enemies, so self-boons like Barrier, Wall, Divine Shield or elemental drives won't lower the Atk% bonus; applying Debrave and/or Curse debuffs on the enemy, however, will lower it." for="max_retribution">Max Retribution (+2400% Atk)</label>
 				</div>
 			</div>
-			
-			<div class="col-xs-12 col-sm-6 mb-1">
-				<div class="custom-control custom-checkbox">
-					<input class="custom-control-input" type="checkbox" name="max_ability_rising" value="1" id="max_ability_rising" checked>
-					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Capped at 75% increase Mag/Atk%.<br/><br/> E.g. If your job has 3% ability rising, ability casting 3 times will give you 9%" for="max_ability_rising">Max Ability Salvo</label>
-				</div>
-			</div>
             
             <div class="col-xs-12 col-sm-6 mb-1">
 				<div class="custom-control custom-checkbox">
@@ -309,13 +313,13 @@
 					<input class="custom-control-input" type="checkbox" name="show_discordant_chain" value="1" id="show_discordant_chain">
 					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="If the previous action was an ability cast of a different element (regardless of card type), the following ability will get X% added Element Enhance. Attuned Chain and Discordant Chain cannot proc together. <br/><br/>Example: Fire > Water > Fire > Water > Wind > Water > Fire" for="show_discordant_chain">Discordant Chain</label>
 				</div>
-			</div>
+			</div>   
 		</div>
 		</form>
 
 
-		<form id="filter_input">
-		<div class="row options-table border-top">	
+		<form id="filter_input" onSubmit="return false">
+        <div class="row options-table border-top">       
 			<div class="col-xs-12 col-sm-6 mb-1">
 				<div class="custom-control custom-checkbox">
 					<input class="custom-control-input" type="checkbox" name="ignore_lore" value="1" id="ignore_lore">
@@ -333,7 +337,7 @@
 		</form>
 		<br/>
 
-		<form id="sort_input">
+		<form id="sort_input" onSubmit="return false">
 		<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
 			<label class="btn btn-secondary">
 				<input type="radio" name="dmg_type" id="unbroken_neutral_dmg" value="0" autocomplete="off">Unbroken Neutral

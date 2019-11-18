@@ -23,6 +23,7 @@ class Setting {
     this.enemyElement = null;
     this.overboost_lvl = 0;
     this.ability_rising = 0;
+    this.simulate_ability_rising = 0;
 
     this.isBroken = false;
     this.isWeakness = false;
@@ -32,8 +33,7 @@ class Setting {
     this.ignoreElement = false;
     this.maxReckoning = false;
     this.maxRetribution = false;
-    this.maxCrossCounter = false;
-    this.maxAbilityRising = false;
+    this.maxCrossCounter = false;   
     
     this.isS2Reduction = false;
     

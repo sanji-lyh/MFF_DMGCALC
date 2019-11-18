@@ -96,9 +96,9 @@ function damageCalc(card, job, setting, title, weapon) {
   }
   magicTerm *= statMod;
 
-  let risingMod = 175;
-  if (setting.maxAbilityRising && (setting.ability_rising || job.ability_rising || weapon.ability_rising || card.getAbilityRising())) {
-    abilityRising = setting.ability_rising + job.ability_rising + weapon.ability_rising + card.getAbilityRising();
+  let risingMod = (100 + setting.simulate_ability_rising);
+  abilityRising = setting.ability_rising + job.ability_rising + weapon.ability_rising + card.getAbilityRising();
+  if (setting.simulate_ability_rising > 0 && (setting.ability_rising || job.ability_rising || weapon.ability_rising || card.getAbilityRising())) {
     magicTerm *= risingMod / 100;
   }
 
@@ -126,9 +126,7 @@ function damageCalc(card, job, setting, title, weapon) {
   }
   attackTerm *= statMod;
 
-  risingMod = 175;
-  if (setting.maxAbilityRising && (setting.ability_rising || job.ability_rising || weapon.ability_rising || card.getAbilityRising())) {
-    abilityRising = setting.ability_rising + job.ability_rising + weapon.ability_rising + card.getAbilityRising();
+  if (setting.simulate_ability_rising > 0 && (setting.ability_rising || job.ability_rising || weapon.ability_rising || card.getAbilityRising())) {
     attackTerm *= risingMod / 100;
   }
 
@@ -266,6 +264,7 @@ function damageCalc(card, job, setting, title, weapon) {
     ucTerm: ucTerm * 100 - 100,
     weapon: weapon,
     ability_rising: abilityRising,
+    simulate_ability_rising: setting.simulate_ability_rising,
     prismatic_return: weapon.prismatic_return + job.prismatic_return
   };
 
