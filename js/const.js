@@ -113,6 +113,11 @@ const EXTRA_SKILL = {
   wind_weapon: 'wind weapon'
 };
 
+const TARGET = {
+    single_target: "single target",
+    aoe: "aoe"
+};
+
 const BUFF_VALUE = {
   faith: 0.5,
   faith_II: 0.75,
@@ -150,4 +155,4 @@ const UI_SETTING = {
 	max_entry_count: 50
 }
 
-export { AUTO_ABILITY, URL, EXTRA_SKILL, CLASS, STATS, ELEMENT, ELEMENT_SHORT, BUFF, BUFF_VALUE, UI_SETTING };
+export { AUTO_ABILITY, URL, EXTRA_SKILL, CLASS, STATS, ELEMENT, ELEMENT_SHORT, BUFF, BUFF_VALUE, UI_SETTING, TARGET};

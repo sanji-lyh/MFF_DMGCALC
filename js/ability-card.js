@@ -1,4 +1,4 @@
-import { URL, EXTRA_SKILL as ES, AUTO_ABILITY as AA } from './const.js';
+import { URL, EXTRA_SKILL as ES, AUTO_ABILITY as AA, TARGET } from './const.js';
 import { getJSON } from './helper.js';
 import { ELEMENT } from './const.js';
 
@@ -13,6 +13,7 @@ class AbilityCard {
 
     this.element = options.element;
     this.type = options.type;
+    this.target = options.target || '';
 
     this.extra_skill = options["extra skill"] || [];
     this.auto_ability = options["auto ability"] || {};
@@ -28,8 +29,7 @@ class AbilityCard {
   }
 
   isAoE() {
-    // TODO
-    return true;
+    return this.target == TARGET.aoe;
   }
 
   hasES(es) {
