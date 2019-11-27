@@ -2,6 +2,8 @@
 
 Damage calculating website for Mobius Final Fantasy game where people can input their card's stat or use the preset option to figure out which job is the best user for each card.
 
+
+
 ## Contributing
 
 ...
@@ -16,6 +18,8 @@ Damage calculating website for Mobius Final Fantasy game where people can input 
 ...
 
 ## Authors
+
+Please contact either one of us before you publish any part of our work
 
 - **[Sanjilyh]()** - *Inital work*
 - **[Whit3z]()** 
