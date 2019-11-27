@@ -27,6 +27,13 @@ const CLASS = {
   graff: 'graff'
 };
 
+const MP_ROLE = {
+    attacker: 'Attacker',
+    breaker: 'Breaker',
+    defender: 'Defender',
+    healer: 'Healer'
+};
+
 const STATS = {
   attack: 'attack',
   break: 'break',
@@ -147,12 +154,12 @@ const BUFF = {
 const URL = {
   JP_CARDS: 'https://script.google.com/macros/s/AKfycby5HVdcFyPDu9kLXT7pM_YhPjhyskSUqtm7suKcEUKJSHaiyslA/exec',
   GL_CARDS: 'https://script.google.com/macros/s/AKfycbz_7KPqyW9GNGIo76kYzrgS6Gl6shkhhr-OT1cdY5dc2KGL-MU/exec',
-	JOBS: 'https://script.google.com/macros/s/AKfycbzb8iuyTiIPjMBQgw4HOaY21HTmccOQQpezlQDQzxUMrASLoFT6/exec',
-	WPN: 'https://script.google.com/macros/s/AKfycbzjAa_YwJ_WcYnnRJ_irrAbFUV-mPwWBQqMDXyTR-Wtn5_dixMh/exec'
+	JOBS: 'https://script.google.com/macros/s/AKfycbwE1E0a0k__mXgUqdj6oSjty9JoWI6JvCaosglgug/exec',
+	WPN: 'https://script.google.com/macros/s/AKfycbw4qHH9SgcXEl5D5O-MuLp4IfjZCXz4_NfOn41VlA/exec'
 };
 
 const UI_SETTING = {
 	max_entry_count: 50
 }
 
-export { AUTO_ABILITY, URL, EXTRA_SKILL, CLASS, STATS, ELEMENT, ELEMENT_SHORT, BUFF, BUFF_VALUE, UI_SETTING, TARGET};
+export { AUTO_ABILITY, URL, EXTRA_SKILL, CLASS, STATS, ELEMENT, ELEMENT_SHORT, BUFF, BUFF_VALUE, UI_SETTING, TARGET, MP_ROLE};

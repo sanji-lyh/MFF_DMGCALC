@@ -5,6 +5,7 @@ class Job {
 		this.name = options.JobName || '';
 		this.img = options.ImageName || "0.jpg";
 		this.jobClass = options.Class;
+        this.mpMainRole = options["MP_Main_Role"] || '';
 		this.lore = options.Lore || '';
 		
 		this.isReleaseGL = options.IsReleaseGL || 0;

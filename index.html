@@ -177,6 +177,71 @@
 				</div>				
 			</form>
 		</div>
+        
+        <div class="row">
+			<div class="col-xs-12 col-sm-12 mb-3">
+				<a class="btn collapseBut" data-toggle="collapse" href="#collapseJob" aria-expanded="false" aria-controls="collapseWpn">
+					<img src="img/job.png"> Job Class Filter
+				</a>
+			</div>
+		</div>
+		<div class="collapse customize-div" id="collapseJob">
+			<div class="wpn-list mb-2 wpn-select-all text-left">
+				<button id="job_select_all" type="button" class="btn btn-success">Select all</button>
+				<button id="job_unselect_all" type="button" class="btn btn-danger">Unselect all</button>
+			</div>
+			<form id="job_input" onsubmit="return false">
+				<div class="wpn-list mb-2" id="job_filter_list" >
+                    <input type="checkbox" name="job_class_choice" id="job_choice_1" value="Warrior" class="d-none" autocomplete="off" checked>
+                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Warrior" for="job_choice_1">
+                    <img src="img/job-wol-warrior.png" class="img-check"></label>
+                    
+                    <input type="checkbox" name="job_class_choice" id="job_choice_2" value="Mage" class="d-none" autocomplete="off" checked>
+                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Mage" for="job_choice_2">
+                    <img src="img/job-wol-mage.png" class="img-check"></label>
+                    
+                    <input type="checkbox" name="job_class_choice" id="job_choice_3" value="Ranger" class="d-none" autocomplete="off" checked>
+                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Ranger" for="job_choice_3">
+                    <img src="img/job-wol-ranger.png" class="img-check"></label>
+                    
+                    <input type="checkbox" name="job_class_choice" id="job_choice_4" value="Monk" class="d-none" autocomplete="off" checked>
+                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Monk" for="job_choice_4">
+                    <img src="img/job-wol-monk.png" class="img-check"></label>
+                    
+                    <input type="checkbox" name="job_class_choice" id="job_choice_5" value="Meia" class="d-none" autocomplete="off" checked>
+                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Meia" for="job_choice_5">
+                    <img src="img/job-meia.png" class="img-check"></label>
+                    
+                    <input type="checkbox" name="job_class_choice" id="job_choice_6" value="Sarah" class="d-none" autocomplete="off" checked>
+                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Sarah" for="job_choice_6">
+                    <img src="img/job-sarah.png" class="img-check"></label>
+                    
+                    <input type="checkbox" name="job_class_choice" id="job_choice_7" value="Sophie" class="d-none" autocomplete="off" checked>
+                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Sophie" for="job_choice_7">
+                    <img src="img/job-sophie.png" class="img-check"></label>
+                    
+                    <input type="checkbox" name="job_class_choice" id="job_choice_8" value="Graff" class="d-none" autocomplete="off" checked>
+                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Graff" for="job_choice_8">
+                    <img src="img/job-graff.png" class="img-check"></label>
+                    
+                    <input type="checkbox" name="mp_role_choice" id="mp_role_choice_1" value="Attacker" class="d-none" autocomplete="off" checked>
+                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Atk Role" for="mp_role_choice_1">
+                    <img src="img/mp-atk-role.png" class="img-check"></label> 
+                    
+                    <input type="checkbox" name="mp_role_choice" id="mp_role_choice_2" value="Breaker" class="d-none" autocomplete="off" checked>
+                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Break Role" for="mp_role_choice_2">
+                    <img src="img/mp-breaker-role.png" class="img-check"></label>
+                    
+                    <input type="checkbox" name="mp_role_choice" id="mp_role_choice_3" value="Healer" class="d-none" autocomplete="off" checked>
+                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Healer Role" for="mp_role_choice_3">
+                    <img src="img/mp-healer-role.png" class="img-check"></label>
+                    
+                    <input type="checkbox" name="mp_role_choice" id="mp_role_choice_4" value="Defender" class="d-none" autocomplete="off" checked>
+                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Defender Role" for="mp_role_choice_4">
+                    <img src="img/mp-defender-role.png" class="img-check"></label>
+				</div>                
+			</form>
+		</div>
 		
 		<form id="buff_input" onSubmit="return false">
 		<div class="row buff-table mb-1">
@@ -368,7 +433,7 @@
             <li><b>Steampipe</b> (for help on formula math)</li>
 			<li><b>Shiro</b> (for general pointers and constant feedback)</li>
             
-			<li>And many helpful contributors from <b>Discord MFF</b></li>
+			<li>And many helpful contributors from <b>Discord/Reddit MFF</b></li>
 		</ul>
 		</p>
 		<hr/>

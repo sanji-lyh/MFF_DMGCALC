@@ -125,6 +125,26 @@ function OnAbilityChange() {
   }
 }
 
+function GetSelectedMPRole(){
+    let selectedMPRole = [];
+
+	$("input:checkbox[name=mp_role_choice]:checked").each(function(){
+        selectedMPRole.push($(this).val());
+	});
+
+	return selectedMPRole;
+}
+    
+function GetSelectedChar(){
+    let selectedChar = [];
+
+	$("input:checkbox[name=job_class_choice]:checked").each(function(){
+        selectedChar.push($(this).val());
+	});
+
+	return selectedChar;
+}
+
 function GetSelectedWeapons(){
 	let selectedWeapons = [];
 
@@ -291,6 +311,8 @@ function UpdateChanges() {
 function SaveSetting(curSetting){
   var keys = Object.keys(curSetting);
   var wpnId = "";
+  var jobClass = "";
+  var mpRole = "";
   
   for (var key of Object.keys(curSetting)) {
     document.cookie= key + "=" + curSetting[key] + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
@@ -300,8 +322,19 @@ function SaveSetting(curSetting){
     wpnId += $(this).val() + ",";
   });
   
+  $("input:checkbox[name=job_class_choice]:checked").each(function(){
+    jobClass += $(this).val() + ",";
+  });
+  
+  $("input:checkbox[name=mp_role_choice]:checked").each(function(){
+    mpRole += $(this).val() + ",";
+  });
+  
+  document.cookie = "jobClass=" + jobClass.slice(0, -1) +"; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "mpRole=" + mpRole.slice(0, -1) +"; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  
   document.cookie = "wpnId=" + wpnId.slice(0, -1) +"; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-  document.cookie = "curAbility=" + $('#ability_template').val();
+  document.cookie = "curAbility=" + $('#ability_template').val() +"; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "existing=1; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
 
@@ -451,11 +484,32 @@ function LoadSetting(){
       $("input[name='dmg_type'][value='0']").prop("checked",true).parent('.btn').addClass('active');
   }
   
-  $("input:checkbox[name=wpn_choice]").prop('checked', false);
+  $("input:checkbox[name=wpn_choice]").prop('checked', true);
   
-  getCookie("wpnId").split(',').forEach(c => {
-      $("input:checkbox[name=wpn_choice][value='" + c + "']").prop('checked', true);
-  });  
+  var wpnId = getCookie("wpnId").split(',');
+  $("input:checkbox[name=wpn_choice]").each(function() {
+      if(!wpnId.includes($(this).val())){
+          $("input:checkbox[name=wpn_choice][value='" + $(this).val() + "']").prop('checked', false);
+      }
+  });
+  
+  var jobClass = getCookie("jobClass").split(',');
+  if(jobClass[0] !== ""){
+      $("input:checkbox[name=job_class_choice]").each(function() {
+          if(!jobClass.includes($(this).val())){
+              $("input:checkbox[name=job_class_choice][value='" + $(this).val() + "']").prop('checked', false);
+          }
+      });
+  }
+  
+  var mpRole = getCookie("mpRole").split(',');
+  if(mpRole[0] !== ""){
+      $("input:checkbox[name=mp_role_choice]").each(function() {
+          if(!mpRole.includes($(this).val())){
+              $("input:checkbox[name=mp_role_choice][value='" + $(this).val() + "']").prop('checked', false);
+          }
+      });
+  }
   
   $('#ability_template').val(getCookie("curAbility"));
 }
@@ -463,16 +517,20 @@ function LoadSetting(){
 function ProcessRanking(setting, title) {
 	var resultList = [];
 	let selectedWeapons = GetSelectedWeapons();
+    let selectedChar = GetSelectedChar();
+    let selectedMPRole = GetSelectedMPRole();
+    
+    let selectedJobs = jobs.filter(c => selectedChar.includes(c.jobClass)).filter(c => selectedMPRole.includes(c.mpMainRole));
     
     SaveSetting(setting);
 
 	// compute dmg for each job first
-	for (let i = 0; i < jobs.length; i++) {
-		if (IS_GL && !jobs[i].isReleaseGL) {
+	for (let i = 0; i < selectedJobs.length; i++) {
+		if (IS_GL && !selectedJobs[i].isReleaseGL) {
 			continue;
 		}
 
-		let suitableWeapons = selectedWeapons.filter(c => c.jobClass === jobs[i].jobClass);
+		let suitableWeapons = selectedWeapons.filter(c => c.jobClass === selectedJobs[i].jobClass);
 
 		if(suitableWeapons.length == 0){
 			suitableWeapons.push(new Weapon());
@@ -480,8 +538,8 @@ function ProcessRanking(setting, title) {
 
 		for (let j = 0; j < suitableWeapons.length; j++){
 			let resultEntry = {
-				job: jobs[i],
-				dmgResult: damageCalc(curCard, jobs[i], setting, title, suitableWeapons[j])
+				job: selectedJobs[i],
+				dmgResult: damageCalc(curCard, selectedJobs[i], setting, title, suitableWeapons[j])
 			};
 
 			if (!(resultEntry.dmgResult.damage == 0)) {
@@ -674,6 +732,12 @@ function WpnAllSelection(isChecked){
 	UpdateChanges();
 }
 
+function JobAllSelection(isChecked){
+	$("input:checkbox[name=job_class_choice]").prop('checked', isChecked);
+    $("input:checkbox[name=mp_role_choice]").prop('checked', isChecked);
+	UpdateChanges();
+}
+
 function resetInput(){
     var inputName = [ "input[name='addition_mag']", "input[name='addition_atk']",
                     "input[name='improved_crit']", "input[name='pb_power']", "input[name='exploit_weakness']",
@@ -734,6 +798,10 @@ function maxSimulateAbilityRising(){
 		$("#wpn_input").change(function () {
 			UpdateChanges();
 		});
+        
+        $("#job_input").change(function () {
+            UpdateChanges();
+        });
 
 		$("#setting_input").change(function () {
 			UpdateChanges();
@@ -746,6 +814,16 @@ function maxSimulateAbilityRising(){
 		$("#wpn_unselect_all").click(function(){
 			WpnAllSelection(false);
 		});
+        
+        $("#job_select_all").click(function(){
+			JobAllSelection(true);
+		});
+		
+		$("#job_unselect_all").click(function(){
+			JobAllSelection(false);
+		});
+        
+        job_unselect_all
         
         $("#input_reset_all").click(function(){
 			resetInput();
