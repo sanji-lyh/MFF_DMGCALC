@@ -89,6 +89,7 @@ function renderRanking() {
 
   LoadSetting();
   OnAbilityChange();
+  $('#disclaimerModalCenter').modal('show');
 }
 
 async function init() {
