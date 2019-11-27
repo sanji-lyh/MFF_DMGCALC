@@ -309,31 +309,25 @@ function UpdateChanges() {
 }
 
 function SaveSetting(curSetting) {
-  var keys = Object.keys(curSetting);
-  var wpnId = "";
-  var jobClass = "";
-  var mpRole = "";
-  
   for (var key of Object.keys(curSetting)) {
     document.cookie = key + "=" + curSetting[key] + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   }
 
-  $("input:checkbox[name=wpn_choice]:checked").each(function(){
-    wpnId += $(this).val() + ",";
-  });
+  var wpnId = $("input:checkbox[name=wpn_choice]:checked").map(function() {
+    return $(this).val();
+  }).get().join(",");
 
-  $("input:checkbox[name=job_class_choice]:checked").each(function(){
-    jobClass += $(this).val() + ",";
-  });
+  var jobClass = $("input:checkbox[name=job_class_choice]:checked").map(function(){
+    return $(this).val();
+  }).get().join(",");
 
-  $("input:checkbox[name=mp_role_choice]:checked").each(function(){
-    mpRole += $(this).val() + ",";
-  });
-  
-  document.cookie = "jobClass=" + jobClass.slice(0, -1) +"; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-  document.cookie = "mpRole=" + mpRole.slice(0, -1) +"; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  var mpRole = $("input:checkbox[name=mp_role_choice]:checked").map(function(){
+    return $(this).val();
+  }).get().join(",");
 
-  document.cookie = "wpnId=" + wpnId.slice(0, -1) +"; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "jobClass=" + jobClass + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "mpRole=" + mpRole + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "wpnId=" + wpnId + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "curAbility=" + $('#ability_template').val() + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "existing=1; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
