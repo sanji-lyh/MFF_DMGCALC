@@ -11,10 +11,10 @@ class Setting {
   constructor() {
     this.magicMod = 1;
     this.attackMod = 1;
-	
-	this.fractalMagicMod = 1;
-	this.fractalAttackMod = 1;
-	
+
+    this.fractalMagicMod = 1;
+    this.fractalAttackMod = 1;
+
     this.statMod = 1;
     this.additionalMagic = 0;
     this.additionalAttack = 0;
@@ -33,10 +33,10 @@ class Setting {
     this.ignoreElement = false;
     this.maxReckoning = false;
     this.maxRetribution = false;
-    this.maxCrossCounter = false;   
-    
+    this.maxCrossCounter = false;
+
     this.isS2Reduction = false;
-    
+
     this.showDiscordantChain = false;
     this.showSkilledDuelist = false;
 
@@ -49,7 +49,7 @@ class Setting {
     this.ability_chain = 0;
     this.ravage = 0;
     this.overpower = 0;
-    
+
     this.faith = "";
     this.brave = "";
     this.trance = "";
@@ -63,7 +63,7 @@ class Setting {
     ee += this.ee;
     ee += this.attuned_chain;
     ee += this.ability_chain;
-    
+
     switch (this.eeAtk) {
       case BUFF.ee_atk:
         ee += 25;
@@ -74,7 +74,7 @@ class Setting {
       default:
         break;
     }
-    
+
     switch (this.berserk) {
       case BUFF.berserk:
         ee += 50;
@@ -85,7 +85,7 @@ class Setting {
       default:
         break;
     }
-    
+
     return ee;
   }
 
@@ -100,7 +100,7 @@ class Setting {
   isOppositeElement(element) {
     return true;
   }
- 
+
   // setter method
   setFaith(f) {
     this.faith = f;
@@ -143,12 +143,12 @@ class Setting {
         this.statMod = 1;
     }
   }
-  
+
   setEEAtk(e){
     this.eeAtk = e;
-    
+
   }
-  
+
   setBerserk(b){
     this.berserk = b;
   }

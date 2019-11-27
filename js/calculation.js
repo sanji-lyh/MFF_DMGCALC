@@ -47,16 +47,16 @@ function damageCalc(card, job, setting, title, weapon) {
   // TODO: refactor card related terms to Card class
 
   let magicTerm = 100,
-    attackTerm = 0,
-    eeTerm = 100,
-    critTerm = 100,
-    brokenTerm = 100,
-    weakTerm = 100,
-    ravageTerm = 100,
-    ucTerm = 100,
-    barrierTerm = 100,
-    defenseTerm = 100,
-    abilityRising = 0;
+      attackTerm = 0,
+      eeTerm = 100,
+      critTerm = 100,
+      brokenTerm = 100,
+      weakTerm = 100,
+      ravageTerm = 100,
+      ucTerm = 100,
+      barrierTerm = 100,
+      defenseTerm = 100,
+      abilityRising = 0;
 
   title = title || new Title();
   setting = setting || new Setting();
@@ -64,14 +64,14 @@ function damageCalc(card, job, setting, title, weapon) {
 
   // TODO: improve the overpower formula
   let overboost_mod = 0,
-    overpower_mod = 1;
+      overpower_mod = 1;
   switch(setting.overboost_lvl){
     case 0:
-        overboost_mod = 0.34;
-        break;
+      overboost_mod = 0.34;
+      break;
     case 32:
-        overboost_mod = 1;
-        break;
+      overboost_mod = 1;
+      break;
   }
 
   overpower_mod = ((setting.overpower + job.overpower + weapon.overpower) * overboost_mod)/100 + 1;
@@ -91,7 +91,7 @@ function damageCalc(card, job, setting, title, weapon) {
   if (setting.maxCrossCounter && job.cross_counter) {
     statMod += job.cross_counter / 100;
   }
-  if (setting.showSkilledDuelist && job.skilled_duelist){
+  if (setting.showSkilledDuelist && job.skilled_duelist) {
     statMod += job.skilled_duelist / 100;
   }
   let risingMod = (100 + setting.simulate_ability_rising);
@@ -112,8 +112,8 @@ function damageCalc(card, job, setting, title, weapon) {
   // TODO: Godo, Bhunivelze
 
   attackTerm += (job.attack * overpower_mod) + title.attack + weapon.attack;
-  if(weapon.attack_multiply > 0){
-      attackTerm *= (1 + weapon.attack_multiply / 100);
+  if (weapon.attack_multiply > 0) {
+    attackTerm *= (1 + weapon.attack_multiply / 100);
   }
   attackTerm *= 1 + setting.fractalAttackMod / 100;
   attackTerm *= setting.attackMod;
@@ -122,13 +122,13 @@ function damageCalc(card, job, setting, title, weapon) {
   if (setting.maxCrossCounter && job.cross_counter) {
     statMod += job.cross_counter / 100;
   }
-  if (setting.showSkilledDuelist && job.skilled_duelist){
+  if (setting.showSkilledDuelist && job.skilled_duelist) {
     statMod += job.skilled_duelist / 100;
   }
   if (setting.simulate_ability_rising > 0 && (setting.ability_rising || job.ability_rising || weapon.ability_rising || card.getAbilityRising())) {
     statMod += risingMod / 100;
   }
-  
+
   attackTerm *= statMod;
 
 
@@ -141,7 +141,7 @@ function damageCalc(card, job, setting, title, weapon) {
   // TODO: Zeromus
 
   // Gilgamesh X
-  if(card.hasES(ES.legendary_blade_master)){
+  if (card.hasES(ES.legendary_blade_master)) {
     magicTerm += attackTerm * 0.5;
   }
 
@@ -160,9 +160,9 @@ function damageCalc(card, job, setting, title, weapon) {
   eeTerm += card.hasES(ES.misfortune) ? 1050 : 0;
   eeTerm += card.hasES(ES.ultra_element_synergy) ? 400 : 0;
   eeTerm += card.hasES(ES.ultra_martial_combat) ? 300 : 0;
-  if(setting.showDiscordantChain){
-      eeTerm += job.discordant_chain;
-      eeTerm -= job.attune_chain;
+  if (setting.showDiscordantChain) {
+    eeTerm += job.discordant_chain;
+    eeTerm -= job.attune_chain;
   }
 
   // TODO: add from card's description
@@ -241,7 +241,7 @@ function damageCalc(card, job, setting, title, weapon) {
   damage = damage * eeTerm * critTerm * brokenTerm * weakTerm * ravageTerm * ucTerm;
 
   // S2 reduction
-  if(setting.isS2Reduction){
+  if (setting.isS2Reduction) {
     damage /= 10;
   }
 
