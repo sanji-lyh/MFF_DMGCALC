@@ -521,7 +521,7 @@ function ProcessRanking(setting, title) {
     let selectedChar = GetSelectedChar();
     let selectedMPRole = GetSelectedMPRole();
     
-    let selectedJobs = jobs.filter(c => selectedChar.includes(c.jobClass)).filter(c => selectedMPRole.includes(c.mpMainRole));
+    let selectedJobs = IS_GL ? jobs.filter(c => selectedChar.includes(c.jobClass)).filter(c => selectedMPRole.includes(c.mpMainRole)) : jobs;	
     
     SaveSetting(setting);
 
