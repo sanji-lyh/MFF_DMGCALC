@@ -2,473 +2,473 @@
 <html>
 
 <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146421724-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146421724-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-	  gtag('config', 'UA-146421724-1');
-	</script>
+    gtag('config', 'UA-146421724-1');
+  </script>
 
-    <title>Mobius Final Fantasy Damage Ranking Calculator</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Mobius Final Fantasy Damage Ranking Calculator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#000000">
-    <meta name="description" content="Mobius Final Fantasy Damage Ranking Calculator / メビウスFF">
-    <meta name="keywords" content="MobiusFF, Final Fantasy, メビウスFF">
-    <meta name="author" content="sanjilyh">
-	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Mobius Final Fantasy Damage Ranking Calculator / メビウスFF">
+  <meta name="keywords" content="MobiusFF, Final Fantasy, メビウスFF">
+  <meta name="author" content="sanjilyh">
+  <meta charset="UTF-8">
 
-	<link href="css/index.css" rel="stylesheet">
-	<script>var debug = {};</script>
-	<script type="module" src="js/index.js"></script>
+  <link href="css/index.css" rel="stylesheet">
+  <script>var debug = {};</script>
+  <script type="module" src="js/index.js"></script>
 </head>
 
 <body>
-	<div class="d-flex justify-content-center spinner" id="loading_div">
-		<div class="spinner-border" role="status">
-			<span class="sr-only">Loading...</span>
-		</div>
-	</div>
+  <div class="d-flex justify-content-center spinner" id="loading_div">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 
-	<div class="container d-none" id="main_div">
-        
+  <div class="container d-none" id="main_div">
 
-        <!-- Modal -->
-        <div class="modal fade" id="disclaimerModalCenter" tabindex="-1" role="dialog" aria-labelledby="disclaimerModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="disclaimerModalLongTitle">Tools Disclaimer</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                 <ol>
-                    <li class="mb-2">This tools allow Mobius FF players to figure out which jobs deal the best damage for each supreme.</li>
-                    <li class="mb-2">However, this calculator <b>DOES NOT</b> tell you who are the best job for each supreme</li>
-                    <li class="mb-2">"Big numbers aren't everything, you need to consider practical usage"</li>
-                    <li class="mb-2">E.g. breaking capability of a job is important when considering best user for Xezat</li>
-                    <li class="mb-2">Upon closing this dialog, you have accepted the shortcoming of this tools, and you shall not ask this type of questions in MobiusFF reddit/discord.</li>
-                 </ol>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="disclaimerModalCenter" tabindex="-1" role="dialog" aria-labelledby="disclaimerModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="disclaimerModalLongTitle">Tools Disclaimer</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ol>
+              <li class="mb-2">This tools allow Mobius FF players to figure out which jobs deal the best damage for each supreme.</li>
+              <li class="mb-2">However, this calculator <b>DOES NOT</b> tell you who are the best job for each supreme</li>
+              <li class="mb-2">"Big numbers aren't everything, you need to consider practical usage"</li>
+              <li class="mb-2">E.g. breaking capability of a job is important when considering best user for Xezat</li>
+              <li class="mb-2">Upon closing this dialog, you have accepted the shortcoming of this tools, and you shall not ask this type of questions in MobiusFF reddit/discord.</li>
+            </ol>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
-    
-    
-		<div class="header-bar">
-			<div class="d-flex justify-content-between">
-				<div class="p-2">
-					<h4 class="title_heading">Mobius Final Fantasy - Damage Ranking Calculator (v 1.5)</h4>
-				</div>
-				<div class="p-2">
-					<input id="serverToggle" type="checkbox" checked data-style="ios" data-toggle="toggle" data-on="Global" data-off="Japan" data-onstyle="primary" data-offstyle="danger" data-width="100px" >
-				</div>
-			</div>
+      </div>
+    </div>
+
+
+    <div class="header-bar">
+      <div class="d-flex justify-content-between">
+        <div class="p-2">
+          <h4 class="title_heading">Mobius Final Fantasy - Damage Ranking Calculator (v 1.5)</h4>
         </div>
-		<br/>
-
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 mb-3">
-				<label for="ability_template">Select the ability:</label>
-				<select class="form-control" id="ability_template" width="100%">
-				</select>
-			</div>
-		</div>
-
-		<div class="row ability-panel">
-			<div class="col-xs-6 col-sm-5 text-center">
-				<img src="img/supreme/default.jpg" id="ability_img">
-			</div>
-
-			<div class="col-xs-6 col-sm-7">
-				<div class="row row-margin-offset">
-					<div class="col-xs-6 col-sm-6 mb-2">
-						<label class="control-label">Attack</label>
-					</div>
-					<div class="col-xs-6 col-sm-6 mb-2">
-						<input type="number" class="form-control" name="atk_display" value="1800" readonly>
-					</div>
-
-					<div class="col-xs-6 col-sm-6 mb-4">
-						<label class="control-label">Break Power</label>
-					</div>
-					<div class="col-xs-6 col-sm-6 mb-4">
-						<input type="number" class="form-control" name="break_power_display" value="1800" readonly>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 mb-3">
-				<a class="btn collapseBut" data-toggle="collapse" href="#collapseInput" aria-expanded="false" aria-controls="collapseInput">
-					<img src="img/ability-cards.png"> Additional Stats
-				</a>
-			</div>
-		</div>
-		<div class="collapse customize-div" id="collapseInput">
-            <div class="wpn-list mb-2 wpn-select-all text-left">
-				<button id="input_reset_all" type="button" class="btn btn-danger">Reset all</button>
-			</div>
-			<form id="setting_input" onSubmit="return false">
-				<div class="row mb-2">
-					<div class="col-xs-6 col-sm-6 mb-2">
-						<label for="addition_mag">Multiply Mag % (from Fractal) </label>
-						<input type="number" class="form-control" name="multiply_mag" value="0" min="0">
-					</div>
-					<div class="col-xs-6 col-sm-6 mb-2">
-						<label for="addition_mag">Multiply Atk % (from Fractal) </label>
-						<input type="number" class="form-control" name="multiply_atk" value="0" min="0">
-					</div>
-					<div class="col-xs-6 col-sm-6 mb-2">
-						<label for="addition_mag">Additional Mag % (from CP) </label>
-						<input type="number" class="form-control" name="addition_mag" value="0" min="0">
-					</div>
-					<div class="col-xs-6 col-sm-6 mb-2">
-						<label for="addition_atk">Additional Atk % (from CP)</label>
-						<input type="number" class="form-control" name="addition_atk" value="0" min="0">
-					</div>
-					<div class="col-xs-6 col-sm-6 mb-2">
-						<label for="improved_crit">Improved Crit</label>
-						<input type="number" class="form-control" name="improved_crit" value="0" min="0">
-					</div>
-					<div class="col-xs-6 col-sm-6 mb-2">
-						<label for="exploit_weakness">Exploit Weakness</label>
-						<input type="number" class="form-control" name="exploit_weakness" value="0" min="0">
-					</div>
-					<div class="col-xs-6 col-sm-6 mb-2">
-						<label for="ee_power">Element Enhance</label>
-						<input type="number" class="form-control" name="ee_power" value="0" min="0">
-					</div>
-					<div class="col-xs-6 col-sm-6 mb-2">
-						<label for="attuned_chain">Attuned Chain</label>
-						<input type="number" class="form-control" name="attuned_chain" value="0" min="0">
-					</div>
-					<div class="col-xs-6 col-sm-6 mb-2">
-						<label for="ability_chain">Ability Chain</label>
-						<input type="number" class="form-control" name="ability_chain" value="0" min="0">
-					</div>
-					<div class="col-xs-6 col-sm-6 mb-2">
-						<label for="pb_power">Painful Break</label>
-						<input type="number" class="form-control" name="pb_power" value="0" min="0">
-					</div>
-					
-					<div class="col-xs-6 col-sm-6 mb-2">
-						<label for="ravage_power">Ravage</label>
-						<input type="number" class="form-control" name="ravage_power" value="0" min="0">
-					</div>
-					
-                    <div class="col-xs-6 col-sm-6 mb-2">
-						<label for="overpower">Overpower</label>
-						<input type="number" class="form-control" name="overpower" value="0" min="0">
-					</div>
-                    
-                    <div class="col-xs-6 col-sm-6 mb-2">
-						<label for="ability_rising">Ability Salvo (from CP)</label>
-						<input type="number" class="form-control" name="ability_rising" value="0" min="0">
-					</div>
-				</div>
-			</form>
-		</div>
-		
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 mb-3">
-				<a class="btn collapseBut" data-toggle="collapse" href="#collapseWpn" aria-expanded="false" aria-controls="collapseWpn">
-					<img src="img/wpn.png"> Weapon Selection
-				</a>
-			</div>
-		</div>
-		<div class="collapse customize-div" id="collapseWpn">
-			<div class="wpn-list mb-2 wpn-select-all text-left">
-				<button id="wpn_select_all" type="button" class="btn btn-success">Select all</button>
-				<button id="wpn_unselect_all" type="button" class="btn btn-danger">Unselect all</button>
-			</div>
-			<form id="wpn_input" onsubmit="return false">
-				<div class="wpn-list mb-2" id="wpn_list" >
-				</div>				
-			</form>
-		</div>
-        
-        <div class="row">
-			<div class="col-xs-12 col-sm-12 mb-3">
-				<a class="btn collapseBut" data-toggle="collapse" href="#collapseJob" aria-expanded="false" aria-controls="collapseWpn">
-					<img src="img/job.png"> Job Class Filter
-				</a>
-			</div>
-		</div>
-		<div class="collapse customize-div" id="collapseJob">
-			<div class="wpn-list mb-2 wpn-select-all text-left">
-				<button id="job_select_all" type="button" class="btn btn-success">Select all</button>
-				<button id="job_unselect_all" type="button" class="btn btn-danger">Unselect all</button>
-			</div>
-			<form id="job_input" onsubmit="return false">
-				<div class="wpn-list mb-2" id="job_filter_list" >
-                    <input type="checkbox" name="job_class_choice" id="job_choice_1" value="Warrior" class="d-none" autocomplete="off" checked>
-                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Warrior" for="job_choice_1">
-                    <img src="img/job-wol-warrior.png" class="img-check"></label>
-                    
-                    <input type="checkbox" name="job_class_choice" id="job_choice_2" value="Mage" class="d-none" autocomplete="off" checked>
-                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Mage" for="job_choice_2">
-                    <img src="img/job-wol-mage.png" class="img-check"></label>
-                    
-                    <input type="checkbox" name="job_class_choice" id="job_choice_3" value="Ranger" class="d-none" autocomplete="off" checked>
-                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Ranger" for="job_choice_3">
-                    <img src="img/job-wol-ranger.png" class="img-check"></label>
-                    
-                    <input type="checkbox" name="job_class_choice" id="job_choice_4" value="Monk" class="d-none" autocomplete="off" checked>
-                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Monk" for="job_choice_4">
-                    <img src="img/job-wol-monk.png" class="img-check"></label>
-                    
-                    <input type="checkbox" name="job_class_choice" id="job_choice_5" value="Meia" class="d-none" autocomplete="off" checked>
-                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Meia" for="job_choice_5">
-                    <img src="img/job-meia.png" class="img-check"></label>
-                    
-                    <input type="checkbox" name="job_class_choice" id="job_choice_6" value="Sarah" class="d-none" autocomplete="off" checked>
-                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Sarah" for="job_choice_6">
-                    <img src="img/job-sarah.png" class="img-check"></label>
-                    
-                    <input type="checkbox" name="job_class_choice" id="job_choice_7" value="Sophie" class="d-none" autocomplete="off" checked>
-                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Sophie" for="job_choice_7">
-                    <img src="img/job-sophie.png" class="img-check"></label>
-                    
-                    <input type="checkbox" name="job_class_choice" id="job_choice_8" value="Graff" class="d-none" autocomplete="off" checked>
-                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Graff" for="job_choice_8">
-                    <img src="img/job-graff.png" class="img-check"></label>
-                    
-                    <input type="checkbox" name="mp_role_choice" id="mp_role_choice_1" value="Attacker" class="d-none" autocomplete="off" checked>
-                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Atk Role" for="mp_role_choice_1">
-                    <img src="img/mp-atk-role.png" class="img-check"></label> 
-                    
-                    <input type="checkbox" name="mp_role_choice" id="mp_role_choice_2" value="Breaker" class="d-none" autocomplete="off" checked>
-                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Break Role" for="mp_role_choice_2">
-                    <img src="img/mp-breaker-role.png" class="img-check"></label>
-                    
-                    <input type="checkbox" name="mp_role_choice" id="mp_role_choice_3" value="Healer" class="d-none" autocomplete="off" checked>
-                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Healer Role" for="mp_role_choice_3">
-                    <img src="img/mp-healer-role.png" class="img-check"></label>
-                    
-                    <input type="checkbox" name="mp_role_choice" id="mp_role_choice_4" value="Defender" class="d-none" autocomplete="off" checked>
-                    <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Defender Role" for="mp_role_choice_4">
-                    <img src="img/mp-defender-role.png" class="img-check"></label>
-				</div>                
-			</form>
-		</div>
-		
-		<form id="buff_input" onSubmit="return false">
-		<div class="row buff-table mb-1">
-			<div class="col-xs-12 col-sm-6 mb-3">
-				<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
-					<label class="btn btn-success">
-						<input type="radio" name="buff_faith" id="no_faith" value="0" autocomplete="off" checked>No Faith
-					</label>
-					<label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply Mag by 50%">
-						<input type="radio" name="buff_faith" id="faith_1" value="1" autocomplete="off">Faith I
-					</label>
-					<label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply Mag by 75%">
-						<input type="radio" name="buff_faith" id="faith_2" value="2" autocomplete="off">Faith II
-					</label>
-				</div>
-			</div>
-			
-			<div class="col-xs-12 col-sm-6 mb-3">
-				<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
-					<label class="btn btn-success">
-						<input type="radio" name="buff_brave" id="no_brave" value="0" autocomplete="off" checked>No Brave
-					</label>
-					<label class="btn btn-success"  data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply Atk by 100%">
-						<input type="radio" name="buff_brave" id="brave_1" value="1" autocomplete="off">Brave I
-					</label>
-					<label class="btn btn-success"  data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply Atk by 150%">
-						<input type="radio" name="buff_brave" id="brave_2" value="2" autocomplete="off">Brave II
-					</label>
-				</div>
-			</div>
-            
-            <div class="col-xs-12 col-sm-6 mb-3">
-				<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
-					<label class="btn btn-success">
-						<input type="radio" name="buff_berserk" id="no_berserk" value="0" autocomplete="off" checked>No Berserk
-					</label>
-					<label class="btn btn-success"  data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Increase Enhance Element by 50%">
-						<input type="radio" name="buff_berserk" id="berserk_1" value="1" autocomplete="off">Berserk I
-					</label>
-					<label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Increase Enhance Element by 75%">
-						<input type="radio" name="buff_berserk" id="berserk_2" value="2" autocomplete="off">Berserk II
-					</label>
-				</div>
-			</div>
-			
-			<div class="col-xs-12 col-sm-6 mb-3">
-				<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
-					<label class="btn btn-success">
-						<input type="radio" name="buff_ee" id="no_ee" value="0" autocomplete="off" checked>No EE Atk
-					</label>
-					<label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Increase Enhance Element by 25%">
-						<input type="radio" name="buff_ee" id="ee_1" value="1" autocomplete="off">EE Atk I
-					</label>
-					<label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Increase Enhance Element by 75%">
-						<input type="radio" name="buff_ee" id="ee_2" value="2" autocomplete="off">EE Atk II
-					</label>
-				</div>
-			</div>
-            
-            <div class="col-xs-12 col-sm-6 mb-3">
-				<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
-					<label class="btn btn-success">
-						<input type="radio" name="buff_trance" id="no_trance" value="0" autocomplete="off" checked>No Trance
-					</label>
-					<label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply stats by 30%">
-						<input type="radio" name="buff_trance" id="trance_1" value="1" autocomplete="off">Trance I
-					</label>
-					<label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply stats by 45%">
-						<input type="radio" name="buff_trance" id="trance_2" value="2" autocomplete="off">Trance II
-					</label>
-				</div>
-			</div>
-            
-            <div class="col-xs-12 col-sm-6 mb-3">
-				<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
-					<label class="btn btn-success">
-						<input type="radio" name="overboost_lvl" id="obj_0" value="0" autocomplete="off" checked>Overboost Job Lv. 0
-					</label>
-					<label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Only works for Overpower% stats as of current implementation">
-						<input type="radio" name="overboost_lvl" id="obj_32" value="1" autocomplete="off">Overboost Job Lv. 32
-					</label>
-				</div>
-			</div>
+        <div class="p-2">
+          <input id="serverToggle" type="checkbox" checked data-style="ios" data-toggle="toggle" data-on="Global" data-off="Japan" data-onstyle="primary" data-offstyle="danger" data-width="100px" >
         </div>
-        
-        <div class="row buff-table mb-3 ">
-            <div class="col-xs-12 col-sm-6">
-                <label for="simulate_ability_rising" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Capped at 75% increase Mag/Atk%. Apply to those who have Ability Salvo either from CP or from innate Job stats.<br/><br/> E.g. If your job has 3% ability rising, ability casting 3 times will give you 9%">Ability Salvo (Simulate) &nbsp;
-                <button id="max_simulate_ability_rising" type="button" class="btn btn-success">Max</button>
-				<button id="reset_simulate_ability_rising" type="button" class="btn btn-danger">Zero</button>
-                </label>
-                <input type="number" class="form-control" name="simulate_ability_rising" min="0" max="75" step="1" value="0">
-            </div>
+      </div>
+    </div>
+    <br/>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 mb-3">
+        <label for="ability_template">Select the ability:</label>
+        <select class="form-control" id="ability_template" width="100%">
+        </select>
+      </div>
+    </div>
+
+    <div class="row ability-panel">
+      <div class="col-xs-6 col-sm-5 text-center">
+        <img src="img/supreme/default.jpg" id="ability_img">
+      </div>
+
+      <div class="col-xs-6 col-sm-7">
+        <div class="row row-margin-offset">
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label class="control-label">Attack</label>
+          </div>
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <input type="number" class="form-control" name="atk_display" value="1800" readonly>
+          </div>
+
+          <div class="col-xs-6 col-sm-6 mb-4">
+            <label class="control-label">Break Power</label>
+          </div>
+          <div class="col-xs-6 col-sm-6 mb-4">
+            <input type="number" class="form-control" name="break_power_display" value="1800" readonly>
+          </div>
         </div>
-        
-        <div class="row buff-table mb-1">            
-            <div class="col-xs-12 col-sm-6 mb-1">
-				<div class="custom-control custom-checkbox">
-					<input class="custom-control-input" type="checkbox" name="s2_reduction" value="1" id="s2_reduction" checked>
-					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Damage reduction by 10x" for="s2_reduction">Season 2 Damage Reduction</label>
-				</div>
-			</div>
-            
-            <div class="col-xs-12 col-sm-6 mb-1">
-				<div class="custom-control custom-checkbox">
-					<input class="custom-control-input" type="checkbox" name="cross_counter" value="1" id="cross_counter" checked>
-					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Following <b>an enemy action</b>, your Attack, Break Power and Magic will increases. The bonus is additive to Trance. The bonus reset after new wave / battle. <br/><br/>It doesn't give any bonus if the enemy was stun / sleep. It does give the bonus if they spend their action buffing themselves, charging their ultimate, or making a coffee for you. <b>Pre-emptive action also counts.</b>" for="cross_counter">Cross-Counter</label>
-				</div>
-			</div>
-			
-			<div class="col-xs-12 col-sm-6 mb-1">
-				<div class="custom-control custom-checkbox">
-					<input class="custom-control-input" type="checkbox" name="max_reckoning" value="1" id="max_reckoning" checked>
-					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="<em>Bonus Magic% = [(Enemy Damage Output / 2000)^2]</em> <br/><br/>Up to 2400% Mag bonus at 100k Enemy Damage Output<br/><br/>The effect doesn't carry over to the other deck, but switching decks and/or using substrike doesn't reset the bonus. Enemy Damage Output refers to the outgoing damage from enemies, so self-boons like Barrier, Wall, Divine Shield or elemental drives won't lower the Mag% bonus; applying Debrave and/or Curse debuffs on the enemy, however, will lower it." for="max_reckoning">Max Reckoning (+2400% Mag)</label>
-				</div>
-			</div>
-			
-			<div class="col-xs-12 col-sm-6 mb-1">
-				<div class="custom-control custom-checkbox">
-					<input class="custom-control-input" type="checkbox" name="max_retribution" value="1" id="max_retribution" checked>
-					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="<em>Bonus Atk% = [(Enemy Damage Output / 2000)^2]</em> <br/><br/>Up to 2400% Atk bonus at 100k Enemy Damage Output<br/><br/>The effect doesn't carry over to the other deck, but switching decks and/or using substrike doesn't reset the bonus. Enemy Damage Output refers to the outgoing damage from enemies, so self-boons like Barrier, Wall, Divine Shield or elemental drives won't lower the Atk% bonus; applying Debrave and/or Curse debuffs on the enemy, however, will lower it." for="max_retribution">Max Retribution (+2400% Atk)</label>
-				</div>
-			</div>
-            
-            <div class="col-xs-12 col-sm-6 mb-1">
-				<div class="custom-control custom-checkbox">
-					<input class="custom-control-input" type="checkbox" name="show_skilled_duelist" value="1" id="show_skilled_duelist" checked>
-					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="When you're 1v1, HP/Attack/Break/Magic will be Increased by +%. The stat boost is like having a 2nd trance" for="show_skilled_duelist">Skilled Duelist</label>
-				</div>
-			</div>
-            
-            <div class="col-xs-12 col-sm-6 mb-1">
-				<div class="custom-control custom-checkbox">
-					<input class="custom-control-input" type="checkbox" name="show_discordant_chain" value="1" id="show_discordant_chain">
-					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="If the previous action was an ability cast of a different element (regardless of card type), the following ability will get X% added Element Enhance. Attuned Chain and Discordant Chain cannot proc together. <br/><br/>Example: Fire > Water > Fire > Water > Wind > Water > Fire" for="show_discordant_chain">Discordant Chain</label>
-				</div>
-			</div>   
-		</div>
-		</form>
+      </div>
+    </div>
 
 
-		<form id="filter_input" onSubmit="return false">
-        <div class="row options-table border-top">       
-			<div class="col-xs-12 col-sm-6 mb-1">
-				<div class="custom-control custom-checkbox">
-					<input class="custom-control-input" type="checkbox" name="ignore_lore" value="1" id="ignore_lore">
-					<label class="custom-control-label" for="ignore_lore">Ignore Lore</label>
-				</div>
-			</div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 mb-3">
+        <a class="btn collapseBut" data-toggle="collapse" href="#collapseInput" aria-expanded="false" aria-controls="collapseInput">
+          <img src="img/ability-cards.png"> Additional Stats
+        </a>
+      </div>
+    </div>
+    <div class="collapse customize-div" id="collapseInput">
+      <div class="wpn-list mb-2 wpn-select-all text-left">
+        <button id="input_reset_all" type="button" class="btn btn-danger">Reset all</button>
+      </div>
+      <form id="setting_input" onSubmit="return false">
+        <div class="row mb-2">
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label for="addition_mag">Multiply Mag % (from Fractal) </label>
+            <input type="number" class="form-control" name="multiply_mag" value="0" min="0">
+          </div>
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label for="addition_mag">Multiply Atk % (from Fractal) </label>
+            <input type="number" class="form-control" name="multiply_atk" value="0" min="0">
+          </div>
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label for="addition_mag">Additional Mag % (from CP) </label>
+            <input type="number" class="form-control" name="addition_mag" value="0" min="0">
+          </div>
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label for="addition_atk">Additional Atk % (from CP)</label>
+            <input type="number" class="form-control" name="addition_atk" value="0" min="0">
+          </div>
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label for="improved_crit">Improved Crit</label>
+            <input type="number" class="form-control" name="improved_crit" value="0" min="0">
+          </div>
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label for="exploit_weakness">Exploit Weakness</label>
+            <input type="number" class="form-control" name="exploit_weakness" value="0" min="0">
+          </div>
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label for="ee_power">Element Enhance</label>
+            <input type="number" class="form-control" name="ee_power" value="0" min="0">
+          </div>
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label for="attuned_chain">Attuned Chain</label>
+            <input type="number" class="form-control" name="attuned_chain" value="0" min="0">
+          </div>
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label for="ability_chain">Ability Chain</label>
+            <input type="number" class="form-control" name="ability_chain" value="0" min="0">
+          </div>
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label for="pb_power">Painful Break</label>
+            <input type="number" class="form-control" name="pb_power" value="0" min="0">
+          </div>
 
-			<div class="col-xs-12 col-sm-6 mb-1">
-				<div class="custom-control custom-checkbox">
-					<input class="custom-control-input" type="checkbox" name="ignore_element" value="1" id="ignore_element">
-					<label class="custom-control-label" for="ignore_element">Ignore Element Usage</label>
-				</div>
-			</div>
-		</div>
-		</form>
-		<br/>
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label for="ravage_power">Ravage</label>
+            <input type="number" class="form-control" name="ravage_power" value="0" min="0">
+          </div>
 
-		<form id="sort_input" onSubmit="return false">
-		<div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
-			<label class="btn btn-secondary">
-				<input type="radio" name="dmg_type" id="unbroken_neutral_dmg" value="0" autocomplete="off">Unbroken Neutral
-			</label>
-			<label class="btn btn-secondary">
-				<input type="radio" name="dmg_type" id="unbroken_weakness_dmg" value="1" autocomplete="off">Unbroken Weakness
-			</label>
-			<label class="btn btn-secondary">
-				<input type="radio" name="dmg_type" id="broken_neutral_dmg" value="2" autocomplete="off">Broken Neutral
-			</label>
-			<label class="btn btn-secondary">
-				<input type="radio" name="dmg_type" id="broken_weakness_dmg" value="3" autocomplete="off">Broken Weakness
-			</label>
-		</div>
-		</form>
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label for="overpower">Overpower</label>
+            <input type="number" class="form-control" name="overpower" value="0" min="0">
+          </div>
 
-		<div class="list-group result-list" id="result_list">
-		</div>
-		<div class="pagination justify-content-center mt-3" id="pagination">
-		</div>
+          <div class="col-xs-6 col-sm-6 mb-2">
+            <label for="ability_rising">Ability Salvo (from CP)</label>
+            <input type="number" class="form-control" name="ability_rising" value="0" min="0">
+          </div>
+        </div>
+      </form>
+    </div>
 
-		<hr/>
-		<p>
-		Credits goes to:
-		<ul>
-			<li><b>blue2eyes</b> (for <a href="https://www.reddit.com/r/MobiusFF/wiki/gameplay-analysis/damage-calculation">damage calculation wiki</a>)</li>
-			<li><b>IJustNeedAccount</b> (for maintaining the <a href="https://docs.google.com/spreadsheets/d/1GYuKh0MxhzHdH3fLFd4c0Wahj7zXaIOGSutuQHqDsLc/edit?usp=sharing">job spreadsheet</a>)
-            <li><b>Steampipe</b> (for help on formula math)</li>
-			<li><b>Shiro</b> (for general pointers and constant feedback)</li>
-            
-			<li>And many helpful contributors from <b>Discord/Reddit MFF</b></li>
-		</ul>
-		</p>
-		<hr/>
-		<i>Disclaimer: This calculator will only provide us an approximate/estimation value of results to be closest as possible. Please take it at your own risk.</i>
-		<hr/>
-	</div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 mb-3">
+        <a class="btn collapseBut" data-toggle="collapse" href="#collapseWpn" aria-expanded="false" aria-controls="collapseWpn">
+          <img src="img/wpn.png"> Weapon Selection
+        </a>
+      </div>
+    </div>
+    <div class="collapse customize-div" id="collapseWpn">
+      <div class="wpn-list mb-2 wpn-select-all text-left">
+        <button id="wpn_select_all" type="button" class="btn btn-success">Select all</button>
+        <button id="wpn_unselect_all" type="button" class="btn btn-danger">Unselect all</button>
+      </div>
+      <form id="wpn_input" onsubmit="return false">
+        <div class="wpn-list mb-2" id="wpn_list" >
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 mb-3">
+        <a class="btn collapseBut" data-toggle="collapse" href="#collapseJob" aria-expanded="false" aria-controls="collapseWpn">
+          <img src="img/job.png"> Job Class Filter
+        </a>
+      </div>
+    </div>
+    <div class="collapse customize-div" id="collapseJob">
+      <div class="wpn-list mb-2 wpn-select-all text-left">
+        <button id="job_select_all" type="button" class="btn btn-success">Select all</button>
+        <button id="job_unselect_all" type="button" class="btn btn-danger">Unselect all</button>
+      </div>
+      <form id="job_input" onsubmit="return false">
+        <div class="wpn-list mb-2" id="job_filter_list" >
+          <input type="checkbox" name="job_class_choice" id="job_choice_1" value="Warrior" class="d-none" autocomplete="off" checked>
+          <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Warrior" for="job_choice_1">
+          <img src="img/job-wol-warrior.png" class="img-check"></label>
+
+          <input type="checkbox" name="job_class_choice" id="job_choice_2" value="Mage" class="d-none" autocomplete="off" checked>
+          <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Mage" for="job_choice_2">
+          <img src="img/job-wol-mage.png" class="img-check"></label>
+
+          <input type="checkbox" name="job_class_choice" id="job_choice_3" value="Ranger" class="d-none" autocomplete="off" checked>
+          <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Ranger" for="job_choice_3">
+          <img src="img/job-wol-ranger.png" class="img-check"></label>
+
+          <input type="checkbox" name="job_class_choice" id="job_choice_4" value="Monk" class="d-none" autocomplete="off" checked>
+          <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Monk" for="job_choice_4">
+          <img src="img/job-wol-monk.png" class="img-check"></label>
+
+          <input type="checkbox" name="job_class_choice" id="job_choice_5" value="Meia" class="d-none" autocomplete="off" checked>
+          <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Meia" for="job_choice_5">
+          <img src="img/job-meia.png" class="img-check"></label>
+
+          <input type="checkbox" name="job_class_choice" id="job_choice_6" value="Sarah" class="d-none" autocomplete="off" checked>
+          <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Sarah" for="job_choice_6">
+          <img src="img/job-sarah.png" class="img-check"></label>
+
+          <input type="checkbox" name="job_class_choice" id="job_choice_7" value="Sophie" class="d-none" autocomplete="off" checked>
+          <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Sophie" for="job_choice_7">
+          <img src="img/job-sophie.png" class="img-check"></label>
+
+          <input type="checkbox" name="job_class_choice" id="job_choice_8" value="Graff" class="d-none" autocomplete="off" checked>
+          <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Graff" for="job_choice_8">
+          <img src="img/job-graff.png" class="img-check"></label>
+
+          <input type="checkbox" name="mp_role_choice" id="mp_role_choice_1" value="Attacker" class="d-none" autocomplete="off" checked>
+          <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Atk Role" for="mp_role_choice_1">
+          <img src="img/mp-atk-role.png" class="img-check"></label>
+
+          <input type="checkbox" name="mp_role_choice" id="mp_role_choice_2" value="Breaker" class="d-none" autocomplete="off" checked>
+          <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Break Role" for="mp_role_choice_2">
+          <img src="img/mp-breaker-role.png" class="img-check"></label>
+
+          <input type="checkbox" name="mp_role_choice" id="mp_role_choice_3" value="Healer" class="d-none" autocomplete="off" checked>
+          <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Healer Role" for="mp_role_choice_3">
+          <img src="img/mp-healer-role.png" class="img-check"></label>
+
+          <input type="checkbox" name="mp_role_choice" id="mp_role_choice_4" value="Defender" class="d-none" autocomplete="off" checked>
+          <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Defender Role" for="mp_role_choice_4">
+          <img src="img/mp-defender-role.png" class="img-check"></label>
+        </div>
+      </form>
+    </div>
+
+    <form id="buff_input" onSubmit="return false">
+    <div class="row buff-table mb-1">
+      <div class="col-xs-12 col-sm-6 mb-3">
+        <div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-success">
+            <input type="radio" name="buff_faith" id="no_faith" value="0" autocomplete="off" checked>No Faith
+          </label>
+          <label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply Mag by 50%">
+            <input type="radio" name="buff_faith" id="faith_1" value="1" autocomplete="off">Faith I
+          </label>
+          <label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply Mag by 75%">
+            <input type="radio" name="buff_faith" id="faith_2" value="2" autocomplete="off">Faith II
+          </label>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 mb-3">
+        <div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-success">
+            <input type="radio" name="buff_brave" id="no_brave" value="0" autocomplete="off" checked>No Brave
+          </label>
+          <label class="btn btn-success"  data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply Atk by 100%">
+            <input type="radio" name="buff_brave" id="brave_1" value="1" autocomplete="off">Brave I
+          </label>
+          <label class="btn btn-success"  data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply Atk by 150%">
+            <input type="radio" name="buff_brave" id="brave_2" value="2" autocomplete="off">Brave II
+          </label>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 mb-3">
+        <div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-success">
+            <input type="radio" name="buff_berserk" id="no_berserk" value="0" autocomplete="off" checked>No Berserk
+          </label>
+          <label class="btn btn-success"  data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Increase Enhance Element by 50%">
+            <input type="radio" name="buff_berserk" id="berserk_1" value="1" autocomplete="off">Berserk I
+          </label>
+          <label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Increase Enhance Element by 75%">
+            <input type="radio" name="buff_berserk" id="berserk_2" value="2" autocomplete="off">Berserk II
+          </label>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 mb-3">
+        <div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-success">
+            <input type="radio" name="buff_ee" id="no_ee" value="0" autocomplete="off" checked>No EE Atk
+          </label>
+          <label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Increase Enhance Element by 25%">
+            <input type="radio" name="buff_ee" id="ee_1" value="1" autocomplete="off">EE Atk I
+          </label>
+          <label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Increase Enhance Element by 75%">
+            <input type="radio" name="buff_ee" id="ee_2" value="2" autocomplete="off">EE Atk II
+          </label>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 mb-3">
+        <div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-success">
+            <input type="radio" name="buff_trance" id="no_trance" value="0" autocomplete="off" checked>No Trance
+          </label>
+          <label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply stats by 30%">
+            <input type="radio" name="buff_trance" id="trance_1" value="1" autocomplete="off">Trance I
+          </label>
+          <label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Multiply stats by 45%">
+            <input type="radio" name="buff_trance" id="trance_2" value="2" autocomplete="off">Trance II
+          </label>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 mb-3">
+        <div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-success">
+            <input type="radio" name="overboost_lvl" id="obj_0" value="0" autocomplete="off" checked>Overboost Job Lv. 0
+          </label>
+          <label class="btn btn-success" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Only works for Overpower% stats as of current implementation">
+            <input type="radio" name="overboost_lvl" id="obj_32" value="1" autocomplete="off">Overboost Job Lv. 32
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row buff-table mb-3 ">
+      <div class="col-xs-12 col-sm-6">
+        <label for="simulate_ability_rising" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Capped at 75% increase Mag/Atk%. Apply to those who have Ability Salvo either from CP or from innate Job stats.<br/><br/> E.g. If your job has 3% ability rising, ability casting 3 times will give you 9%">Ability Salvo (Simulate) &nbsp;
+          <button id="max_simulate_ability_rising" type="button" class="btn btn-success">Max</button>
+          <button id="reset_simulate_ability_rising" type="button" class="btn btn-danger">Zero</button>
+        </label>
+        <input type="number" class="form-control" name="simulate_ability_rising" min="0" max="75" step="1" value="0">
+      </div>
+    </div>
+
+    <div class="row buff-table mb-1">
+      <div class="col-xs-12 col-sm-6 mb-1">
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="s2_reduction" value="1" id="s2_reduction" checked>
+          <label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Damage reduction by 10x" for="s2_reduction">Season 2 Damage Reduction</label>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 mb-1">
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="cross_counter" value="1" id="cross_counter" checked>
+          <label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="Following <b>an enemy action</b>, your Attack, Break Power and Magic will increases. The bonus is additive to Trance. The bonus reset after new wave / battle. <br/><br/>It doesn't give any bonus if the enemy was stun / sleep. It does give the bonus if they spend their action buffing themselves, charging their ultimate, or making a coffee for you. <b>Pre-emptive action also counts.</b>" for="cross_counter">Cross-Counter</label>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 mb-1">
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="max_reckoning" value="1" id="max_reckoning" checked>
+          <label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="<em>Bonus Magic% = [(Enemy Damage Output / 2000)^2]</em> <br/><br/>Up to 2400% Mag bonus at 100k Enemy Damage Output<br/><br/>The effect doesn't carry over to the other deck, but switching decks and/or using substrike doesn't reset the bonus. Enemy Damage Output refers to the outgoing damage from enemies, so self-boons like Barrier, Wall, Divine Shield or elemental drives won't lower the Mag% bonus; applying Debrave and/or Curse debuffs on the enemy, however, will lower it." for="max_reckoning">Max Reckoning (+2400% Mag)</label>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 mb-1">
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="max_retribution" value="1" id="max_retribution" checked>
+          <label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="<em>Bonus Atk% = [(Enemy Damage Output / 2000)^2]</em> <br/><br/>Up to 2400% Atk bonus at 100k Enemy Damage Output<br/><br/>The effect doesn't carry over to the other deck, but switching decks and/or using substrike doesn't reset the bonus. Enemy Damage Output refers to the outgoing damage from enemies, so self-boons like Barrier, Wall, Divine Shield or elemental drives won't lower the Atk% bonus; applying Debrave and/or Curse debuffs on the enemy, however, will lower it." for="max_retribution">Max Retribution (+2400% Atk)</label>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 mb-1">
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="show_skilled_duelist" value="1" id="show_skilled_duelist" checked>
+          <label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="When you're 1v1, HP/Attack/Break/Magic will be Increased by +%. The stat boost is like having a 2nd trance" for="show_skilled_duelist">Skilled Duelist</label>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 mb-1">
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="show_discordant_chain" value="1" id="show_discordant_chain">
+          <label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="If the previous action was an ability cast of a different element (regardless of card type), the following ability will get X% added Element Enhance. Attuned Chain and Discordant Chain cannot proc together. <br/><br/>Example: Fire > Water > Fire > Water > Wind > Water > Fire" for="show_discordant_chain">Discordant Chain</label>
+        </div>
+      </div>
+    </div>
+    </form>
+
+
+    <form id="filter_input" onSubmit="return false">
+    <div class="row options-table border-top">
+      <div class="col-xs-12 col-sm-6 mb-1">
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="ignore_lore" value="1" id="ignore_lore">
+          <label class="custom-control-label" for="ignore_lore">Ignore Lore</label>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 mb-1">
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="ignore_element" value="1" id="ignore_element">
+          <label class="custom-control-label" for="ignore_element">Ignore Element Usage</label>
+        </div>
+      </div>
+    </div>
+    </form>
+    <br/>
+
+    <form id="sort_input" onSubmit="return false">
+    <div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary">
+        <input type="radio" name="dmg_type" id="unbroken_neutral_dmg" value="0" autocomplete="off">Unbroken Neutral
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="dmg_type" id="unbroken_weakness_dmg" value="1" autocomplete="off">Unbroken Weakness
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="dmg_type" id="broken_neutral_dmg" value="2" autocomplete="off">Broken Neutral
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="dmg_type" id="broken_weakness_dmg" value="3" autocomplete="off">Broken Weakness
+      </label>
+    </div>
+    </form>
+
+    <div class="list-group result-list" id="result_list">
+    </div>
+    <div class="pagination justify-content-center mt-3" id="pagination">
+    </div>
+
+    <hr/>
+    <p>
+    Credits goes to:
+    <ul>
+      <li><b>blue2eyes</b> (for <a href="https://www.reddit.com/r/MobiusFF/wiki/gameplay-analysis/damage-calculation">damage calculation wiki</a>)</li>
+      <li><b>IJustNeedAccount</b> (for maintaining the <a href="https://docs.google.com/spreadsheets/d/1GYuKh0MxhzHdH3fLFd4c0Wahj7zXaIOGSutuQHqDsLc/edit?usp=sharing">job spreadsheet</a>)
+      <li><b>Steampipe</b> (for help on formula math)</li>
+      <li><b>Shiro</b> (for general pointers and constant feedback)</li>
+
+      <li>And many helpful contributors from <b>Discord/Reddit MFF</b></li>
+    </ul>
+    </p>
+    <hr/>
+    <i>Disclaimer: This calculator will only provide us an approximate/estimation value of results to be closest as possible. Please take it at your own risk.</i>
+    <hr/>
+  </div>
 
 
 
