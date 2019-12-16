@@ -94,12 +94,12 @@ function damageCalc(card, job, setting, title, weapon) {
   if (setting.showSkilledDuelist && job.skilled_duelist){
     statMod += job.skilled_duelist / 100;
   }
-  let risingMod = (100 + setting.simulate_ability_rising);
+  let risingMod = (setting.simulate_ability_rising);
   abilityRising = setting.ability_rising + job.ability_rising + weapon.ability_rising + card.getAbilityRising();
   if (setting.simulate_ability_rising > 0 && (setting.ability_rising || job.ability_rising || weapon.ability_rising || card.getAbilityRising())) {
     statMod += risingMod / 100;
   }
-
+  
   magicTerm *= statMod;
 
 
