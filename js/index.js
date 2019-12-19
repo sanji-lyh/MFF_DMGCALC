@@ -89,7 +89,29 @@ function renderRanking() {
 
   LoadSetting();
   OnAbilityChange();
-  $('#disclaimerModalCenter').modal('show');
+  
+  ShowDisclaimer();
+  
+}
+
+function ShowDisclaimer() {
+  var isHideDisclaimer = getCookie("hide20191216001") == "true" ? true : false;
+  
+  if(!isHideDisclaimer){
+    $('#disclaimerModalCenter').modal('show'); 
+    $("#disclaimerCheckbox").click(function(){
+        HideDisclaimer();
+    });
+  }  
+}
+
+function HideDisclaimer(){
+  if($('#disclaimerCheckbox').is(':checked')){
+      document.cookie = "hide20191216001=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  }
+  else{
+      document.cookie = "hide20191216001=false; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  }
 }
 
 async function init() {
@@ -329,7 +351,7 @@ function SaveSetting(curSetting){
   
   $("input:checkbox[name=mp_role_choice]:checked").each(function(){
     mpRole += $(this).val() + ",";
-  });
+  }); 
   
   document.cookie = "jobClass=" + jobClass.slice(0, -1) +"; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "mpRole=" + mpRole.slice(0, -1) +"; expires=Fri, 31 Dec 9999 23:59:59 GMT";
