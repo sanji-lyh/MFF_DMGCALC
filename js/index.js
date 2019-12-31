@@ -95,7 +95,7 @@ function renderRanking() {
 }
 
 function ShowDisclaimer() {
-  var isHideDisclaimer = getCookie("hide20191216001") == "true" ? true : false;
+  var isHideDisclaimer = getCookie("hide20191231001") == "true" ? true : false;
   
   if(!isHideDisclaimer){
     $('#disclaimerModalCenter').modal('show'); 
@@ -107,10 +107,10 @@ function ShowDisclaimer() {
 
 function HideDisclaimer(){
   if($('#disclaimerCheckbox').is(':checked')){
-      document.cookie = "hide20191216001=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+      document.cookie = "hide20191231001=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   }
   else{
-      document.cookie = "hide20191216001=false; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+      document.cookie = "hide20191231001=false; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   }
 }
 
