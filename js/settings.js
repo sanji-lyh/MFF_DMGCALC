@@ -31,6 +31,7 @@ class Setting {
 
     this.ignoreLore = false;
     this.ignoreElement = false;
+    this.mentalAcuity = false;
     this.maxReckoning = false;
     this.maxRetribution = false;
     this.maxCrossCounter = false;   

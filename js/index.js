@@ -95,7 +95,7 @@ function renderRanking() {
 }
 
 function ShowDisclaimer() {
-  var isHideDisclaimer = getCookie("hide20191231001") == "true" ? true : false;
+  var isHideDisclaimer = getCookie("hide20190109001") == "true" ? true : false;
   
   if(!isHideDisclaimer){
     $('#disclaimerModalCenter').modal('show'); 
@@ -107,10 +107,10 @@ function ShowDisclaimer() {
 
 function HideDisclaimer(){
   if($('#disclaimerCheckbox').is(':checked')){
-      document.cookie = "hide20191231001=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+      document.cookie = "hide20190109001=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   }
   else{
-      document.cookie = "hide20191231001=false; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+      document.cookie = "hide20190109001=false; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   }
 }
 
@@ -245,6 +245,7 @@ function UpdateChanges() {
 
   curSetting.ignoreLore = $('#ignore_lore').is(':checked');
   curSetting.ignoreElement = $('#ignore_element').is(':checked');
+  curSetting.mentalAcuity = $('#mental_acuity').is(':checked');
   curSetting.maxRetribution = $('#max_retribution').is(':checked');
   curSetting.maxReckoning = $('#max_reckoning').is(':checked');
   curSetting.maxCrossCounter = $('#cross_counter').is(':checked');  
@@ -383,7 +384,7 @@ function LoadSetting(){
   // Check if any cookie
   if(getCookie("existing") !== "1"){
     var defaultSetting = ["existing=1;", "fractalMagicMod=0;", "fractalAttackMod=0;", "additionalMagic=0;", "additionalAttack=0;", "ability_rising=0;", "isBroken=false;", "isWeakness=false;", 
-                         "isTaiman=false;", "ignoreLore=false;", "ignoreElement=false;", "showDiscordantChain=false;", "crit_dmg_up=0;", "break_dmg_up=0;", "weak_dmg_up=0;", "ee=0;", 
+                         "isTaiman=false;", "ignoreLore=false;", "ignoreElement=false;", "mentalAcuity=false", "showDiscordantChain=false;", "crit_dmg_up=0;", "break_dmg_up=0;", "weak_dmg_up=0;", "ee=0;", 
                          "overpower=0;", "ravage=0;", "ability_chain=0;", "attuned_chain=0;", "isS2Reduction=true;", "maxCrossCounter=true;", "maxReckoning=true;", "maxRetribution=true;", 
                          "simulate_ability_rising=75;", "showSkilledDuelist=true;", "berserk=berserk;", "faith=faith;", "brave=brave;", "eeAtk=ee atk;", 
                          "trance=trance II;", "overboost_lvl=32;", "curAbility=0;"]
@@ -410,11 +411,11 @@ function LoadSetting(){
   }
   
   
-  var checkBoxName = ["#ignore_lore", "#ignore_element", "#max_retribution", 
+  var checkBoxName = ["#ignore_lore", "#ignore_element", "#mental_acuity", "#max_retribution", 
                       "#max_reckoning", "#cross_counter", 
                       "#show_discordant_chain", "#show_skilled_duelist", "#s2_reduction"];
   
-  var cookieCheckName = ["ignoreLore", "ignoreElement", "maxRetribution",
+  var cookieCheckName = ["ignoreLore", "ignoreElement", "mentalAcuity", "maxRetribution",
                          "maxReckoning", "maxCrossCounter", 
                          "showDiscordantChain", "showSkilledDuelist", "isS2Reduction"];
                          
@@ -757,7 +758,6 @@ function WpnAllSelection(isChecked){
 
 function JobAllSelection(isChecked){
 	$("input:checkbox[name=job_class_choice]").prop('checked', isChecked);
-    $("input:checkbox[name=mp_role_choice]").prop('checked', isChecked);
 	UpdateChanges();
 }
 

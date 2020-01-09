@@ -1,4 +1,4 @@
-import { AUTO_ABILITY as AA, EXTRA_SKILL as ES } from './const.js';
+import { AUTO_ABILITY as AA, EXTRA_SKILL as ES, CLASS } from './const.js';
 import { Title } from './title.js';
 import { AbilityCard } from './ability-card.js';
 import { Setting } from './settings.js';
@@ -237,6 +237,12 @@ function damageCalc(card, job, setting, title, weapon) {
   // TODO: defense term and barrier term
 
   let damage = card.attack;
+  
+  // Mental Acuity
+  if(card.isMagicBased() && setting.mentalAcuity && (job.jobClass.toLowerCase() === CLASS.monk || job.jobClass.toLowerCase() === CLASS.sophie)) {
+      damage *= 3;
+  }  
+  
   damage *= card.isMagicBased() ? magicTerm : attackTerm;
   damage = damage * eeTerm * critTerm * brokenTerm * weakTerm * ravageTerm * ucTerm;
 

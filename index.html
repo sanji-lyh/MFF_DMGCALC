@@ -59,6 +59,7 @@
                  <ul>
                  <li>Happy new year!</li>
                  <li>Updated with Jan 2020 GL content!</li>
+                 <li> <span class="badge badge-danger">Community Suggestion</span> Mental Acuity implemented!</li>
                  </ul>
                  <hr/>
                  <ol>
@@ -258,11 +259,11 @@
                     
                     <input type="checkbox" name="job_class_choice" id="job_choice_8" value="Graff" class="d-none" autocomplete="off" checked>
                     <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="Graff" for="job_choice_8">
-                    <img src="img/job-graff.png" class="img-check"></label>
+                    <img src="img/job-graff.png" class="img-check mr-3"></label>
                     
                     <input type="checkbox" name="mp_role_choice" id="mp_role_choice_1" value="Attacker" class="d-none" autocomplete="off" checked>
                     <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Atk Role" for="mp_role_choice_1">
-                    <img src="img/mp-atk-role.png" class="img-check"></label> 
+                    <img src="img/mp-atk-role.png" class="img-check ml-3"></label> 
                     
                     <input type="checkbox" name="mp_role_choice" id="mp_role_choice_2" value="Breaker" class="d-none" autocomplete="off" checked>
                     <label data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="MP Break Role" for="mp_role_choice_2">
@@ -434,6 +435,13 @@
 					<label class="custom-control-label" for="ignore_element">Ignore Element Usage</label>
 				</div>
 			</div>
+            
+            <div class="col-xs-12 col-sm-6 mb-1">
+				<div class="custom-control custom-checkbox">
+					<input class="custom-control-input" type="checkbox" name="mental_acuity" value="1" id="mental_acuity">
+					<label class="custom-control-label" data-toggle='tooltip' data-placement='top' data-html="true" data-original-title="3 x to all non-monk card base attack and break power when used with monk jobs" for="mental_acuity">Mental Acuity</label>
+				</div>
+			</div>
 		</div>
 		</form>
 		<br/>
@@ -464,21 +472,16 @@
 		<p>
 		Credits goes to:
 		<ul>
-            <li><b>SanjiLYH </b> - for developing and maintaining this dmg ranking calculator</li>
-			<li><b>blue2eyes</b> - for refining the damage calculation algorithm and maintaining the <a href="https://www.reddit.com/r/MobiusFF/wiki/gameplay-analysis/damage-calculation">damage calculation wiki</a></li>
+            <li><b>SanjiLYH </b> - for implementing the first version of dmg ranking calc on his own; he also maintain and provide constant update to include requests from the community</li>
+			<li><b>blue2eyes</b> - for significantly improving both the source code structure and the damage calculation algorithm; he also maintain the <a href="https://www.reddit.com/r/MobiusFF/wiki/gameplay-analysis/damage-calculation">damage calculation wiki</a></li>
 			<li><b>IJustNeedAccount</b> - for maintaining the <a href="https://docs.google.com/spreadsheets/d/1GYuKh0MxhzHdH3fLFd4c0Wahj7zXaIOGSutuQHqDsLc/edit?usp=sharing">job spreadsheet</a>
-            <li><b>Steampipe</b> - for refining the math formula for better simulation</li>
-			<li><b>Shiro</b> - for general pointers and constant feedback</li>
-            
-			<li>And many helpful contributors from <b>Discord/Reddit MFF</b></li>
-		</ul>
-		</p>
+            <li><b>Steampipe</b> - for refining the math formula for better simulation; he also did alot of testing in-game to verify that the wiki formula is accurate</li>
+            <li>And <b>KUDOS</b> to many toxic haters who inevitably destroy my motivation for any further development of this tools for MobiusFF...</li>
+        </ul>
+        </p>
 		<hr/>
 		<i>Disclaimer: This calculator will only provide us an approximate/estimation value of results to be closest as possible. Please take it at your own risk.</i>
 		<hr/>
 	</div>
-
-
-
 </body>
 </html>
