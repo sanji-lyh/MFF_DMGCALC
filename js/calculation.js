@@ -80,12 +80,15 @@ function damageCalc(card, job, setting, title, weapon) {
         overboost_mod = 1;
         break;
   }
-
-  overpower_mod = ((setting.overpower + job.overpower + weapon.overpower) * overboost_mod)/100 + 1;
+  
+  
+  // (base job value + cp) * (base stat up + overpower) * fractal + weapon
+  overpower_mod = ((setting.overpower + job.overpower + weapon.overpower) * overboost_mod)/100;  
 
   // magic / attack term
-  magicTerm += (job.magic * overpower_mod) + title.magic + weapon.magic;
+  magicTerm += (job.magic + setting.additionalMagic + title.magic ) * ( 1 + job.base_attributes/100 + overpower_mod);
   magicTerm *= 1 + setting.fractalMagicMod / 100;
+  magicTerm += weapon.magic;
  
   let magicMod = setting.magicMod;
   if (card.hasES(ES.high_voltage)) {
@@ -112,8 +115,8 @@ function damageCalc(card, job, setting, title, weapon) {
     statMod += risingMod / 100;
   }
   
-  firstMagicTerm = (magicTerm * firstStatMod) + setting.additionalMagic;
-  magicTerm = (magicTerm * statMod) + setting.additionalMagic;
+  firstMagicTerm = (magicTerm * firstStatMod);
+  magicTerm = (magicTerm * statMod);
 
   if (setting.maxReckoning && job.reckoning) {
     magicTerm += 2400;
@@ -121,12 +124,13 @@ function damageCalc(card, job, setting, title, weapon) {
   }
 
   // TODO: Godo, Bhunivelze
-
-  attackTerm += (job.attack * overpower_mod) + title.attack + weapon.attack;
+  attackTerm += (job.attack + setting.additionalAttack + title.attack) * ( 1 + job.base_attributes/100 + overpower_mod) ;
   if(weapon.attack_multiply > 0){
       attackTerm *= (1 + weapon.attack_multiply / 100);
   }
   attackTerm *= 1 + setting.fractalAttackMod / 100;
+  attackTerm += weapon.attack;
+  
   attackTerm *= setting.attackMod;
 
   statMod = setting.statMod;
@@ -143,8 +147,8 @@ function damageCalc(card, job, setting, title, weapon) {
     statMod += risingMod / 100;
   }
   
-  firstAttackTerm = attackTerm * firstStatMod + setting.additionalAttack;
-  attackTerm = attackTerm * statMod + setting.additionalAttack;
+  firstAttackTerm = attackTerm * firstStatMod;
+  attackTerm = attackTerm * statMod;
 
   if (setting.maxRetribution && job.retribution) {
     attackTerm += 2400;

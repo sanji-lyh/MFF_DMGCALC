@@ -75,6 +75,7 @@ class Job {
 		this.reckoning = options["Reckoning"] || 0;
 		this.retribution = options["Retribution"] || 0;
 		this.cross_counter = options["Cross Counter"] || 0;
+        this.base_attributes = options["Base Attributes"] || 0;
     }
 
     getEE(element, isFirstHit=false) {
