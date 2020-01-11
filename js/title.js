@@ -45,7 +45,7 @@ class Title {
         this.taiman = 0;
     }
 
-    getEE(element) {
+    getEE(element, isFirstHit=false) {
         let ee = 0;
         switch (element) {
             case ELEMENT.fire:
@@ -69,7 +69,13 @@ class Title {
             default:
                 ee = 0;
         }
-        return this.attune_chain + this.ability_chain + ee;
+        
+        if(!isFirstHit){
+            return this.attune_chain + this.ability_chain + ee;
+        }
+        else{
+            return ee;
+        }
     }
 }
 

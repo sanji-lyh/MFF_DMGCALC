@@ -36,15 +36,17 @@ class AbilityCard {
     return this.extra_skill.includes(es);
   }
 
-  getEE() {
+  getEE(isFirstHit = false) {
     // EE from Auto Ability & mechanics
     let ee = 0;
     ee += this.auto_ability[`enhance ${this.element}`] || 0;
-    ee += this.auto_ability[AA.attune_chain] || 0;
-    ee += this.auto_ability[AA.ability_chain] || 0;
+    if(!isFirstHit){
+        ee += this.auto_ability[AA.attune_chain] || 0;
+        ee += this.auto_ability[AA.ability_chain] || 0;
 
-    ee += this.mechanics[AA.attune_chain] || 0;
-    ee += this.mechanics[AA.ability_chain] || 0;
+        ee += this.mechanics[AA.attune_chain] || 0;
+        ee += this.mechanics[AA.ability_chain] || 0;
+    }
     return ee;
   }
 

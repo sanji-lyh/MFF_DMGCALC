@@ -50,6 +50,7 @@ class Setting {
     this.ability_chain = 0;
     this.ravage = 0;
     this.overpower = 0;
+    this.cross_counter = 0;
     
     this.faith = "";
     this.brave = "";
@@ -59,11 +60,14 @@ class Setting {
   }
 
   // getter method
-  getEE() {
+  getEE(isFirstHit=false) {
     let ee = 0;
     ee += this.ee;
-    ee += this.attuned_chain;
-    ee += this.ability_chain;
+    
+    if(!isFirstHit){
+        ee += this.attuned_chain;
+        ee += this.ability_chain;
+    }
     
     switch (this.eeAtk) {
       case BUFF.ee_atk:

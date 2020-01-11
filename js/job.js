@@ -77,7 +77,7 @@ class Job {
 		this.cross_counter = options["Cross Counter"] || 0;
     }
 
-    getEE(element) {
+    getEE(element, isFirstHit=false) {
         let ee = 0;
         switch (element) {
             case ELEMENT.fire:
@@ -101,7 +101,13 @@ class Job {
             default:
                 ee = 0;
         }
-        return this.attune_chain + this.ability_chain + ee;
+        
+        if(!isFirstHit){
+            return this.attune_chain + this.ability_chain + ee;
+        }
+        else{
+            return ee;
+        }
     }
 
     totalHP(setting) {

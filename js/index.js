@@ -95,7 +95,7 @@ function renderRanking() {
 }
 
 function ShowDisclaimer() {
-  var isHideDisclaimer = getCookie("hide20190109001") == "true" ? true : false;
+  var isHideDisclaimer = getCookie("hide20190111001") == "true" ? true : false;
   
   if(!isHideDisclaimer){
     $('#disclaimerModalCenter').modal('show'); 
@@ -107,10 +107,10 @@ function ShowDisclaimer() {
 
 function HideDisclaimer(){
   if($('#disclaimerCheckbox').is(':checked')){
-      document.cookie = "hide20190109001=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+      document.cookie = "hide20190111001=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   }
   else{
-      document.cookie = "hide20190109001=false; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+      document.cookie = "hide20190111001=false; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   }
 }
 
@@ -195,6 +195,7 @@ function UpdateChanges() {
     "input[name='ravage_power']",
 	"input[name='multiply_atk']",
 	"input[name='multiply_mag']",
+    "input[name='cross_counter_value']",
     "input[name='addition_atk']"
   ];
 
@@ -218,6 +219,7 @@ function UpdateChanges() {
   curSetting.fractalAttackMod = parseInt2($("input[name='multiply_atk']").val());
   curSetting.fractalMagicMod = parseInt2($("input[name='multiply_mag']").val());
   curSetting.simulate_ability_rising = parseInt2($("input[name='simulate_ability_rising']").val());
+  curSetting.cross_counter = parseInt2($("input[name='cross_counter_value']").val());
 
   var dmgSortType = parseInt($("input[name='dmg_type']:checked").val());
   switch (dmgSortType) {
@@ -387,7 +389,7 @@ function LoadSetting(){
                          "isTaiman=false;", "ignoreLore=false;", "ignoreElement=false;", "mentalAcuity=false", "showDiscordantChain=false;", "crit_dmg_up=0;", "break_dmg_up=0;", "weak_dmg_up=0;", "ee=0;", 
                          "overpower=0;", "ravage=0;", "ability_chain=0;", "attuned_chain=0;", "isS2Reduction=true;", "maxCrossCounter=true;", "maxReckoning=true;", "maxRetribution=true;", 
                          "simulate_ability_rising=75;", "showSkilledDuelist=true;", "berserk=berserk;", "faith=faith;", "brave=brave;", "eeAtk=ee atk;", 
-                         "trance=trance II;", "overboost_lvl=32;", "curAbility=0;"]
+                         "trance=trance II;", "overboost_lvl=32;", "curAbility=0;", "cross_counter=0"]
                          
     for(i = 0; i < defaultSetting.length; i++){
         document.cookie = defaultSetting[i] + " expires=Fri, 31 Dec 9999 23:59:59 GMT";
@@ -398,13 +400,13 @@ function LoadSetting(){
                     "input[name='improved_crit']", "input[name='pb_power']", "input[name='exploit_weakness']",
                     "input[name='ee_power']", "input[name='ability_chain']", "input[name='attuned_chain']",
                     "input[name='ravage_power']", "input[name='overpower']", "input[name='ability_rising']",
-                    "input[name='multiply_atk']", "input[name='multiply_mag']", "input[name='simulate_ability_rising']"]
+                    "input[name='multiply_atk']", "input[name='multiply_mag']", "input[name='simulate_ability_rising']", "input[name='cross_counter_value']"]
                     
   var cookieName = ["additionalMagic" ,"additionalAttack", 
                     "crit_dmg_up", "break_dmg_up", "weak_dmg_up",
                     "ee", "ability_chain", "attuned_chain",
                     "ravage", "overpower", "ability_rising", 
-                    "fractalAttackMod", "fractalMagicMod", "simulate_ability_rising"]
+                    "fractalAttackMod", "fractalMagicMod", "simulate_ability_rising", "cross_counter"]
                     
   for(i = 0; i<inputName.length; i++){
     $(inputName[i]).val(getCookie(cookieName[i]));
@@ -606,16 +608,27 @@ function DisplayResult() {
 		let dmgResult = curResultList[i].dmgResult;
 
 		let displayDmg = numberWithCommas(dmgResult.damage);
+        let firstDisplayDmg = numberWithCommas(dmgResult.firstDamage);
 
 
 		let resultHTML = "<div class=\"list-group-item list-group-item-action flex-column align-items-start\">";
 
 		// Damage Label
-		resultHTML += "<div class=\"text-center dmg-label\">";
+        // Max Damage
+        resultHTML += "<div class=\"d-flex flex-wrap justify-content-end align-items-start dmg-label-holder\">"
+        resultHTML += "<div class=\"text-center dmg-label mr-2 mb-1\">";
+		resultHTML += "<h4 class=\"mb-n1\">" + firstDisplayDmg + "</h4>";
+		resultHTML += "<small>First Hit</small>";
+		resultHTML += "</div>"
+        
+        resultHTML += "<div class=\"text-center dmg-label mr-2 mb-1\">";
 		resultHTML += "<h4 class=\"mb-n1\">" + displayDmg + "</h4>";
-		resultHTML += "<small>" + dmgSortTypeName[dmgSortType] + "</small>";
+		resultHTML += "<small>Max Damage</small>";
 
-		resultHTML += "</div><div class=\"d-flex flex-wrap align-items-start\">"
+		resultHTML += "</div></div>"
+        
+        
+        resultHTML += "<div class=\"d-flex flex-wrap align-items-start\">"
 
 		// Ranking label
 		resultHTML += "<h4 class=\"mr-2 rank-label\">#" + (i + 1) + "</h4>";
@@ -704,6 +717,10 @@ function DisplayResult() {
 
 		if (dmgResult.ravageTerm > 0) {
 			resultHTML += "<div class=\"perk-label\">Ravage +" + numberWithCommas(dmgResult.ravageTerm) + "%</div>";
+		}
+        
+        if (dmgResult.cross_counter > 0) {
+			resultHTML += "<div class=\"perk-label\">Cross-Counter +" + numberWithCommas(dmgResult.cross_counter) + "%</div>";
 		}
 
 		if (dmgResult.ucTerm > 0) {

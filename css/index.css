@@ -89,6 +89,11 @@ hr {
 	background-color: #363639;
 }
 
+.dmg-label-holder {
+    width:50%;
+    float:right;
+}
+
 .perk-label {
     padding: 5px;
     padding-left: 15px;

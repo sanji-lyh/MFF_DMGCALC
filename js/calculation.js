@@ -57,6 +57,13 @@ function damageCalc(card, job, setting, title, weapon) {
     barrierTerm = 100,
     defenseTerm = 100,
     abilityRising = 0;
+    
+  let firstMagicTerm = 100,
+    firstAttackTerm = 0,
+    firstEeTerm = 100,
+    firstRavageTerm = 100;
+  
+  let effectiveCC = 0;
 
   title = title || new Title();
   setting = setting || new Setting();
@@ -79,7 +86,7 @@ function damageCalc(card, job, setting, title, weapon) {
   // magic / attack term
   magicTerm += (job.magic * overpower_mod) + title.magic + weapon.magic;
   magicTerm *= 1 + setting.fractalMagicMod / 100;
-
+ 
   let magicMod = setting.magicMod;
   if (card.hasES(ES.high_voltage)) {
     let enemyHP = setting.enemyHP;
@@ -88,25 +95,29 @@ function damageCalc(card, job, setting, title, weapon) {
   magicTerm *= magicMod;
 
   let statMod = setting.statMod;
-  if (setting.maxCrossCounter && job.cross_counter) {
-    statMod += job.cross_counter / 100;
+  let firstStatMod;
+  if (setting.maxCrossCounter && (job.cross_counter || setting.cross_counter)) {
+    effectiveCC = (setting.cross_counter + job.cross_counter);
+    statMod += effectiveCC / 100;
   }
   if (setting.showSkilledDuelist && job.skilled_duelist){
     statMod += job.skilled_duelist / 100;
   }
+  firstStatMod = statMod;
+  
   let risingMod = (setting.simulate_ability_rising);
   abilityRising = setting.ability_rising + job.ability_rising + weapon.ability_rising + card.getAbilityRising();
   if (setting.simulate_ability_rising > 0 && (setting.ability_rising || job.ability_rising || weapon.ability_rising || card.getAbilityRising())) {
+    firstStatMod += abilityRising / 100;
     statMod += risingMod / 100;
   }
   
-  magicTerm *= statMod;
-
-
-  magicTerm += setting.additionalMagic;
+  firstMagicTerm = (magicTerm * firstStatMod) + setting.additionalMagic;
+  magicTerm = (magicTerm * statMod) + setting.additionalMagic;
 
   if (setting.maxReckoning && job.reckoning) {
     magicTerm += 2400;
+    firstMagicTerm += 2400;
   }
 
   // TODO: Godo, Bhunivelze
@@ -119,23 +130,25 @@ function damageCalc(card, job, setting, title, weapon) {
   attackTerm *= setting.attackMod;
 
   statMod = setting.statMod;
-  if (setting.maxCrossCounter && job.cross_counter) {
-    statMod += job.cross_counter / 100;
+  if (setting.maxCrossCounter && (job.cross_counter || setting.cross_counter)) {
+    effectiveCC = (setting.cross_counter + job.cross_counter);
+    statMod += effectiveCC / 100;
   }
   if (setting.showSkilledDuelist && job.skilled_duelist){
     statMod += job.skilled_duelist / 100;
   }
+  firstStatMod = statMod;
   if (setting.simulate_ability_rising > 0 && (setting.ability_rising || job.ability_rising || weapon.ability_rising || card.getAbilityRising())) {
+    firstStatMod += abilityRising / 100;
     statMod += risingMod / 100;
   }
   
-  attackTerm *= statMod;
-
-
-  attackTerm += setting.additionalAttack;
+  firstAttackTerm = attackTerm * firstStatMod + setting.additionalAttack;
+  attackTerm = attackTerm * statMod + setting.additionalAttack;
 
   if (setting.maxRetribution && job.retribution) {
     attackTerm += 2400;
+    firstAttackTerm += 2400;
   }
 
   // TODO: Zeromus
@@ -143,23 +156,35 @@ function damageCalc(card, job, setting, title, weapon) {
   // Gilgamesh X
   if(card.hasES(ES.legendary_blade_master)){
     magicTerm += attackTerm * 0.5;
+    firstMagicTerm += firstAttackTerm * 0.5;
   }
 
   magicTerm /= 100;
+  firstMagicTerm /= 100;
   attackTerm /= 100;
+  firstAttackTerm /= 100;
 
   // ee term
-  eeTerm += job.getEE(card.element);
-  eeTerm += card.getEE();
-  eeTerm += title.getEE(card.element);
-  eeTerm += setting.getEE(card.element);
-  eeTerm += weapon.getEE(card.element);
   eeTerm += card.hasES(ES.element_drive_synergy) ? 600 : 0;
   eeTerm += card.hasES(ES.element_everyday) ? 600 : 0;
   eeTerm += card.hasES(ES.fortune) ? 500 : 0;
   eeTerm += card.hasES(ES.misfortune) ? 1050 : 0;
   eeTerm += card.hasES(ES.ultra_element_synergy) ? 400 : 0;
   eeTerm += card.hasES(ES.ultra_martial_combat) ? 300 : 0;
+  
+  firstEeTerm = eeTerm;
+  
+  firstEeTerm += job.getEE(card.element, true);
+  firstEeTerm += card.getEE(true);
+  firstEeTerm += title.getEE(card.element, true);
+  firstEeTerm += setting.getEE(true);
+  firstEeTerm += weapon.getEE(card.element,true);
+  
+  eeTerm += job.getEE(card.element);
+  eeTerm += card.getEE();
+  eeTerm += title.getEE(card.element);
+  eeTerm += setting.getEE();
+  eeTerm += weapon.getEE(card.element);
   if(setting.showDiscordantChain){
       eeTerm += job.discordant_chain;
       eeTerm -= job.attune_chain;
@@ -167,6 +192,7 @@ function damageCalc(card, job, setting, title, weapon) {
 
   // TODO: add from card's description
   eeTerm /= 100;
+  firstEeTerm /= 100;
 
   // critical term
   critTerm += 50;
@@ -216,12 +242,14 @@ function damageCalc(card, job, setting, title, weapon) {
     ravageTerm += weapon.ravage;
     ravageTerm += card.getRavage();
     ravageTerm += setting.isTaiman && card.hasES(ES.ultra_convergence) ? 100 : 0;
-    // TODO: change number of casts from setting
-    ravageTerm += card.hasES(ES.ultra_damage_escalate) ? 200 : 0;
     // TODO: change to take enemy's break gauge into account
     ravageTerm += card.hasES(ES.break_ruler) ? 120 : 0;
+    firstRavageTerm = ravageTerm;
+    // TODO: change number of casts from setting
+    ravageTerm += card.hasES(ES.ultra_damage_escalate) ? 200 : 0;
   }
   ravageTerm /= 100;
+  firstRavageTerm /= 100;
 
   // uc term
   // TODO: current HP
@@ -237,31 +265,37 @@ function damageCalc(card, job, setting, title, weapon) {
   // TODO: defense term and barrier term
 
   let damage = card.attack;
-  
+  let firstDamage = card.attack;
+    
   // Mental Acuity
   if(card.isMagicBased() && setting.mentalAcuity && (job.jobClass.toLowerCase() === CLASS.monk || job.jobClass.toLowerCase() === CLASS.sophie)) {
       damage *= 3;
+      firstDamage *= 3;
   }  
   
   damage *= card.isMagicBased() ? magicTerm : attackTerm;
   damage = damage * eeTerm * critTerm * brokenTerm * weakTerm * ravageTerm * ucTerm;
+  
+  firstDamage *= card.isMagicBased() ? firstMagicTerm : firstAttackTerm;
+  firstDamage = firstDamage * firstEeTerm * critTerm * brokenTerm * weakTerm * firstRavageTerm * ucTerm;
+
 
   // S2 reduction
   if(setting.isS2Reduction){
     damage /= 10;
+    firstDamage /= 10;
   }
 
-  // Check lore
-  if (!setting.ignoreLore && !job.checkLore(card)) {
+  // Check lore && Check element
+  if ((!setting.ignoreLore && !job.checkLore(card))
+      || (!setting.ignoreElement && !job.checkElement(card))) {
     damage = 0;
+    firstDamage = 0;
   }
-
-  // Check element
-  if (!setting.ignoreElement && !job.checkElement(card)) {
-    damage = 0;
-  }
-
+ 
+  
   var result = {
+    firstDamage: firstDamage,
     damage: damage,
     dmgTerm: card.isMagicBased() ? magicTerm * 100 - 100 : attackTerm * 100,
     eeTerm: eeTerm * 100 - 100,
@@ -273,7 +307,8 @@ function damageCalc(card, job, setting, title, weapon) {
     weapon: weapon,
     ability_rising: abilityRising,
     simulate_ability_rising: setting.simulate_ability_rising,
-    prismatic_return: weapon.prismatic_return + job.prismatic_return
+    prismatic_return: weapon.prismatic_return + job.prismatic_return,
+    cross_counter: effectiveCC
   };
 
   return result;

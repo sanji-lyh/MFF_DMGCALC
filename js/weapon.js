@@ -117,8 +117,13 @@ class Weapon {
 		return description;
 	}
 	
-	getEE(element){
-		return this.attune_chain + this.ability_chain;
+	getEE(element, isFirstHit=false){
+        if(!isFirstHit){
+            return this.attune_chain + this.ability_chain;
+        }
+        else{
+            return 0;
+        }
 	}
 }
 
