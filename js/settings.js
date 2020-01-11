@@ -51,6 +51,7 @@ class Setting {
     this.ravage = 0;
     this.overpower = 0;
     this.cross_counter = 0;
+    this.skilled_duelist = 0;
     
     this.faith = "";
     this.brave = "";

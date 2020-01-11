@@ -63,7 +63,8 @@ function damageCalc(card, job, setting, title, weapon) {
     firstEeTerm = 100,
     firstRavageTerm = 100;
   
-  let effectiveCC = 0;
+  let effectiveCC = 0,
+    effectiveSkilledDuelist = 0;
 
   title = title || new Title();
   setting = setting || new Setting();
@@ -103,8 +104,9 @@ function damageCalc(card, job, setting, title, weapon) {
     effectiveCC = (setting.cross_counter + job.cross_counter);
     statMod += effectiveCC / 100;
   }
-  if (setting.showSkilledDuelist && job.skilled_duelist){
-    statMod += job.skilled_duelist / 100;
+  if (setting.showSkilledDuelist && (job.skilled_duelist || setting.skilled_duelist)){
+    effectiveSkilledDuelist = (job.skilled_duelist + setting.skilled_duelist)
+    statMod += effectiveSkilledDuelist / 100;
   }
   firstStatMod = statMod;
   
@@ -138,8 +140,9 @@ function damageCalc(card, job, setting, title, weapon) {
     effectiveCC = (setting.cross_counter + job.cross_counter);
     statMod += effectiveCC / 100;
   }
-  if (setting.showSkilledDuelist && job.skilled_duelist){
-    statMod += job.skilled_duelist / 100;
+  if (setting.showSkilledDuelist && (job.skilled_duelist || setting.skilled_duelist)){
+    effectiveSkilledDuelist = (job.skilled_duelist + setting.skilled_duelist)
+    statMod += effectiveSkilledDuelist / 100;
   }
   firstStatMod = statMod;
   if (setting.simulate_ability_rising > 0 && (setting.ability_rising || job.ability_rising || weapon.ability_rising || card.getAbilityRising())) {
@@ -312,7 +315,8 @@ function damageCalc(card, job, setting, title, weapon) {
     ability_rising: abilityRising,
     simulate_ability_rising: setting.simulate_ability_rising,
     prismatic_return: weapon.prismatic_return + job.prismatic_return,
-    cross_counter: effectiveCC
+    cross_counter: effectiveCC,
+    skilled_duelist: effectiveSkilledDuelist
   };
 
   return result;
