@@ -155,7 +155,7 @@ const URL = {
   JP_CARDS: 'https://script.google.com/macros/s/AKfycby5HVdcFyPDu9kLXT7pM_YhPjhyskSUqtm7suKcEUKJSHaiyslA/exec',
   GL_CARDS: 'https://script.google.com/macros/s/AKfycbz_7KPqyW9GNGIo76kYzrgS6Gl6shkhhr-OT1cdY5dc2KGL-MU/exec',
 	JOBS: 'https://script.google.com/macros/s/AKfycbwE1E0a0k__mXgUqdj6oSjty9JoWI6JvCaosglgug/exec',
-	WPN: 'https://script.google.com/macros/s/AKfycbw4qHH9SgcXEl5D5O-MuLp4IfjZCXz4_NfOn41VlA/exec'
+	WPN: 'https://script.google.com/macros/s/AKfycbzjAa_YwJ_WcYnnRJ_irrAbFUV-mPwWBQqMDXyTR-Wtn5_dixMh/exec'
 };
 
 const UI_SETTING = {
