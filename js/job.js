@@ -138,6 +138,9 @@ class Job {
 			case CLASS.monk:
 				typeFields = [CLASS.monk, CLASS.sophie];
 				break;
+            case CLASS.support:
+                typeFields = [CLASS.warrior, CLASS.graff, CLASS.mage, CLASS.meia, CLASS.ranger, CLASS.sarah, CLASS.monk, CLASS.sophie];
+                break;
 		}
 		
 		for(let i=0; i < checkFields.length; i++){

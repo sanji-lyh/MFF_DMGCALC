@@ -8,7 +8,6 @@ class AbilityCard {
     this.attack = options.attack;
     this.break = options.break;
     this.name = options.name || '';
-
     this.img = options["image name"] || "default.jpg";
 
     this.element = options.element;
@@ -34,6 +33,14 @@ class AbilityCard {
 
   hasES(es) {
     return this.extra_skill.includes(es);
+  }
+  
+  hasMentalAcuity() {
+    return this.auto_ability[AA.mental_acuity] == 1;
+  }
+  
+  getOverpower(){    
+    return this.auto_ability[AA.overpower] || 0;
   }
 
   getEE(isFirstHit = false) {

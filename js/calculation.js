@@ -84,7 +84,7 @@ function damageCalc(card, job, setting, title, weapon) {
   
   
   // (base job value + cp) * (base stat up + overpower) * fractal + weapon
-  overpower_mod = ((setting.overpower + job.overpower + weapon.overpower) * overboost_mod)/100;  
+  overpower_mod = ((setting.overpower + job.overpower + weapon.overpower + card.getOverpower()) * overboost_mod)/100;  
 
   // magic / attack term
   magicTerm += (job.magic + setting.additionalMagic + title.magic ) * ( 1 + job.base_attributes/100 + overpower_mod);
@@ -275,7 +275,7 @@ function damageCalc(card, job, setting, title, weapon) {
   let firstDamage = card.attack;
     
   // Mental Acuity
-  if(card.isMagicBased() && setting.mentalAcuity && (job.jobClass.toLowerCase() === CLASS.monk || job.jobClass.toLowerCase() === CLASS.sophie)) {
+  if(card.isMagicBased() && (setting.mentalAcuity || card.hasMentalAcuity()) && (job.jobClass.toLowerCase() === CLASS.monk || job.jobClass.toLowerCase() === CLASS.sophie)) {
       damage *= 3;
       firstDamage *= 3;
   }  

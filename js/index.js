@@ -37,6 +37,8 @@ async function loadAllCards(data) {
 					));
 			});
 	}
+    
+    console.log(_cards);
 	
 	return Promise.resolve();
 }

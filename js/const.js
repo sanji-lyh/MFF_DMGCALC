@@ -13,7 +13,9 @@ const AUTO_ABILITY = {
   dark_ee: 'enhance dark',
   attune_chain: 'attune chain',
   ability_chain: 'ability chain',
-  ability_rising: 'ability rising'
+  ability_rising: 'ability rising',
+  mental_acuity: 'mental acuity',
+  overpower: 'overpower'
 };
 
 const CLASS = {
@@ -24,7 +26,8 @@ const CLASS = {
   meia: 'meia',
   sarah: 'sarah',
   sophie: 'sophie',
-  graff: 'graff'
+  graff: 'graff',
+  support: 'support'
 };
 
 const MP_ROLE = {
